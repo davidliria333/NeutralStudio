@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <!-- Background gradient - Dark blue institutional -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shield gradient -->
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gold neural network lines -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:0.9" />
+    </linearGradient>
+    
+    <!-- Shield border -->
+    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main background -->
+  <rect width="32" height="32" rx="6" fill="url(#bgGradient)"/>
+  
+  <!-- Shield shape -->
+  <g transform="translate(16,16)">
+    <!-- Shield body -->
+    <path d="M 0 -12 
+             C -8 -12 -8 -8 -8 -4
+             L -8 4
+             C -8 8 -6 10 0 12
+             C 6 10 8 8 8 4
+             L 8 -4  
+             C 8 -8 8 -12 0 -12 Z" 
+          fill="url(#shieldGradient)" 
+          stroke="url(#borderGradient)" 
+          stroke-width="0.8"/>
+    
+    <!-- Neural network pattern inside shield -->
+    <g stroke="url(#goldGradient)" stroke-width="0.6" fill="none" opacity="0.8">
+      <!-- Central hub -->
+      <circle cx="0" cy="0" r="1.5" fill="url(#goldGradient)" opacity="0.9"/>
+      
+      <!-- Neural connections - horizontal layer -->
+      <line x1="-4" y1="-4" x2="0" y2="0"/>
+      <line x1="4" y1="-4" x2="0" y2="0"/>
+      <line x1="-4" y1="4" x2="0" y2="0"/>
+      <line x1="4" y1="4" x2="0" y2="0"/>
+      
+      <!-- Secondary layer connections -->
+      <line x1="-4" y1="-4" x2="4" y2="-4"/>
+      <line x1="-4" y1="4" x2="4" y2="4"/>
+      <line x1="-4" y1="-4" x2="-4" y2="4"/>
+      <line x1="4" y1="-4" x2="4" y2="4"/>
+      
+      <!-- Cross connections -->
+      <line x1="-4" y1="-4" x2="4" y2="4"/>
+      <line x1="4" y1="-4" x2="-4" y2="4"/>
+      
+      <!-- Neural nodes -->
+      <circle cx="-4" cy="-4" r="0.8" fill="url(#goldGradient)" opacity="0.7"/>
+      <circle cx="4" cy="-4" r="0.8" fill="url(#goldGradient)" opacity="0.7"/>
+      <circle cx="-4" cy="4" r="0.8" fill="url(#goldGradient)" opacity="0.7"/>
+      <circle cx="4" cy="4" r="0.8" fill="url(#goldGradient)" opacity="0.7"/>
+      
+      <!-- Additional smaller nodes -->
+      <circle cx="-2" cy="0" r="0.5" fill="url(#goldGradient)" opacity="0.6"/>
+      <circle cx="2" cy="0" r="0.5" fill="url(#goldGradient)" opacity="0.6"/>
+      <circle cx="0" cy="-2" r="0.5" fill="url(#goldGradient)" opacity="0.6"/>
+      <circle cx="0" cy="2" r="0.5" fill="url(#goldGradient)" opacity="0.6"/>
+    </g>
+    
+    <!-- Premium accent - small crown/top element -->
+    <g transform="translate(0,-10)">
+      <path d="M -2 0 L 0 -2 L 2 0 Z" fill="url(#goldGradient)"/>
+      <circle cx="0" cy="-1" r="0.5" fill="url(#goldGradient)"/>
+    </g>
+  </g>
+  
+  <!-- Subtle corner accents for institutional feel -->
+  <g stroke="url(#goldGradient)" stroke-width="0.5" fill="none" opacity="0.5">
+    <path d="M 4 4 L 6 4 L 6 6"/>
+    <path d="M 28 4 L 26 4 L 26 6"/>
+    <path d="M 4 28 L 6 28 L 6 26"/>
+    <path d="M 28 28 L 26 28 L 26 26"/>
+  </g>
+</svg>

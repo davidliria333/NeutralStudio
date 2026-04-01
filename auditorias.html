@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetAI for Audit Firms — Compliance, Risk &amp; Reporting Automation</title>
+    <meta name="description" content="Private AI implementation for audit firms: automate compliance checks, risk analysis, regulatory tracking, and report generation. Catch what others miss in half the time.">
+    <meta name="keywords" content="audit firm AI, compliance automation, audit technology, risk analysis AI, regulatory tracking, audit reporting">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="canonical" href="https://getaibases.com/auditorias.html">
+    <meta property="og:title" content="GetAI for Audit Firms — Compliance &amp; Risk Automation">
+    <meta property="og:description" content="Automate compliance checking, risk analysis, and report generation. Private AI for audit firms.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://getaibases.com/auditorias.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GetAI for Audit Firms">
+    <meta name="twitter:description" content="Automate compliance, risk analysis, and reporting for your audit practice.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebPage","name":"GetAI for Audit Firms","url":"https://getaibases.com/auditorias.html","description":"AI implementation for audit firms: compliance, risk, and reporting.","isPartOf":{"@type":"WebSite","name":"GetAI","url":"https://getaibases.com"}}
+    </script>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --surface: #ffffff;
+            --border: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --text: #0f172a;
+            --text-s: #475569;
+            --text-m: #94a3b8;
+            --primary: #0f172a;
+            --primary-h: #1e293b;
+            --accent: #0f766e;
+            --radius: 12px;
+            --shadow-s: 0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+            --shadow-m: 0 4px 6px -1px rgba(0,0,0,0.07),0 2px 4px -2px rgba(0,0,0,0.05);
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        a{color:inherit;text-decoration:none}
+        ul{list-style:none}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .scroll-bar{position:fixed;top:0;left:0;height:2px;background:var(--primary);z-index:9999;width:0;transition:width .1s linear}
+
+        .hdr{position:sticky;top:0;left:0;right:0;z-index:1000;transition:all .3s;background:var(--bg)}
+        .hdr.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);border-bottom:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04)}
+        .hdr-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px;flex-wrap:wrap}
+        .hdr-left{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+        .logo-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0;text-decoration:none}.logo-wrap img{height:26px;width:auto}.logo-txt{font-weight:700;font-size:1.05rem;letter-spacing:-.3px;color:var(--text)}.logo-icp{font-weight:600;font-size:1.05rem;letter-spacing:-.3px;color:var(--accent)}.back-arrow{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;border:1px solid var(--border);color:var(--text-s);transition:all .2s;flex-shrink:0}.back-arrow:hover{border-color:var(--border-hover);color:var(--text);background:var(--bg-alt)}
+        .nav-r{display:flex;align-items:center;gap:12px;flex-shrink:0;margin-left:auto}
+        .lang-t{display:flex;background:var(--bg-alt);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+        .lang-t button{background:none;border:none;font-size:.78rem;font-weight:600;padding:5px 11px;cursor:pointer;color:var(--text-m);font-family:inherit;transition:all .2s}
+        .lang-t button.active{background:var(--primary);color:#fff}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:10px;font-weight:600;font-size:.875rem;font-family:inherit;border:none;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
+        .btn:active{transform:scale(.97)}
+        .btn-p{background:var(--primary);color:#fff}
+        .btn-p:hover{background:var(--primary-h);box-shadow:var(--shadow-m)}
+        .btn-s{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+        .btn-s:hover{border-color:var(--border-hover);background:var(--bg-alt)}
+        .btn-lg{padding:14px 28px;font-size:.95rem;border-radius:12px}
+        .btn-txt{background:none;color:var(--text-s);font-weight:500;padding:10px 4px}
+        .btn-txt:hover{color:var(--text)}
+        .btn-txt svg{transition:transform .2s}
+        .btn-txt:hover svg{transform:translateX(3px)}
+        .menu-btn{display:none;background:none;border:none;color:var(--text);cursor:pointer;padding:8px}
+        .mob-nav{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);z-index:999;padding:24px;flex-direction:column;gap:12px}
+        .mob-nav.open{display:flex}
+        .mob-nav a,.mob-nav .btn{align-self:flex-start}
+
+        .hero{padding:56px 0 88px;text-align:center;background:var(--bg)}
+        .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:100px;padding:5px 16px 5px 7px;font-size:.78rem;font-weight:500;color:var(--text-s);margin-bottom:28px;background:var(--bg)}
+        .badge-dot{width:7px;height:7px;background:var(--accent);border-radius:50%}
+        .hero h1{font-size:clamp(2.1rem,5vw,3.35rem);font-weight:800;line-height:1.1;letter-spacing:-2px;margin-bottom:20px;max-width:820px;margin-left:auto;margin-right:auto;color:var(--text)}
+        .hero-sub{font-size:1.1rem;color:var(--text-s);max-width:580px;margin:0 auto 36px;line-height:1.7}
+        .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+        section{padding:88px 0;position:relative}
+        .bg-alt{background:var(--bg-alt)}
+        .s-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:12px}
+        .s-title{font-size:clamp(1.75rem,3.2vw,2.35rem);font-weight:700;letter-spacing:-1.2px;line-height:1.15;margin-bottom:12px}
+        .s-desc{font-size:1.05rem;color:var(--text-s);max-width:560px;line-height:1.7}
+        .s-header{text-align:center;margin-bottom:48px}
+        .s-header .s-desc{margin-left:auto;margin-right:auto}
+
+        .pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1000px;margin:0 auto}
+        .pain-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;display:flex;gap:14px;align-items:flex-start;transition:all .25s}
+        .pain-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-s)}
+        .pain-ic{width:36px;height:36px;border-radius:8px;background:var(--bg-alt);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text-s)}
+        .pain-ic svg{width:18px;height:18px}
+        .pain-card p{font-size:.9rem;color:var(--text-s);line-height:1.55}
+
+        .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+        .sol-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s}
+        .sol-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-m);transform:translateY(-2px)}
+        .sol-card h3{font-size:1.05rem;font-weight:600;margin-bottom:8px;letter-spacing:-.2px}
+        .sol-card p{font-size:.88rem;color:var(--text-s);line-height:1.6}
+
+        .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+        .test-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;transition:all .3s}
+        .test-card:hover{box-shadow:var(--shadow-m);transform:translateY(-2px)}
+        .test-quote{font-size:.95rem;color:var(--text-s);line-height:1.7;margin-bottom:20px;position:relative;padding-top:24px}
+        .test-quote::before{content:'\201C';position:absolute;top:-4px;left:0;font-size:2.5rem;color:var(--border);font-family:Georgia,serif;line-height:1}
+        .test-name{font-size:.9rem;font-weight:600;color:var(--text)}
+        .test-role{font-size:.8rem;color:var(--text-m);margin-top:2px}
+        .test-metric{display:inline-flex;align-items:center;gap:6px;background:var(--bg-alt);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:600;color:var(--accent);margin-top:12px}
+
+        .ba-wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+        .ba-row{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px}
+        .ba-before{text-align:right;font-size:.95rem;color:var(--text-m);text-decoration:line-through;text-decoration-color:var(--border)}
+        .ba-arrow{font-size:1.1rem;color:var(--accent);font-weight:700}
+        .ba-after{font-size:1rem;font-weight:600;color:var(--text)}
+
+        .f-cta{text-align:center;padding:88px 0}
+        .f-cta .s-desc{margin:0 auto 32px}
+        .f-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+        .footer{background:var(--primary);color:#fff;padding:56px 0 28px}
+        .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+        .ft-brand .logo-wrap{margin-bottom:10px}
+        .ft-brand p{font-size:.85rem;color:rgba(255,255,255,.5);max-width:260px;line-height:1.6}
+        .ft-col h4{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);margin-bottom:14px}
+        .ft-col a{display:block;font-size:.88rem;color:rgba(255,255,255,.65);padding:4px 0;transition:color .2s}
+        .ft-col a:hover{color:#fff}
+        .ft-bottom{padding-top:28px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+        .ft-bottom p{font-size:.8rem;color:rgba(255,255,255,.35)}
+        .ft-bottom .lang-t{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12)}
+        .ft-bottom .lang-t button{color:rgba(255,255,255,.4)}
+        .ft-bottom .lang-t button.active{background:rgba(255,255,255,.15);color:#fff}
+
+        .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+        .reveal.vis{opacity:1;transform:translateY(0)}
+        .reveal-d1{transition-delay:.08s}.reveal-d2{transition-delay:.16s}.reveal-d3{transition-delay:.24s}.reveal-d4{transition-delay:.32s}.reveal-d5{transition-delay:.4s}
+
+        @media(max-width:1024px){
+            .sol-grid{grid-template-columns:1fr 1fr}
+            .test-grid{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}
+            .ft-grid{grid-template-columns:1fr 1fr;gap:28px}
+            .hdr-inner{flex-wrap:nowrap}
+            .nav-r .lang-t,.nav-r .btn-p{display:none}
+            .menu-btn{display:block}
+        }
+        @media(max-width:640px){
+            section{padding:64px 0}
+            .hero{padding:32px 0 64px}
+            .sol-grid{grid-template-columns:1fr}
+            .hero-ctas,.f-cta-btns{flex-direction:column;align-items:stretch}
+            .hero-ctas .btn,.f-cta-btns .btn{width:100%;max-width:320px;margin:0 auto}
+            .ba-row{grid-template-columns:1fr;gap:8px;text-align:center}
+            .ba-before{text-align:center;text-decoration:none;color:var(--text-s)}
+            .ba-arrow{justify-self:center}
+            .ba-after{text-align:center}
+            .ft-grid{grid-template-columns:1fr}
+            .ft-bottom{flex-direction:column;text-align:center;justify-content:center}
+        }
+    </style>
+</head>
+<body>
+
+<div class="scroll-bar" id="scrollBar"></div>
+
+<header class="hdr" id="hdr">
+    <div class="hdr-inner">
+        <div class="hdr-left">
+            <a href="index.html" class="back-arrow" aria-label="Back to home"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4l-4 4 4 4"/></svg></a>
+            <a href="index.html" class="logo-wrap"><img src="logo.png" alt="GetAI"><span class="logo-txt">GetAI</span><span class="logo-icp" data-i18n="nav.icp">Audit</span></a>
+        </div>
+        <div class="nav-r">
+            <div class="lang-t"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
+            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-p" data-i18n="nav.cta">Book a Call</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        </button>
+    </div>
+</header>
+
+<div class="mob-nav" id="mobNav">
+    <a href="index.html" data-i18n="nav.home">Back to home</a>
+    <div class="lang-t"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
+    <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-p" data-i18n="nav.cta">Book a Call</a>
+</div>
+
+<main>
+
+<section class="hero">
+    <div class="container">
+        <div class="badge reveal"><div class="badge-dot"></div><span data-i18n="hero.badge">For Audit Firms</span></div>
+        <h1 class="reveal reveal-d1" data-i18n="hero.h1">Catch what others miss. In half the time.</h1>
+        <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">We implement private AI that automates compliance checking, risk analysis, and report generation—so your team focuses on judgment, not spreadsheets.</p>
+        <div class="hero-ctas reveal reveal-d3">
+            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-p btn-lg" data-i18n="hero.cta1">Book a Demo</a>
+            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-s btn-lg" data-i18n="hero.cta2">Get a Free Audit</a>
+            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-txt btn-lg"><span data-i18n="hero.cta3">Watch Demo</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+    </div>
+</section>
+
+<section id="challenge" class="bg-alt">
+    <div class="container">
+        <div class="s-header reveal">
+            <p class="s-label" data-i18n="chal.label">The challenge</p>
+            <h2 class="s-title" data-i18n="chal.title">What slows audit teams down</h2>
+            <p class="s-desc" data-i18n="chal.desc">Manual processes and sampling limits leave gaps—and burn capacity your partners cannot spare.</p>
+        </div>
+        <div class="pain-grid">
+            <div class="pain-card reveal">
+                <div class="pain-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg></div>
+                <p data-i18n="chal.p1">Manual compliance checks that don’t scale with engagement volume.</p>
+            </div>
+            <div class="pain-card reveal reveal-d1">
+                <div class="pain-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+                <p data-i18n="chal.p2">Limited sample testing when regulators and clients expect deeper coverage.</p>
+            </div>
+            <div class="pain-card reveal reveal-d2">
+                <div class="pain-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+                <p data-i18n="chal.p3">Slow report generation and endless formatting across tools.</p>
+            </div>
+            <div class="pain-card reveal reveal-d3">
+                <div class="pain-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+                <p data-i18n="chal.p4">Regulatory changes are hard to track and embed in every workflow.</p>
+            </div>
+            <div class="pain-card reveal reveal-d4">
+                <div class="pain-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10M7 12h10M7 17h6"/></svg></div>
+                <p data-i18n="chal.p5">Excel-based analysis that is error-prone and hard to audit.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="solution">
+    <div class="container">
+        <div class="s-header reveal">
+            <p class="s-label" data-i18n="sol.label">Our approach</p>
+            <h2 class="s-title" data-i18n="sol.title">What we implement for audit firms</h2>
+            <p class="s-desc" data-i18n="sol.desc">Private systems tailored to your methodologies, templates, and data—delivered with the same rigor you expect from any engagement.</p>
+        </div>
+        <div class="sol-grid">
+            <div class="sol-card reveal">
+                <h3 data-i18n="sol.f1t">Compliance monitoring</h3>
+                <p data-i18n="sol.f1d">Continuous checks against your rules, checklists, and policy libraries.</p>
+            </div>
+            <div class="sol-card reveal reveal-d1">
+                <h3 data-i18n="sol.f2t">Risk analysis</h3>
+                <p data-i18n="sol.f2d">Structured scoring and narrative support grounded in your evidence.</p>
+            </div>
+            <div class="sol-card reveal reveal-d2">
+                <h3 data-i18n="sol.f3t">Automated reporting</h3>
+                <p data-i18n="sol.f3d">First drafts of findings, workpapers, and client-ready sections—consistent every time.</p>
+            </div>
+            <div class="sol-card reveal reveal-d3">
+                <h3 data-i18n="sol.f4t">Regulatory tracking</h3>
+                <p data-i18n="sol.f4d">Alerts and summaries when standards or guidance shift—mapped to your templates.</p>
+            </div>
+            <div class="sol-card reveal reveal-d4">
+                <h3 data-i18n="sol.f5t">Full population analysis</h3>
+                <p data-i18n="sol.f5d">Move beyond samples when data volume allows—without adding headcount.</p>
+            </div>
+            <div class="sol-card reveal reveal-d5">
+                <h3 data-i18n="sol.f6t">Anomaly detection</h3>
+                <p data-i18n="sol.f6d">Surface outliers and patterns teams can miss during manual review.</p>
+            </div>
+        </div>
+        <div class="reveal" style="margin-top:48px"><img src="hero (1).webp" alt="AI integrations on mobile" style="max-width:800px;width:100%;height:auto;display:block;margin:0 auto"></div>
+    </div>
+</section>
+
+<section class="bg-alt">
+    <div class="container">
+        <div class="s-header reveal">
+            <p class="s-label" data-i18n="test.label">Results</p>
+            <h2 class="s-title" data-i18n="test.title">What audit leaders report</h2>
+            <p class="s-desc" data-i18n="test.desc">Illustrative outcomes from firms that adopted structured automation with GetAI.</p>
+        </div>
+        <div class="test-grid">
+            <div class="test-card reveal">
+                <p class="test-quote" data-i18n="test.q1">Compliance checks that took our team 3 full days now take 4 hours. And we're not missing anything anymore.</p>
+                <p class="test-name" data-i18n="test.n1">Audit Director</p>
+                <p class="test-role" data-i18n="test.r1">Audit firm, 120 employees</p>
+                <div class="test-metric" data-i18n="test.m1">85% faster compliance checks</div>
+            </div>
+            <div class="test-card reveal reveal-d1">
+                <p class="test-quote" data-i18n="test.q2">We detected 23% more compliance issues in our first month. The AI catches patterns humans miss.</p>
+                <p class="test-name" data-i18n="test.n2">Partner</p>
+                <p class="test-role" data-i18n="test.r2">Audit firm, 80 employees</p>
+                <div class="test-metric" data-i18n="test.m2">23% more issues detected</div>
+            </div>
+            <div class="test-card reveal reveal-d2">
+                <p class="test-quote" data-i18n="test.q3">Our team went from dreading busy season to actually enjoying the work. We focus on analysis, not data entry.</p>
+                <p class="test-name" data-i18n="test.n3">Senior Manager</p>
+                <p class="test-role" data-i18n="test.r3">Audit firm, 50 employees</p>
+                <div class="test-metric" data-i18n="test.m3">60% less manual work</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="before-after">
+    <div class="container">
+        <div class="s-header reveal">
+            <p class="s-label" data-i18n="ba.label">Before / after</p>
+            <h2 class="s-title" data-i18n="ba.title">Typical time savings</h2>
+            <p class="s-desc" data-i18n="ba.desc">Representative benchmarks from engagements; your mileage depends on data access and scope.</p>
+        </div>
+        <div class="ba-wrap">
+            <div class="ba-row reveal">
+                <span class="ba-before" data-i18n="ba.r1b">Compliance check: 3 days</span>
+                <span class="ba-arrow" aria-hidden="true">→</span>
+                <span class="ba-after" data-i18n="ba.r1a">4 hours</span>
+            </div>
+            <div class="ba-row reveal reveal-d1">
+                <span class="ba-before" data-i18n="ba.r2b">Report generation: 2 days</span>
+                <span class="ba-arrow" aria-hidden="true">→</span>
+                <span class="ba-after" data-i18n="ba.r2a">3 hours</span>
+            </div>
+            <div class="ba-row reveal reveal-d2">
+                <span class="ba-before" data-i18n="ba.r3b">Risk assessment: 1 week</span>
+                <span class="ba-arrow" aria-hidden="true">→</span>
+                <span class="ba-after" data-i18n="ba.r3a">1 day</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="f-cta bg-alt">
+    <div class="container">
+        <p class="s-label reveal" data-i18n="cta.label">Next step</p>
+        <h2 class="s-title reveal" data-i18n="cta.title">See it on your own engagements</h2>
+        <p class="s-desc reveal" data-i18n="cta.desc">Book a short demo. We’ll map one compliance or reporting workflow and show what a private implementation looks like for your firm.</p>
+        <div class="f-cta-btns reveal">
+            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-p btn-lg" data-i18n="cta.b1">Book a Demo</a>
+            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-s btn-lg" data-i18n="cta.b2">Get a Free Audit</a>
+            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-txt btn-lg"><span data-i18n="cta.b3">Watch Demo</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+        <div class="reveal" style="margin-top:48px"><img src="agents-ios-app.webp" alt="AI assistant on mobile" style="max-width:720px;width:100%;height:auto;display:block;margin:0 auto"></div>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="ft-grid">
+            <div class="ft-brand">
+                <a href="index.html" class="logo-wrap" style="display:inline-flex"><img src="logo.png" alt="GetAI" style="height:22px;width:auto"><span class="logo-txt">GetAI</span></a>
+                <p data-i18n="ft.brand">Private AI systems for professional services. Implemented in 1 week.</p>
+            </div>
+            <div class="ft-col">
+                <h4 data-i18n="ft.product">Product</h4>
+                <a href="index.html#use-cases" data-i18n="ft.uc">Use Cases</a>
+                <a href="index.html#how-it-works" data-i18n="ft.how">How It Works</a>
+                <a href="index.html#pricing" data-i18n="ft.pr">Pricing</a>
+            </div>
+            <div class="ft-col">
+                <h4 data-i18n="ft.company">Company</h4>
+                <a href="index.html#team" data-i18n="ft.team">Team</a>
+                <a href="index.html#faq">FAQ</a>
+            </div>
+            <div class="ft-col">
+                <h4 data-i18n="ft.contact">Contact</h4>
+                <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" data-i18n="nav.cta">Book a Call</a>
+                <a href="mailto:adam@getaibase.co">adam@getaibase.co</a>
+            </div>
+        </div>
+        <div class="ft-bottom">
+            <p>&copy; 2026 GetAI. <span data-i18n="ft.rights">All rights reserved.</span></p>
+            <div class="lang-t"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const T={en:{
+"nav.home":"Back to home","nav.icp":"Audit","nav.cta":"Book a Call",
+"hero.badge":"For Audit Firms","hero.h1":"Catch what others miss. In half the time.",
+"hero.sub":"We implement private AI that automates compliance checking, risk analysis, and report generation—so your team focuses on judgment, not spreadsheets.",
+"hero.cta1":"Book a Demo","hero.cta2":"Get a Free Audit","hero.cta3":"Watch Demo",
+"chal.label":"The challenge","chal.title":"What slows audit teams down",
+"chal.desc":"Manual processes and sampling limits leave gaps—and burn capacity your partners cannot spare.",
+"chal.p1":"Manual compliance checks that don\u2019t scale with engagement volume.",
+"chal.p2":"Limited sample testing when regulators and clients expect deeper coverage.",
+"chal.p3":"Slow report generation and endless formatting across tools.",
+"chal.p4":"Regulatory changes are hard to track and embed in every workflow.",
+"chal.p5":"Excel-based analysis that is error-prone and hard to audit.",
+"sol.label":"Our approach","sol.title":"What we implement for audit firms",
+"sol.desc":"Private systems tailored to your methodologies, templates, and data—delivered with the same rigor you expect from any engagement.",
+"sol.f1t":"Compliance monitoring","sol.f1d":"Continuous checks against your rules, checklists, and policy libraries.",
+"sol.f2t":"Risk analysis","sol.f2d":"Structured scoring and narrative support grounded in your evidence.",
+"sol.f3t":"Automated reporting","sol.f3d":"First drafts of findings, workpapers, and client-ready sections—consistent every time.",
+"sol.f4t":"Regulatory tracking","sol.f4d":"Alerts and summaries when standards or guidance shift—mapped to your templates.",
+"sol.f5t":"Full population analysis","sol.f5d":"Move beyond samples when data volume allows—without adding headcount.",
+"sol.f6t":"Anomaly detection","sol.f6d":"Surface outliers and patterns teams can miss during manual review.",
+"test.label":"Results","test.title":"What audit leaders report",
+"test.desc":"Illustrative outcomes from firms that adopted structured automation with GetAI.",
+"test.q1":"Compliance checks that took our team 3 full days now take 4 hours. And we\u2019re not missing anything anymore.",
+"test.n1":"Audit Director","test.r1":"Audit firm, 120 employees",
+"test.m1":"85% faster compliance checks",
+"test.q2":"We detected 23% more compliance issues in our first month. The AI catches patterns humans miss.",
+"test.n2":"Partner","test.r2":"Audit firm, 80 employees","test.m2":"23% more issues detected",
+"test.q3":"Our team went from dreading busy season to actually enjoying the work. We focus on analysis, not data entry.",
+"test.n3":"Senior Manager","test.r3":"Audit firm, 50 employees","test.m3":"60% less manual work",
+"ba.label":"Before / after","ba.title":"Typical time savings",
+"ba.desc":"Representative benchmarks from engagements; your mileage depends on data access and scope.",
+"ba.r1b":"Compliance check: 3 days","ba.r1a":"4 hours",
+"ba.r2b":"Report generation: 2 days","ba.r2a":"3 hours",
+"ba.r3b":"Risk assessment: 1 week","ba.r3a":"1 day",
+"cta.label":"Next step","cta.title":"See it on your own engagements",
+"cta.desc":"Book a short demo. We\u2019ll map one compliance or reporting workflow and show what a private implementation looks like for your firm.",
+"cta.b1":"Book a Demo","cta.b2":"Get a Free Audit","cta.b3":"Watch Demo",
+"ft.brand":"Private AI systems for professional services. Implemented in 1 week.",
+"ft.product":"Product","ft.company":"Company","ft.contact":"Contact","ft.rights":"All rights reserved.",
+"ft.uc":"Use Cases","ft.how":"How It Works","ft.pr":"Pricing","ft.team":"Team"
+},es:{
+"nav.home":"Volver al inicio","nav.icp":"Auditor\u00eda","nav.cta":"Reserva una Llamada",
+"hero.badge":"Para firmas de auditor\u00eda","hero.h1":"Atrapa lo que otros pasan por alto. En la mitad del tiempo.",
+"hero.sub":"Implementamos IA privada que automatiza el control de cumplimiento, el an\u00e1lisis de riesgos y la generaci\u00f3n de informes, para que tu equipo se centre en el juicio profesional, no en las hojas de c\u00e1lculo.",
+"hero.cta1":"Reservar una demo","hero.cta2":"Auditor\u00eda gratuita","hero.cta3":"Ver demo",
+"chal.label":"El reto","chal.title":"Qu\u00e9 frena a los equipos de auditor\u00eda",
+"chal.desc":"Los procesos manuales y los l\u00edmites del muestreo dejan lagunas y consumen capacidad que los socios no pueden permitirse.",
+"chal.p1":"Controles de cumplimiento manuales que no escalan con el volumen de encargos.",
+"chal.p2":"Muestreo limitado cuando reguladores y clientes esperan mayor cobertura.",
+"chal.p3":"Generaci\u00f3n lenta de informes y formateo interminable entre herramientas.",
+"chal.p4":"Los cambios normativos son dif\u00edciles de seguir e integrar en cada flujo de trabajo.",
+"chal.p5":"An\u00e1lisis en Excel, propenso a errores y dif\u00edcil de auditar.",
+"sol.label":"Nuestro enfoque","sol.title":"Qu\u00e9 implementamos para firmas de auditor\u00eda",
+"sol.desc":"Sistemas privados adaptados a tus metodolog\u00edas, plantillas y datos, con el mismo rigor que esperas de cualquier encargo.",
+"sol.f1t":"Monitorizaci\u00f3n de cumplimiento","sol.f1d":"Controles continuos frente a tus reglas, listas de verificaci\u00f3n y bibliotecas de pol\u00edticas.",
+"sol.f2t":"An\u00e1lisis de riesgos","sol.f2d":"Puntuaci\u00f3n estructurada y apoyo narrativo basado en tu evidencia.",
+"sol.f3t":"Informes automatizados","sol.f3d":"Primeros borradores de hallazgos, papeles de trabajo y apartados listos para el cliente, siempre coherentes.",
+"sol.f4t":"Seguimiento regulatorio","sol.f4d":"Alertas y res\u00famenes cuando cambian normas o gu\u00edas, alineados con tus plantillas.",
+"sol.f5t":"An\u00e1lisis de poblaci\u00f3n completa","sol.f5d":"Ve m\u00e1s all\u00e1 del muestreo cuando el volumen de datos lo permite, sin aumentar plantilla.",
+"sol.f6t":"Detecci\u00f3n de anomal\u00edas","sol.f6d":"Pon de relieve valores at\u00edpicos y patrones que el equipo puede pasar por alto en revisi\u00f3n manual.",
+"test.label":"Resultados","test.title":"Lo que cuentan los l\u00edderes de auditor\u00eda",
+"test.desc":"Resultados ilustrativos de firmas que adoptaron automatizaci\u00f3n estructurada con GetAI.",
+"test.q1":"Los controles de cumplimiento que a nuestro equipo le llevaban 3 d\u00edas completos ahora llevan 4 horas. Y ya no se nos escapa nada.",
+"test.n1":"Directora de auditor\u00eda","test.r1":"Firma de auditor\u00eda, 120 empleados",
+"test.m1":"85% m\u00e1s r\u00e1pido en controles de cumplimiento",
+"test.q2":"Detectamos un 23% m\u00e1s de incidencias de cumplimiento en el primer mes. La IA detecta patrones que se nos escapan.",
+"test.n2":"Socio","test.r2":"Firma de auditor\u00eda, 80 empleados","test.m2":"23% m\u00e1s incidencias detectadas",
+"test.q3":"El equipo pas\u00f3 de temer la temporada alta a disfrutar el trabajo. Nos centramos en el an\u00e1lisis, no en meter datos.",
+"test.n3":"Senior Manager","test.r3":"Firma de auditor\u00eda, 50 empleados","test.m3":"60% menos trabajo manual",
+"ba.label":"Antes / despu\u00e9s","ba.title":"Ahorros de tiempo t\u00edpicos",
+"ba.desc":"Referencias orientativas seg\u00fan encargos; el resultado depende del acceso a datos y del alcance.",
+"ba.r1b":"Control de cumplimiento: 3 d\u00edas","ba.r1a":"4 horas",
+"ba.r2b":"Generaci\u00f3n del informe: 2 d\u00edas","ba.r2a":"3 horas",
+"ba.r3b":"Evaluaci\u00f3n de riesgos: 1 semana","ba.r3a":"1 d\u00eda",
+"cta.label":"Siguiente paso","cta.title":"V\u00e9alo en sus propios encargos",
+"cta.desc":"Reserve una demo breve. Trazaremos un flujo de cumplimiento o informes y mostraremos c\u00f3mo ser\u00eda una implementaci\u00f3n privada en su firma.",
+"cta.b1":"Reservar una demo","cta.b2":"Auditor\u00eda gratuita","cta.b3":"Ver demo",
+"ft.brand":"Sistemas de IA privados para servicios profesionales. Implementados en 1 semana.",
+"ft.product":"Producto","ft.company":"Empresa","ft.contact":"Contacto","ft.rights":"Todos los derechos reservados.",
+"ft.uc":"Casos de uso","ft.how":"C\u00f3mo funciona","ft.pr":"Precios","ft.team":"Equipo"
+}};
+let lang='en';
+function setLang(l){
+    lang=l;
+    document.documentElement.lang=l;
+    const t=T[l];
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const k=el.getAttribute('data-i18n');
+        if(!t[k])return;
+        const svg=el.querySelector('svg');
+        if(svg){el.textContent=t[k];el.appendChild(svg)}
+        else{el.textContent=t[k]}
+    });
+    document.querySelectorAll('.lang-t button').forEach(b=>b.classList.toggle('active',b.getAttribute('data-lang')===l));
+}
+document.querySelectorAll('.lang-t button').forEach(b=>b.addEventListener('click',()=>setLang(b.getAttribute('data-lang'))));
+
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>{
+    hdr.classList.toggle('scrolled',scrollY>12);
+    const h=document.documentElement;
+    const bar=document.getElementById('scrollBar');
+    const max=h.scrollHeight-h.clientHeight;
+    bar.style.width=max>0?(h.scrollTop/max)*100+'%':'0%';
+});
+
+const menuBtn=document.getElementById('menuBtn'),mobNav=document.getElementById('mobNav');
+const menuOpenSvg='<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>';
+const menuCloseSvg='<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+menuBtn.addEventListener('click',()=>{
+    const o=mobNav.classList.toggle('open');
+    menuBtn.innerHTML=o?menuCloseSvg:menuOpenSvg;
+});
+mobNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    mobNav.classList.remove('open');
+    menuBtn.innerHTML=menuOpenSvg;
+}));
+
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.1,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
