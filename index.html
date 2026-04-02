@@ -6,7 +6,7 @@
     <title>Neutral Studio — Graphic design for early-stage startups</title>
     <meta name="description" content="Neutral Studio is a graphic design studio for early-stage startups: visual identity, logo, typography, colors, pitch deck, and website in one $3,000 package—fast, agile, and priced for founders without agency overhead.">
     <meta name="keywords" content="startup branding, visual identity, pitch deck design, startup website, logo design, Neutral Studio">
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="Logo-01.png">
     <link rel="canonical" href="https://neutralstudio.example/">
     <meta property="og:title" content="Neutral Studio — Graphic design for early-stage startups">
     <meta property="og:description" content="Identity, deck, and web in one package—$3,000. Fast and agile for founders who need clarity and speed, not a bloated agency process.">
@@ -189,9 +189,12 @@ section{padding:100px 0;position:relative}
 .client-badge:hover{border-color:var(--bdr-h);background:var(--bg-a)}
 
 /* PRICING */
-.pr-card-single{max-width:640px;margin:0 auto;background:var(--bg);border:2px solid var(--pri);border-radius:20px;padding:48px;text-align:center}
-.pr-card-single h3{font-size:1.5rem;font-weight:700;margin-bottom:8px}
-.pr-card-single .pr-sub{font-size:1rem;color:var(--tx-s);margin-bottom:28px}
+.pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.pr-card{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:44px;text-align:left;box-shadow:var(--sh-s);display:flex;flex-direction:column}
+.pr-card.featured{border:2px solid var(--pri);box-shadow:var(--sh-m)}
+.pr-card h3{font-size:1.25rem;font-weight:700;margin-bottom:8px;letter-spacing:-.4px}
+.pr-card .pr-sub{font-size:.95rem;color:var(--tx-s);margin-bottom:22px;line-height:1.65}
+.pr-card .btn{margin-top:auto}
 .pr-prices{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:28px;text-align:center;max-width:400px;margin-left:auto;margin-right:auto}
 .pr-price-item{background:var(--bg-a);border-radius:12px;padding:24px 20px}
 .pr-price-item .pr-from{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--tx-m)}
@@ -276,6 +279,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 .roi-stat{min-width:200px;flex-shrink:0;border-right:1px solid var(--bdr);border-bottom:none}.roi-stat:last-child{border-right:none}
 .part-services{grid-template-columns:1fr}
 .pr-includes{grid-template-columns:1fr}.sec-lay{grid-template-columns:1fr}
+.pr-grid{grid-template-columns:1fr}
 }
     </style>
 </head>
@@ -285,7 +289,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 
 <header class="hdr">
     <div class="hdr-in">
-        <a href="#" class="logo-wrap"><img src="logo.png" alt="Neutral Studio logo"><span class="logo-txt">Neutral Studio</span></a>
+        <a href="#" class="logo-wrap"><img src="Logo-01.png" alt="Neutral Studio logo"></a>
         <nav class="nav-l" id="navLinks">
             <div class="dd" id="ddUc">
                 <button class="dd-trigger" data-i18n="nav.uc">Services <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg></button>
@@ -539,19 +543,36 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <h2 class="s-title" data-i18n="pr.title">One package. Everything you need to show up.</h2>
             <p class="s-desc" data-i18n="pr.desc">A single, transparent price for early-stage teams—no surprises, no bloated scope.</p>
         </div>
-        <div class="pr-card-single reveal">
-            <h3 data-i18n="pr.name">Launch identity &amp; web</h3>
-            <p class="pr-sub" data-i18n="pr.sub">Visual identity, logo, typography, color, pitch deck, and website—designed to ship together.</p>
-            <div class="pr-prices">
-                <div class="pr-price-item"><div class="pr-from" data-i18n="pr.from1">Fixed project</div><div class="pr-amount">$3,000</div><div class="pr-type" data-i18n="pr.type1">One engagement · clear deliverables</div></div>
+        <div class="pr-grid">
+            <div class="pr-card reveal">
+                <h3 data-i18n="pr.p1.name">Complete visual identity</h3>
+                <p class="pr-sub" data-i18n="pr.p1.sub">A full identity system built to scale—without web design or a pitch deck.</p>
+                <div class="pr-prices">
+                    <div class="pr-price-item"><div class="pr-from" data-i18n="pr.p1.from">Fixed project</div><div class="pr-amount">$3,000</div><div class="pr-type" data-i18n="pr.p1.type">One engagement · clear deliverables</div></div>
+                </div>
+                <ul class="pr-includes">
+                    <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p1.i1">Logo system &amp; brand marks</span></li>
+                    <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p1.i2">Typography &amp; color palette</span></li>
+                    <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p1.i3">Core identity assets &amp; templates</span></li>
+                    <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p1.i4">Brand guidelines (lightweight)</span></li>
+                </ul>
+                <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20%243%2C000%20identity%20package" class="btn btn-s btn-lg" data-i18n="pr.p1.cta">Email to book</a>
             </div>
-            <ul class="pr-includes">
-                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i1">Visual identity &amp; logo system</span></li>
-                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i2">Typography &amp; color palette</span></li>
-                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i3">Investor-ready pitch deck</span></li>
-                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i4">Marketing website design &amp; key layouts</span></li>
-            </ul>
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20%243%2C000%20package" class="btn btn-p btn-lg" data-i18n="pr.cta">Email to book</a>
+
+            <div class="pr-card featured reveal reveal-d1">
+                <h3 data-i18n="pr.p2.name">Full launch package</h3>
+                <p class="pr-sub" data-i18n="pr.p2.sub">Identity + pitch deck + web design—built to ship together, fast.</p>
+                <div class="pr-prices">
+                    <div class="pr-price-item"><div class="pr-from" data-i18n="pr.p2.from">Fixed project</div><div class="pr-amount">$5,500</div><div class="pr-type" data-i18n="pr.p2.type">Everything included · end-to-end delivery</div></div>
+                </div>
+                <ul class="pr-includes">
+                    <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p2.i1">Complete visual identity</span></li>
+                    <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p2.i2">Investor-ready pitch deck</span></li>
+                    <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p2.i3">Marketing website design &amp; key layouts</span></li>
+                    <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p2.i4">Organized handoff + export specs</span></li>
+                </ul>
+                <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20%245%2C500%20full%20package" class="btn btn-p btn-lg" data-i18n="pr.p2.cta">Email to book</a>
+            </div>
         </div>
     </div>
 </section>
@@ -616,7 +637,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     <div class="container">
         <div class="ft-grid">
             <div class="ft-brand">
-                <div class="logo-wrap"><img src="logo.png" alt="Neutral Studio" style="height:36px"><span class="logo-txt">Neutral Studio</span></div>
+                <div class="logo-wrap"><img src="Logo-01.png" alt="Neutral Studio" style="height:36px"></div>
                 <p data-i18n="ft.brand">Graphic design for early-stage startups—identity, deck, and web—fast and fairly priced.</p>
             </div>
             <div class="ft-col"><h4 data-i18n="ft.product">Product</h4><a href="#use-cases" data-i18n="nav.uc">Services</a><a href="#how-it-works" data-i18n="nav.how">How It Works</a><a href="#pricing" data-i18n="nav.pr">Pricing</a></div>
@@ -664,9 +685,11 @@ const T={en:{
 "sec.c3t":"Flexible stack","sec.c3d":"We meet you in Figma, slides, or web tools\u2014whatever fits your team and contractors.",
 "cl.label":"Trusted by","cl.title":"Teams who needed speed and credibility","cl.desc":"We work with founders at early-stage startups\u2014pre-seed to Series A\u2014across SaaS, fintech, climate, and deep tech.",
 "cl.b1":"Pre-seed B2B SaaS","cl.b2":"Seed-stage fintech","cl.b3":"Climate hardware startup","cl.b4":"AI infrastructure","cl.b5":"Developer tools","cl.b6":"Marketplace","cl.b7":"Health tech","cl.b8":"Consumer mobile","cl.b9":"Accelerator cohorts","cl.b10":"University spinouts","cl.more":"& more",
-"pr.label":"Pricing","pr.title":"One package. Everything you need to show up.","pr.desc":"A single, transparent price for early-stage teams\u2014no surprises, no bloated scope.",
-"pr.name":"Launch identity & web","pr.sub":"Visual identity, logo, typography, color, pitch deck, and website\u2014designed to ship together.","pr.from1":"Fixed project","pr.type1":"One engagement \u00b7 clear deliverables",
-"pr.i1":"Visual identity & logo system","pr.i2":"Typography & color palette","pr.i3":"Investor-ready pitch deck","pr.i4":"Marketing website design & key layouts","pr.cta":"Email to book",
+"pr.label":"Pricing","pr.title":"Two packs. Pick your launch speed.","pr.desc":"Transparent pricing for early-stage teams\u2014no surprises, no bloated scope.",
+"pr.p1.name":"Complete visual identity","pr.p1.sub":"A full identity system built to scale\u2014without web design or a pitch deck.","pr.p1.from":"Fixed project","pr.p1.type":"One engagement \u00b7 clear deliverables",
+"pr.p1.i1":"Logo system & brand marks","pr.p1.i2":"Typography & color palette","pr.p1.i3":"Core identity assets & templates","pr.p1.i4":"Brand guidelines (lightweight)","pr.p1.cta":"Email to book",
+"pr.p2.name":"Full launch package","pr.p2.sub":"Identity + pitch deck + web design\u2014built to ship together, fast.","pr.p2.from":"Fixed project","pr.p2.type":"Everything included \u00b7 end-to-end delivery",
+"pr.p2.i1":"Complete visual identity","pr.p2.i2":"Investor-ready pitch deck","pr.p2.i3":"Marketing website design & key layouts","pr.p2.i4":"Organized handoff + export specs","pr.p2.cta":"Email to book",
 "tm.label":"Our Team","tm.title":"Founders, design leaders, and makers","tm.desc":"We bring together exited startup founders, former chiefs of design from startups, and senior designers\u2014over 50 years of combined experience, still small enough to move fast.",
 "tm.c1t":"Exited founders","tm.c1d":"People who have built and sold companies\u2014so runway, urgency, and shipping are second nature.","tm.c2t":"Former startup chiefs of design","tm.c2d":"Leaders who have owned brand and product design inside high-growth teams\u2014not theory from the sidelines.","tm.c3t":"Designers","tm.c3d":"Hands-on craft across typography, color, layout, and digital\u2014so deliverables stay coherent end to end.","tm.c4t":"50+ years combined","tm.c4d":"Depth across stages, categories, and markets\u2014without the agency layers.","tm.l3":"& more",
 "tm.sv1":"50+ yrs","tm.sl1":"Combined experience across the team","tm.sv2":"Fast","tm.sl2":"Built for early-stage timelines","tm.sv3":"Fair","tm.sl3":"Competitive pricing without cutting corners",
@@ -712,9 +735,11 @@ const T={en:{
 "sec.c3t":"Stack flexible","sec.c3d":"Figma, slides o web: lo que encaje con vuestro equipo y colaboradores.",
 "cl.label":"Conf\u00edan en nosotros","cl.title":"Equipos que necesitaban velocidad y credibilidad","cl.desc":"Trabajamos con fundadores de startups en etapa temprana\u2014pre-seed a Series A\u2014en SaaS, fintech, climate y deep tech.",
 "cl.b1":"B2B SaaS pre-seed","cl.b2":"Fintech seed","cl.b3":"Hardware clim\u00e1tico","cl.b4":"Infraestructura IA","cl.b5":"Dev tools","cl.b6":"Marketplace","cl.b7":"Health tech","cl.b8":"Consumer mobile","cl.b9":"Aceleradoras","cl.b10":"Spinouts universitarios","cl.more":"y m\u00e1s",
-"pr.label":"Precios","pr.title":"Un paquete. Todo lo necesario para presentaros.","pr.desc":"Un \u00fanico precio transparente para equipos en etapa temprana.",
-"pr.name":"Identidad y web de lanzamiento","pr.sub":"Identidad visual, logo, tipograf\u00eda, color, pitch deck y web\u2014pensados para salir juntos.","pr.from1":"Proyecto cerrado","pr.type1":"Un encargo \u00b7 entregables claros",
-"pr.i1":"Identidad visual y sistema de logo","pr.i2":"Tipograf\u00eda y paleta de color","pr.i3":"Pitch deck listo para inversores","pr.i4":"Dise\u00f1o web y layouts clave","pr.cta":"Escribir para reservar",
+"pr.label":"Precios","pr.title":"Dos packs. Elige tu velocidad de lanzamiento.","pr.desc":"Precio transparente para equipos en etapa temprana\u2014sin sorpresas ni alcance inflado.",
+"pr.p1.name":"Identidad visual completa","pr.p1.sub":"Un sistema de identidad completo para escalar\u2014sin dise\u00f1o web ni pitch deck.","pr.p1.from":"Proyecto cerrado","pr.p1.type":"Un encargo \u00b7 entregables claros",
+"pr.p1.i1":"Sistema de logo y marcas","pr.p1.i2":"Tipograf\u00eda y paleta de color","pr.p1.i3":"Activos clave + plantillas","pr.p1.i4":"Gu\u00eda de marca (ligera)","pr.p1.cta":"Escribir para reservar",
+"pr.p2.name":"Pack completo","pr.p2.sub":"Identidad + pitch deck + dise\u00f1o web\u2014pensados para salir juntos, r\u00e1pido.","pr.p2.from":"Proyecto cerrado","pr.p2.type":"Todo incluido \u00b7 entrega end-to-end",
+"pr.p2.i1":"Identidad visual completa","pr.p2.i2":"Pitch deck listo para inversores","pr.p2.i3":"Dise\u00f1o web y layouts clave","pr.p2.i4":"Handoff ordenado + especificaciones","pr.p2.cta":"Escribir para reservar",
 "tm.label":"Equipo","tm.title":"Fundadores, l\u00edderes de dise\u00f1o y makers","tm.desc":"Unimos fundadores de startups que han salido (exit), antiguos chiefs of design de startups y dise\u00f1adores senior: m\u00e1s de 50 a\u00f1os de experiencia combinada, con un equipo lo bastante peque\u00f1o para ir r\u00e1pido.",
 "tm.c1t":"Fundadores con exit","tm.c1d":"Personas que han construido y vendido empresas: runway, urgencia y shippear son el d\u00eda a d\u00eda.","tm.c2t":"Ex chiefs of design de startups","tm.c2d":"Liderazgo que ha llevado marca y producto en equipos de alto crecimiento, no teor\u00eda desde fuera.","tm.c3t":"Dise\u00f1adores","tm.c3d":"Oficio en tipograf\u00eda, color, maquetaci\u00f3n y digital para que todo llegue coherente.","tm.c4t":"+50 a\u00f1os en conjunto","tm.c4d":"Profundidad por etapas, categor\u00edas y mercados, sin capas de agencia.","tm.l3":"y m\u00e1s",
 "tm.sv1":"+50 a\u00f1os","tm.sl1":"Experiencia combinada del equipo","tm.sv2":"R\u00e1pido","tm.sl2":"Plazos de etapa temprana","tm.sv3":"Justo","tm.sl3":"Precio competitivo sin recortar calidad",
