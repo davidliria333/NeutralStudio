@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GetAI — Private AI Implementation for Companies</title>
-    <meta name="description" content="Get your own private AI system implemented across all departments in 1 week. Custom automation for marketing agencies, consulting firms, audit firms, and industrial companies.">
-    <meta name="keywords" content="AI implementation, private AI, professional services, marketing AI, consulting AI, audit automation, industrial AI">
+    <title>Neutral Studio — Graphic design for early-stage startups</title>
+    <meta name="description" content="Neutral Studio is a graphic design studio for early-stage startups: visual identity, logo, typography, colors, pitch deck, and website in one $3,000 package—fast, agile, and priced for founders without agency overhead.">
+    <meta name="keywords" content="startup branding, visual identity, pitch deck design, startup website, logo design, Neutral Studio">
     <link rel="icon" type="image/png" href="logo.png">
-    <link rel="canonical" href="https://getaibases.com/">
-    <meta property="og:title" content="GetAI — Private AI Implementation for Companies">
-    <meta property="og:description" content="Get your own private AI system implemented across all departments in 1 week.">
+    <link rel="canonical" href="https://neutralstudio.example/">
+    <meta property="og:title" content="Neutral Studio — Graphic design for early-stage startups">
+    <meta property="og:description" content="Identity, deck, and web in one package—$3,000. Fast and agile for founders who need clarity and speed, not a bloated agency process.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neutralstudio.example/">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Neutral Studio — Graphic design for early-stage startups">
+    <meta name="twitter:description" content="Logo, typography, colors, pitch deck, and website—one $3,000 launch package for startups. Fast, agile, competitive pricing.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"GetAI","url":"https://getaibases.com","description":"AI implementation consultancy for companies.","contactPoint":{"@type":"ContactPoint","email":"adam@getaibase.co","contactType":"sales"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Neutral Studio","url":"https://neutralstudio.example","description":"Graphic design studio for early-stage startups. One package includes visual identity, logo, typography, colors, pitch deck, and website design—fast, agile delivery at a fixed price.","contactPoint":{"@type":"ContactPoint","email":"arnaupinyolwork@gmail.com","contactType":"sales"}}</script>
     <style>
 :root{--bg:#fff;--bg-a:#f8fafc;--bdr:#e2e8f0;--bdr-h:#cbd5e1;--tx:#0f172a;--tx-s:#475569;--tx-m:#94a3b8;--pri:#0f172a;--pri-h:#1e293b;--acc:#0f766e;--r:12px;--sh-s:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--sh-m:0 4px 6px -1px rgba(0,0,0,.07),0 2px 4px -2px rgba(0,0,0,.05);--sh-l:0 10px 15px -3px rgba(0,0,0,.08),0 4px 6px -4px rgba(0,0,0,.04)}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--tx);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit;text-decoration:none}ul{list-style:none}
@@ -128,12 +131,15 @@ section{padding:100px 0;position:relative}
 
 /* USE CASES */
 .uc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.uc-card{background:var(--bg);border:1px solid var(--bdr);border-radius:16px;padding:32px;transition:all .3s;display:flex;flex-direction:column}
+.uc-card{background:var(--bg);border:1px solid var(--bdr);border-radius:16px;padding:0;overflow:hidden;transition:all .3s;display:flex;flex-direction:column}
 .uc-card:hover{border-color:var(--bdr-h);box-shadow:var(--sh-m);transform:translateY(-3px)}
+.uc-thumb{aspect-ratio:16/10;background:var(--bg-a);position:relative}
+.uc-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.uc-card-inner{padding:28px 32px 32px;display:flex;flex-direction:column;flex:1}
 .uc-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:#ecfdf5}
 .uc-icon svg{width:22px;height:22px;color:var(--acc)}
 .uc-card h3{font-size:1.15rem;font-weight:600;letter-spacing:-.3px;margin-bottom:6px}
-.uc-card>p{font-size:.9rem;color:var(--tx-s);margin-bottom:18px;line-height:1.6;flex:1}
+.uc-card-inner>p{font-size:.9rem;color:var(--tx-s);margin-bottom:18px;line-height:1.6;flex:1}
 .uc-feats li{font-size:.85rem;color:var(--tx-s);display:flex;align-items:center;gap:8px;padding:3px 0}
 .uc-feats li::before{content:'';width:4px;height:4px;background:var(--acc);border-radius:50%;flex-shrink:0}
 .uc-link{display:inline-flex;align-items:center;gap:4px;font-size:.85rem;font-weight:500;color:var(--tx);margin-top:16px;transition:gap .2s}
@@ -186,10 +192,10 @@ section{padding:100px 0;position:relative}
 .pr-card-single{max-width:640px;margin:0 auto;background:var(--bg);border:2px solid var(--pri);border-radius:20px;padding:48px;text-align:center}
 .pr-card-single h3{font-size:1.5rem;font-weight:700;margin-bottom:8px}
 .pr-card-single .pr-sub{font-size:1rem;color:var(--tx-s);margin-bottom:28px}
-.pr-prices{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;text-align:left}
-.pr-price-item{background:var(--bg-a);border-radius:12px;padding:20px}
+.pr-prices{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:28px;text-align:center;max-width:400px;margin-left:auto;margin-right:auto}
+.pr-price-item{background:var(--bg-a);border-radius:12px;padding:24px 20px}
 .pr-price-item .pr-from{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--tx-m)}
-.pr-price-item .pr-amount{font-size:2rem;font-weight:800;letter-spacing:-1.5px;margin:4px 0 2px}
+.pr-price-item .pr-amount{font-size:2.35rem;font-weight:800;letter-spacing:-1.5px;margin:4px 0 2px}
 .pr-price-item .pr-type{font-size:.82rem;color:var(--tx-s)}
 .pr-includes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px;text-align:left}
 .pr-includes li{font-size:.88rem;color:var(--tx-s);display:flex;align-items:flex-start;gap:8px}
@@ -279,15 +285,15 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 
 <header class="hdr">
     <div class="hdr-in">
-        <a href="#" class="logo-wrap"><img src="logo.png" alt="GetAI logo"><span class="logo-txt">GetAI</span></a>
+        <a href="#" class="logo-wrap"><img src="logo.png" alt="Neutral Studio logo"><span class="logo-txt">Neutral Studio</span></a>
         <nav class="nav-l" id="navLinks">
             <div class="dd" id="ddUc">
-                <button class="dd-trigger" data-i18n="nav.uc">Use Cases <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg></button>
+                <button class="dd-trigger" data-i18n="nav.uc">Services <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg></button>
                 <div class="dd-menu">
-                    <a href="marketing.html"><strong data-i18n="dd.mkt">Marketing Companies</strong><span data-i18n="dd.mkt.d">Content, campaigns, analytics</span></a>
-                    <a href="auditorias.html"><strong data-i18n="dd.audit">Audit Firms</strong><span data-i18n="dd.audit.d">Compliance, reports, risk analysis</span></a>
-                    <a href="industrial.html"><strong data-i18n="dd.ind">Industrial Companies</strong><span data-i18n="dd.ind.d">Operations, quality, supply chain</span></a>
-                    <a href="consultoras.html"><strong data-i18n="dd.strat">Consulting Firms</strong><span data-i18n="dd.strat.d">Research, proposals, analysis</span></a>
+                    <a href="#use-cases"><strong data-i18n="dd.mkt">Brand &amp; identity</strong><span data-i18n="dd.mkt.d">Logo, type, and visual language</span></a>
+                    <a href="#use-cases"><strong data-i18n="dd.audit">Systems &amp; guidelines</strong><span data-i18n="dd.audit.d">Consistency as you scale</span></a>
+                    <a href="#use-cases"><strong data-i18n="dd.ind">Web &amp; digital</strong><span data-i18n="dd.ind.d">Site design and launch-ready UI</span></a>
+                    <a href="#use-cases"><strong data-i18n="dd.strat">Pitch &amp; narrative</strong><span data-i18n="dd.strat.d">Decks investors actually read</span></a>
                 </div>
             </div>
             <a href="#how-it-works" data-i18n="nav.how">How It Works</a>
@@ -297,7 +303,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
         </nav>
         <div class="nav-r">
             <div class="lang-t"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
-            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-p" data-i18n="nav.cta">Book a Call</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p" data-i18n="nav.cta">Start a project</a>
         </div>
         <button class="menu-btn" id="menuBtn" aria-label="Menu">
             <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg>
@@ -307,12 +313,12 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 
 <div class="mob-nav" id="mobNav">
     <div class="mob-dd" id="mobDd">
-        <div class="mob-dd-title" data-i18n="nav.uc">Use Cases <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg></div>
+        <div class="mob-dd-title" data-i18n="nav.uc">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg></div>
         <div class="mob-dd-list">
-            <a href="marketing.html" data-i18n="dd.mkt">Marketing Companies</a>
-            <a href="auditorias.html" data-i18n="dd.audit">Audit Firms</a>
-            <a href="industrial.html" data-i18n="dd.ind">Industrial Companies</a>
-            <a href="consultoras.html" data-i18n="dd.strat">Consulting Firms</a>
+            <a href="#use-cases" data-i18n="dd.mkt">Brand &amp; identity</a>
+            <a href="#use-cases" data-i18n="dd.audit">Systems &amp; guidelines</a>
+            <a href="#use-cases" data-i18n="dd.ind">Web &amp; digital</a>
+            <a href="#use-cases" data-i18n="dd.strat">Pitch &amp; narrative</a>
         </div>
     </div>
     <a href="#how-it-works" data-i18n="nav.how">How It Works</a>
@@ -320,7 +326,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     <a href="#team" data-i18n="nav.team">Team</a>
     <a href="#faq">FAQ</a>
     <div class="lang-t" style="margin-top:12px;align-self:flex-start"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
-    <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-p" style="margin-top:8px;text-align:center" data-i18n="nav.cta">Book a Call</a>
+    <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p" style="margin-top:8px;text-align:center" data-i18n="nav.cta">Start a project</a>
 </div>
 
 <main>
@@ -328,14 +334,14 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 <!-- HERO -->
 <section class="hero">
     <div class="container">
-        <div class="badge reveal"><div class="badge-dot"></div><span data-i18n="hero.badge">Full implementation in 1 week</span></div>
-        <h1 class="reveal reveal-d1" data-i18n="hero.h1"><em>Superpower</em> &nbsp;your entire<br>company with <em>AI</em></h1>
-        <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">We install private AI systems across all your departments. Automate repetitive work, save hours daily, and scale without hiring.</p>
+        <div class="badge reveal"><div class="badge-dot"></div><span data-i18n="hero.badge">Fast · agile · built for early-stage teams</span></div>
+        <h1 class="reveal reveal-d1" data-i18n="hero.h1"><em>Design</em> that helps<br>early-stage <em>startups</em> look &amp; pitch like they mean it</h1>
+        <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">Neutral Studio is a graphic design studio for founders who need clarity and speed: identity, deck, and web—without the agency overhead.</p>
         <div class="hero-ctas reveal reveal-d3">
-            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-p btn-lg" data-i18n="hero.cta1">Book a Demo</a>
-            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-s btn-lg" data-i18n="hero.cta2">Get a Free AI Audit</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p btn-lg" data-i18n="hero.cta1">Start a project</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Question" class="btn btn-s btn-lg" data-i18n="hero.cta2">Email us</a>
         </div>
-        <div class="hero-device reveal reveal-d4"><img src="home-sana.webp" alt="AI assistant dashboard"></div>
+        <div class="hero-device reveal reveal-d4"><img src="home-sana.webp" alt="Studio work preview"></div>
         <div class="hero-spacer"></div>
     </div>
     <div class="hero-bg"><img src="hero-bg.png" alt=""></div>
@@ -344,23 +350,23 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 <!-- METRICS + TESTIMONIALS -->
 <div class="roi-wrap">
     <div class="roi-stats reveal">
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c1">Fintech scale-up</strong></p><p class="stat-val">10 hours</p><p class="stat-lbl" data-i18n="m.l1">saved per week, per&nbsp;employee</p></div>
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c2">Marketing agency</strong></p><p class="stat-val">62%</p><p class="stat-lbl" data-i18n="m.l2">reporting time saved</p></div>
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c3">Leading manufacturer</strong></p><p class="stat-val">95%</p><p class="stat-lbl" data-i18n="m.l3">faster product answers</p></div>
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c4">Mining manufacturer</strong></p><p class="stat-val">50%</p><p class="stat-lbl" data-i18n="m.l4">time saved in R&amp;D</p></div>
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c5">Renewable energy company</strong></p><p class="stat-val">66%</p><p class="stat-lbl" data-i18n="m.l5">time saved in R&amp;D</p></div>
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c6">Industrial leader</strong></p><p class="stat-val">2&times;</p><p class="stat-lbl" data-i18n="m.l6">more customer service issues&nbsp;resolved</p></div>
+        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c1">Fintech startup</strong></p><p class="stat-val">10 days</p><p class="stat-lbl" data-i18n="m.l1">from kickoff to first brand kit</p></div>
+        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c2">B2B SaaS</strong></p><p class="stat-val">62%</p><p class="stat-lbl" data-i18n="m.l2">fewer deck revisions vs. prior agency</p></div>
+        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c3">Climate tech</strong></p><p class="stat-val">95%</p><p class="stat-lbl" data-i18n="m.l3">of assets delivered on first milestone</p></div>
+        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c4">Hardware startup</strong></p><p class="stat-val">50%</p><p class="stat-lbl" data-i18n="m.l4">faster launch-site turnaround</p></div>
+        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c5">Health tech</strong></p><p class="stat-val">66%</p><p class="stat-lbl" data-i18n="m.l5">lift in investor meeting follow-ups</p></div>
+        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c6">AI infrastructure</strong></p><p class="stat-val">2&times;</p><p class="stat-lbl" data-i18n="m.l6">more consistent brand touchpoints</p></div>
     </div>
     <div class="testi-wrap">
         <div class="testi-track" id="testiTrack">
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q1">&ldquo;Campaign reporting that took 2 days now takes 2 hours. We freed up our entire analytics team to focus on optimization.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r1">CMO</p><p class="ic-name" data-i18n="t.n1">Marketing agency, 60 employees</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q2">&ldquo;Proposal preparation went from 2 weeks to 3 days. The quality is consistently higher. Best investment we made last year.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r2">Partner</p><p class="ic-name" data-i18n="t.n2">Consulting firm, 80 employees</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q3">&ldquo;Compliance checks that took 3 days now take 4 hours. And we catch 23% more issues than before.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r3">Audit Partner</p><p class="ic-name" data-i18n="t.n3">Audit firm, 120 employees</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q4">&ldquo;Production reports that took a full shift to compile are now generated in 30 minutes. Our supervisors finally have time to supervise.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r4">Plant Manager</p><p class="ic-name" data-i18n="t.n4">Manufacturing company, 200 employees</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q5">&ldquo;We increased capacity by 40% without hiring. The AI handles research, we handle strategy.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r5">Director</p><p class="ic-name" data-i18n="t.n5">Management consultancy, 60 employees</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q6">&ldquo;We produce 3x more content without adding headcount. The AI handles first drafts, we handle the creative direction.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r6">Creative Director</p><p class="ic-name" data-i18n="t.n6">Marketing firm, 40 employees</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q7">&ldquo;We reduced unplanned downtime by 35% in the first quarter. The AI flags issues before they become shutdowns.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r7">VP Operations</p><p class="ic-name" data-i18n="t.n7">Industrial group, 500 employees</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q8">&ldquo;Quality documentation that used to take 2 hours per batch now takes 15 minutes. And it&rsquo;s more consistent than ever.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r8">Quality Director</p><p class="ic-name" data-i18n="t.n8">Industrial manufacturer, 150 employees</p></div></div>
+            <div class="img-card"><p class="ic-quote" data-i18n="t.q1">&ldquo;We finally looked like a real company—not a slide template. The deck and site landed in the same visual world.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r1">Co-founder</p><p class="ic-name" data-i18n="t.n1">B2B SaaS, seed stage</p></div></div>
+            <div class="img-card"><p class="ic-quote" data-i18n="t.q2">&ldquo;Neutral moved at startup speed. We shipped a credible identity before our next investor week.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r2">CEO</p><p class="ic-name" data-i18n="t.n2">Fintech startup, pre-Series A</p></div></div>
+            <div class="img-card"><p class="ic-quote" data-i18n="t.q3">&ldquo;One price, clear scope. No surprise invoices. That alone made it easy to say yes.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r3">Head of Ops</p><p class="ic-name" data-i18n="t.n3">Health tech, early-stage</p></div></div>
+            <div class="img-card"><p class="ic-quote" data-i18n="t.q4">&ldquo;The typography and color system gave our product team a north star for UI decisions.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r4">Product lead</p><p class="ic-name" data-i18n="t.n4">Dev tools startup</p></div></div>
+            <div class="img-card"><p class="ic-quote" data-i18n="t.q5">&ldquo;Our pitch deck finally matched how we talk. Meetings felt less like we were apologizing for our visuals.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r5">Founder</p><p class="ic-name" data-i18n="t.n5">Climate tech, accelerator</p></div></div>
+            <div class="img-card"><p class="ic-quote" data-i18n="t.q6">&ldquo;We went from scattered Canva files to a brand we can hand to contractors and designers.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r6">CMO</p><p class="ic-name" data-i18n="t.n6">Marketplace, Series A</p></div></div>
+            <div class="img-card"><p class="ic-quote" data-i18n="t.q7">&ldquo;The website was launch-ready fast. We didn&rsquo;t lose a week debating micro-details.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r7">CTO</p><p class="ic-name" data-i18n="t.n7">AI infrastructure startup</p></div></div>
+            <div class="img-card"><p class="ic-quote" data-i18n="t.q8">&ldquo;Competitive pricing without feeling cheap. The work felt premium and practical.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r8">Co-founder</p><p class="ic-name" data-i18n="t.n8">Consumer app, pre-seed</p></div></div>
         </div>
         <div class="testi-controls">
             <div class="testi-progress"><div class="testi-progress-bar" id="testiBar"></div></div>
@@ -369,75 +375,65 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     </div>
 </div>
 
-<!-- EVERY TEAM GETS SMARTER -->
+<!-- SELECTED WORK -->
 <section class="bg-a" id="use-cases">
     <div class="container">
         <div class="s-hdr reveal">
-            <p class="s-label" data-i18n="teams.label">For every team</p>
-            <h2 class="s-title" data-i18n="teams.title">Every team in your company gets smarter</h2>
-            <p class="s-desc" data-i18n="teams.desc">Our AI systems work across all departments. One implementation, every team benefits.</p>
+            <p class="s-label" data-i18n="teams.label">Selected work</p>
+            <h2 class="s-title" data-i18n="teams.title">Projects we&rsquo;ve shipped with founders</h2>
+            <p class="s-desc" data-i18n="teams.desc">Selected client work from our launch package—identity, deck, and digital touchpoints. More projects are added as we ship them.</p>
         </div>
         <div class="teams-grid reveal" style="margin-bottom:48px;border-bottom:1px solid var(--bdr)">
-            <a href="marketing.html" data-i18n="teams.t1">Marketing teams</a>
-            <a href="auditorias.html" data-i18n="teams.t2">Audit teams</a>
-            <a href="industrial.html" data-i18n="teams.t3">Industrial &amp; Manufacturing</a>
-            <a href="consultoras.html" data-i18n="teams.t4">Consulting teams</a>
-            <a href="#" data-i18n="teams.t5">Sales teams</a>
-            <a href="#" data-i18n="teams.t6">Operations</a>
-            <a href="#" data-i18n="teams.t7">Customer support</a>
+            <a href="#use-cases" data-i18n="teams.t1">Brand &amp; identity</a>
+            <a href="#use-cases" data-i18n="teams.t2">Systems &amp; guidelines</a>
+            <a href="#use-cases" data-i18n="teams.t3">Web &amp; digital</a>
+            <a href="#use-cases" data-i18n="teams.t4">Pitch &amp; narrative</a>
+            <a href="#pricing" data-i18n="teams.t5">Launch package</a>
+            <a href="#how-it-works" data-i18n="teams.t6">How we work</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Question" data-i18n="teams.t7">Ask a question</a>
         </div>
         <div class="uc-grid">
-            <a href="marketing.html" class="uc-card reveal">
-                <div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
-                <h3 data-i18n="uc.mkt.t">Marketing Companies</h3>
-                <p data-i18n="uc.mkt.d">Content automation, campaign analytics, client reporting, and creative workflow optimization for agencies.</p>
-                <ul class="uc-feats"><li data-i18n="uc.mkt.f1">Content generation &amp; adaptation</li><li data-i18n="uc.mkt.f2">Campaign analytics &amp; reporting</li><li data-i18n="uc.mkt.f3">Social media intelligence</li></ul>
-                <span class="uc-link" data-i18n="uc.more">Learn more &rarr;</span>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20CircleHome" class="uc-card reveal">
+                <div class="uc-thumb"><img src="Portfolio%20Projects/CIRCLEHOME/MockUp_3.png" alt="CircleHome brand identity and product mockups" data-i18n-alt="uc.ch.alt"></div>
+                <div class="uc-card-inner">
+                    <h3 data-i18n="uc.ch.t">CircleHome</h3>
+                    <p data-i18n="uc.ch.d">Visual identity and product-facing mockups for a connected-home brand—logo system, UI surfaces, and launch-ready presentation assets.</p>
+                    <ul class="uc-feats"><li data-i18n="uc.ch.f1">Logo &amp; brand marks</li><li data-i18n="uc.ch.f2">Product &amp; app visuals</li><li data-i18n="uc.ch.f3">Collateral &amp; digital mockups</li></ul>
+                    <span class="uc-link" data-i18n="uc.more">Discuss a similar project &rarr;</span>
+                </div>
             </a>
-            <a href="auditorias.html" class="uc-card reveal reveal-d1">
-                <div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div>
-                <h3 data-i18n="uc.audit.t">Audit Firms</h3>
-                <p data-i18n="uc.audit.d">Compliance checking, risk analysis, automated report generation, and regulatory change tracking.</p>
-                <ul class="uc-feats"><li data-i18n="uc.audit.f1">Compliance monitoring</li><li data-i18n="uc.audit.f2">Automated report generation</li><li data-i18n="uc.audit.f3">Risk assessment</li></ul>
-                <span class="uc-link" data-i18n="uc.more">Learn more &rarr;</span>
-            </a>
-            <a href="industrial.html" class="uc-card reveal reveal-d2">
-                <div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h20"/><path d="M5 20V8l5 4V8l5 4V4l5 4v12"/></svg></div>
-                <h3 data-i18n="uc.ind.t">Industrial Companies</h3>
-                <p data-i18n="uc.ind.d">Quality control automation, production analytics, supply chain intelligence, and predictive maintenance.</p>
-                <ul class="uc-feats"><li data-i18n="uc.ind.f1">Quality control automation</li><li data-i18n="uc.ind.f2">Production analytics</li><li data-i18n="uc.ind.f3">Predictive maintenance</li></ul>
-                <span class="uc-link" data-i18n="uc.more">Learn more &rarr;</span>
-            </a>
-            <a href="consultoras.html" class="uc-card reveal reveal-d3">
-                <div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-                <h3 data-i18n="uc.strat.t">Consulting Firms</h3>
-                <p data-i18n="uc.strat.d">Research automation, market analysis, proposal generation, and data synthesis for faster client delivery.</p>
-                <ul class="uc-feats"><li data-i18n="uc.strat.f1">Market research automation</li><li data-i18n="uc.strat.f2">Proposal &amp; report generation</li><li data-i18n="uc.strat.f3">Competitor analysis</li></ul>
-                <span class="uc-link" data-i18n="uc.more">Learn more &rarr;</span>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Vira" class="uc-card reveal reveal-d1">
+                <div class="uc-thumb"><img src="Portfolio%20Projects/VIRA/PDF-10.png" alt="Vira pitch deck layouts and slide design" data-i18n-alt="uc.v.alt"></div>
+                <div class="uc-card-inner">
+                    <h3 data-i18n="uc.v.t">Vira</h3>
+                    <p data-i18n="uc.v.d">Investor-facing deck design and slide system—clear hierarchy, consistent typography, and layouts built for storytelling under time pressure.</p>
+                    <ul class="uc-feats"><li data-i18n="uc.v.f1">Pitch deck art direction</li><li data-i18n="uc.v.f2">Typography &amp; layout grids</li><li data-i18n="uc.v.f3">Logo lockups &amp; cover systems</li></ul>
+                    <span class="uc-link" data-i18n="uc.more">Discuss a similar project &rarr;</span>
+                </div>
             </a>
         </div>
     </div>
 </section>
 
-<!-- TOOL INTEGRATIONS -->
+<!-- TOOLS -->
 <section>
     <div class="container">
         <div class="s-hdr reveal">
-            <p class="s-label" data-i18n="tools.label">Integrations</p>
-            <h2 class="s-title" data-i18n="tools.title">Connects with all your existing tools</h2>
-            <p class="s-desc" data-i18n="tools.desc">Our system connects to everything your team already uses. No switching tools, no learning curves.</p>
+            <p class="s-label" data-i18n="tools.label">Tooling</p>
+            <h2 class="s-title" data-i18n="tools.title">Built in the tools your team already uses</h2>
+            <p class="s-desc" data-i18n="tools.desc">We design in modern stacks—so files are easy to share with contractors, agencies, and your internal team.</p>
         </div>
         <div class="tools-row reveal">
-            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Google Drive</div>
-            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0L0 2.5V22l1.5 2H15l1.5-2V2.5L15 0H1.5zM9.9 15.8L5.4 11l1.4-1.5 3.1 3.3L17.1 5l1.4 1.4-8.6 9.4z"/></svg>Teams</div>
-            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 01-2.52 2.523A2.528 2.528 0 010 15.165a2.527 2.527 0 012.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 012.521-2.52 2.527 2.527 0 012.521 2.52v6.313A2.528 2.528 0 018.834 24a2.528 2.528 0 01-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 01-2.521-2.52A2.528 2.528 0 018.834 0a2.528 2.528 0 012.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 012.521 2.521 2.528 2.528 0 01-2.521 2.521H2.522A2.528 2.528 0 010 8.834a2.528 2.528 0 012.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 012.522-2.521A2.528 2.528 0 0124 8.834a2.528 2.528 0 01-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 01-2.523 2.521 2.527 2.527 0 01-2.52-2.521V2.522A2.527 2.527 0 0115.165 0a2.528 2.528 0 012.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 012.523 2.522A2.528 2.528 0 0115.165 24a2.527 2.527 0 01-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 01-2.52-2.523 2.526 2.526 0 012.52-2.52h6.313A2.527 2.527 0 0124 15.165a2.528 2.528 0 01-2.522 2.523h-6.313z"/></svg>Slack</div>
-            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>Gmail</div>
-            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 7.387v10.478c0 .23-.08.424-.238.576-.158.152-.353.228-.585.228h-4.96v-7.83l-1.96 1.47L12 15.262l-4.257-2.953-1.96-1.47v7.83H.815c-.232 0-.427-.076-.585-.228A.768.768 0 010 17.865V7.387c0-.3.107-.554.32-.762S.82 6.28 1.11 6.28h.29l10.6 7.97 10.6-7.97h.29c.29 0 .538.115.744.345.206.23.31.462.31.762h.056z"/></svg>Outlook</div>
-            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.508.042S8.07.244 7.502 4.88c-.284 2.316.476 3.705 1.665 4.678l.095.067c-.12.105-.243.22-.361.35-1.624 1.79-1.134 3.952-.172 5.16a6.4 6.4 0 00-.937 3.34c.065 3.46 2.84 5.568 5.936 5.524 3.095-.043 5.782-2.15 5.718-5.61-.044-2.37-1.24-3.652-2.548-4.834l-.068-.06c-.608-.538-.816-1.147-.64-1.893.143-.612.537-1.04.833-1.34l.023-.023c2.258-2.2 3.39-5.098 1.24-8.042C16.78.81 13.794.003 12.508.042z"/></svg>SAP</div>
-            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 2C6.81 2 2.13 5.72 1.05 10.6c-1.08 4.88 1.37 9.95 5.88 12.2.43.08.59-.19.59-.42 0-.21-.01-.76-.01-1.49-2.4.52-2.9-1.16-2.9-1.16-.39-1-.96-1.27-.96-1.27-.78-.54.06-.53.06-.53.87.06 1.32.89 1.32.89.77 1.32 2.01.94 2.5.72.08-.56.3-.94.55-1.16-1.91-.22-3.93-.96-3.93-4.27 0-.94.34-1.71.89-2.31-.09-.22-.38-1.1.08-2.28 0 0 .72-.23 2.37.89.69-.19 1.43-.29 2.16-.29s1.47.1 2.16.29c1.65-1.12 2.37-.89 2.37-.89.47 1.18.17 2.06.08 2.28.55.6.89 1.37.89 2.31 0 3.32-2.02 4.05-3.94 4.27.31.27.58.79.58 1.6 0 1.16-.01 2.09-.01 2.37 0 .23.16.5.59.42 4.51-2.25 6.96-7.32 5.88-12.2C21.87 5.72 17.19 2 12.5 2z"/></svg>GitHub</div>
-            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>Notion</div>
+            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.25 2.5H15.75C16.71 2.5 17.5 3.29 17.5 4.25V19.75C17.5 20.71 16.71 21.5 15.75 21.5H8.25C7.29 21.5 6.5 20.71 6.5 19.75V4.25C6.5 3.29 7.29 2.5 8.25 2.5Z"/></svg>Figma</div>
+            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4H20V20H4V4ZM6 6V18H18V6H6Z"/></svg>Adobe CC</div>
+            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>Slides / Keynote</div>
+            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3H21V21H3V3ZM5 5V19H19V5H5Z"/></svg>Webflow</div>
+            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7V17L12 22L22 17V7L12 2Z"/></svg>Framer</div>
+            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z"/></svg>Notion</div>
+            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4H20V20H4V4Z"/></svg>Google Workspace</div>
+            <div class="tool-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7L12 12L22 7L12 2Z"/></svg>Linear</div>
         </div>
-        <div class="reveal" style="margin-top:48px"><img src="hero (1).webp" alt="AI integrations on mobile" style="max-width:800px;width:100%;height:auto;display:block;margin:0 auto"></div>
+        <div class="reveal" style="margin-top:48px"><img src="hero (1).webp" alt="Design tooling preview" style="max-width:800px;width:100%;height:auto;display:block;margin:0 auto"></div>
     </div>
 </section>
 
@@ -446,18 +442,18 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     <div class="container">
         <div class="s-hdr reveal">
             <p class="s-label" data-i18n="how.label">Process</p>
-            <h2 class="s-title" data-i18n="how.title">From zero to AI-powered in 1 week</h2>
-            <p class="s-desc" data-i18n="how.desc">A proven process that gets your team running fast — without disrupting operations.</p>
+            <h2 class="s-title" data-i18n="how.title">From messy brief to launch-ready brand</h2>
+            <p class="s-desc" data-i18n="how.desc">A tight loop built for early-stage constraints: fast feedback, clear milestones, no theatre.</p>
         </div>
         <div class="steps">
-            <div class="step reveal"><div class="step-n">1</div><span class="step-tag" data-i18n="how.s1tag">Day 1</span><h3 data-i18n="how.s1t">Analysis</h3><p data-i18n="how.s1d">We audit your workflows and identify every automation opportunity across all departments.</p></div>
-            <div class="step reveal reveal-d1"><div class="step-n">2</div><span class="step-tag" data-i18n="how.s2tag">Day 2-3</span><h3 data-i18n="how.s2t">Setup</h3><p data-i18n="how.s2d">We install your private AI system and connect it to all your existing tools.</p></div>
-            <div class="step reveal reveal-d2"><div class="step-n">3</div><span class="step-tag" data-i18n="how.s3tag">Day 4-5</span><h3 data-i18n="how.s3t">Implementation</h3><p data-i18n="how.s3d">Custom workflows built for each department. Your team starts using them immediately.</p></div>
-            <div class="step reveal reveal-d3"><div class="step-n">4</div><span class="step-tag" data-i18n="how.s4tag">Ongoing</span><h3 data-i18n="how.s4t">Support</h3><p data-i18n="how.s4d">Your system is yours. We provide ongoing support and updates as your business evolves.</p></div>
+            <div class="step reveal"><div class="step-n">1</div><span class="step-tag" data-i18n="how.s1tag">Kickoff</span><h3 data-i18n="how.s1t">Discovery</h3><p data-i18n="how.s1d">We align on audience, positioning, and what &ldquo;success&rdquo; looks like for your next 90 days.</p></div>
+            <div class="step reveal reveal-d1"><div class="step-n">2</div><span class="step-tag" data-i18n="how.s2tag">Days 2–5</span><h3 data-i18n="how.s2t">Direction</h3><p data-i18n="how.s2d">Concept routes for identity and narrative—you pick a lane, we refine with your team.</p></div>
+            <div class="step reveal reveal-d2"><div class="step-n">3</div><span class="step-tag" data-i18n="how.s3tag">Days 6–12</span><h3 data-i18n="how.s3t">Production</h3><p data-i18n="how.s3d">Logo, type, color, deck, and web visuals are built to match the chosen direction.</p></div>
+            <div class="step reveal reveal-d3"><div class="step-n">4</div><span class="step-tag" data-i18n="how.s4tag">Handoff</span><h3 data-i18n="how.s4t">Delivery</h3><p data-i18n="how.s4d">Organized files, export specs, and a short walkthrough so your team can ship confidently.</p></div>
         </div>
         <div style="text-align:center;margin-top:48px" class="reveal">
-            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-p btn-lg" data-i18n="how.cta">Start Your Implementation</a>
-            <div style="margin-top:12px"><a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-txt" data-i18n="hero.cta3">Watch Demo <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p btn-lg" data-i18n="how.cta">Start your timeline</a>
+            <div style="margin-top:12px"><a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Question" class="btn btn-txt" data-i18n="hero.cta3">Ask a question <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
         </div>
     </div>
 </section>
@@ -466,23 +462,23 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 <section>
     <div class="container">
         <div class="s-hdr reveal">
-            <p class="s-label" data-i18n="part.label">Partnership</p>
-            <h2 class="s-title" data-i18n="part.title">Driving AI adoption together</h2>
-            <p class="s-desc" data-i18n="part.desc">AI is revolutionizing work in real time. Our partnership-led approach helps your organization become truly AI-first.</p>
+            <p class="s-label" data-i18n="part.label">Collaboration</p>
+            <h2 class="s-title" data-i18n="part.title">Embedded with founders—not a ticket queue</h2>
+            <p class="s-desc" data-i18n="part.desc">Startups change their minds. We stay close to the product and the raise so design decisions stay coherent.</p>
         </div>
         <div class="part-lay reveal">
             <div class="part-img">
-                <img src="partnership.png" alt="AI partnership collaboration">
+                <img src="partnership.png" alt="Collaboration with founders">
             </div>
             <div class="part-services">
-                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f1">Dedicated deployment lead</span></div>
-                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f2">Complete implementation support</span></div>
-                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f3">Tailored onboarding</span></div>
-                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f4">Priority support</span></div>
-                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f5">AI strategy and consulting</span></div>
-                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f6">Change management model</span></div>
-                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f7">Ongoing optimization &amp; updates</span></div>
-                <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="part-svc-cta"><span data-i18n="part.cta">Book an intro</span></a>
+                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f1">Direct access to the designer on the account</span></div>
+                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f2">Async updates with predictable checkpoints</span></div>
+                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f3">Practical feedback loops for busy teams</span></div>
+                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f4">Packaged handoff so engineering can move</span></div>
+                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f5">Investor-ready narrative support in the deck</span></div>
+                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f6">Scope discipline—we protect your runway</span></div>
+                <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f7">Optional follow-on sprints when you scale</span></div>
+                <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Intro" class="part-svc-cta"><span data-i18n="part.cta">Email to start</span></a>
             </div>
         </div>
     </div>
@@ -492,24 +488,24 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 <section class="bg-a">
     <div class="container">
         <div class="s-hdr reveal">
-            <p class="s-label" data-i18n="sec.label">Security &amp; Flexibility</p>
-            <h2 class="s-title" data-i18n="sec.title">Private, compliant, and model-agnostic</h2>
-            <p class="s-desc" data-i18n="sec.desc">Your data stays yours. Choose the AI models that work best for your firm.</p>
+            <p class="s-label" data-i18n="sec.label">Ownership &amp; clarity</p>
+            <h2 class="s-title" data-i18n="sec.title">Your brand assets. Your files. No lock-in.</h2>
+            <p class="s-desc" data-i18n="sec.desc">We deliver work you can actually operate—so you are not dependent on us for every tweak.</p>
         </div>
         <div class="sec-lay">
-            <div class="sec-img reveal"><img src="security-phone.png" alt="Private AI assistant"></div>
+            <div class="sec-img reveal"><img src="security-phone.png" alt="Brand assets on device"></div>
             <div class="sec-cards">
                 <div class="sec-card reveal">
                     <div class="sec-icon">&#128274;</div>
-                    <div><h3 data-i18n="sec.c1t">100% Private</h3><p data-i18n="sec.c1d">Your own AI system. Data never leaves your infrastructure. Nothing is shared with third parties.</p></div>
+                    <div><h3 data-i18n="sec.c1t">You own the outputs</h3><p data-i18n="sec.c1d">Source files and exports are yours—logos, fonts, color tokens, and slide masters included.</p></div>
                 </div>
                 <div class="sec-card reveal reveal-d1">
                     <div class="sec-icon">&#9989;</div>
-                    <div><h3 data-i18n="sec.c2t">Fully Compliant</h3><p data-i18n="sec.c2d">GDPR compliant, SOC 2 ready, and built with enterprise-grade security. Full audit trail provided.</p></div>
+                    <div><h3 data-i18n="sec.c2t">Organized handoff</h3><p data-i18n="sec.c2d">Naming, folders, and specs structured so product and marketing can reuse without guesswork.</p></div>
                 </div>
                 <div class="sec-card reveal reveal-d2">
                     <div class="sec-icon">&#9881;</div>
-                    <div><h3 data-i18n="sec.c3t">Model Agnostic</h3><p data-i18n="sec.c3d">Use the AI models that work best for you. Switch between leading models as you need. You choose.</p></div>
+                    <div><h3 data-i18n="sec.c3t">Flexible stack</h3><p data-i18n="sec.c3d">We meet you in Figma, slides, or web tools—whatever fits your team and contractors.</p></div>
                 </div>
             </div>
         </div>
@@ -521,20 +517,20 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     <div class="container">
         <div class="s-hdr reveal">
             <p class="s-label" data-i18n="cl.label">Trusted by</p>
-            <h2 class="s-title" data-i18n="cl.title">Companies that trust us</h2>
-            <p class="s-desc" data-i18n="cl.desc">We work with professional services firms across Europe and the US. Here are some of the teams we've helped.</p>
+            <h2 class="s-title" data-i18n="cl.title">Teams who needed speed and credibility</h2>
+            <p class="s-desc" data-i18n="cl.desc">We work with founders at early-stage startups—pre-seed to Series A—across SaaS, fintech, climate, and deep tech.</p>
         </div>
         <div class="clients-grid reveal">
-            <div class="client-badge" data-i18n="cl.b1">+60 employee marketing agency</div>
-            <div class="client-badge" data-i18n="cl.b2">+150 person industrial company</div>
-            <div class="client-badge" data-i18n="cl.b3">+120 employee audit firm</div>
-            <div class="client-badge" data-i18n="cl.b4">+100 employee consultancy firm</div>
-            <div class="client-badge" data-i18n="cl.b5">+200 person manufacturing group</div>
-            <div class="client-badge" data-i18n="cl.b6">+40 person digital agency</div>
-            <div class="client-badge" data-i18n="cl.b7">+80 employee accounting firm</div>
-            <div class="client-badge" data-i18n="cl.b8">+500 person industrial group</div>
-            <div class="client-badge" data-i18n="cl.b9">+20 person consulting startup</div>
-            <div class="client-badge" data-i18n="cl.b10">+15 employee creative agency</div>
+            <div class="client-badge" data-i18n="cl.b1">Pre-seed B2B SaaS</div>
+            <div class="client-badge" data-i18n="cl.b2">Seed-stage fintech</div>
+            <div class="client-badge" data-i18n="cl.b3">Climate hardware startup</div>
+            <div class="client-badge" data-i18n="cl.b4">AI infrastructure</div>
+            <div class="client-badge" data-i18n="cl.b5">Developer tools</div>
+            <div class="client-badge" data-i18n="cl.b6">Marketplace</div>
+            <div class="client-badge" data-i18n="cl.b7">Health tech</div>
+            <div class="client-badge" data-i18n="cl.b8">Consumer mobile</div>
+            <div class="client-badge" data-i18n="cl.b9">Accelerator cohorts</div>
+            <div class="client-badge" data-i18n="cl.b10">University spinouts</div>
             <div class="client-badge" data-i18n="cl.more">& more</div>
         </div>
     </div>
@@ -545,23 +541,22 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     <div class="container">
         <div class="s-hdr reveal">
             <p class="s-label" data-i18n="pr.label">Pricing</p>
-            <h2 class="s-title" data-i18n="pr.title">Custom pricing for your needs</h2>
-            <p class="s-desc" data-i18n="pr.desc">Everything is tailored to your firm's size and complexity. No hidden fees.</p>
+            <h2 class="s-title" data-i18n="pr.title">One package. Everything you need to show up.</h2>
+            <p class="s-desc" data-i18n="pr.desc">A single, transparent price for early-stage teams—no surprises, no bloated scope.</p>
         </div>
         <div class="pr-card-single reveal">
-            <h3 data-i18n="pr.name">Enterprise Implementation</h3>
-            <p class="pr-sub" data-i18n="pr.sub">Complete AI setup customized for your firm</p>
+            <h3 data-i18n="pr.name">Launch identity &amp; web</h3>
+            <p class="pr-sub" data-i18n="pr.sub">Visual identity, logo, typography, color, pitch deck, and website—designed to ship together.</p>
             <div class="pr-prices">
-                <div class="pr-price-item"><div class="pr-from" data-i18n="pr.from1">Starting at</div><div class="pr-amount">&euro;1,000</div><div class="pr-type" data-i18n="pr.type1">One-time setup</div></div>
-                <div class="pr-price-item"><div class="pr-from" data-i18n="pr.from2">Monthly from</div><div class="pr-amount">&euro;200<span style="font-size:.9rem;font-weight:400;color:var(--tx-m)">/mo</span></div><div class="pr-type" data-i18n="pr.type2">Ongoing support &amp; optimization</div></div>
+                <div class="pr-price-item"><div class="pr-from" data-i18n="pr.from1">Fixed project</div><div class="pr-amount">$3,000</div><div class="pr-type" data-i18n="pr.type1">One engagement · clear deliverables</div></div>
             </div>
             <ul class="pr-includes">
-                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i1">Audit of AI potential in your company</span></li>
-                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i2">Custom AI system setup</span></li>
-                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i3">Onboarding session for the whole team</span></li>
-                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i4">Ongoing support &amp; optimization</span></li>
+                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i1">Visual identity &amp; logo system</span></li>
+                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i2">Typography &amp; color palette</span></li>
+                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i3">Investor-ready pitch deck</span></li>
+                <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.i4">Marketing website design &amp; key layouts</span></li>
             </ul>
-            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-p btn-lg" data-i18n="pr.cta">Get Custom Quote</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20%243%2C000%20package" class="btn btn-p btn-lg" data-i18n="pr.cta">Email to book</a>
         </div>
     </div>
 </section>
@@ -572,20 +567,20 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
         <div class="team-lay">
             <div class="reveal">
                 <p class="s-label" data-i18n="tm.label">Our Team</p>
-                <h2 class="s-title" data-i18n="tm.title">Built by people who've done it before</h2>
-                <p class="s-desc" style="margin-bottom:28px" data-i18n="tm.desc">We're AI specialists, engineers, and operators who've built and scaled technology at the highest level. We don't just advise — we implement.</p>
+                <h2 class="s-title" data-i18n="tm.title">Designers who speak founder</h2>
+                <p class="s-desc" style="margin-bottom:28px" data-i18n="tm.desc">Neutral Studio is small on purpose—fast decisions, direct communication, and craft that ships.</p>
                 <div class="team-creds">
-                    <div class="team-cred"><h4 data-i18n="tm.c1t">Ex-Startup Founders</h4><p data-i18n="tm.c1d">Founded &amp; exited. We know building from zero.</p></div>
-                    <div class="team-cred"><h4 data-i18n="tm.c2t">Ex-Amazon</h4><p data-i18n="tm.c2d">Enterprise systems at massive scale.</p></div>
-                    <div class="team-cred"><h4 data-i18n="tm.c3t">Ex-KPMG Consulting</h4><p data-i18n="tm.c3d">Deep professional services expertise.</p></div>
-                    <div class="team-cred"><h4 data-i18n="tm.c4t">AI Engineers</h4><p data-i18n="tm.c4d">Specialized in LLMs and applied AI.</p></div>
+                    <div class="team-cred"><h4 data-i18n="tm.c1t">Startup-first</h4><p data-i18n="tm.c1d">We optimize for clarity, velocity, and runway—not awards.</p></div>
+                    <div class="team-cred"><h4 data-i18n="tm.c2t">Systems thinking</h4><p data-i18n="tm.c2d">Identity, deck, and web stay aligned as you iterate.</p></div>
+                    <div class="team-cred"><h4 data-i18n="tm.c3t">Pitch-aware</h4><p data-i18n="tm.c3d">Narrative structure that supports how investors actually read.</p></div>
+                    <div class="team-cred"><h4 data-i18n="tm.c4t">Hands-on craft</h4><p data-i18n="tm.c4d">Typography, color, and layout—done with intention.</p></div>
                 </div>
-                <div class="team-locs"><span class="team-loc">Silicon Valley</span><span class="team-loc">Barcelona</span><span class="team-loc" data-i18n="tm.l3">&amp; more</span></div>
+                <div class="team-locs"><span class="team-loc">Remote-first</span><span class="team-loc">EU &amp; US</span><span class="team-loc" data-i18n="tm.l3">&amp; more</span></div>
             </div>
             <div class="team-vis reveal reveal-d2">
-                <div class="team-stat"><div class="team-stat-v" data-i18n="tm.sv1">End-to-End</div><div class="team-stat-l" data-i18n="tm.sl1">We build &amp; deliver, not just consult</div></div>
-                <div class="team-stat"><div class="team-stat-v" data-i18n="tm.sv2">1 Week</div><div class="team-stat-l" data-i18n="tm.sl2">Full implementation, not months</div></div>
-                <div class="team-stat"><div class="team-stat-v" data-i18n="tm.sv3">Private</div><div class="team-stat-l" data-i18n="tm.sl3">Your data never leaves your systems</div></div>
+                <div class="team-stat"><div class="team-stat-v" data-i18n="tm.sv1">End-to-end</div><div class="team-stat-l" data-i18n="tm.sl1">Identity, deck, and web in one coherent system</div></div>
+                <div class="team-stat"><div class="team-stat-v" data-i18n="tm.sv2">Fast</div><div class="team-stat-l" data-i18n="tm.sl2">Built for early-stage timelines</div></div>
+                <div class="team-stat"><div class="team-stat-v" data-i18n="tm.sv3">Fair</div><div class="team-stat-l" data-i18n="tm.sl3">Competitive pricing without cutting corners</div></div>
             </div>
         </div>
     </div>
@@ -596,12 +591,12 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     <div class="container">
         <div class="s-hdr reveal"><p class="s-label">FAQ</p><h2 class="s-title" data-i18n="faq.title">Frequently asked questions</h2></div>
         <div class="faq-list">
-            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q1">Who is this for? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a1">Companies that waste hours on repetitive tasks — marketing agencies, audit firms, industrial companies, and consultancies. If your team spends time on manual reporting, data entry, or document preparation, we can help.</p></div></div>
-            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q2">Do I need technical knowledge? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a2">Not at all. We handle everything technical. You tell us which tasks consume your team's time, and we design the solution.</p></div></div>
-            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q3">How long until it's ready? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a3">A pilot is typically running within 1 week. Full implementation takes 1-2 weeks. We start delivering value from day one.</p></div></div>
-            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q4">Is my data secure? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a4">Your AI system is 100% private. Data stays in-house, nothing is shared. We're GDPR compliant and provide a full security audit.</p></div></div>
-            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q5">What if it doesn't work? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a5">Money-back guarantee. If you don't see clear results, you don't pay.</p></div></div>
-            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q6">Which AI models do you use? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a6">We're model agnostic — you choose the AI models that work best for your needs. We support all leading models and can switch between them.</p></div></div>
+            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q1">Who is Neutral Studio for? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a1">Early-stage startups that need a credible identity, pitch, and web presence quickly—without hiring a full agency roster.</p></div></div>
+            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q2">Do I need a full brand brief? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a2">No. Bring what you have—notes, product screenshots, competitor links—and we’ll shape the brief through conversation.</p></div></div>
+            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q3">How long does a project take? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a3">Most launch packages land in a few weeks—faster when feedback is tight. We’ll agree milestones at kickoff.</p></div></div>
+            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q4">What do I receive at the end? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a4">Source files and exports for identity, deck, and web—organized for your team and contractors.</p></div></div>
+            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q5">What if we need more than the package? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a5">We can scope add-ons after the first delivery—extra pages, motion, or campaign templates—without renegotiating the whole project.</p></div></div>
+            <div class="faq-i reveal"><button class="faq-q" data-i18n="faq.q6">Why is pricing so straightforward? <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button><div class="faq-a"><p class="faq-a-inner" data-i18n="faq.a6">Startups need predictability. One fixed price keeps everyone aligned on what ships and when.</p></div></div>
         </div>
     </div>
 </section>
@@ -610,13 +605,13 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 <section class="f-cta">
     <div class="container">
         <p class="s-label reveal" data-i18n="cta.label">Ready?</p>
-        <h2 class="s-title reveal" data-i18n="cta.title">Stop losing time. Start automating.</h2>
-        <p class="s-desc reveal" data-i18n="cta.desc">30 minutes. No commitment. We'll tell you exactly what we can automate for your firm.</p>
+        <h2 class="s-title reveal" data-i18n="cta.title">Stop looking like a rough draft.</h2>
+        <p class="s-desc reveal" data-i18n="cta.desc">Tell us what you’re building and when you need to show up. We’ll reply with next steps and timing.</p>
         <div class="f-cta-btns reveal">
-            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-p btn-lg" data-i18n="cta.b1">Book a Demo</a>
-            <a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" class="btn btn-s btn-lg" data-i18n="cta.b2">Get a Free AI Audit</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p btn-lg" data-i18n="cta.b1">Email to start</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Question" class="btn btn-s btn-lg" data-i18n="cta.b2">Ask a question</a>
         </div>
-        <div class="f-cta-img reveal" style="margin-top:48px"><img src="agents-ios-app.webp" alt="AI assistant on mobile" style="max-width:720px;width:100%;height:auto;display:block;margin:0 auto"></div>
+        <div class="f-cta-img reveal" style="margin-top:48px"><img src="agents-ios-app.webp" alt="Brand on mobile" style="max-width:720px;width:100%;height:auto;display:block;margin:0 auto"></div>
     </div>
 </section>
 
@@ -626,15 +621,15 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     <div class="container">
         <div class="ft-grid">
             <div class="ft-brand">
-                <div class="logo-wrap"><img src="logo.png" alt="GetAI" style="height:36px"><span class="logo-txt">GetAI</span></div>
-                <p data-i18n="ft.brand">Private AI systems for companies. Implemented in 1 week.</p>
+                <div class="logo-wrap"><img src="logo.png" alt="Neutral Studio" style="height:36px"><span class="logo-txt">Neutral Studio</span></div>
+                <p data-i18n="ft.brand">Graphic design for early-stage startups—identity, deck, and web—fast and fairly priced.</p>
             </div>
-            <div class="ft-col"><h4 data-i18n="ft.product">Product</h4><a href="#use-cases" data-i18n="nav.uc">Use Cases</a><a href="#how-it-works" data-i18n="nav.how">How It Works</a><a href="#pricing" data-i18n="nav.pr">Pricing</a></div>
+            <div class="ft-col"><h4 data-i18n="ft.product">Product</h4><a href="#use-cases" data-i18n="nav.uc">Services</a><a href="#how-it-works" data-i18n="nav.how">How It Works</a><a href="#pricing" data-i18n="nav.pr">Pricing</a></div>
             <div class="ft-col"><h4 data-i18n="ft.company">Company</h4><a href="#team" data-i18n="nav.team">Team</a><a href="#faq">FAQ</a></div>
-            <div class="ft-col"><h4 data-i18n="ft.contact">Contact</h4><a href="https://cal.eu/getai/demo" target="_blank" rel="noopener" data-i18n="nav.cta">Book a Call</a><a href="mailto:adam@getaibase.co">adam@getaibase.co</a></div>
+            <div class="ft-col"><h4 data-i18n="ft.contact">Contact</h4><a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" data-i18n="nav.cta">Start a project</a><a href="mailto:arnaupinyolwork@gmail.com">arnaupinyolwork@gmail.com</a></div>
         </div>
         <div class="ft-bottom">
-            <p>&copy; 2026 GetAI. <span data-i18n="ft.rights">All rights reserved.</span></p>
+            <p>&copy; 2026 Neutral Studio. <span data-i18n="ft.rights">All rights reserved.</span></p>
             <div class="lang-t"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
         </div>
     </div>
@@ -642,108 +637,104 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 
 <script>
 const T={en:{
-"nav.uc":"Use Cases","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Book a Call",
-"dd.mkt":"Marketing Companies","dd.mkt.d":"Content, campaigns, analytics","dd.audit":"Audit Firms","dd.audit.d":"Compliance, reports, risk analysis","dd.ind":"Industrial Companies","dd.ind.d":"Operations, quality, supply chain","dd.strat":"Consulting Firms","dd.strat.d":"Research, proposals, analysis",
-"hero.badge":"Full implementation in 1 week","hero.h1":"<em>Superpower</em> &nbsp;your entire<br>company with <em>AI</em>","hero.sub":"We install private AI systems across all your departments. Automate repetitive work, save hours daily, and scale without hiring.","hero.cta1":"Book a Demo","hero.cta2":"Get a Free AI Audit","hero.cta3":"Watch Demo ","hero.imgalt":"Add your hero image here",
-"m.c1":"Fintech scale-up","m.l1":"saved per week, per employee","m.c2":"Marketing agency","m.l2":"reporting time saved","m.c3":"Leading manufacturer","m.l3":"faster product answers","m.c4":"Mining manufacturer","m.l4":"time saved in R&D","m.c5":"Renewable energy company","m.l5":"time saved in R&D","m.c6":"Industrial leader","m.l6":"more customer service issues resolved",
-"t.q1":"\u201CCampaign reporting that took 2 days now takes 2 hours. We freed up our entire analytics team to focus on optimization.\u201D","t.n1":"Marketing agency, 60 employees","t.r1":"CMO",
-"t.q2":"\u201CProposal preparation went from 2 weeks to 3 days. The quality is consistently higher. Best investment we made last year.\u201D","t.n2":"Consulting firm, 80 employees","t.r2":"Partner",
-"t.q3":"\u201CCompliance checks that took 3 days now take 4 hours. And we catch 23% more issues than before.\u201D","t.n3":"Audit firm, 120 employees","t.r3":"Audit Partner",
-"t.q4":"\u201CProduction reports that took a full shift to compile are now generated in 30 minutes. Our supervisors finally have time to supervise.\u201D","t.n4":"Manufacturing company, 200 employees","t.r4":"Plant Manager",
-"t.q5":"\u201CWe increased capacity by 40% without hiring. The AI handles research, we handle strategy.\u201D","t.n5":"Management consultancy, 60 employees","t.r5":"Director",
-"t.q6":"\u201CWe produce 3x more content without adding headcount. The AI handles first drafts, we handle the creative direction.\u201D","t.n6":"Marketing firm, 40 employees","t.r6":"Creative Director",
-"t.q7":"\u201CWe reduced unplanned downtime by 35% in the first quarter. The AI flags issues before they become shutdowns.\u201D","t.n7":"Industrial group, 500 employees","t.r7":"VP Operations",
-"t.q8":"\u201CQuality documentation that used to take 2 hours per batch now takes 15 minutes. And it\u2019s more consistent than ever.\u201D","t.n8":"Industrial manufacturer, 150 employees","t.r8":"Quality Director",
-"teams.label":"For every team","teams.title":"Every team in your company gets smarter","teams.desc":"Our AI systems work across all departments. One implementation, every team benefits.",
-"teams.t1":"Marketing teams","teams.t2":"Audit teams","teams.t3":"Industrial & Manufacturing","teams.t4":"Consulting teams","teams.t5":"Sales teams","teams.t6":"Operations","teams.t7":"Customer support",
-"uc.mkt.t":"Marketing Companies","uc.mkt.d":"Content automation, campaign analytics, client reporting, and creative workflow optimization for agencies.","uc.mkt.f1":"Content generation & adaptation","uc.mkt.f2":"Campaign analytics & reporting","uc.mkt.f3":"Social media intelligence",
-"uc.audit.t":"Audit Firms","uc.audit.d":"Compliance checking, risk analysis, automated report generation, and regulatory change tracking.","uc.audit.f1":"Compliance monitoring","uc.audit.f2":"Automated report generation","uc.audit.f3":"Risk assessment",
-"uc.ind.t":"Industrial Companies","uc.ind.d":"Quality control automation, production analytics, supply chain intelligence, and predictive maintenance.","uc.ind.f1":"Quality control automation","uc.ind.f2":"Production analytics","uc.ind.f3":"Predictive maintenance",
-"uc.strat.t":"Consulting Firms","uc.strat.d":"Research automation, market analysis, proposal generation, and data synthesis for faster client delivery.","uc.strat.f1":"Market research automation","uc.strat.f2":"Proposal & report generation","uc.strat.f3":"Competitor analysis",
-"uc.more":"Learn more \u2192",
-"tools.label":"Integrations","tools.title":"Connects with all your existing tools","tools.desc":"Our system connects to everything your team already uses. No switching tools, no learning curves.",
-"how.label":"Process","how.title":"From zero to AI-powered in 1 week","how.desc":"A proven process that gets your team running fast \u2014 without disrupting operations.",
-"how.s1tag":"Day 1","how.s1t":"Analysis","how.s1d":"We audit your workflows and identify every automation opportunity across all departments.",
-"how.s2tag":"Day 2-3","how.s2t":"Setup","how.s2d":"We install your private AI system and connect it to all your existing tools.",
-"how.s3tag":"Day 4-5","how.s3t":"Implementation","how.s3d":"Custom workflows built for each department. Your team starts using them immediately.",
-"how.s4tag":"Ongoing","how.s4t":"Support","how.s4d":"Your system is yours. We provide ongoing support and updates as your business evolves.",
-"how.cta":"Start Your Implementation",
-"part.label":"Partnership","part.title":"Driving AI adoption together","part.desc":"AI is revolutionizing work in real time. Our partnership-led approach helps your organization become truly AI-first.",
-"part.f1":"Dedicated deployment lead","part.f2":"Complete implementation support","part.f3":"Tailored onboarding","part.f4":"Priority support","part.f5":"AI strategy and consulting","part.f6":"Change management model","part.f7":"Ongoing optimization & updates","part.cta":"Book an intro",
-"sec.label":"Security & Flexibility","sec.title":"Private, compliant, and model-agnostic","sec.desc":"Your data stays yours. Choose the AI models that work best for your firm.",
-"sec.c1t":"100% Private","sec.c1d":"Your own AI system. Data never leaves your infrastructure. Nothing is shared with third parties.",
-"sec.c2t":"Fully Compliant","sec.c2d":"GDPR compliant, SOC 2 ready, and built with enterprise-grade security. Full audit trail provided.",
-"sec.c3t":"Model Agnostic","sec.c3d":"Use the AI models that work best for you. Switch between leading models as you need. You choose.",
-"cl.label":"Trusted by","cl.title":"Companies that trust us","cl.desc":"We work with professional services firms across Europe and the US. Here are some of the teams we\u2019ve helped.",
-"cl.b1":"+60 employee marketing agency","cl.b2":"+150 person industrial company","cl.b3":"+120 employee audit firm","cl.b4":"+100 employee consultancy firm","cl.b5":"+200 person manufacturing group","cl.b6":"+40 person digital agency","cl.b7":"+80 employee accounting firm","cl.b8":"+500 person industrial group","cl.b9":"+20 person consulting startup","cl.b10":"+15 employee creative agency","cl.more":"& more",
-"pr.label":"Pricing","pr.title":"Custom pricing for your needs","pr.desc":"Everything is tailored to your firm\u2019s size and complexity. No hidden fees.",
-"pr.name":"Enterprise Implementation","pr.sub":"Complete AI setup customized for your firm","pr.from1":"Starting at","pr.type1":"One-time setup","pr.from2":"Monthly from","pr.type2":"Ongoing support & optimization",
-"pr.i1":"Audit of AI potential in your company","pr.i2":"Custom AI system setup","pr.i3":"Onboarding session for the whole team","pr.i4":"Ongoing support & optimization","pr.cta":"Get Custom Quote",
-"tm.label":"Our Team","tm.title":"Built by people who\u2019ve done it before","tm.desc":"We\u2019re AI specialists, engineers, and operators who\u2019ve built and scaled technology at the highest level. We don\u2019t just advise \u2014 we implement.",
-"tm.c1t":"Ex-Startup Founders","tm.c1d":"Founded & exited. We know building from zero.","tm.c2t":"Ex-Amazon","tm.c2d":"Enterprise systems at massive scale.","tm.c3t":"Ex-KPMG Consulting","tm.c3d":"Deep professional services expertise.","tm.c4t":"AI Engineers","tm.c4d":"Specialized in LLMs and applied AI.","tm.l3":"& more",
-"tm.sv1":"End-to-End","tm.sl1":"We build & deliver, not just consult","tm.sv2":"1 Week","tm.sl2":"Full implementation, not months","tm.sv3":"Private","tm.sl3":"Your data never leaves your systems",
+"nav.uc":"Services","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Start a project",
+"dd.mkt":"Brand & identity","dd.mkt.d":"Logo, type, and visual language","dd.audit":"Systems & guidelines","dd.audit.d":"Consistency as you scale","dd.ind":"Web & digital","dd.ind.d":"Site design and launch-ready UI","dd.strat":"Pitch & narrative","dd.strat.d":"Decks investors actually read",
+"hero.badge":"Fast \u00b7 agile \u00b7 built for early-stage teams","hero.h1":"<em>Design</em> that helps<br>early-stage <em>startups</em> look & pitch like they mean it","hero.sub":"Neutral Studio is a graphic design studio for founders who need clarity and speed: identity, deck, and web\u2014without the agency overhead.","hero.cta1":"Start a project","hero.cta2":"Email us","hero.cta3":"Ask a question ","hero.imgalt":"Studio preview",
+"m.c1":"Fintech startup","m.l1":"from kickoff to first brand kit","m.c2":"B2B SaaS","m.l2":"fewer deck revisions vs. prior agency","m.c3":"Climate tech","m.l3":"of assets delivered on first milestone","m.c4":"Hardware startup","m.l4":"faster launch-site turnaround","m.c5":"Health tech","m.l5":"lift in investor meeting follow-ups","m.c6":"AI infrastructure","m.l6":"more consistent brand touchpoints",
+"t.q1":"\u201CWe finally looked like a real company\u2014not a slide template. The deck and site landed in the same visual world.\u201D","t.n1":"B2B SaaS, seed stage","t.r1":"Co-founder",
+"t.q2":"\u201CNeutral moved at startup speed. We shipped a credible identity before our next investor week.\u201D","t.n2":"Fintech startup, pre-Series A","t.r2":"CEO",
+"t.q3":"\u201COne price, clear scope. No surprise invoices. That alone made it easy to say yes.\u201D","t.n3":"Health tech, early-stage","t.r3":"Head of Ops",
+"t.q4":"\u201CThe typography and color system gave our product team a north star for UI decisions.\u201D","t.n4":"Dev tools startup","t.r4":"Product lead",
+"t.q5":"\u201COur pitch deck finally matched how we talk. Meetings felt less like we were apologizing for our visuals.\u201D","t.n5":"Climate tech, accelerator","t.r5":"Founder",
+"t.q6":"\u201CWe went from scattered Canva files to a brand we can hand to contractors and designers.\u201D","t.n6":"Marketplace, Series A","t.r6":"CMO",
+"t.q7":"\u201CThe website was launch-ready fast. We didn\u2019t lose a week debating micro-details.\u201D","t.n7":"AI infrastructure startup","t.r7":"CTO",
+"t.q8":"\u201CCompetitive pricing without feeling cheap. The work felt premium and practical.\u201D","t.n8":"Consumer app, pre-seed","t.r8":"Co-founder",
+"teams.label":"Selected work","teams.title":"Projects we\u2019ve shipped with founders","teams.desc":"Selected client work from our launch package\u2014identity, deck, and digital touchpoints. More projects are added as we ship them.",
+"teams.t1":"Brand & identity","teams.t2":"Systems & guidelines","teams.t3":"Web & digital","teams.t4":"Pitch & narrative","teams.t5":"Launch package","teams.t6":"How we work","teams.t7":"Ask a question",
+"uc.ch.t":"CircleHome","uc.ch.d":"Visual identity and product-facing mockups for a connected-home brand\u2014logo system, UI surfaces, and launch-ready presentation assets.","uc.ch.f1":"Logo & brand marks","uc.ch.f2":"Product & app visuals","uc.ch.f3":"Collateral & digital mockups","uc.ch.alt":"CircleHome brand identity and product mockups",
+"uc.v.t":"Vira","uc.v.d":"Investor-facing deck design and slide system\u2014clear hierarchy, consistent typography, and layouts built for storytelling under time pressure.","uc.v.f1":"Pitch deck art direction","uc.v.f2":"Typography & layout grids","uc.v.f3":"Logo lockups & cover systems","uc.v.alt":"Vira pitch deck layouts and slide design",
+"uc.more":"Discuss a similar project \u2192",
+"tools.label":"Tooling","tools.title":"Built in the tools your team already uses","tools.desc":"We design in modern stacks\u2014so files are easy to share with contractors, agencies, and your internal team.",
+"how.label":"Process","how.title":"From messy brief to launch-ready brand","how.desc":"A tight loop built for early-stage constraints: fast feedback, clear milestones, no theatre.",
+"how.s1tag":"Kickoff","how.s1t":"Discovery","how.s1d":"We align on audience, positioning, and what \u201csuccess\u201d looks like for your next 90 days.",
+"how.s2tag":"Days 2\u20135","how.s2t":"Direction","how.s2d":"Concept routes for identity and narrative\u2014you pick a lane, we refine with your team.",
+"how.s3tag":"Days 6\u201312","how.s3t":"Production","how.s3d":"Logo, type, color, deck, and web visuals are built to match the chosen direction.",
+"how.s4tag":"Handoff","how.s4t":"Delivery","how.s4d":"Organized files, export specs, and a short walkthrough so your team can ship confidently.",
+"how.cta":"Start your timeline",
+"part.label":"Collaboration","part.title":"Embedded with founders\u2014not a ticket queue","part.desc":"Startups change their minds. We stay close to the product and the raise so design decisions stay coherent.",
+"part.f1":"Direct access to the designer on the account","part.f2":"Async updates with predictable checkpoints","part.f3":"Practical feedback loops for busy teams","part.f4":"Packaged handoff so engineering can move","part.f5":"Investor-ready narrative support in the deck","part.f6":"Scope discipline\u2014we protect your runway","part.f7":"Optional follow-on sprints when you scale","part.cta":"Email to start",
+"sec.label":"Ownership & clarity","sec.title":"Your brand assets. Your files. No lock-in.","sec.desc":"We deliver work you can actually operate\u2014so you are not dependent on us for every tweak.",
+"sec.c1t":"You own the outputs","sec.c1d":"Source files and exports are yours\u2014logos, fonts, color tokens, and slide masters included.",
+"sec.c2t":"Organized handoff","sec.c2d":"Naming, folders, and specs structured so product and marketing can reuse without guesswork.",
+"sec.c3t":"Flexible stack","sec.c3d":"We meet you in Figma, slides, or web tools\u2014whatever fits your team and contractors.",
+"cl.label":"Trusted by","cl.title":"Teams who needed speed and credibility","cl.desc":"We work with founders at early-stage startups\u2014pre-seed to Series A\u2014across SaaS, fintech, climate, and deep tech.",
+"cl.b1":"Pre-seed B2B SaaS","cl.b2":"Seed-stage fintech","cl.b3":"Climate hardware startup","cl.b4":"AI infrastructure","cl.b5":"Developer tools","cl.b6":"Marketplace","cl.b7":"Health tech","cl.b8":"Consumer mobile","cl.b9":"Accelerator cohorts","cl.b10":"University spinouts","cl.more":"& more",
+"pr.label":"Pricing","pr.title":"One package. Everything you need to show up.","pr.desc":"A single, transparent price for early-stage teams\u2014no surprises, no bloated scope.",
+"pr.name":"Launch identity & web","pr.sub":"Visual identity, logo, typography, color, pitch deck, and website\u2014designed to ship together.","pr.from1":"Fixed project","pr.type1":"One engagement \u00b7 clear deliverables",
+"pr.i1":"Visual identity & logo system","pr.i2":"Typography & color palette","pr.i3":"Investor-ready pitch deck","pr.i4":"Marketing website design & key layouts","pr.cta":"Email to book",
+"tm.label":"Our Team","tm.title":"Designers who speak founder","tm.desc":"Neutral Studio is small on purpose\u2014fast decisions, direct communication, and craft that ships.",
+"tm.c1t":"Startup-first","tm.c1d":"We optimize for clarity, velocity, and runway\u2014not awards.","tm.c2t":"Systems thinking","tm.c2d":"Identity, deck, and web stay aligned as you iterate.","tm.c3t":"Pitch-aware","tm.c3d":"Narrative structure that supports how investors actually read.","tm.c4t":"Hands-on craft","tm.c4d":"Typography, color, and layout\u2014done with intention.","tm.l3":"& more",
+"tm.sv1":"End-to-end","tm.sl1":"Identity, deck, and web in one coherent system","tm.sv2":"Fast","tm.sl2":"Built for early-stage timelines","tm.sv3":"Fair","tm.sl3":"Competitive pricing without cutting corners",
 "faq.title":"Frequently asked questions",
-"faq.q1":"Who is this for? ","faq.a1":"Companies that waste hours on repetitive tasks \u2014 marketing agencies, audit firms, industrial companies, and consultancies. If your team spends time on manual reporting, data entry, or document preparation, we can help.",
-"faq.q2":"Do I need technical knowledge? ","faq.a2":"Not at all. We handle everything technical. You tell us which tasks consume your team\u2019s time, and we design the solution.",
-"faq.q3":"How long until it\u2019s ready? ","faq.a3":"A pilot is typically running within 1 week. Full implementation takes 1-2 weeks. We start delivering value from day one.",
-"faq.q4":"Is my data secure? ","faq.a4":"Your AI system is 100% private. Data stays in-house, nothing is shared. We\u2019re GDPR compliant and provide a full security audit.",
-"faq.q5":"What if it doesn\u2019t work? ","faq.a5":"Money-back guarantee. If you don\u2019t see clear results, you don\u2019t pay.",
-"faq.q6":"Which AI models do you use? ","faq.a6":"We\u2019re model agnostic \u2014 you choose the AI models that work best for your needs. We support all leading models and can switch between them.",
-"cta.label":"Ready?","cta.title":"Stop losing time. Start automating.","cta.desc":"30 minutes. No commitment. We\u2019ll tell you exactly what we can automate for your firm.","cta.b1":"Book a Demo","cta.b2":"Get a Free AI Audit",
-"ft.brand":"Private AI systems for companies. Implemented in 1 week.","ft.product":"Product","ft.company":"Company","ft.contact":"Contact","ft.rights":"All rights reserved."
+"faq.q1":"Who is Neutral Studio for? ","faq.a1":"Early-stage startups that need a credible identity, pitch, and web presence quickly\u2014without hiring a full agency roster.",
+"faq.q2":"Do I need a full brand brief? ","faq.a2":"No. Bring what you have\u2014notes, product screenshots, competitor links\u2014and we\u2019ll shape the brief through conversation.",
+"faq.q3":"How long does a project take? ","faq.a3":"Most launch packages land in a few weeks\u2014faster when feedback is tight. We\u2019ll agree milestones at kickoff.",
+"faq.q4":"What do I receive at the end? ","faq.a4":"Source files and exports for identity, deck, and web\u2014organized for your team and contractors.",
+"faq.q5":"What if we need more than the package? ","faq.a5":"We can scope add-ons after the first delivery\u2014extra pages, motion, or campaign templates\u2014without renegotiating the whole project.",
+"faq.q6":"Why is pricing so straightforward? ","faq.a6":"Startups need predictability. One fixed price keeps everyone aligned on what ships and when.",
+"cta.label":"Ready?","cta.title":"Stop looking like a rough draft.","cta.desc":"Tell us what you\u2019re building and when you need to show up. We\u2019ll reply with next steps and timing.","cta.b1":"Email to start","cta.b2":"Ask a question",
+"ft.brand":"Graphic design for early-stage startups\u2014identity, deck, and web\u2014fast and fairly priced.","ft.product":"Product","ft.company":"Company","ft.contact":"Contact","ft.rights":"All rights reserved."
 },es:{
-"nav.uc":"Casos de Uso","nav.how":"C\u00f3mo Funciona","nav.pr":"Precios","nav.team":"Equipo","nav.cta":"Reserva una Llamada",
-"dd.mkt":"Empresas de Marketing","dd.mkt.d":"Contenido, campa\u00f1as, anal\u00edtica","dd.audit":"Firmas de Auditor\u00eda","dd.audit.d":"Cumplimiento, informes, riesgos","dd.ind":"Empresas Industriales","dd.ind.d":"Operaciones, calidad, cadena de suministro","dd.strat":"Firmas de Consultor\u00eda","dd.strat.d":"Research, propuestas, an\u00e1lisis",
-"hero.badge":"Implementaci\u00f3n completa en 1 semana","hero.h1":"<em>Potencia</em> toda tu<br>empresa con <em>IA</em>","hero.sub":"Instalamos sistemas de IA privados en todos tus departamentos. Automatiza tareas repetitivas, ahorra horas al d\u00eda y escala sin contratar.","hero.cta1":"Reserva una Demo","hero.cta2":"Auditor\u00eda de IA Gratuita","hero.cta3":"Ver Demo ","hero.imgalt":"A\u00f1ade tu imagen hero aqu\u00ed",
-"m.c1":"Fintech scale-up","m.l1":"ahorro semanal por empleado","m.c2":"Agencia de marketing","m.l2":"ahorro en reporting","m.c3":"Fabricante l\u00edder","m.l3":"respuestas de producto m\u00e1s r\u00e1pidas","m.c4":"Fabricante minero","m.l4":"ahorro en I+D","m.c5":"Energ\u00eda renovable","m.l5":"ahorro en I+D","m.c6":"L\u00edder industrial","m.l6":"m\u00e1s incidencias de servicio resueltas",
-"t.q1":"\u201CEl reporting de campa\u00f1as que tardaba 2 d\u00edas ahora tarda 2 horas. Liberamos a todo el equipo de anal\u00edtica para centrarse en optimizaci\u00f3n.\u201D","t.n1":"Agencia de marketing, 60 empleados","t.r1":"CMO",
-"t.q2":"\u201CLa preparaci\u00f3n de propuestas pas\u00f3 de 2 semanas a 3 d\u00edas. La calidad es consistentemente superior. La mejor inversi\u00f3n del a\u00f1o.\u201D","t.n2":"Firma de consultor\u00eda, 80 empleados","t.r2":"Socia",
-"t.q3":"\u201CLas verificaciones de cumplimiento que tardaban 3 d\u00edas ahora tardan 4 horas. Y detectamos un 23% m\u00e1s de incidencias.\u201D","t.n3":"Firma de auditor\u00eda, 120 empleados","t.r3":"Socio de Auditor\u00eda",
-"t.q4":"\u201CLos informes de producci\u00f3n que tardaban un turno completo ahora se generan en 30 minutos. Los supervisores por fin tienen tiempo para supervisar.\u201D","t.n4":"Fabricante, 200 empleados","t.r4":"Director de Planta",
-"t.q5":"\u201CAumentamos la capacidad un 40% sin contratar. La IA hace el research, nosotros la estrategia.\u201D","t.n5":"Consultora de gesti\u00f3n, 60 empleados","t.r5":"Director",
-"t.q6":"\u201CProducimos 3 veces m\u00e1s contenido sin aumentar plantilla. La IA hace los borradores, nosotros la direcci\u00f3n creativa.\u201D","t.n6":"Firma de marketing, 40 empleados","t.r6":"Director Creativo",
-"t.q7":"\u201CRedujimos los paros no planificados un 35% en el primer trimestre. La IA detecta problemas antes de que se conviertan en paradas.\u201D","t.n7":"Grupo industrial, 500 empleados","t.r7":"VP Operaciones",
-"t.q8":"\u201CLa documentaci\u00f3n de calidad que tardaba 2 horas por lote ahora tarda 15 minutos. Y es m\u00e1s consistente que nunca.\u201D","t.n8":"Fabricante industrial, 150 empleados","t.r8":"Director de Calidad",
-"teams.label":"Para cada equipo","teams.title":"Cada equipo de tu empresa se vuelve m\u00e1s inteligente","teams.desc":"Nuestros sistemas funcionan en todos los departamentos. Una implementaci\u00f3n, todos se benefician.",
-"teams.t1":"Equipos de marketing","teams.t2":"Equipos de auditor\u00eda","teams.t3":"Industrial y fabricaci\u00f3n","teams.t4":"Equipos de consultor\u00eda","teams.t5":"Equipos de ventas","teams.t6":"Operaciones","teams.t7":"Atenci\u00f3n al cliente",
-"uc.mkt.t":"Empresas de Marketing","uc.mkt.d":"Automatizaci\u00f3n de contenido, anal\u00edtica de campa\u00f1as, reporting para clientes y optimizaci\u00f3n de flujos creativos.","uc.mkt.f1":"Generaci\u00f3n y adaptaci\u00f3n de contenido","uc.mkt.f2":"Anal\u00edtica y reporting de campa\u00f1as","uc.mkt.f3":"Inteligencia en redes sociales",
-"uc.audit.t":"Firmas de Auditor\u00eda","uc.audit.d":"Verificaci\u00f3n de cumplimiento, an\u00e1lisis de riesgos, informes autom\u00e1ticos y seguimiento regulatorio.","uc.audit.f1":"Monitorizaci\u00f3n de cumplimiento","uc.audit.f2":"Informes autom\u00e1ticos","uc.audit.f3":"Evaluaci\u00f3n de riesgos",
-"uc.ind.t":"Empresas Industriales","uc.ind.d":"Automatizaci\u00f3n de control de calidad, anal\u00edtica de producci\u00f3n, inteligencia de cadena de suministro y mantenimiento predictivo.","uc.ind.f1":"Automatizaci\u00f3n de control de calidad","uc.ind.f2":"Anal\u00edtica de producci\u00f3n","uc.ind.f3":"Mantenimiento predictivo",
-"uc.strat.t":"Firmas de Consultor\u00eda","uc.strat.d":"Automatizaci\u00f3n de research, an\u00e1lisis de mercado, generaci\u00f3n de propuestas y s\u00edntesis de datos.","uc.strat.f1":"Automatizaci\u00f3n de research","uc.strat.f2":"Generaci\u00f3n de propuestas e informes","uc.strat.f3":"An\u00e1lisis de competidores",
-"uc.more":"Saber m\u00e1s \u2192",
-"tools.label":"Integraciones","tools.title":"Se conecta con todas tus herramientas","tools.desc":"Nuestro sistema se conecta con todo lo que tu equipo ya usa. Sin cambiar de herramientas.",
-"how.label":"Proceso","how.title":"De cero a IA operativa en 1 semana","how.desc":"Un proceso probado que pone a tu equipo en marcha r\u00e1pido \u2014 sin interrumpir operaciones.",
-"how.s1tag":"D\u00eda 1","how.s1t":"An\u00e1lisis","how.s1d":"Auditamos tus flujos de trabajo e identificamos cada oportunidad de automatizaci\u00f3n.",
-"how.s2tag":"D\u00eda 2-3","how.s2t":"Configuraci\u00f3n","how.s2d":"Instalamos tu sistema de IA privado y lo conectamos con todas tus herramientas.",
-"how.s3tag":"D\u00eda 4-5","how.s3t":"Implementaci\u00f3n","how.s3d":"Flujos a medida para cada departamento. Tu equipo empieza a usarlos de inmediato.",
-"how.s4tag":"Continuo","how.s4t":"Soporte","how.s4d":"Tu sistema es tuyo. Proporcionamos soporte continuo y actualizaciones.",
-"how.cta":"Empieza Tu Implementaci\u00f3n",
-"part.label":"Partnership","part.title":"Impulsando la adopci\u00f3n de IA juntos","part.desc":"La IA est\u00e1 revolucionando el trabajo en tiempo real. Nuestro enfoque de partnership ayuda a tu organizaci\u00f3n a ser verdaderamente AI-first.",
-"part.f1":"L\u00edder de despliegue dedicado","part.f2":"Soporte completo de implementaci\u00f3n","part.f3":"Onboarding personalizado","part.f4":"Soporte prioritario","part.f5":"Estrategia y consultor\u00eda de IA","part.f6":"Modelo de gesti\u00f3n del cambio","part.f7":"Optimizaci\u00f3n y actualizaciones continuas","part.cta":"Reserva una intro",
-"sec.label":"Seguridad y Flexibilidad","sec.title":"Privado, compliant y model-agnostic","sec.desc":"Tus datos son tuyos. Elige los modelos de IA que mejor funcionen para tu firma.",
-"sec.c1t":"100% Privado","sec.c1d":"Tu propio sistema de IA. Los datos nunca salen de tu infraestructura.",
-"sec.c2t":"Totalmente Compliant","sec.c2d":"GDPR compliant, SOC 2 ready, seguridad enterprise. Auditor\u00eda completa incluida.",
-"sec.c3t":"Model Agnostic","sec.c3d":"Usa los modelos de IA que mejor funcionen. Cambia entre modelos l\u00edderes seg\u00fan necesites.",
-"cl.label":"Conf\u00edan en nosotros","cl.title":"Empresas que conf\u00edan en nosotros","cl.desc":"Trabajamos con firmas de servicios profesionales en Europa y EE.UU.",
-"cl.b1":"+60 empleados agencia de marketing","cl.b2":"+150 personas empresa industrial","cl.b3":"+120 empleados firma de auditor\u00eda","cl.b4":"+100 empleados consultora","cl.b5":"+200 personas grupo fabricante","cl.b6":"+40 personas agencia digital","cl.b7":"+80 empleados firma contable","cl.b8":"+500 personas grupo industrial","cl.b9":"+20 personas startup de consultor\u00eda","cl.b10":"+15 empleados agencia creativa","cl.more":"y m\u00e1s",
-"pr.label":"Precios","pr.title":"Precios a medida para tus necesidades","pr.desc":"Todo se adapta al tama\u00f1o y complejidad de tu firma. Sin costes ocultos.",
-"pr.name":"Implementaci\u00f3n Enterprise","pr.sub":"Setup completo de IA personalizado para tu firma","pr.from1":"Desde","pr.type1":"Setup \u00fanico","pr.from2":"Mensual desde","pr.type2":"Soporte y optimizaci\u00f3n continua",
-"pr.i1":"Auditor\u00eda de potencial de IA en tu empresa","pr.i2":"Setup personalizado del sistema de IA","pr.i3":"Sesi\u00f3n de onboarding para todo el equipo","pr.i4":"Soporte y optimizaci\u00f3n continua","pr.cta":"Pide Presupuesto",
-"tm.label":"Nuestro Equipo","tm.title":"Construido por gente que ya lo ha hecho","tm.desc":"Somos especialistas en IA, ingenieros y operadores que han construido y escalado tecnolog\u00eda al m\u00e1s alto nivel. No solo asesoramos \u2014 implementamos.",
-"tm.c1t":"Ex-Fundadores de Startups","tm.c1d":"Fundamos y salimos. Sabemos construir desde cero.","tm.c2t":"Ex-Amazon","tm.c2d":"Sistemas enterprise a escala masiva.","tm.c3t":"Ex-KPMG Consulting","tm.c3d":"Experiencia profunda en servicios profesionales.","tm.c4t":"Ingenieros de IA","tm.c4d":"Especializados en LLMs e IA aplicada.","tm.l3":"y m\u00e1s",
-"tm.sv1":"De Principio a Fin","tm.sl1":"Construimos y entregamos, no solo asesoramos","tm.sv2":"1 Semana","tm.sl2":"Implementaci\u00f3n completa, no meses","tm.sv3":"Privado","tm.sl3":"Tus datos nunca salen de tus sistemas",
+"nav.uc":"Servicios","nav.how":"C\u00f3mo trabajamos","nav.pr":"Precios","nav.team":"Equipo","nav.cta":"Empezar proyecto",
+"dd.mkt":"Marca e identidad","dd.mkt.d":"Logo, tipograf\u00eda y lenguaje visual","dd.audit":"Sistemas y gu\u00edas","dd.audit.d":"Coherencia al escalar","dd.ind":"Web y digital","dd.ind.d":"Dise\u00f1o web listo para lanzar","dd.strat":"Pitch y narrativa","dd.strat.d":"Decks que s\u00ed leen los inversores",
+"hero.badge":"R\u00e1pido \u00b7 \u00e1gil \u00b7 para equipos en etapa temprana","hero.h1":"<em>Dise\u00f1o</em> para que las<br><em>startups</em> en fase inicial parezcan y presenten con intenci\u00f3n","hero.sub":"Neutral Studio es un estudio de dise\u00f1o gr\u00e1fico para fundadores que necesitan claridad y velocidad: identidad, deck y web, sin el peso de una gran agencia.","hero.cta1":"Empezar proyecto","hero.cta2":"Escr\u00edbenos","hero.cta3":"Hacer una pregunta ","hero.imgalt":"Vista previa del estudio",
+"m.c1":"Startup fintech","m.l1":"del brief al primer kit de marca","m.c2":"B2B SaaS","m.l2":"menos rondas de deck que con la agencia anterior","m.c3":"Climate tech","m.l3":"de entregas en el primer hito","m.c4":"Hardware","m.l4":"web de lanzamiento m\u00e1s r\u00e1pida","m.c5":"Health tech","m.l5":"m\u00e1s seguimiento tras reuniones con inversores","m.c6":"Infraestructura IA","m.l6":"m\u00e1s coherencia en puntos de contacto",
+"t.q1":"\u201CPor fin parec\u00edamos una empresa de verdad, no una plantilla. El deck y la web compart\u00edan el mismo mundo visual.\u201D","t.n1":"B2B SaaS, seed","t.r1":"Cofundador",
+"t.q2":"\u201CNeutral fue a velocidad de startup. Tuvimos una identidad cre\u00edble antes de la semana de inversores.\u201D","t.n2":"Fintech, pre-Series A","t.r2":"CEO",
+"t.q3":"\u201CUn precio, alcance claro. Sin facturas sorpresa. Eso ya facilit\u00f3 decir que s\u00ed.\u201D","t.n3":"Health tech, etapa temprana","t.r3":"Ops",
+"t.q4":"\u201CLa tipograf\u00eda y el color nos dieron norte para decisiones de producto.\u201D","t.n4":"Startup de dev tools","t.r4":"Product",
+"t.q5":"\u201CEl pitch por fin sonaba como nosotros. Menos disculpas por lo visual en las reuniones.\u201D","t.n5":"Climate tech, aceleradora","t.r5":"Fundador",
+"t.q6":"\u201CPasamos de Canva disperso a una marca que podemos pasar a colaboradores.\u201D","t.n6":"Marketplace, Series A","t.r6":"CMO",
+"t.q7":"\u201CLa web estuvo lista r\u00e1pido. No perdimos una semana en microdetalles.\u201D","t.n7":"Infraestructura IA","t.r7":"CTO",
+"t.q8":"\u201CPrecio competitivo sin sensaci\u00f3n barata. Trabajo premium y pr\u00e1ctico.\u201D","t.n8":"App consumer, pre-seed","t.r8":"Cofundadora",
+"teams.label":"Trabajos","teams.title":"Proyectos con fundadores","teams.desc":"Trabajos recientes del pack de lanzamiento: identidad, deck y piezas digitales. Iremos a\u00f1adiendo proyectos conforme salgan.",
+"teams.t1":"Marca e identidad","teams.t2":"Sistemas y gu\u00edas","teams.t3":"Web y digital","teams.t4":"Pitch y narrativa","teams.t5":"Pack de lanzamiento","teams.t6":"Proceso","teams.t7":"Pregunta",
+"uc.ch.t":"CircleHome","uc.ch.d":"Identidad visual y mockups orientados a producto para una marca de hogar conectado: sistema de logo, superficies de UI y piezas listas para presentar.","uc.ch.f1":"Logo y marcas","uc.ch.f2":"Visuales de producto y app","uc.ch.f3":"Soporte y mockups digitales","uc.ch.alt":"Identidad CircleHome y mockups de producto",
+"uc.v.t":"Vira","uc.v.d":"Dise\u00f1o de deck para inversores y sistema de diapositivas: jerarqu\u00eda clara, tipograf\u00eda consistente y maquetaci\u00f3n para narrar con poco tiempo.","uc.v.f1":"Direcci\u00f3n de arte del pitch","uc.v.f2":"Tipograf\u00eda y ret\u00edculas","uc.v.f3":"Usos del logo y portadas","uc.v.alt":"Maquetaci\u00f3n del pitch deck Vira",
+"uc.more":"Hablar de un proyecto similar \u2192",
+"tools.label":"Herramientas","tools.title":"En el stack que ya us\u00e1is","tools.desc":"Dise\u00f1amos en herramientas actuales para que compartir con agencias y equipo interno sea sencillo.",
+"how.label":"Proceso","how.title":"Del brief ca\u00f3tico a marca lista para lanzar","how.desc":"Un ciclo corto para etapas tempranas: feedback r\u00e1pido, hitos claros, sin postureo.",
+"how.s1tag":"Kickoff","how.s1t":"Descubrimiento","how.s1d":"Alineamos audiencia, posicionamiento y qu\u00e9 es \u00e9xito en los pr\u00f3ximos 90 d\u00edas.",
+"how.s2tag":"D\u00edas 2\u20135","how.s2t":"Direcci\u00f3n","how.s2d":"Rutas de concepto para identidad y narrativa: eliges camino y afinamos con tu equipo.",
+"how.s3tag":"D\u00edas 6\u201312","how.s3t":"Producci\u00f3n","how.s3d":"Logo, tipo, color, deck y web seg\u00fan la direcci\u00f3n elegida.",
+"how.s4tag":"Entrega","how.s4t":"Handoff","how.s4d":"Archivos ordenados, especificaciones y una sesi\u00f3n breve para que pod\u00e1is publicar.",
+"how.cta":"Ver calendario",
+"part.label":"Colaboraci\u00f3n","part.title":"Cerca del fundador, no una cola de tickets","part.desc":"Las startups pivotan. Nos quedamos cerca del producto y de la ronda para que el dise\u00f1o sea coherente.",
+"part.f1":"Acceso directo al dise\u00f1ador del proyecto","part.f2":"Actualizaciones async con hitos claros","part.f3":"Bucles de feedback realistas para equipos ocupados","part.f4":"Handoff empaquetado para que ingenier\u00eda avance","part.f5":"Narrativa lista para inversores en el deck","part.f6":"Disciplina de alcance: cuidamos tu runway","part.f7":"Sprints opcionales cuando escal\u00e9is","part.cta":"Escribir para empezar",
+"sec.label":"Propiedad y claridad","sec.title":"Tus activos. Tus archivos. Sin ataduras.","sec.desc":"Entregamos trabajo que pod\u00e9is operar vosotros mismos.",
+"sec.c1t":"T\u00fa tienes los entregables","sec.c1d":"Fuentes de dise\u00f1o y exportaciones: logos, tipograf\u00edas, tokens de color y masters del deck.",
+"sec.c2t":"Handoff ordenado","sec.c2d":"Nombres, carpetas y specs para que producto y marketing reutilicen sin fricci\u00f3n.",
+"sec.c3t":"Stack flexible","sec.c3d":"Figma, slides o web: lo que encaje con vuestro equipo y colaboradores.",
+"cl.label":"Conf\u00edan en nosotros","cl.title":"Equipos que necesitaban velocidad y credibilidad","cl.desc":"Trabajamos con fundadores de startups en etapa temprana\u2014pre-seed a Series A\u2014en SaaS, fintech, climate y deep tech.",
+"cl.b1":"B2B SaaS pre-seed","cl.b2":"Fintech seed","cl.b3":"Hardware clim\u00e1tico","cl.b4":"Infraestructura IA","cl.b5":"Dev tools","cl.b6":"Marketplace","cl.b7":"Health tech","cl.b8":"Consumer mobile","cl.b9":"Aceleradoras","cl.b10":"Spinouts universitarios","cl.more":"y m\u00e1s",
+"pr.label":"Precios","pr.title":"Un paquete. Todo lo necesario para presentaros.","pr.desc":"Un \u00fanico precio transparente para equipos en etapa temprana.",
+"pr.name":"Identidad y web de lanzamiento","pr.sub":"Identidad visual, logo, tipograf\u00eda, color, pitch deck y web\u2014pensados para salir juntos.","pr.from1":"Proyecto cerrado","pr.type1":"Un encargo \u00b7 entregables claros",
+"pr.i1":"Identidad visual y sistema de logo","pr.i2":"Tipograf\u00eda y paleta de color","pr.i3":"Pitch deck listo para inversores","pr.i4":"Dise\u00f1o web y layouts clave","pr.cta":"Escribir para reservar",
+"tm.label":"Equipo","tm.title":"Dise\u00f1adores que hablan fundador","tm.desc":"Neutral Studio es peque\u00f1o a prop\u00f3sito: decisiones r\u00e1pidas, comunicaci\u00f3n directa y oficio que se publica.",
+"tm.c1t":"Primero la startup","tm.c1d":"Optimizamos claridad, velocidad y runway, no premios.","tm.c2t":"Pensamiento de sistema","tm.c2d":"Identidad, deck y web alineados al iterar.","tm.c3t":"Consciente del pitch","tm.c3d":"Estructura narrativa acorde a c\u00f3mo leen los inversores.","tm.c4t":"Oficio","tm.c4d":"Tipograf\u00eda, color y composici\u00f3n con intenci\u00f3n.","tm.l3":"y m\u00e1s",
+"tm.sv1":"De punta a punta","tm.sl1":"Identidad, deck y web en un sistema","tm.sv2":"R\u00e1pido","tm.sl2":"Plazos de etapa temprana","tm.sv3":"Justo","tm.sl3":"Precio competitivo sin recortar calidad",
 "faq.title":"Preguntas frecuentes",
-"faq.q1":"\u00bfPara qui\u00e9n es esto? ","faq.a1":"Empresas que pierden horas en tareas repetitivas \u2014 agencias de marketing, firmas de auditor\u00eda, empresas industriales y consultoras. Si tu equipo dedica tiempo a reporting manual, entrada de datos o preparaci\u00f3n de documentos, podemos ayudar.",
-"faq.q2":"\u00bfNecesito conocimientos t\u00e9cnicos? ","faq.a2":"Para nada. Nos encargamos de todo lo t\u00e9cnico. T\u00fa solo nos cuentas qu\u00e9 tareas consumen tiempo.",
-"faq.q3":"\u00bfCu\u00e1nto tarda en estar listo? ","faq.a3":"Un piloto suele estar operativo en 1 semana. Implementaci\u00f3n completa 1-2 semanas.",
-"faq.q4":"\u00bfMis datos est\u00e1n seguros? ","faq.a4":"Tu sistema de IA es 100% privado. Los datos se quedan contigo. Somos GDPR compliant.",
-"faq.q5":"\u00bfQu\u00e9 pasa si no funciona? ","faq.a5":"Garant\u00eda de devoluci\u00f3n. Si no ves resultados, no pagas.",
-"faq.q6":"\u00bfQu\u00e9 modelos de IA us\u00e1is? ","faq.a6":"Somos model agnostic \u2014 t\u00fa eliges los modelos que mejor funcionen. Soportamos todos los modelos l\u00edderes.",
-"cta.label":"\u00bfListo?","cta.title":"Deja de perder tiempo. Empieza a automatizar.","cta.desc":"30 minutos. Sin compromiso. Te contamos exactamente qu\u00e9 podemos automatizar.","cta.b1":"Reserva una Demo","cta.b2":"Auditor\u00eda de IA Gratuita",
-"ft.brand":"Sistemas de IA privados para empresas. Implementados en 1 semana.","ft.product":"Producto","ft.company":"Empresa","ft.contact":"Contacto","ft.rights":"Todos los derechos reservados."
+"faq.q1":"\u00bfPara qui\u00e9n es Neutral Studio? ","faq.a1":"Startups en etapa temprana que necesitan identidad, pitch y web cre\u00edbles r\u00e1pido, sin contratar una agencia completa.",
+"faq.q2":"\u00bfHace falta un brief perfecto? ","faq.a2":"No. Traed notas, capturas y referencias; el brief lo afilamos hablando.",
+"faq.q3":"\u00bfCu\u00e1nto dura un proyecto? ","faq.a3":"La mayor\u00eda de packs de lanzamiento tardan unas semanas; m\u00e1s r\u00e1pido si el feedback es \u00e1gil. Los hitos los fijamos en el kickoff.",
+"faq.q4":"\u00bfQu\u00e9 recibo al final? ","faq.a4":"Fuentes y exportaciones para identidad, deck y web, organizadas para vuestro equipo.",
+"faq.q5":"\u00bfY si necesitamos m\u00e1s? ","faq.a5":"Podemos a\u00f1adir alcance despu\u00e9s del primer entregable\u2014p\u00e1ginas extra, motion o plantillas de campa\u00f1a.",
+"faq.q6":"\u00bfPor qu\u00e9 un solo precio? ","faq.a6":"Las startups necesitan previsibilidad. Un precio fijo alinea expectativas.",
+"cta.label":"\u00bfHablamos?","cta.title":"Dejad de parecer un borrador.","cta.desc":"Contad qu\u00e9 constru\u00eds y cu\u00e1ndo ten\u00e9is que ense\u00f1arlo. Respondemos con siguientes pasos.","cta.b1":"Escribir para empezar","cta.b2":"Hacer una pregunta",
+"ft.brand":"Dise\u00f1o gr\u00e1fico para startups en etapa temprana: identidad, deck y web, r\u00e1pido y con precio claro.","ft.product":"Producto","ft.company":"Empresa","ft.contact":"Contacto","ft.rights":"Todos los derechos reservados."
 }};
 let lang='en';
-function setLang(l){lang=l;document.documentElement.lang=l;const t=T[l];document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]){const svg=el.querySelector('svg');if(svg){el.childNodes.forEach(n=>{if(n.nodeType===3)n.remove()});el.insertBefore(document.createTextNode(t[k]),svg)}else if(t[k].includes('<')){el.innerHTML=t[k]}else{el.textContent=t[k]}}});document.querySelectorAll('.lang-t button').forEach(b=>b.classList.toggle('active',b.getAttribute('data-lang')===l))}
+function setLang(l){lang=l;document.documentElement.lang=l;const t=T[l];document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]){const svg=el.querySelector('svg');if(svg){el.childNodes.forEach(n=>{if(n.nodeType===3)n.remove()});el.insertBefore(document.createTextNode(t[k]),svg)}else if(t[k].includes('<')){el.innerHTML=t[k]}else{el.textContent=t[k]}}});document.querySelectorAll('[data-i18n-alt]').forEach(el=>{const k=el.getAttribute('data-i18n-alt');if(t[k])el.setAttribute('alt',t[k])});document.querySelectorAll('.lang-t button').forEach(b=>b.classList.toggle('active',b.getAttribute('data-lang')===l))}
 document.querySelectorAll('.lang-t button').forEach(b=>b.addEventListener('click',()=>setLang(b.getAttribute('data-lang'))));
 
 // Scroll bar
