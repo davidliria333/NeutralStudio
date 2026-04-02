@@ -124,10 +124,10 @@ section{padding:100px 0;position:relative}
 .testi-pause:hover{background:var(--bg-a)}
 .testi-pause svg{width:12px;height:12px;fill:var(--tx)}
 
-/* TEAMS */
-.teams-grid{display:flex;flex-wrap:wrap;gap:0;justify-content:center}
-.teams-grid a{padding:14px 24px;font-size:.9rem;font-weight:500;color:var(--tx-s);border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
-.teams-grid a:hover{color:var(--tx);border-bottom-color:var(--tx)}
+/* PORTFOLIO FOOTNOTE */
+.portfolio-more{text-align:center;margin-top:40px;padding-top:36px;border-top:1px solid var(--bdr);max-width:560px;margin-left:auto;margin-right:auto}
+.portfolio-more-line{font-size:1.35rem;font-weight:700;letter-spacing:-.4px;color:var(--tx);margin-bottom:10px}
+.portfolio-more-sub{font-size:.95rem;color:var(--tx-s);line-height:1.6}
 
 /* USE CASES */
 .uc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
@@ -303,7 +303,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
         </nav>
         <div class="nav-r">
             <div class="lang-t"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p" data-i18n="nav.cta">Start a project</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p" data-i18n="nav.cta">Book a call</a>
         </div>
         <button class="menu-btn" id="menuBtn" aria-label="Menu">
             <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg>
@@ -326,7 +326,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     <a href="#team" data-i18n="nav.team">Team</a>
     <a href="#faq">FAQ</a>
     <div class="lang-t" style="margin-top:12px;align-self:flex-start"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
-    <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p" style="margin-top:8px;text-align:center" data-i18n="nav.cta">Start a project</a>
+    <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p" style="margin-top:8px;text-align:center" data-i18n="nav.cta">Book a call</a>
 </div>
 
 <main>
@@ -335,10 +335,10 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 <section class="hero">
     <div class="container">
         <div class="badge reveal"><div class="badge-dot"></div><span data-i18n="hero.badge">Fast · agile · built for early-stage teams</span></div>
-        <h1 class="reveal reveal-d1" data-i18n="hero.h1"><em>Design</em> that helps<br>early-stage <em>startups</em> look &amp; pitch like they mean it</h1>
+        <h1 class="reveal reveal-d1" data-i18n="hero.h1">Your <em>design</em> partner for<br>early stage <em>startups</em></h1>
         <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">Neutral Studio is a graphic design studio for founders who need clarity and speed: identity, deck, and web—without the agency overhead.</p>
         <div class="hero-ctas reveal reveal-d3">
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p btn-lg" data-i18n="hero.cta1">Start a project</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p btn-lg" data-i18n="hero.cta1">Book a call</a>
             <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Question" class="btn btn-s btn-lg" data-i18n="hero.cta2">Email us</a>
         </div>
         <div class="hero-device reveal reveal-d4"><img src="home-sana.webp" alt="Studio work preview"></div>
@@ -383,15 +383,6 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <h2 class="s-title" data-i18n="teams.title">Projects we&rsquo;ve shipped with founders</h2>
             <p class="s-desc" data-i18n="teams.desc">Selected client work from our launch package—identity, deck, and digital touchpoints. More projects are added as we ship them.</p>
         </div>
-        <div class="teams-grid reveal" style="margin-bottom:48px;border-bottom:1px solid var(--bdr)">
-            <a href="#use-cases" data-i18n="teams.t1">Brand &amp; identity</a>
-            <a href="#use-cases" data-i18n="teams.t2">Systems &amp; guidelines</a>
-            <a href="#use-cases" data-i18n="teams.t3">Web &amp; digital</a>
-            <a href="#use-cases" data-i18n="teams.t4">Pitch &amp; narrative</a>
-            <a href="#pricing" data-i18n="teams.t5">Launch package</a>
-            <a href="#how-it-works" data-i18n="teams.t6">How we work</a>
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Question" data-i18n="teams.t7">Ask a question</a>
-        </div>
         <div class="uc-grid">
             <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20CircleHome" class="uc-card reveal">
                 <div class="uc-thumb"><img src="Portfolio%20Projects/CIRCLEHOME/MockUp_3.png" alt="CircleHome brand identity and product mockups" data-i18n-alt="uc.ch.alt"></div>
@@ -411,6 +402,10 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                     <span class="uc-link" data-i18n="uc.more">Discuss a similar project &rarr;</span>
                 </div>
             </a>
+        </div>
+        <div class="portfolio-more reveal">
+            <p class="portfolio-more-line" data-i18n="teams.more">+100 other projects</p>
+            <p class="portfolio-more-sub" data-i18n="teams.raised">We&rsquo;ve helped startups that have raised +$500M.</p>
         </div>
     </div>
 </section>
@@ -567,18 +562,18 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
         <div class="team-lay">
             <div class="reveal">
                 <p class="s-label" data-i18n="tm.label">Our Team</p>
-                <h2 class="s-title" data-i18n="tm.title">Designers who speak founder</h2>
-                <p class="s-desc" style="margin-bottom:28px" data-i18n="tm.desc">Neutral Studio is small on purpose—fast decisions, direct communication, and craft that ships.</p>
+                <h2 class="s-title" data-i18n="tm.title">Founders, design leaders, and makers</h2>
+                <p class="s-desc" style="margin-bottom:28px" data-i18n="tm.desc">We bring together exited startup founders, former chiefs of design from startups, and senior designers—over 50 years of combined experience, still small enough to move fast.</p>
                 <div class="team-creds">
-                    <div class="team-cred"><h4 data-i18n="tm.c1t">Startup-first</h4><p data-i18n="tm.c1d">We optimize for clarity, velocity, and runway—not awards.</p></div>
-                    <div class="team-cred"><h4 data-i18n="tm.c2t">Systems thinking</h4><p data-i18n="tm.c2d">Identity, deck, and web stay aligned as you iterate.</p></div>
-                    <div class="team-cred"><h4 data-i18n="tm.c3t">Pitch-aware</h4><p data-i18n="tm.c3d">Narrative structure that supports how investors actually read.</p></div>
-                    <div class="team-cred"><h4 data-i18n="tm.c4t">Hands-on craft</h4><p data-i18n="tm.c4d">Typography, color, and layout—done with intention.</p></div>
+                    <div class="team-cred"><h4 data-i18n="tm.c1t">Exited founders</h4><p data-i18n="tm.c1d">People who have built and sold companies—so runway, urgency, and shipping are second nature.</p></div>
+                    <div class="team-cred"><h4 data-i18n="tm.c2t">Former startup chiefs of design</h4><p data-i18n="tm.c2d">Leaders who have owned brand and product design inside high-growth teams—not theory from the sidelines.</p></div>
+                    <div class="team-cred"><h4 data-i18n="tm.c3t">Designers</h4><p data-i18n="tm.c3d">Hands-on craft across typography, color, layout, and digital—so deliverables stay coherent end to end.</p></div>
+                    <div class="team-cred"><h4 data-i18n="tm.c4t">50+ years combined</h4><p data-i18n="tm.c4d">Depth across stages, categories, and markets—without the agency layers.</p></div>
                 </div>
                 <div class="team-locs"><span class="team-loc">Remote-first</span><span class="team-loc">EU &amp; US</span><span class="team-loc" data-i18n="tm.l3">&amp; more</span></div>
             </div>
             <div class="team-vis reveal reveal-d2">
-                <div class="team-stat"><div class="team-stat-v" data-i18n="tm.sv1">End-to-end</div><div class="team-stat-l" data-i18n="tm.sl1">Identity, deck, and web in one coherent system</div></div>
+                <div class="team-stat"><div class="team-stat-v" data-i18n="tm.sv1">50+ yrs</div><div class="team-stat-l" data-i18n="tm.sl1">Combined experience across the team</div></div>
                 <div class="team-stat"><div class="team-stat-v" data-i18n="tm.sv2">Fast</div><div class="team-stat-l" data-i18n="tm.sl2">Built for early-stage timelines</div></div>
                 <div class="team-stat"><div class="team-stat-v" data-i18n="tm.sv3">Fair</div><div class="team-stat-l" data-i18n="tm.sl3">Competitive pricing without cutting corners</div></div>
             </div>
@@ -626,7 +621,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             </div>
             <div class="ft-col"><h4 data-i18n="ft.product">Product</h4><a href="#use-cases" data-i18n="nav.uc">Services</a><a href="#how-it-works" data-i18n="nav.how">How It Works</a><a href="#pricing" data-i18n="nav.pr">Pricing</a></div>
             <div class="ft-col"><h4 data-i18n="ft.company">Company</h4><a href="#team" data-i18n="nav.team">Team</a><a href="#faq">FAQ</a></div>
-            <div class="ft-col"><h4 data-i18n="ft.contact">Contact</h4><a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" data-i18n="nav.cta">Start a project</a><a href="mailto:arnaupinyolwork@gmail.com">arnaupinyolwork@gmail.com</a></div>
+            <div class="ft-col"><h4 data-i18n="ft.contact">Contact</h4><a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" data-i18n="nav.cta">Book a call</a><a href="mailto:arnaupinyolwork@gmail.com">arnaupinyolwork@gmail.com</a></div>
         </div>
         <div class="ft-bottom">
             <p>&copy; 2026 Neutral Studio. <span data-i18n="ft.rights">All rights reserved.</span></p>
@@ -637,9 +632,9 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 
 <script>
 const T={en:{
-"nav.uc":"Services","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Start a project",
+"nav.uc":"Services","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Book a call",
 "dd.mkt":"Brand & identity","dd.mkt.d":"Logo, type, and visual language","dd.audit":"Systems & guidelines","dd.audit.d":"Consistency as you scale","dd.ind":"Web & digital","dd.ind.d":"Site design and launch-ready UI","dd.strat":"Pitch & narrative","dd.strat.d":"Decks investors actually read",
-"hero.badge":"Fast \u00b7 agile \u00b7 built for early-stage teams","hero.h1":"<em>Design</em> that helps<br>early-stage <em>startups</em> look & pitch like they mean it","hero.sub":"Neutral Studio is a graphic design studio for founders who need clarity and speed: identity, deck, and web\u2014without the agency overhead.","hero.cta1":"Start a project","hero.cta2":"Email us","hero.cta3":"Ask a question ","hero.imgalt":"Studio preview",
+"hero.badge":"Fast \u00b7 agile \u00b7 built for early-stage teams","hero.h1":"Your <em>design</em> partner for<br>early stage <em>startups</em>","hero.sub":"Neutral Studio is a graphic design studio for founders who need clarity and speed: identity, deck, and web\u2014without the agency overhead.","hero.cta1":"Book a call","hero.cta2":"Email us","hero.cta3":"Ask a question ","hero.imgalt":"Studio preview",
 "m.c1":"Fintech startup","m.l1":"from kickoff to first brand kit","m.c2":"B2B SaaS","m.l2":"fewer deck revisions vs. prior agency","m.c3":"Climate tech","m.l3":"of assets delivered on first milestone","m.c4":"Hardware startup","m.l4":"faster launch-site turnaround","m.c5":"Health tech","m.l5":"lift in investor meeting follow-ups","m.c6":"AI infrastructure","m.l6":"more consistent brand touchpoints",
 "t.q1":"\u201CWe finally looked like a real company\u2014not a slide template. The deck and site landed in the same visual world.\u201D","t.n1":"B2B SaaS, seed stage","t.r1":"Co-founder",
 "t.q2":"\u201CNeutral moved at startup speed. We shipped a credible identity before our next investor week.\u201D","t.n2":"Fintech startup, pre-Series A","t.r2":"CEO",
@@ -650,7 +645,7 @@ const T={en:{
 "t.q7":"\u201CThe website was launch-ready fast. We didn\u2019t lose a week debating micro-details.\u201D","t.n7":"AI infrastructure startup","t.r7":"CTO",
 "t.q8":"\u201CCompetitive pricing without feeling cheap. The work felt premium and practical.\u201D","t.n8":"Consumer app, pre-seed","t.r8":"Co-founder",
 "teams.label":"Selected work","teams.title":"Projects we\u2019ve shipped with founders","teams.desc":"Selected client work from our launch package\u2014identity, deck, and digital touchpoints. More projects are added as we ship them.",
-"teams.t1":"Brand & identity","teams.t2":"Systems & guidelines","teams.t3":"Web & digital","teams.t4":"Pitch & narrative","teams.t5":"Launch package","teams.t6":"How we work","teams.t7":"Ask a question",
+"teams.more":"+100 other projects","teams.raised":"We\u2019ve helped startups that have raised +$500M.",
 "uc.ch.t":"CircleHome","uc.ch.d":"Visual identity and product-facing mockups for a connected-home brand\u2014logo system, UI surfaces, and launch-ready presentation assets.","uc.ch.f1":"Logo & brand marks","uc.ch.f2":"Product & app visuals","uc.ch.f3":"Collateral & digital mockups","uc.ch.alt":"CircleHome brand identity and product mockups",
 "uc.v.t":"Vira","uc.v.d":"Investor-facing deck design and slide system\u2014clear hierarchy, consistent typography, and layouts built for storytelling under time pressure.","uc.v.f1":"Pitch deck art direction","uc.v.f2":"Typography & layout grids","uc.v.f3":"Logo lockups & cover systems","uc.v.alt":"Vira pitch deck layouts and slide design",
 "uc.more":"Discuss a similar project \u2192",
@@ -672,9 +667,9 @@ const T={en:{
 "pr.label":"Pricing","pr.title":"One package. Everything you need to show up.","pr.desc":"A single, transparent price for early-stage teams\u2014no surprises, no bloated scope.",
 "pr.name":"Launch identity & web","pr.sub":"Visual identity, logo, typography, color, pitch deck, and website\u2014designed to ship together.","pr.from1":"Fixed project","pr.type1":"One engagement \u00b7 clear deliverables",
 "pr.i1":"Visual identity & logo system","pr.i2":"Typography & color palette","pr.i3":"Investor-ready pitch deck","pr.i4":"Marketing website design & key layouts","pr.cta":"Email to book",
-"tm.label":"Our Team","tm.title":"Designers who speak founder","tm.desc":"Neutral Studio is small on purpose\u2014fast decisions, direct communication, and craft that ships.",
-"tm.c1t":"Startup-first","tm.c1d":"We optimize for clarity, velocity, and runway\u2014not awards.","tm.c2t":"Systems thinking","tm.c2d":"Identity, deck, and web stay aligned as you iterate.","tm.c3t":"Pitch-aware","tm.c3d":"Narrative structure that supports how investors actually read.","tm.c4t":"Hands-on craft","tm.c4d":"Typography, color, and layout\u2014done with intention.","tm.l3":"& more",
-"tm.sv1":"End-to-end","tm.sl1":"Identity, deck, and web in one coherent system","tm.sv2":"Fast","tm.sl2":"Built for early-stage timelines","tm.sv3":"Fair","tm.sl3":"Competitive pricing without cutting corners",
+"tm.label":"Our Team","tm.title":"Founders, design leaders, and makers","tm.desc":"We bring together exited startup founders, former chiefs of design from startups, and senior designers\u2014over 50 years of combined experience, still small enough to move fast.",
+"tm.c1t":"Exited founders","tm.c1d":"People who have built and sold companies\u2014so runway, urgency, and shipping are second nature.","tm.c2t":"Former startup chiefs of design","tm.c2d":"Leaders who have owned brand and product design inside high-growth teams\u2014not theory from the sidelines.","tm.c3t":"Designers","tm.c3d":"Hands-on craft across typography, color, layout, and digital\u2014so deliverables stay coherent end to end.","tm.c4t":"50+ years combined","tm.c4d":"Depth across stages, categories, and markets\u2014without the agency layers.","tm.l3":"& more",
+"tm.sv1":"50+ yrs","tm.sl1":"Combined experience across the team","tm.sv2":"Fast","tm.sl2":"Built for early-stage timelines","tm.sv3":"Fair","tm.sl3":"Competitive pricing without cutting corners",
 "faq.title":"Frequently asked questions",
 "faq.q1":"Who is Neutral Studio for? ","faq.a1":"Early-stage startups that need a credible identity, pitch, and web presence quickly\u2014without hiring a full agency roster.",
 "faq.q2":"Do I need a full brand brief? ","faq.a2":"No. Bring what you have\u2014notes, product screenshots, competitor links\u2014and we\u2019ll shape the brief through conversation.",
@@ -685,9 +680,9 @@ const T={en:{
 "cta.label":"Ready?","cta.title":"Stop looking like a rough draft.","cta.desc":"Tell us what you\u2019re building and when you need to show up. We\u2019ll reply with next steps and timing.","cta.b1":"Email to start","cta.b2":"Ask a question",
 "ft.brand":"Graphic design for early-stage startups\u2014identity, deck, and web\u2014fast and fairly priced.","ft.product":"Product","ft.company":"Company","ft.contact":"Contact","ft.rights":"All rights reserved."
 },es:{
-"nav.uc":"Servicios","nav.how":"C\u00f3mo trabajamos","nav.pr":"Precios","nav.team":"Equipo","nav.cta":"Empezar proyecto",
+"nav.uc":"Servicios","nav.how":"C\u00f3mo trabajamos","nav.pr":"Precios","nav.team":"Equipo","nav.cta":"Reservar llamada",
 "dd.mkt":"Marca e identidad","dd.mkt.d":"Logo, tipograf\u00eda y lenguaje visual","dd.audit":"Sistemas y gu\u00edas","dd.audit.d":"Coherencia al escalar","dd.ind":"Web y digital","dd.ind.d":"Dise\u00f1o web listo para lanzar","dd.strat":"Pitch y narrativa","dd.strat.d":"Decks que s\u00ed leen los inversores",
-"hero.badge":"R\u00e1pido \u00b7 \u00e1gil \u00b7 para equipos en etapa temprana","hero.h1":"<em>Dise\u00f1o</em> para que las<br><em>startups</em> en fase inicial parezcan y presenten con intenci\u00f3n","hero.sub":"Neutral Studio es un estudio de dise\u00f1o gr\u00e1fico para fundadores que necesitan claridad y velocidad: identidad, deck y web, sin el peso de una gran agencia.","hero.cta1":"Empezar proyecto","hero.cta2":"Escr\u00edbenos","hero.cta3":"Hacer una pregunta ","hero.imgalt":"Vista previa del estudio",
+"hero.badge":"R\u00e1pido \u00b7 \u00e1gil \u00b7 para equipos en etapa temprana","hero.h1":"Tu socio de <em>dise\u00f1o</em> para<br><em>startups</em> en etapa temprana","hero.sub":"Neutral Studio es un estudio de dise\u00f1o gr\u00e1fico para fundadores que necesitan claridad y velocidad: identidad, deck y web, sin el peso de una gran agencia.","hero.cta1":"Reservar llamada","hero.cta2":"Escr\u00edbenos","hero.cta3":"Hacer una pregunta ","hero.imgalt":"Vista previa del estudio",
 "m.c1":"Startup fintech","m.l1":"del brief al primer kit de marca","m.c2":"B2B SaaS","m.l2":"menos rondas de deck que con la agencia anterior","m.c3":"Climate tech","m.l3":"de entregas en el primer hito","m.c4":"Hardware","m.l4":"web de lanzamiento m\u00e1s r\u00e1pida","m.c5":"Health tech","m.l5":"m\u00e1s seguimiento tras reuniones con inversores","m.c6":"Infraestructura IA","m.l6":"m\u00e1s coherencia en puntos de contacto",
 "t.q1":"\u201CPor fin parec\u00edamos una empresa de verdad, no una plantilla. El deck y la web compart\u00edan el mismo mundo visual.\u201D","t.n1":"B2B SaaS, seed","t.r1":"Cofundador",
 "t.q2":"\u201CNeutral fue a velocidad de startup. Tuvimos una identidad cre\u00edble antes de la semana de inversores.\u201D","t.n2":"Fintech, pre-Series A","t.r2":"CEO",
@@ -698,7 +693,7 @@ const T={en:{
 "t.q7":"\u201CLa web estuvo lista r\u00e1pido. No perdimos una semana en microdetalles.\u201D","t.n7":"Infraestructura IA","t.r7":"CTO",
 "t.q8":"\u201CPrecio competitivo sin sensaci\u00f3n barata. Trabajo premium y pr\u00e1ctico.\u201D","t.n8":"App consumer, pre-seed","t.r8":"Cofundadora",
 "teams.label":"Trabajos","teams.title":"Proyectos con fundadores","teams.desc":"Trabajos recientes del pack de lanzamiento: identidad, deck y piezas digitales. Iremos a\u00f1adiendo proyectos conforme salgan.",
-"teams.t1":"Marca e identidad","teams.t2":"Sistemas y gu\u00edas","teams.t3":"Web y digital","teams.t4":"Pitch y narrativa","teams.t5":"Pack de lanzamiento","teams.t6":"Proceso","teams.t7":"Pregunta",
+"teams.more":"+100 proyectos m\u00e1s","teams.raised":"Hemos trabajado con startups que han levantado +500M$.",
 "uc.ch.t":"CircleHome","uc.ch.d":"Identidad visual y mockups orientados a producto para una marca de hogar conectado: sistema de logo, superficies de UI y piezas listas para presentar.","uc.ch.f1":"Logo y marcas","uc.ch.f2":"Visuales de producto y app","uc.ch.f3":"Soporte y mockups digitales","uc.ch.alt":"Identidad CircleHome y mockups de producto",
 "uc.v.t":"Vira","uc.v.d":"Dise\u00f1o de deck para inversores y sistema de diapositivas: jerarqu\u00eda clara, tipograf\u00eda consistente y maquetaci\u00f3n para narrar con poco tiempo.","uc.v.f1":"Direcci\u00f3n de arte del pitch","uc.v.f2":"Tipograf\u00eda y ret\u00edculas","uc.v.f3":"Usos del logo y portadas","uc.v.alt":"Maquetaci\u00f3n del pitch deck Vira",
 "uc.more":"Hablar de un proyecto similar \u2192",
@@ -720,9 +715,9 @@ const T={en:{
 "pr.label":"Precios","pr.title":"Un paquete. Todo lo necesario para presentaros.","pr.desc":"Un \u00fanico precio transparente para equipos en etapa temprana.",
 "pr.name":"Identidad y web de lanzamiento","pr.sub":"Identidad visual, logo, tipograf\u00eda, color, pitch deck y web\u2014pensados para salir juntos.","pr.from1":"Proyecto cerrado","pr.type1":"Un encargo \u00b7 entregables claros",
 "pr.i1":"Identidad visual y sistema de logo","pr.i2":"Tipograf\u00eda y paleta de color","pr.i3":"Pitch deck listo para inversores","pr.i4":"Dise\u00f1o web y layouts clave","pr.cta":"Escribir para reservar",
-"tm.label":"Equipo","tm.title":"Dise\u00f1adores que hablan fundador","tm.desc":"Neutral Studio es peque\u00f1o a prop\u00f3sito: decisiones r\u00e1pidas, comunicaci\u00f3n directa y oficio que se publica.",
-"tm.c1t":"Primero la startup","tm.c1d":"Optimizamos claridad, velocidad y runway, no premios.","tm.c2t":"Pensamiento de sistema","tm.c2d":"Identidad, deck y web alineados al iterar.","tm.c3t":"Consciente del pitch","tm.c3d":"Estructura narrativa acorde a c\u00f3mo leen los inversores.","tm.c4t":"Oficio","tm.c4d":"Tipograf\u00eda, color y composici\u00f3n con intenci\u00f3n.","tm.l3":"y m\u00e1s",
-"tm.sv1":"De punta a punta","tm.sl1":"Identidad, deck y web en un sistema","tm.sv2":"R\u00e1pido","tm.sl2":"Plazos de etapa temprana","tm.sv3":"Justo","tm.sl3":"Precio competitivo sin recortar calidad",
+"tm.label":"Equipo","tm.title":"Fundadores, l\u00edderes de dise\u00f1o y makers","tm.desc":"Unimos fundadores de startups que han salido (exit), antiguos chiefs of design de startups y dise\u00f1adores senior: m\u00e1s de 50 a\u00f1os de experiencia combinada, con un equipo lo bastante peque\u00f1o para ir r\u00e1pido.",
+"tm.c1t":"Fundadores con exit","tm.c1d":"Personas que han construido y vendido empresas: runway, urgencia y shippear son el d\u00eda a d\u00eda.","tm.c2t":"Ex chiefs of design de startups","tm.c2d":"Liderazgo que ha llevado marca y producto en equipos de alto crecimiento, no teor\u00eda desde fuera.","tm.c3t":"Dise\u00f1adores","tm.c3d":"Oficio en tipograf\u00eda, color, maquetaci\u00f3n y digital para que todo llegue coherente.","tm.c4t":"+50 a\u00f1os en conjunto","tm.c4d":"Profundidad por etapas, categor\u00edas y mercados, sin capas de agencia.","tm.l3":"y m\u00e1s",
+"tm.sv1":"+50 a\u00f1os","tm.sl1":"Experiencia combinada del equipo","tm.sv2":"R\u00e1pido","tm.sl2":"Plazos de etapa temprana","tm.sv3":"Justo","tm.sl3":"Precio competitivo sin recortar calidad",
 "faq.title":"Preguntas frecuentes",
 "faq.q1":"\u00bfPara qui\u00e9n es Neutral Studio? ","faq.a1":"Startups en etapa temprana que necesitan identidad, pitch y web cre\u00edbles r\u00e1pido, sin contratar una agencia completa.",
 "faq.q2":"\u00bfHace falta un brief perfecto? ","faq.a2":"No. Traed notas, capturas y referencias; el brief lo afilamos hablando.",
