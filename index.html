@@ -6,7 +6,7 @@
     <title>Neutral Studio — Graphic design for early-stage startups</title>
     <meta name="description" content="Neutral Studio is a graphic design studio for early-stage startups: visual identity, logo, typography, colors, pitch deck, and website in one $3,000 package—fast, agile, and priced for founders without agency overhead.">
     <meta name="keywords" content="startup branding, visual identity, pitch deck design, startup website, logo design, Neutral Studio">
-    <link rel="icon" type="image/png" href="Logo-01.png">
+    <link rel="icon" type="image/png" href="Logo_Mesa%20de%20trabajo%201%20copia.png">
     <link rel="canonical" href="https://neutralstudio.example/">
     <meta property="og:title" content="Neutral Studio — Graphic design for early-stage startups">
     <meta property="og:description" content="Identity, deck, and web in one package—$3,000. Fast and agile for founders who need clarity and speed, not a bloated agency process.">
@@ -90,39 +90,14 @@ section{padding:100px 0;position:relative}
 .s-hdr{text-align:center;margin-bottom:56px}
 .s-hdr .s-desc{margin-left:auto;margin-right:auto}
 
-/* METRICS + TESTIMONIALS (Sana-style) */
-.roi-wrap{background:var(--bg);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
-.roi-stats{display:flex;max-width:1200px;margin:0 auto;padding:0 24px}
-.roi-stat{flex:1;padding:28px 32px;border-right:1px solid var(--bdr)}
-.roi-stat:last-child{border-right:none}
-.roi-stat .stat-cat{font-size:.72rem;font-weight:600;letter-spacing:.3px;color:var(--tx-s);margin-bottom:10px}
-.roi-stat .stat-val{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:500;letter-spacing:-1px;color:var(--tx);line-height:1.1}
-.roi-stat .stat-lbl{font-size:.82rem;color:var(--tx-m);line-height:1.4;margin-top:4px}
-.testi-wrap{overflow:hidden;padding:32px 0 48px}
-.testi-track{display:flex;gap:16px;padding-left:max(24px,calc((100vw - 1200px)/2));transition:transform .6s cubic-bezier(.25,.1,.25,1);will-change:transform;cursor:grab;user-select:none}
-.testi-track.dragging{cursor:grabbing;transition:none}
-.img-card{flex:0 0 300px;flex-shrink:0;border-radius:18px;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;padding:28px 24px;color:#fff}
-.img-card::before{content:'';position:absolute;inset:0;z-index:0}
-.img-card::after{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.5) 100%)}
-.img-card>*{position:relative;z-index:1}
-.img-card:nth-child(1)::before{background:url('testi-1.png') center/cover no-repeat}
-.img-card:nth-child(2)::before{background:url('testi-2.png') center/cover no-repeat}
-.img-card:nth-child(3)::before{background:url('testi-3.png') center/cover no-repeat}
-.img-card:nth-child(4)::before{background:url('testi-4.png') center/cover no-repeat}
-.img-card:nth-child(5)::before{background:url('testi-5.png') center/cover no-repeat}
-.img-card:nth-child(6)::before{background:url('testi-6.png') center/cover no-repeat}
-.img-card:nth-child(7)::before{background:url('testi-7.png') center/cover no-repeat}
-.img-card:nth-child(8)::before{background:url('testi-1.png') center/cover no-repeat}
-.img-card .ic-quote{font-size:.92rem;line-height:1.7;flex:1}
-.img-card .ic-meta{margin-top:24px}
-.img-card .ic-role{font-size:.78rem;opacity:.55}
-.img-card .ic-name{font-size:.88rem;font-weight:500;margin-top:3px}
-.testi-controls{display:flex;align-items:center;justify-content:center;gap:12px;padding:24px 0 0}
-.testi-progress{width:120px;height:3px;background:#e5e5e5;border-radius:3px;overflow:hidden;position:relative}
-.testi-progress-bar{height:100%;background:var(--tx);border-radius:3px;transition:width .3s ease}
-.testi-pause{width:32px;height:32px;border-radius:50%;border:1px solid var(--bdr);background:var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s}
-.testi-pause:hover{background:var(--bg-a)}
-.testi-pause svg{width:12px;height:12px;fill:var(--tx)}
+/* SERVICES */
+.svc-wrap{background:var(--bg);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:100px 0}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.svc-card{background:var(--bg);border:1px solid var(--bdr);border-radius:16px;padding:26px 22px 28px;transition:all .25s;display:flex;flex-direction:column;min-height:100%}
+.svc-card:hover{border-color:var(--bdr-h);box-shadow:var(--sh-m);transform:translateY(-3px)}
+.svc-card h3{font-size:1.05rem;font-weight:600;letter-spacing:-.35px;margin-bottom:10px;line-height:1.25;color:var(--tx)}
+.svc-card p{font-size:.84rem;color:var(--tx-s);line-height:1.55;margin:0;flex:1}
+.svc-card .svc-ix{width:36px;height:36px;border-radius:10px;background:#ecfdf5;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:.72rem;font-weight:700;color:var(--acc);letter-spacing:.5px}
 
 /* PORTFOLIO FOOTNOTE */
 .portfolio-more{text-align:center;margin-top:40px;padding-top:36px;border-top:1px solid var(--bdr);max-width:560px;margin-left:auto;margin-right:auto}
@@ -261,7 +236,7 @@ section{padding:100px 0;position:relative}
 .steps{grid-template-columns:1fr 1fr;gap:28px}
 .sec-lay{grid-template-columns:1fr}.part-lay{grid-template-columns:1fr;gap:24px}
 .team-lay{grid-template-columns:1fr;gap:40px}.ft-grid{grid-template-columns:1fr 1fr;gap:28px}
-.roi-stats{overflow-x:auto;scrollbar-width:none}.roi-stats::-webkit-scrollbar{display:none}.roi-stat{min-width:160px}.pr-prices{grid-template-columns:1fr}
+.svc-grid{grid-template-columns:repeat(2,1fr)}.pr-prices{grid-template-columns:1fr}
 .part-services{padding-left:0}
 }
 @media(max-width:640px){
@@ -274,12 +249,11 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 .hero-ctas .btn{text-align:center}
 .f-cta-btns{flex-direction:column;align-items:center}
 .ft-grid{grid-template-columns:1fr;gap:20px}.ft-bottom{flex-direction:column;gap:12px;text-align:center}
-.img-card{flex:0 0 280px;min-height:340px;padding:20px 16px}
-.testi-track{gap:12px}
-.roi-stat{min-width:200px;flex-shrink:0;border-right:1px solid var(--bdr);border-bottom:none}.roi-stat:last-child{border-right:none}
 .part-services{grid-template-columns:1fr}
 .pr-includes{grid-template-columns:1fr}.sec-lay{grid-template-columns:1fr}
 .pr-grid{grid-template-columns:1fr}
+.svc-wrap{padding:72px 0}
+.svc-grid{grid-template-columns:1fr}
 }
     </style>
 </head>
@@ -300,6 +274,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                     <a href="#use-cases"><strong data-i18n="dd.strat">Pitch &amp; narrative</strong><span data-i18n="dd.strat.d">Decks investors actually read</span></a>
                 </div>
             </div>
+            <a href="#use-cases" data-i18n="nav.sw">Selected Work</a>
             <a href="#how-it-works" data-i18n="nav.how">How It Works</a>
             <a href="#pricing" data-i18n="nav.pr">Pricing</a>
             <a href="#team" data-i18n="nav.team">Team</a>
@@ -325,6 +300,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <a href="#use-cases" data-i18n="dd.strat">Pitch &amp; narrative</a>
         </div>
     </div>
+    <a href="#use-cases" data-i18n="nav.sw">Selected Work</a>
     <a href="#how-it-works" data-i18n="nav.how">How It Works</a>
     <a href="#pricing" data-i18n="nav.pr">Pricing</a>
     <a href="#team" data-i18n="nav.team">Team</a>
@@ -351,33 +327,26 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     <div class="hero-bg"><img src="hero-bg.png" alt=""></div>
 </section>
 
-<!-- METRICS + TESTIMONIALS -->
-<div class="roi-wrap">
-    <div class="roi-stats reveal">
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c1">Fintech startup</strong></p><p class="stat-val">10 days</p><p class="stat-lbl" data-i18n="m.l1">from kickoff to first brand kit</p></div>
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c2">B2B SaaS</strong></p><p class="stat-val">62%</p><p class="stat-lbl" data-i18n="m.l2">fewer deck revisions vs. prior agency</p></div>
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c3">Climate tech</strong></p><p class="stat-val">95%</p><p class="stat-lbl" data-i18n="m.l3">of assets delivered on first milestone</p></div>
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c4">Hardware startup</strong></p><p class="stat-val">50%</p><p class="stat-lbl" data-i18n="m.l4">faster launch-site turnaround</p></div>
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c5">Health tech</strong></p><p class="stat-val">66%</p><p class="stat-lbl" data-i18n="m.l5">lift in investor meeting follow-ups</p></div>
-        <div class="roi-stat"><p class="stat-cat"><strong data-i18n="m.c6">AI infrastructure</strong></p><p class="stat-val">2&times;</p><p class="stat-lbl" data-i18n="m.l6">more consistent brand touchpoints</p></div>
-    </div>
-    <div class="testi-wrap">
-        <div class="testi-track" id="testiTrack">
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q1">&ldquo;We finally looked like a real company—not a slide template. The deck and site landed in the same visual world.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r1">Co-founder</p><p class="ic-name" data-i18n="t.n1">B2B SaaS, seed stage</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q2">&ldquo;Neutral moved at startup speed. We shipped a credible identity before our next investor week.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r2">CEO</p><p class="ic-name" data-i18n="t.n2">Fintech startup, pre-Series A</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q3">&ldquo;One price, clear scope. No surprise invoices. That alone made it easy to say yes.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r3">Head of Ops</p><p class="ic-name" data-i18n="t.n3">Health tech, early-stage</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q4">&ldquo;The typography and color system gave our product team a north star for UI decisions.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r4">Product lead</p><p class="ic-name" data-i18n="t.n4">Dev tools startup</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q5">&ldquo;Our pitch deck finally matched how we talk. Meetings felt less like we were apologizing for our visuals.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r5">Founder</p><p class="ic-name" data-i18n="t.n5">Climate tech, accelerator</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q6">&ldquo;We went from scattered Canva files to a brand we can hand to contractors and designers.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r6">CMO</p><p class="ic-name" data-i18n="t.n6">Marketplace, Series A</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q7">&ldquo;The website was launch-ready fast. We didn&rsquo;t lose a week debating micro-details.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r7">CTO</p><p class="ic-name" data-i18n="t.n7">AI infrastructure startup</p></div></div>
-            <div class="img-card"><p class="ic-quote" data-i18n="t.q8">&ldquo;Competitive pricing without feeling cheap. The work felt premium and practical.&rdquo;</p><div class="ic-meta"><p class="ic-role" data-i18n="t.r8">Co-founder</p><p class="ic-name" data-i18n="t.n8">Consumer app, pre-seed</p></div></div>
+<!-- SERVICES -->
+<section class="svc-wrap" id="services">
+    <div class="container">
+        <div class="s-hdr reveal">
+            <p class="s-label" data-i18n="svc.label">Services</p>
+            <h2 class="s-title" data-i18n="svc.title">What we design for teams</h2>
+            <p class="s-desc" data-i18n="svc.desc">End-to-end brand and digital craft—identity, product, narrative, and campaign-ready assets in one coherent system.</p>
         </div>
-        <div class="testi-controls">
-            <div class="testi-progress"><div class="testi-progress-bar" id="testiBar"></div></div>
-            <button class="testi-pause" id="testiPause" aria-label="Pause"><svg viewBox="0 0 12 12"><rect x="1" y="1" width="4" height="10" rx="1"/><rect x="7" y="1" width="4" height="10" rx="1"/></svg></button>
+        <div class="svc-grid">
+            <div class="svc-card reveal"><span class="svc-ix" aria-hidden="true">01</span><h3 data-i18n="svc.1t">Brand Identity</h3><p data-i18n="svc.1d">Logo systems, typography, color, and guidelines that scale with your company.</p></div>
+            <div class="svc-card reveal reveal-d1"><span class="svc-ix" aria-hidden="true">02</span><h3 data-i18n="svc.2t">Web Design</h3><p data-i18n="svc.2d">Marketing sites and key pages—responsive layouts and launch-ready UI.</p></div>
+            <div class="svc-card reveal reveal-d2"><span class="svc-ix" aria-hidden="true">03</span><h3 data-i18n="svc.3t">UI/UX Design</h3><p data-i18n="svc.3d">Flows, components, and systems for products people actually use.</p></div>
+            <div class="svc-card reveal reveal-d3"><span class="svc-ix" aria-hidden="true">04</span><h3 data-i18n="svc.4t">Deck Design</h3><p data-i18n="svc.4d">Investor and sales decks with clear hierarchy and narrative structure.</p></div>
+            <div class="svc-card reveal"><span class="svc-ix" aria-hidden="true">05</span><h3 data-i18n="svc.5t">Motion Design</h3><p data-i18n="svc.5d">Logo animation, promos, and social-first motion that matches the brand.</p></div>
+            <div class="svc-card reveal reveal-d1"><span class="svc-ix" aria-hidden="true">06</span><h3 data-i18n="svc.6t">Social Media &amp; Ad Creatives</h3><p data-i18n="svc.6d">Paid social, organic, and display formats that stay on-message.</p></div>
+            <div class="svc-card reveal reveal-d2"><span class="svc-ix" aria-hidden="true">07</span><h3 data-i18n="svc.7t">Print Design</h3><p data-i18n="svc.7d">Editorial, posters, and collateral—print-ready files and specs.</p></div>
+            <div class="svc-card reveal reveal-d3"><span class="svc-ix" aria-hidden="true">08</span><h3 data-i18n="svc.8t">Packaging &amp; Merchandise</h3><p data-i18n="svc.8d">Boxes, labels, and swag—designed for production and shelf impact.</p></div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- SELECTED WORK -->
 <section class="bg-a" id="use-cases">
@@ -662,18 +631,18 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 
 <script>
 const T={en:{
-"nav.uc":"Services","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Book a call",
+"nav.uc":"Services","nav.sw":"Selected Work","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Book a call",
 "dd.mkt":"Brand & identity","dd.mkt.d":"Logo, type, and visual language","dd.audit":"Systems & guidelines","dd.audit.d":"Consistency as you scale","dd.ind":"Web & digital","dd.ind.d":"Site design and launch-ready UI","dd.strat":"Pitch & narrative","dd.strat.d":"Decks investors actually read",
 "hero.badge":"Fast \u00b7 agile \u00b7 built for early-stage teams","hero.h1":"Your <em>design</em> partner for<br>early stage <em>startups</em>","hero.sub":"Neutral Studio is a graphic design studio for founders who need clarity and speed: identity, deck, and web\u2014without the agency overhead.","hero.cta1":"Book a call","hero.cta2":"Email us","hero.cta3":"Ask a question ","hero.imgalt":"Studio preview",
-"m.c1":"Fintech startup","m.l1":"from kickoff to first brand kit","m.c2":"B2B SaaS","m.l2":"fewer deck revisions vs. prior agency","m.c3":"Climate tech","m.l3":"of assets delivered on first milestone","m.c4":"Hardware startup","m.l4":"faster launch-site turnaround","m.c5":"Health tech","m.l5":"lift in investor meeting follow-ups","m.c6":"AI infrastructure","m.l6":"more consistent brand touchpoints",
-"t.q1":"\u201CWe finally looked like a real company\u2014not a slide template. The deck and site landed in the same visual world.\u201D","t.n1":"B2B SaaS, seed stage","t.r1":"Co-founder",
-"t.q2":"\u201CNeutral moved at startup speed. We shipped a credible identity before our next investor week.\u201D","t.n2":"Fintech startup, pre-Series A","t.r2":"CEO",
-"t.q3":"\u201COne price, clear scope. No surprise invoices. That alone made it easy to say yes.\u201D","t.n3":"Health tech, early-stage","t.r3":"Head of Ops",
-"t.q4":"\u201CThe typography and color system gave our product team a north star for UI decisions.\u201D","t.n4":"Dev tools startup","t.r4":"Product lead",
-"t.q5":"\u201COur pitch deck finally matched how we talk. Meetings felt less like we were apologizing for our visuals.\u201D","t.n5":"Climate tech, accelerator","t.r5":"Founder",
-"t.q6":"\u201CWe went from scattered Canva files to a brand we can hand to contractors and designers.\u201D","t.n6":"Marketplace, Series A","t.r6":"CMO",
-"t.q7":"\u201CThe website was launch-ready fast. We didn\u2019t lose a week debating micro-details.\u201D","t.n7":"AI infrastructure startup","t.r7":"CTO",
-"t.q8":"\u201CCompetitive pricing without feeling cheap. The work felt premium and practical.\u201D","t.n8":"Consumer app, pre-seed","t.r8":"Co-founder",
+"svc.label":"Services","svc.title":"What we design for teams","svc.desc":"End-to-end brand and digital craft\u2014identity, product, narrative, and campaign-ready assets in one coherent system.",
+"svc.1t":"Brand Identity","svc.1d":"Logo systems, typography, color, and guidelines that scale with your company.",
+"svc.2t":"Web Design","svc.2d":"Marketing sites and key pages\u2014responsive layouts and launch-ready UI.",
+"svc.3t":"UI/UX Design","svc.3d":"Flows, components, and systems for products people actually use.",
+"svc.4t":"Deck Design","svc.4d":"Investor and sales decks with clear hierarchy and narrative structure.",
+"svc.5t":"Motion Design","svc.5d":"Logo animation, promos, and social-first motion that matches the brand.",
+"svc.6t":"Social Media & Ad Creatives","svc.6d":"Paid social, organic, and display formats that stay on-message.",
+"svc.7t":"Print Design","svc.7d":"Editorial, posters, and collateral\u2014print-ready files and specs.",
+"svc.8t":"Packaging & Merchandise","svc.8d":"Boxes, labels, and swag\u2014designed for production and shelf impact.",
 "teams.label":"Selected work","teams.title":"Projects we\u2019ve shipped with founders","teams.desc":"Selected client work from our launch package\u2014identity, deck, and digital touchpoints. More projects are added as we ship them.",
 "teams.more":"+100 other projects","teams.raised":"We\u2019ve helped startups that have raised +$500M.",
 "uc.ch.t":"CircleHome","uc.ch.d":"Complete identity system for a connected-home brand\u2014mockups, investor pitch deck, and web\u2014plus logo system and product lines CirclePass & CircleSafe.","uc.ch.f1":"Full identity system","uc.ch.f2":"Mockups & pitch deck","uc.ch.f3":"Web & launch assets","uc.ch.alt":"CircleHome \u2014 full identity, mockups, deck, and web",
@@ -713,18 +682,18 @@ const T={en:{
 "cta.label":"Ready?","cta.title":"Stop looking like a rough draft.","cta.desc":"Tell us what you\u2019re building and when you need to show up. We\u2019ll reply with next steps and timing.","cta.b1":"Email to start","cta.b2":"Ask a question",
 "ft.brand":"Graphic design for early-stage startups\u2014identity, deck, and web\u2014fast and fairly priced.","ft.product":"Product","ft.company":"Company","ft.contact":"Contact","ft.rights":"All rights reserved."
 },es:{
-"nav.uc":"Servicios","nav.how":"C\u00f3mo trabajamos","nav.pr":"Precios","nav.team":"Equipo","nav.cta":"Reservar llamada",
+"nav.uc":"Servicios","nav.sw":"Trabajos","nav.how":"C\u00f3mo trabajamos","nav.pr":"Precios","nav.team":"Equipo","nav.cta":"Reservar llamada",
 "dd.mkt":"Marca e identidad","dd.mkt.d":"Logo, tipograf\u00eda y lenguaje visual","dd.audit":"Sistemas y gu\u00edas","dd.audit.d":"Coherencia al escalar","dd.ind":"Web y digital","dd.ind.d":"Dise\u00f1o web listo para lanzar","dd.strat":"Pitch y narrativa","dd.strat.d":"Decks que s\u00ed leen los inversores",
 "hero.badge":"R\u00e1pido \u00b7 \u00e1gil \u00b7 para equipos en etapa temprana","hero.h1":"Tu socio de <em>dise\u00f1o</em> para<br><em>startups</em> en etapa temprana","hero.sub":"Neutral Studio es un estudio de dise\u00f1o gr\u00e1fico para fundadores que necesitan claridad y velocidad: identidad, deck y web, sin el peso de una gran agencia.","hero.cta1":"Reservar llamada","hero.cta2":"Escr\u00edbenos","hero.cta3":"Hacer una pregunta ","hero.imgalt":"Vista previa del estudio",
-"m.c1":"Startup fintech","m.l1":"del brief al primer kit de marca","m.c2":"B2B SaaS","m.l2":"menos rondas de deck que con la agencia anterior","m.c3":"Climate tech","m.l3":"de entregas en el primer hito","m.c4":"Hardware","m.l4":"web de lanzamiento m\u00e1s r\u00e1pida","m.c5":"Health tech","m.l5":"m\u00e1s seguimiento tras reuniones con inversores","m.c6":"Infraestructura IA","m.l6":"m\u00e1s coherencia en puntos de contacto",
-"t.q1":"\u201CPor fin parec\u00edamos una empresa de verdad, no una plantilla. El deck y la web compart\u00edan el mismo mundo visual.\u201D","t.n1":"B2B SaaS, seed","t.r1":"Cofundador",
-"t.q2":"\u201CNeutral fue a velocidad de startup. Tuvimos una identidad cre\u00edble antes de la semana de inversores.\u201D","t.n2":"Fintech, pre-Series A","t.r2":"CEO",
-"t.q3":"\u201CUn precio, alcance claro. Sin facturas sorpresa. Eso ya facilit\u00f3 decir que s\u00ed.\u201D","t.n3":"Health tech, etapa temprana","t.r3":"Ops",
-"t.q4":"\u201CLa tipograf\u00eda y el color nos dieron norte para decisiones de producto.\u201D","t.n4":"Startup de dev tools","t.r4":"Product",
-"t.q5":"\u201CEl pitch por fin sonaba como nosotros. Menos disculpas por lo visual en las reuniones.\u201D","t.n5":"Climate tech, aceleradora","t.r5":"Fundador",
-"t.q6":"\u201CPasamos de Canva disperso a una marca que podemos pasar a colaboradores.\u201D","t.n6":"Marketplace, Series A","t.r6":"CMO",
-"t.q7":"\u201CLa web estuvo lista r\u00e1pido. No perdimos una semana en microdetalles.\u201D","t.n7":"Infraestructura IA","t.r7":"CTO",
-"t.q8":"\u201CPrecio competitivo sin sensaci\u00f3n barata. Trabajo premium y pr\u00e1ctico.\u201D","t.n8":"App consumer, pre-seed","t.r8":"Cofundadora",
+"svc.label":"Servicios","svc.title":"Lo que dise\u00f1amos para equipos","svc.desc":"Craft de marca y digital de punta a punta: identidad, producto, narrativa y piezas de campa\u00f1a en un sistema coherente.",
+"svc.1t":"Identidad de marca","svc.1d":"Sistemas de logo, tipograf\u00eda, color y gu\u00edas que escalan con vuestra empresa.",
+"svc.2t":"Dise\u00f1o web","svc.2d":"Webs de marketing y p\u00e1ginas clave: layouts responsive y UI lista para lanzar.",
+"svc.3t":"Dise\u00f1o UI/UX","svc.3d":"Flujos, componentes y sistemas para productos que la gente usa de verdad.",
+"svc.4t":"Dise\u00f1o de pitch decks","svc.4d":"Decks para inversores y ventas con jerarqu\u00eda clara y narrativa s\u00f3lida.",
+"svc.5t":"Motion design","svc.5d":"Animaci\u00f3n de marca, promos y motion para redes alineado con la identidad.",
+"svc.6t":"Redes sociales y creatividades publicitarias","svc.6d":"Social org\u00e1nico, paid media y display con mensaje y est\u00e9tica consistentes.",
+"svc.7t":"Dise\u00f1o para impresi\u00f3n","svc.7d":"Editorial, carteles y piezas f\u00edsicas: archivos y especificaciones para imprenta.",
+"svc.8t":"Packaging y merchandising","svc.8d":"Cajas, etiquetas y merch: dise\u00f1o pensado para producci\u00f3n y estanter\u00eda.",
 "teams.label":"Trabajos","teams.title":"Proyectos con fundadores","teams.desc":"Trabajos recientes del pack de lanzamiento: identidad, deck y piezas digitales. Iremos a\u00f1adiendo proyectos conforme salgan.",
 "teams.more":"+100 proyectos m\u00e1s","teams.raised":"Hemos trabajado con startups que han levantado +500M$.",
 "uc.ch.t":"CircleHome","uc.ch.d":"Sistema completo de identidad para una marca de hogar conectado: mockups, pitch deck y web, m\u00e1s sistema de logo y l\u00edneas CirclePass y CircleSafe.","uc.ch.f1":"Identidad completa","uc.ch.f2":"Mockups y pitch deck","uc.ch.f3":"Web y lanzamiento","uc.ch.alt":"CircleHome: identidad, mockups, deck y web",
@@ -803,52 +772,6 @@ const ucSection=document.getElementById('use-cases');
 const ucObs=new IntersectionObserver(es=>{es.forEach(e=>{const trigger=document.querySelector('.dd-trigger');if(e.isIntersecting){trigger.classList.add('active')}else{trigger.classList.remove('active')}})},{threshold:.1,rootMargin:'-80px 0px -30% 0px'});
 ucObs.observe(ucSection);
 
-// Testimonials carousel
-(function(){
-const track=document.getElementById('testiTrack');
-const bar=document.getElementById('testiBar');
-const pauseBtn=document.getElementById('testiPause');
-if(!track)return;
-const cards=track.querySelectorAll('.img-card');
-const gap=16;
-const total=cards.length;
-let pos=0,playing=true,interval;
-function cardW(){return cards[0].getBoundingClientRect().width+gap}
-function maxScroll(){return track.scrollWidth-track.parentElement.clientWidth}
-function update(){
-const cw=cardW();
-const ms=maxScroll();
-const px=Math.min(pos*cw,ms);
-track.style.transform='translateX(-'+px+'px)';
-const pct=ms>0?Math.min((px/ms)*100,100):0;
-bar.style.width=pct+'%';
-}
-function next(){
-const ms=maxScroll();
-const cw=cardW();
-const maxPos=Math.ceil(ms/cw);
-pos++;
-if(pos>maxPos)pos=0;
-update();
-}
-function startPlay(){interval=setInterval(next,3500);playing=true;pauseBtn.innerHTML='<svg viewBox="0 0 12 12"><rect x="1" y="1" width="4" height="10" rx="1"/><rect x="7" y="1" width="4" height="10" rx="1"/></svg>'}
-function stopPlay(){clearInterval(interval);playing=false;pauseBtn.innerHTML='<svg viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg>'}
-pauseBtn.addEventListener('click',()=>{playing?stopPlay():startPlay()});
-startPlay();
-window.addEventListener('resize',()=>update());
-let dragging=false,startX=0,dragOffset=0,currentPx=0;
-function getPx(){const ms=maxScroll();return Math.min(pos*cardW(),ms)}
-track.addEventListener('mousedown',onDown);
-track.addEventListener('touchstart',onDown,{passive:true});
-window.addEventListener('mousemove',onMove);
-window.addEventListener('touchmove',onMove,{passive:false});
-window.addEventListener('mouseup',onUp);
-window.addEventListener('touchend',onUp);
-function onDown(e){dragging=true;startX=e.touches?e.touches[0].clientX:e.clientX;currentPx=getPx();track.classList.add('dragging');if(playing)stopPlay()}
-function onMove(e){if(!dragging)return;if(e.cancelable&&e.type==='touchmove')e.preventDefault();const x=e.touches?e.touches[0].clientX:e.clientX;dragOffset=startX-x;const ms=maxScroll();const px=Math.max(0,Math.min(currentPx+dragOffset,ms));track.style.transform='translateX(-'+px+'px)';bar.style.width=(ms>0?Math.min((px/ms)*100,100):0)+'%'}
-function onUp(){if(!dragging)return;dragging=false;track.classList.remove('dragging');const cw=cardW();pos=Math.round((currentPx+dragOffset)/cw);const ms=maxScroll();pos=Math.max(0,Math.min(pos,Math.ceil(ms/cw)));update()}
-track.addEventListener('click',function(e){if(Math.abs(dragOffset)>5)e.preventDefault()},true);
-})();
 </script>
 </body>
 </html>
