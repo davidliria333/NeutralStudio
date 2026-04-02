@@ -20,7 +20,7 @@
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:10px;font-weight:600;font-size:.875rem;font-family:inherit;border:none;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
 .btn-s{background:var(--bg);color:var(--tx);border:1px solid var(--bdr)}.btn-s:hover{border-color:var(--bdr-h);background:var(--bg-a)}
 .cs-page{padding:104px 0 80px}
-.cs-video-wrap{width:100%;margin-bottom:40px;border-radius:16px;overflow:hidden;border:1px solid var(--bdr);background:#0f172a;box-shadow:var(--sh-m)}
+.cs-video-wrap{width:100%;margin-top:32px;margin-bottom:40px;border-radius:16px;overflow:hidden;border:1px solid var(--bdr);background:#0f172a;box-shadow:var(--sh-m)}
 .cs-video-wrap video{width:100%;height:auto;display:block}
 .cs-kicker{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--acc);margin-bottom:12px}
 .cs-title{font-size:clamp(1.85rem,4vw,2.6rem);font-weight:800;letter-spacing:-1.2px;line-height:1.12;margin-bottom:20px}
@@ -49,12 +49,6 @@
 
 <main class="cs-page">
     <div class="container">
-        <div class="cs-video-wrap">
-            <video controls playsinline preload="metadata" poster="Galeon/Treball-01.png">
-                <source src="Galeon/Tot.mp4" type="video/mp4">
-            </video>
-        </div>
-
         <p class="cs-kicker">Case study</p>
         <h1 class="cs-title">Galeón · Patrimonio Nacional</h1>
         <div class="cs-intro">
@@ -63,6 +57,12 @@
                 <p class="lab">ES</p>
                 <p>Identidad y aplicaciones de marca para <strong>Galeón</strong> en el marco de <a href="https://www.patrimonionacional.es/sobre-patrimonio/conoce-nuestra-historia" target="_blank" rel="noopener noreferrer">Patrimonio Nacional</a>. Se diseñó el sistema de identidad completo y sus aplicaciones en los distintos soportes.</p>
             </div>
+        </div>
+
+        <div class="cs-video-wrap">
+            <video controls playsinline preload="metadata" poster="Galeon/Treball-01.png">
+                <source src="Galeon/Tot.mp4" type="video/mp4">
+            </video>
         </div>
 
         <section class="cs-block" aria-labelledby="gl-assets">
