@@ -12,25 +12,25 @@ Rewrite `index.html` completely. I want a website that looks like it cost $100,0
 ## Requirements:
 1. **Single HTML file** with embedded CSS and minimal JS (for scroll animations + FAQ toggles)
 2. **Spanish** (Spain Spanish, professional tone)
-3. **Color palette**: Dark/sophisticated — think dark grays (#0a0a0a, #1a1a1a), with a single accent color (electric blue or warm gold). NOT generic startup blue.
+3. **Color palette**: Dark/sophisticated: think dark grays (#0a0a0a, #1a1a1a), with a single accent color (electric blue or warm gold). NOT generic startup blue.
 4. **Typography**: Use Inter or similar. Excellent hierarchy. Large headings, generous line-height, perfect spacing.
 5. **Animations**: Subtle fade-in on scroll (use IntersectionObserver, no libraries). Smooth hover transitions on buttons and cards.
 6. **Structure**:
-   - Navigation (fixed, minimal — logo + single CTA button)
+   - Navigation (fixed, minimal: logo + single CTA button)
    - Hero: Bold statement about the problem we solve. Subtitle. Single CTA.
    - Social proof bar: "Trusted by law firms, consulting firms, and financial institutions" (no fake logos)
-   - Problem section: Storytelling — why existing approaches fail
+   - Problem section: Storytelling: why existing approaches fail
    - Solution: What we actually do (3 steps: Escuchamos → Analizamos → Entregamos)
-   - Services: Cards for each sector (Bufetes, Consultoras, Auditorías, Marketing, Financiero) — link to their respective .html pages
+   - Services: Cards for each sector (Bufetes, Consultoras, Auditorías, Marketing, Financiero); link to their respective .html pages
    - Pricing: 3 tiers with clear differentiation
    - Case study / numbers section (make it credible, not over-the-top)
    - FAQ (expandable, clean)
    - Final CTA section
    - Footer (minimal)
-7. **CTA everywhere**: https://cal.eu/getai/demo — "Reserva una consulta" or "Habla con nosotros"
+7. **CTA everywhere**: https://cal.eu/getai/demo ("Reserva una consulta" or "Habla con nosotros")
 8. **NO stock photos**. Use geometric patterns, gradients, or abstract shapes if needed. Or just great typography and spacing.
-9. **Mobile perfect** — test every section mentally for mobile.
-10. **Fast** — no external JS libraries, no heavy images.
+9. **Mobile perfect**: test every section mentally for mobile.
+10. **Fast**: no external JS libraries, no heavy images.
 
 ## The copy should:
 - Lead with the client's PAIN, not our features
@@ -40,9 +40,9 @@ Rewrite `index.html` completely. I want a website that looks like it cost $100,0
 - Make the reader think "these people understand my world"
 
 ## Pricing (in euros):
-- **Piloto** — €1,500: First project. We learn your business, deliver one research report. 48h turnaround.
-- **Implementación** — €3,500 (recommended): 3 projects. Custom methodology for your firm. Priority support. 
-- **Continuo** — €800/month: Unlimited research requests. Dedicated analyst. Same-day turnaround for urgent requests.
+- **Piloto** (€1,500): First project. We learn your business, deliver one research report. 48h turnaround.
+- **Implementación** (€3,500, recommended): 3 projects. Custom methodology for your firm. Priority support. 
+- **Continuo** (€800/month): Unlimited research requests. Dedicated analyst. Same-day turnaround for urgent requests.
 
 ## DO NOT:
 - Use Bootstrap or Tailwind CDN
