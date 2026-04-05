@@ -67,9 +67,8 @@
 .mob-nav .mob-dd-list a{font-size:.95rem;padding:10px 0;border-bottom:none}
 
 /* HERO */
-.hero{padding:120px 0 0;text-align:center;position:relative;background:var(--bg);overflow:hidden}
+.hero{padding:120px 0 0;text-align:center;position:relative;background:#fff;overflow:hidden}
 .hero .container{position:relative;z-index:1}
-.hero-bg{position:absolute;bottom:-40px;left:0;right:0;pointer-events:none;z-index:0;line-height:0}.hero-bg img{width:100%;display:block}
 .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bdr);border-radius:100px;padding:5px 16px 5px 7px;font-size:.78rem;font-weight:500;color:var(--tx-s);margin-bottom:28px;background:var(--bg)}
 .badge-dot{width:7px;height:7px;background:var(--acc);border-radius:50%;animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
@@ -105,11 +104,19 @@ section{padding:100px 0;position:relative}
 .portfolio-more-sub{font-size:.95rem;color:var(--tx-s);line-height:1.6}
 
 /* USE CASES */
-.uc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.uc-card{background:var(--bg);border:1px solid var(--bdr);border-radius:16px;padding:0;overflow:hidden;transition:all .3s;display:flex;flex-direction:column}
-.uc-card:hover{border-color:var(--bdr-h);box-shadow:var(--sh-m);transform:translateY(-3px)}
+@media (prefers-reduced-motion:reduce){
+.uc-thumb img{transition:none}.uc-card{transition:border-color .2s,box-shadow .2s}.uc-card:hover,.uc-card:focus-within{transform:none}.uc-card:hover .uc-thumb img,.uc-card:focus-within .uc-thumb img{transform:none}.uc-thumb-over{transition:opacity .15s ease}
+}
+.uc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
+.uc-card{background:var(--bg);border:1px solid var(--bdr);border-radius:16px;padding:0;overflow:hidden;transition:border-color .3s,box-shadow .3s,transform .35s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column}
+.uc-card:hover,.uc-card:focus-within{border-color:var(--bdr-h);box-shadow:var(--sh-m);transform:translateY(-4px)}
 .uc-thumb{aspect-ratio:1/1;background:var(--bg-a);position:relative;overflow:hidden}
-.uc-thumb img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.uc-thumb img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.uc-card:hover .uc-thumb img,.uc-card:focus-within .uc-thumb img{transform:scale(1.06)}
+.uc-thumb-over{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-start;padding:20px;background:linear-gradient(180deg,transparent 0%,transparent 35%,rgba(15,23,42,.82) 100%);opacity:0;transition:opacity .35s ease;pointer-events:none}
+.uc-card:hover .uc-thumb-over,.uc-card:focus-within .uc-thumb-over{opacity:1}
+.uc-thumb-over span{font-size:.88rem;font-weight:600;color:#fff;letter-spacing:.02em;display:inline-flex;align-items:center;gap:8px}
+.uc-thumb-over span svg{width:18px;height:18px;opacity:.95}
 .uc-card-inner{padding:28px 32px 32px;display:flex;flex-direction:column;flex:1}
 .uc-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:#ecfdf5}
 .uc-icon svg{width:22px;height:22px;color:var(--acc)}
@@ -117,8 +124,8 @@ section{padding:100px 0;position:relative}
 .uc-card-inner>p{font-size:.9rem;color:var(--tx-s);margin-bottom:18px;line-height:1.6;flex:1}
 .uc-feats li{font-size:.85rem;color:var(--tx-s);display:flex;align-items:center;gap:8px;padding:3px 0}
 .uc-feats li::before{content:'';width:4px;height:4px;background:var(--acc);border-radius:50%;flex-shrink:0}
-.uc-link{display:inline-flex;align-items:center;gap:4px;font-size:.85rem;font-weight:500;color:var(--tx);margin-top:16px;transition:gap .2s}
-.uc-card:hover .uc-link{gap:8px}
+.uc-link{display:inline-flex;align-items:center;gap:4px;font-size:.85rem;font-weight:500;color:var(--tx);margin-top:16px;transition:gap .2s,color .2s}
+.uc-card:hover .uc-link,.uc-card:focus-within .uc-link{gap:8px;color:var(--acc)}
 
 /* TOOLS */
 .tools-row{display:flex;flex-wrap:wrap;justify-content:center;gap:32px;align-items:center}
@@ -238,6 +245,7 @@ section{padding:100px 0;position:relative}
 .team-lay{grid-template-columns:1fr;gap:40px}.ft-grid{grid-template-columns:1fr 1fr;gap:28px}
 .svc-grid{grid-template-columns:repeat(2,1fr)}.pr-prices{grid-template-columns:1fr}
 .part-services{padding-left:0}
+.uc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 }
 @media(max-width:640px){
 section{padding:72px 0}.hero{padding:100px 0 60px}
@@ -321,10 +329,9 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-lg" data-i18n="hero.cta1">Book a call</a>
             <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Question" class="btn btn-s btn-lg" data-i18n="hero.cta2">Email us</a>
         </div>
-        <div class="hero-device reveal reveal-d4"><img src="home-sana.webp" alt="Studio work preview"></div>
+        <div class="hero-device reveal reveal-d4"><img src="home-sana.webp" alt="" data-i18n-alt="hero.imgalt"></div>
         <div class="hero-spacer"></div>
     </div>
-    <div class="hero-bg"><img src="hero-bg.png" alt=""></div>
 </section>
 
 <!-- SERVICES -->
@@ -356,9 +363,10 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <h2 class="s-title" data-i18n="teams.title">Projects we&rsquo;ve shipped with founders</h2>
             <p class="s-desc" data-i18n="teams.desc">Selected client work from our launch package, identity, deck, and digital touchpoints. More projects are added as we ship them.</p>
         </div>
-        <div class="uc-grid">
+        <div class="uc-grid reveal">
             <a href="circlehome.html" class="uc-card reveal">
-                <div class="uc-thumb"><img src="David/CIRCLEHOME/We%20are%20live.jpg" alt="CircleHome | full identity, mockups, deck, and web" data-i18n-alt="uc.ch.alt"></div>
+                <div class="uc-thumb"><img src="David/CIRCLEHOME/We%20are%20live.jpg" alt="CircleHome | full identity, mockups, deck, and web" data-i18n-alt="uc.ch.alt">
+                <div class="uc-thumb-over" aria-hidden="true"><span><span data-i18n="teams.ctaOverlay">View case study</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></div>
                 <div class="uc-card-inner">
                     <h3 data-i18n="uc.ch.t">CircleHome</h3>
                     <p data-i18n="uc.ch.d">Complete identity system for a connected-home brand, mockups, investor pitch deck, and web, plus logo system and product lines CirclePass &amp; CircleSafe. Two funding rounds after our design and redesign.</p>
@@ -367,7 +375,8 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                 </div>
             </a>
             <a href="vira.html" class="uc-card reveal reveal-d1">
-                <div class="uc-thumb"><img src="David/VIRA/00_logo.png" alt="Vira | identity, app, and brand applications" data-i18n-alt="uc.v.alt"></div>
+                <div class="uc-thumb"><img src="David/VIRA/00_logo.png" alt="Vira | identity, app, and brand applications" data-i18n-alt="uc.v.alt">
+                <div class="uc-thumb-over" aria-hidden="true"><span><span data-i18n="teams.ctaOverlay">View case study</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></div>
                 <div class="uc-card-inner">
                     <h3 data-i18n="uc.v.t">Vira</h3>
                     <p data-i18n="uc.v.d">Complete identity for Vira: the app and its full brand applications, plus investor pitch deck, typography, and layouts built for storytelling under pressure.</p>
@@ -376,7 +385,8 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                 </div>
             </a>
             <a href="galeon.html" class="uc-card reveal reveal-d2">
-                <div class="uc-thumb"><img src="Galeon/Treball-01.png" alt="Galeón | Patrimonio Nacional identity" data-i18n-alt="uc.g.alt"></div>
+                <div class="uc-thumb"><img src="Galeon/Treball-01.png" alt="Galeón | Patrimonio Nacional identity" data-i18n-alt="uc.g.alt">
+                <div class="uc-thumb-over" aria-hidden="true"><span><span data-i18n="teams.ctaOverlay">View case study</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></div>
                 <div class="uc-card-inner">
                     <h3 data-i18n="uc.g.t">Galeón</h3>
                     <p data-i18n="uc.g.d">Visual identity for Patrimonio Nacional (Galeón): full brand system and applications, motion, digital, and campaign-ready assets.</p>
@@ -385,7 +395,8 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                 </div>
             </a>
             <a href="arkuos.html" class="uc-card reveal reveal-d3">
-                <div class="uc-thumb"><img src="David/ARKUOS/logo-lockup.png" alt="Arkuos | socio-educational identity" data-i18n-alt="uc.ar.alt"></div>
+                <div class="uc-thumb"><img src="David/ARKUOS/logo-lockup.png" alt="Arkuos | socio-educational identity" data-i18n-alt="uc.ar.alt">
+                <div class="uc-thumb-over" aria-hidden="true"><span><span data-i18n="teams.ctaOverlay">View case study</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></div>
                 <div class="uc-card-inner">
                     <h3 data-i18n="uc.ar.t">Arkuos</h3>
                     <p data-i18n="uc.ar.d">Visual identity for Arkuos, a socio-educational nonprofit: logo system, warm palette, campaign imagery, and assets for arkuos.org.</p>
@@ -395,7 +406,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             </a>
         </div>
         <div class="portfolio-more reveal">
-            <p class="portfolio-more-line" data-i18n="teams.more">+40 other projects</p>
+            <p class="portfolio-more-line" data-i18n="teams.more">+100 other projects</p>
             <p class="portfolio-more-sub" data-i18n="teams.raised">We&rsquo;ve helped startups that have raised +$100M.</p>
         </div>
     </div>
@@ -653,7 +664,8 @@ const T={en:{
 "svc.7t":"Print Design","svc.7d":"Editorial, posters, and collateral, print-ready files and specs.",
 "svc.8t":"Packaging & Merchandise","svc.8d":"Boxes, labels, and swag, designed for production and shelf impact.",
 "teams.label":"Selected work","teams.title":"Projects we\u2019ve shipped with founders","teams.desc":"Selected client work from our launch package, identity, deck, and digital touchpoints. More projects are added as we ship them.",
-"teams.more":"+40 other projects","teams.raised":"We\u2019ve helped startups that have raised +$100M.",
+"teams.more":"+100 other projects","teams.raised":"We\u2019ve helped startups that have raised +$100M.",
+"teams.ctaOverlay":"View case study",
 "uc.ch.t":"CircleHome","uc.ch.d":"Complete identity system for a connected-home brand, mockups, investor pitch deck, and web, plus logo system and product lines CirclePass & CircleSafe. Two funding rounds after our design and redesign.","uc.ch.f1":"Full identity system","uc.ch.f2":"Mockups & pitch deck","uc.ch.f3":"Web & launch assets","uc.ch.alt":"CircleHome | full identity, mockups, deck, and web",
 "uc.v.t":"Vira","uc.v.d":"Complete identity for Vira: the app and its full brand applications, plus investor pitch deck, typography, and layouts built for storytelling under pressure.","uc.v.f1":"Complete identity","uc.v.f2":"App & applications","uc.v.f3":"Investor pitch deck","uc.v.alt":"Vira | identity, app, and brand applications",
 "uc.g.t":"Gale\u00f3n","uc.g.d":"Visual identity for Patrimonio Nacional (Gale\u00f3n): full brand system and applications, motion, digital, and campaign-ready assets tied to Spain\u2019s national heritage institution.","uc.g.f1":"Identity system","uc.g.f2":"Brand applications","uc.g.f3":"Video & motion","uc.g.alt":"Gale\u00f3n | Patrimonio Nacional identity",
@@ -705,7 +717,8 @@ const T={en:{
 "svc.7t":"Dise\u00f1o para impresi\u00f3n","svc.7d":"Editorial, carteles y piezas f\u00edsicas: archivos y especificaciones para imprenta.",
 "svc.8t":"Packaging y merchandising","svc.8d":"Cajas, etiquetas y merch: dise\u00f1o pensado para producci\u00f3n y estanter\u00eda.",
 "teams.label":"Trabajos","teams.title":"Proyectos con fundadores","teams.desc":"Trabajos recientes del pack de lanzamiento: identidad, deck y piezas digitales. Iremos a\u00f1adiendo proyectos conforme salgan.",
-"teams.more":"+40 proyectos m\u00e1s","teams.raised":"Hemos trabajado con startups que han levantado +100M$.",
+"teams.more":"+100 proyectos m\u00e1s","teams.raised":"Hemos trabajado con startups que han levantado +100M$.",
+"teams.ctaOverlay":"Ver caso",
 "uc.ch.t":"CircleHome","uc.ch.d":"Sistema completo de identidad para una marca de hogar conectado: mockups, pitch deck y web, m\u00e1s sistema de logo y l\u00edneas CirclePass y CircleSafe. Dos rondas de financiaci\u00f3n tras nuestro dise\u00f1o y redise\u00f1o.","uc.ch.f1":"Identidad completa","uc.ch.f2":"Mockups y pitch deck","uc.ch.f3":"Web y lanzamiento","uc.ch.alt":"CircleHome: identidad, mockups, deck y web",
 "uc.v.t":"Vira","uc.v.d":"Identidad completa para Vira: la app y todas sus aplicaciones de marca, m\u00e1s pitch para inversores, tipograf\u00eda y maquetaci\u00f3n bajo presi\u00f3n.","uc.v.f1":"Identidad completa","uc.v.f2":"App y aplicaciones","uc.v.f3":"Pitch para inversores","uc.v.alt":"Vira: identidad, app y aplicaciones",
 "uc.g.t":"Gale\u00f3n","uc.g.d":"Identidad para Patrimonio Nacional (Gale\u00f3n): sistema completo de marca y aplicaciones en todos los soportes, con piezas para v\u00eddeo y entornos digitales.","uc.g.f1":"Sistema de identidad","uc.g.f2":"Aplicaciones de marca","uc.g.f3":"V\u00eddeo y motion","uc.g.alt":"Gale\u00f3n: identidad Patrimonio Nacional",
