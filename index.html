@@ -95,12 +95,28 @@ section{padding:100px 0;position:relative}
 .svc-card p{font-size:.84rem;color:var(--tx-s);line-height:1.55;margin:0;flex:1}
 .svc-card .svc-ix{width:36px;height:36px;border-radius:10px;background:#ecfdf5;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:.72rem;font-weight:700;color:var(--acc);letter-spacing:.5px}
 
-/* PORTFOLIO FOOTNOTE */
-.portfolio-more{text-align:center;margin-top:40px;padding-top:36px;border-top:1px solid var(--bdr);max-width:560px;margin-left:auto;margin-right:auto}
-.portfolio-more-line{font-size:1.35rem;font-weight:700;letter-spacing:-.4px;color:var(--tx);margin-bottom:10px}
-.portfolio-more-sub{font-size:.95rem;color:var(--tx-s);line-height:1.6}
-.portfolio-more-cta{margin-top:28px;text-align:center;max-width:520px;margin-left:auto;margin-right:auto;display:flex;flex-direction:column;align-items:center;gap:14px}
-.portfolio-more-cta-text{font-size:.92rem;color:var(--tx-s);line-height:1.55;margin:0}
+/* PORTFOLIO CTA + LOGO MARQUEE */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-marquee-wrap{margin:28px -24px 0;padding:0;position:relative}
+.logo-marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%)}
+.logo-marquee-track{display:flex;width:max-content;animation:logo-marquee 38s linear infinite}
+@keyframes logo-marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.logo-marquee-group{display:flex;align-items:center;justify-content:center;gap:clamp(40px,7vw,88px);padding:0 32px;flex-shrink:0}
+.logo-marquee-group img{display:block;height:40px;width:auto;max-width:min(200px,36vw);object-fit:contain;filter:grayscale(1);opacity:.72;transition:opacity .2s}
+.logo-marquee-group img:hover{opacity:1}
+@media(prefers-reduced-motion:reduce){
+.logo-marquee{mask-image:none;-webkit-mask-image:none}
+.logo-marquee-track{animation:none;transform:none;width:100%!important;max-width:720px;margin:0 auto;flex-wrap:wrap;justify-content:center;row-gap:20px}
+.logo-marquee-group:last-child{display:none}
+.logo-marquee-group{flex-wrap:wrap;justify-content:center;padding:0 16px}
+}
+.portfolio-cta-block{text-align:center;max-width:640px;margin:44px auto 0;padding:40px 32px 44px;border:1px solid var(--bdr);border-radius:20px;background:var(--bg);box-shadow:var(--sh-s)}
+.portfolio-cta-stats{margin-bottom:16px}
+.portfolio-more-line{font-size:1.35rem;font-weight:700;letter-spacing:-.4px;color:var(--tx);margin-bottom:8px}
+.portfolio-more-sub{font-size:.95rem;color:var(--tx-s);line-height:1.6;margin:0}
+.portfolio-cta-lead{font-size:1.02rem;color:var(--tx-s);line-height:1.65;margin:0 0 8px;max-width:52ch;margin-left:auto;margin-right:auto}
+.portfolio-cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px;align-items:center}
+.portfolio-cta-note{font-size:.82rem;color:var(--tx-m);margin-top:18px;line-height:1.5;max-width:42ch;margin-left:auto;margin-right:auto}
 
 /* WHY CHOOSE US (compare) */
 .wcu-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--bdr);border-radius:16px;overflow:hidden;background:var(--bg);box-shadow:var(--sh-s)}
@@ -144,30 +160,6 @@ section{padding:100px 0;position:relative}
 @media(max-width:520px){
 .roi-grid{grid-template-columns:1fr}
 }
-
-/* USE CASES */
-@media (prefers-reduced-motion:reduce){
-.uc-thumb img{transition:none}.uc-card{transition:border-color .2s,box-shadow .2s}.uc-card:hover,.uc-card:focus-within{transform:none}.uc-card:hover .uc-thumb img,.uc-card:focus-within .uc-thumb img{transform:none}.uc-thumb-over{transition:opacity .15s ease}
-}
-.uc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
-.uc-card{background:var(--bg);border:1px solid var(--bdr);border-radius:16px;padding:0;overflow:hidden;transition:border-color .3s,box-shadow .3s,transform .35s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column}
-.uc-card:hover,.uc-card:focus-within{border-color:var(--bdr-h);box-shadow:var(--sh-m);transform:translateY(-4px)}
-.uc-thumb{aspect-ratio:1/1;background:var(--bg-a);position:relative;overflow:hidden}
-.uc-thumb img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .55s cubic-bezier(.22,1,.36,1)}
-.uc-card:hover .uc-thumb img,.uc-card:focus-within .uc-thumb img{transform:scale(1.06)}
-.uc-thumb-over{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-start;padding:20px;background:linear-gradient(180deg,transparent 0%,transparent 35%,rgba(15,23,42,.82) 100%);opacity:0;transition:opacity .35s ease;pointer-events:none}
-.uc-card:hover .uc-thumb-over,.uc-card:focus-within .uc-thumb-over{opacity:1}
-.uc-thumb-over span{font-size:.88rem;font-weight:600;color:#fff;letter-spacing:.02em;display:inline-flex;align-items:center;gap:8px}
-.uc-thumb-over span svg{width:18px;height:18px;opacity:.95}
-.uc-card-inner{padding:28px 32px 32px;display:flex;flex-direction:column;flex:1}
-.uc-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:#ecfdf5}
-.uc-icon svg{width:22px;height:22px;color:var(--acc)}
-.uc-card h3{font-size:1.15rem;font-weight:600;letter-spacing:-.3px;margin-bottom:6px}
-.uc-card-inner>p{font-size:.9rem;color:var(--tx-s);margin-bottom:18px;line-height:1.6;flex:1}
-.uc-feats li{font-size:.85rem;color:var(--tx-s);display:flex;align-items:center;gap:8px;padding:3px 0}
-.uc-feats li::before{content:'';width:4px;height:4px;background:var(--acc);border-radius:50%;flex-shrink:0}
-.uc-link{display:inline-flex;align-items:center;gap:4px;font-size:.85rem;font-weight:500;color:var(--tx);margin-top:16px;transition:gap .2s,color .2s}
-.uc-card:hover .uc-link,.uc-card:focus-within .uc-link{gap:8px;color:var(--acc)}
 
 /* TOOLS */
 .tools-row{display:flex;flex-wrap:wrap;justify-content:center;gap:32px;align-items:center}
@@ -292,11 +284,10 @@ section{padding:100px 0;position:relative}
 .team-lay{grid-template-columns:1fr;gap:40px}.ft-grid{grid-template-columns:1fr 1fr;gap:28px}
 .svc-grid{grid-template-columns:repeat(2,1fr)}.pr-prices{grid-template-columns:1fr}
 .part-services{padding-left:0}
-.uc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 }
 @media(max-width:640px){
 section{padding:72px 0}.hero{padding:100px 0 60px}
-.uc-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}
+.steps{grid-template-columns:1fr}
 .team-creds{grid-template-columns:1fr}.team-vis{grid-template-columns:1fr}
 .team-stat:first-child{grid-column:span 1}
 .hero h1{font-size:2.2rem}
@@ -329,7 +320,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                     <a href="#use-cases"><strong data-i18n="dd.strat">Pitch &amp; narrative</strong><span data-i18n="dd.strat.d">Decks investors actually read</span></a>
                 </div>
             </div>
-            <a href="#use-cases" data-i18n="nav.sw">Selected Work</a>
+            <a href="#use-cases" data-i18n="nav.sw">Portfolio</a>
             <a href="#why-us" data-i18n="nav.why">Why us</a>
             <a href="#roi" data-i18n="nav.roi">ROI</a>
             <a href="#how-it-works" data-i18n="nav.how">How It Works</a>
@@ -356,7 +347,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <a href="#use-cases" data-i18n="dd.strat">Pitch &amp; narrative</a>
         </div>
     </div>
-    <a href="#use-cases" data-i18n="nav.sw">Selected Work</a>
+    <a href="#use-cases" data-i18n="nav.sw">Portfolio</a>
     <a href="#why-us" data-i18n="nav.why">Why us</a>
     <a href="#roi" data-i18n="nav.roi">ROI</a>
     <a href="#how-it-works" data-i18n="nav.how">How It Works</a>
@@ -376,7 +367,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
         <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">Neutral Studio is a graphic design studio for founders who need clarity and speed: identity, deck, and web, without the agency overhead.</p>
         <div class="hero-ctas reveal reveal-d3">
             <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-lg" data-i18n="hero.cta1">Book a call</a>
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Question" class="btn btn-s btn-lg" data-i18n="hero.cta2">Email us</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question" class="btn btn-s btn-lg" data-i18n="hero.cta2">Email us</a>
         </div>
         <div class="hero-device reveal reveal-d4"><img src="home-sana.webp" alt="" data-i18n-alt="hero.imgalt"></div>
         <div class="hero-spacer"></div>
@@ -404,63 +395,46 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     </div>
 </section>
 
-<!-- SELECTED WORK -->
+<!-- PORTFOLIO REQUEST -->
 <section class="bg-a" id="use-cases">
     <div class="container">
         <div class="s-hdr reveal">
-            <p class="s-label" data-i18n="teams.label">Selected work</p>
-            <h2 class="s-title" data-i18n="teams.title">Projects we&rsquo;ve shipped with founders</h2>
-            <p class="s-desc" data-i18n="teams.desc">Selected client work from our launch package, identity, deck, and digital touchpoints. More projects are added as we ship them.</p>
+            <p class="s-label" data-i18n="teams.label">Portfolio</p>
+            <h2 class="s-title" data-i18n="teams.title">Get a portfolio built for your diligence</h2>
+            <p class="s-desc" data-i18n="teams.desc">We don&rsquo;t publish full case studies here. Ask for a curated deck with identity, decks, web, and motion, tailored to your sector, stage, and what you need to decide.</p>
         </div>
-        <div class="uc-grid reveal">
-            <a href="circlehome.html" class="uc-card reveal">
-                <div class="uc-thumb"><img src="David/CIRCLEHOME/We%20are%20live.jpg" alt="CircleHome | full identity, mockups, deck, and web" data-i18n-alt="uc.ch.alt">
-                <div class="uc-thumb-over" aria-hidden="true"><span><span data-i18n="teams.ctaOverlay">View case study</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></div>
-                <div class="uc-card-inner">
-                    <h3 data-i18n="uc.ch.t">CircleHome</h3>
-                    <p data-i18n="uc.ch.d">Complete identity system for a connected-home brand, mockups, investor pitch deck, and web, plus logo system and product lines CirclePass &amp; CircleSafe. Two funding rounds after our design and redesign.</p>
-                    <ul class="uc-feats"><li data-i18n="uc.ch.f1">Full identity system</li><li data-i18n="uc.ch.f2">Mockups &amp; pitch deck</li><li data-i18n="uc.ch.f3">Web &amp; launch assets</li></ul>
-                    <span class="uc-link" data-i18n="uc.more">View case study &rarr;</span>
+        <div class="logo-marquee-wrap reveal">
+            <p class="sr-only" data-i18n="teams.marqueeA11y">Scrolling row of sample marks from recent branding work.</p>
+            <div class="logo-marquee" aria-hidden="true">
+                <div class="logo-marquee-track">
+                    <div class="logo-marquee-group">
+                        <img src="Logos/00_logo-14.png" alt="" width="180" height="48" loading="lazy" decoding="async">
+                        <img src="Logos/00_logo_Mesa de trabajo 16 copia.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 2.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 3.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 4.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                    </div>
+                    <div class="logo-marquee-group">
+                        <img src="Logos/00_logo-14.png" alt="" width="180" height="48" loading="lazy" decoding="async">
+                        <img src="Logos/00_logo_Mesa de trabajo 16 copia.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 2.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 3.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 4.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                    </div>
                 </div>
-            </a>
-            <a href="vira.html" class="uc-card reveal reveal-d1">
-                <div class="uc-thumb"><img src="David/VIRA/00_logo.png" alt="Vira | identity, app, and brand applications" data-i18n-alt="uc.v.alt">
-                <div class="uc-thumb-over" aria-hidden="true"><span><span data-i18n="teams.ctaOverlay">View case study</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></div>
-                <div class="uc-card-inner">
-                    <h3 data-i18n="uc.v.t">Vira</h3>
-                    <p data-i18n="uc.v.d">Complete identity for Vira: the app and all of its content, full brand applications, plus promotional and in-app materials, typography, and layouts built for storytelling under pressure.</p>
-                    <ul class="uc-feats"><li data-i18n="uc.v.f1">Complete identity</li><li data-i18n="uc.v.f2">App &amp; all content</li><li data-i18n="uc.v.f3">Promo &amp; app slides</li></ul>
-                    <span class="uc-link" data-i18n="uc.more">View case study &rarr;</span>
-                </div>
-            </a>
-            <a href="galeon.html" class="uc-card reveal reveal-d2">
-                <div class="uc-thumb"><img src="Galeon/Treball-01.png" alt="Galeón | Patrimonio Nacional identity" data-i18n-alt="uc.g.alt">
-                <div class="uc-thumb-over" aria-hidden="true"><span><span data-i18n="teams.ctaOverlay">View case study</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></div>
-                <div class="uc-card-inner">
-                    <h3 data-i18n="uc.g.t">Galeón</h3>
-                    <p data-i18n="uc.g.d">Visual identity for Patrimonio Nacional (Galeón): full brand system and applications, motion, digital, and campaign-ready assets.</p>
-                    <ul class="uc-feats"><li data-i18n="uc.g.f1">Identity system</li><li data-i18n="uc.g.f2">Brand applications</li><li data-i18n="uc.g.f3">Video &amp; motion</li></ul>
-                    <span class="uc-link" data-i18n="uc.more">View case study &rarr;</span>
-                </div>
-            </a>
-            <a href="arkuos.html" class="uc-card reveal reveal-d3">
-                <div class="uc-thumb"><img src="David/ARKUOS/logo-lockup.png" alt="Arkuos | socio-educational identity" data-i18n-alt="uc.ar.alt">
-                <div class="uc-thumb-over" aria-hidden="true"><span><span data-i18n="teams.ctaOverlay">View case study</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></div>
-                <div class="uc-card-inner">
-                    <h3 data-i18n="uc.ar.t">Arkuos</h3>
-                    <p data-i18n="uc.ar.d">Visual identity for Arkuos, a socio-educational nonprofit: logo system, warm palette, campaign imagery, and assets for arkuos.org.</p>
-                    <ul class="uc-feats"><li data-i18n="uc.ar.f1">Logo &amp; identity</li><li data-i18n="uc.ar.f2">Campaign &amp; photography</li><li data-i18n="uc.ar.f3">Digital presence</li></ul>
-                    <span class="uc-link" data-i18n="uc.more">View case study &rarr;</span>
-                </div>
-            </a>
+            </div>
         </div>
-        <div class="portfolio-more reveal">
-            <p class="portfolio-more-line" data-i18n="teams.more">+100 other projects</p>
-            <p class="portfolio-more-sub" data-i18n="teams.raised">We&rsquo;ve helped startups that have raised +$100M.</p>
-        </div>
-        <div class="portfolio-more-cta reveal reveal-d1">
-            <p class="portfolio-more-cta-text" data-i18n="teams.portfolioCta">Need more examples? On request, we can share a broader portfolio matched to your sector or stage.</p>
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Extended%20portfolio%20request" class="btn btn-s btn-lg" data-i18n="teams.portfolioCtaBtn">Request extended portfolio</a>
+        <div class="portfolio-cta-block reveal reveal-d1">
+            <div class="portfolio-cta-stats">
+                <p class="portfolio-more-line" data-i18n="teams.more">+100 other projects</p>
+                <p class="portfolio-more-sub" data-i18n="teams.raised">We&rsquo;ve helped startups that have raised +$100M.</p>
+            </div>
+            <p class="portfolio-cta-lead" data-i18n="teams.ctaLead">Tell us what you&rsquo;re evaluating, and we&rsquo;ll reply with a fuller portfolio and next steps, usually within one business day.</p>
+            <div class="portfolio-cta-actions">
+                <a href="mailto:arnaupinyolwork@gmail.com?subject=Portfolio%20request%20-%20Neutral%20Studio" class="btn btn-p btn-lg" data-i18n="teams.portfolioCtaBtn">Request full portfolio</a>
+                <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-s btn-lg" data-i18n="teams.ctaBook">Book a call</a>
+            </div>
+            <p class="portfolio-cta-note" data-i18n="teams.ctaNote">Prefer async? Email works: we can share PDFs, slides, or a short Loom walkthrough.</p>
         </div>
     </div>
 </section>
@@ -535,14 +509,14 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
         </div>
         <div class="roi-hero reveal">
             <p class="roi-hero-num" data-i18n="roi.hero.n">100+</p>
-            <p class="roi-hero-txt" data-i18n="roi.hero.t">Projects shipped with founders—identity, deck, and web in focused engagements.</p>
+            <p class="roi-hero-txt" data-i18n="roi.hero.t">Projects shipped with founders: identity, deck, and web in focused engagements.</p>
         </div>
         <div class="roi-grid">
             <div class="roi-card reveal"><p class="roi-card-num" data-i18n="roi.s1n">$100M+</p><p class="roi-card-desc" data-i18n="roi.s1d">Collective funding raised by teams we&rsquo;ve supported on brand and narrative.</p></div>
             <div class="roi-card reveal reveal-d1"><p class="roi-card-num" data-i18n="roi.s2n">Weeks</p><p class="roi-card-desc" data-i18n="roi.s2d">Most launch packages land in a few weeks when feedback stays tight.</p></div>
-            <div class="roi-card reveal reveal-d2"><p class="roi-card-num" data-i18n="roi.s3n">Fixed price</p><p class="roi-card-desc" data-i18n="roi.s3d">Know the number before you sign—no surprise invoices mid-sprint.</p></div>
+            <div class="roi-card reveal reveal-d2"><p class="roi-card-num" data-i18n="roi.s3n">Fixed price</p><p class="roi-card-desc" data-i18n="roi.s3d">Know the number before you sign, with no surprise invoices mid-sprint.</p></div>
             <div class="roi-card reveal reveal-d3"><p class="roi-card-num" data-i18n="roi.s4n">50+ yrs</p><p class="roi-card-desc" data-i18n="roi.s4d">Combined experience across exited founders and senior designers.</p></div>
-            <div class="roi-card reveal"><p class="roi-card-num" data-i18n="roi.s5n">Direct</p><p class="roi-card-desc" data-i18n="roi.s5d">Access to the designer on your account—not a rotating cast of juniors.</p></div>
+            <div class="roi-card reveal"><p class="roi-card-num" data-i18n="roi.s5n">Direct</p><p class="roi-card-desc" data-i18n="roi.s5d">Access to the designer on your account, not a rotating cast of juniors.</p></div>
             <div class="roi-card reveal reveal-d1"><p class="roi-card-num" data-i18n="roi.s6n">Days</p><p class="roi-card-desc" data-i18n="roi.s6d">From kickoff to direction you can share with investors and engineering.</p></div>
         </div>
         <p class="roi-tagline reveal" data-i18n="roi.tag">Supporting founders from messy brief to launch-ready brand.</p>
@@ -586,8 +560,8 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <div class="step reveal reveal-d3"><div class="step-n">4</div><span class="step-tag" data-i18n="how.s4tag">Handoff</span><h3 data-i18n="how.s4t">Delivery</h3><p data-i18n="how.s4d">Organized files, export specs, and a short walkthrough so your team can ship confidently.</p></div>
         </div>
         <div style="text-align:center;margin-top:48px" class="reveal">
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p btn-lg" data-i18n="how.cta">Start your timeline</a>
-            <div style="margin-top:12px"><a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Question" class="btn btn-txt" data-i18n="hero.cta3">Ask a question <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Project%20inquiry" class="btn btn-p btn-lg" data-i18n="how.cta">Start your timeline</a>
+            <div style="margin-top:12px"><a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question" class="btn btn-txt" data-i18n="hero.cta3">Ask a question <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
         </div>
     </div>
 </section>
@@ -612,7 +586,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                 <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f5">Investor-ready narrative support in the deck</span></div>
                 <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f6">Scope discipline, we protect your runway</span></div>
                 <div class="part-svc"><div class="part-svc-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-i18n="part.f7">Optional follow-on sprints when you scale</span></div>
-                <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Intro" class="part-svc-cta"><span data-i18n="part.cta">Email to start</span></a>
+                <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Intro" class="part-svc-cta"><span data-i18n="part.cta">Email to start</span></a>
             </div>
         </div>
     </div>
@@ -691,7 +665,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                     <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p1.i3">Core identity assets &amp; templates</span></li>
                     <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p1.i4">Brand guidelines (lightweight)</span></li>
                 </ul>
-                <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20%243%2C000%20identity%20package" class="btn btn-s btn-lg" data-i18n="pr.p1.cta">Email to book</a>
+                <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20%243%2C000%20identity%20package" class="btn btn-s btn-lg" data-i18n="pr.p1.cta">Email to book</a>
             </div>
 
             <div class="pr-card featured reveal reveal-d1">
@@ -706,7 +680,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                     <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p2.i3">Marketing website design &amp; key layouts</span></li>
                     <li><svg class="ck" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pr.p2.i4">Organized handoff + export specs</span></li>
                 </ul>
-                <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20%245%2C500%20full%20package" class="btn btn-p btn-lg" data-i18n="pr.p2.cta">Email to book</a>
+                <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20%245%2C500%20full%20package" class="btn btn-p btn-lg" data-i18n="pr.p2.cta">Email to book</a>
             </div>
         </div>
     </div>
@@ -759,8 +733,8 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
         <h2 class="s-title reveal" data-i18n="cta.title">Stop looking like a rough draft.</h2>
         <p class="s-desc reveal" data-i18n="cta.desc">Tell us what you’re building and when you need to show up. We’ll reply with next steps and timing.</p>
         <div class="f-cta-btns reveal">
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Project%20inquiry" class="btn btn-p btn-lg" data-i18n="cta.b1">Email to start</a>
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Question" class="btn btn-s btn-lg" data-i18n="cta.b2">Ask a question</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Project%20inquiry" class="btn btn-p btn-lg" data-i18n="cta.b1">Email to start</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question" class="btn btn-s btn-lg" data-i18n="cta.b2">Ask a question</a>
         </div>
         <div class="f-cta-img reveal" style="margin-top:48px"><img src="agents-ios-app.webp" alt="Brand on mobile" style="max-width:720px;width:100%;height:auto;display:block;margin:0 auto"></div>
     </div>
@@ -786,7 +760,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                 <div class="logo-wrap"><img src="Logo-01.png" alt="Neutral Studio" style="height:36px"></div>
                 <p data-i18n="ft.brand">Graphic design for early-stage startups, identity, deck, and web, fast and fairly priced.</p>
             </div>
-            <div class="ft-col"><h4 data-i18n="ft.product">Product</h4><a href="#use-cases" data-i18n="nav.uc">Services</a><a href="#why-us" data-i18n="nav.why">Why us</a><a href="#roi" data-i18n="nav.roi">ROI</a><a href="#how-it-works" data-i18n="nav.how">How It Works</a><a href="#pricing" data-i18n="nav.pr">Pricing</a></div>
+            <div class="ft-col"><h4 data-i18n="ft.product">Product</h4><a href="#use-cases" data-i18n="nav.sw">Portfolio</a><a href="#use-cases" data-i18n="nav.uc">Services</a><a href="#why-us" data-i18n="nav.why">Why us</a><a href="#roi" data-i18n="nav.roi">ROI</a><a href="#how-it-works" data-i18n="nav.how">How It Works</a><a href="#pricing" data-i18n="nav.pr">Pricing</a></div>
             <div class="ft-col"><h4 data-i18n="ft.company">Company</h4><a href="#team" data-i18n="nav.team">Team</a><a href="#faq">FAQ</a></div>
             <div class="ft-col"><h4 data-i18n="ft.contact">Contact</h4><a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" data-i18n="nav.cta">Book a call</a><a href="mailto:arnaupinyolwork@gmail.com">arnaupinyolwork@gmail.com</a></div>
         </div>
@@ -798,7 +772,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 
 <script>
 const T={
-"nav.uc":"Services","nav.sw":"Selected Work","nav.why":"Why us","nav.roi":"ROI","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Book a call",
+"nav.uc":"Services","nav.sw":"Portfolio","nav.why":"Why us","nav.roi":"ROI","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Book a call",
 "dd.mkt":"Brand & identity","dd.mkt.d":"Logo, type, and visual language","dd.audit":"Systems & guidelines","dd.audit.d":"Consistency as you scale","dd.ind":"Web & digital","dd.ind.d":"Site design and launch-ready UI","dd.strat":"Pitch & narrative","dd.strat.d":"Decks investors actually read",
 "hero.badge":"Fast \u00b7 agile \u00b7 built for early-stage teams","hero.h1":"Your <em>design</em> partner for<br>early stage <em>startups</em>","hero.sub":"Neutral Studio is a graphic design studio for founders who need clarity and speed: identity, deck, and web, without the agency overhead.","hero.cta1":"Book a call","hero.cta2":"Email us","hero.cta3":"Ask a question ","hero.imgalt":"Studio preview",
 "svc.label":"Services","svc.title":"What we design for teams","svc.desc":"End-to-end brand and digital craft: identity, product, narrative, and campaign-ready assets in one coherent system.",
@@ -810,10 +784,13 @@ const T={
 "svc.6t":"Social Media & Ad Creatives","svc.6d":"Paid social, organic, and display formats that stay on-message.",
 "svc.7t":"Print Design","svc.7d":"Editorial, posters, and collateral, print-ready files and specs.",
 "svc.8t":"Packaging & Merchandise","svc.8d":"Boxes, labels, and swag, designed for production and shelf impact.",
-"teams.label":"Selected work","teams.title":"Projects we\u2019ve shipped with founders","teams.desc":"Selected client work from our launch package, identity, deck, and digital touchpoints. More projects are added as we ship them.",
+"teams.label":"Portfolio","teams.title":"Get a portfolio built for your diligence","teams.desc":"We don\u2019t publish full case studies here. Ask for a curated deck with identity, decks, web, and motion, tailored to your sector, stage, and what you need to decide.",
+"teams.marqueeA11y":"Scrolling row of sample marks from recent branding work.",
 "teams.more":"+100 other projects","teams.raised":"We\u2019ve helped startups that have raised +$100M.",
-"teams.portfolioCta":"Need more examples? On request, we can share a broader portfolio matched to your sector or stage.",
-"teams.portfolioCtaBtn":"Request extended portfolio",
+"teams.ctaLead":"Tell us what you\u2019re evaluating, and we\u2019ll reply with a fuller portfolio and next steps, usually within one business day.",
+"teams.portfolioCtaBtn":"Request full portfolio",
+"teams.ctaBook":"Book a call",
+"teams.ctaNote":"Prefer async? Email works: we can share PDFs, slides, or a short Loom walkthrough.",
 "wcu.label":"Compare","wcu.title":"Why choose us","wcu.desc":"Neutral Studio vs. the usual alternatives for early-stage design, identity, deck, and web.",
 "wcu.h.ns":"Neutral Studio","wcu.h.in":"In-house hire","wcu.h.fr":"Freelancers","wcu.h.ag":"Agencies",
 "wcu.ns1":"Kick off in days with a clear, fixed scope","wcu.ns2":"Project pricing you can plan around, no surprise invoices","wcu.ns3":"Senior designers with startup and product experience","wcu.ns4":"Identity, deck, and web designed as one coherent system","wcu.ns5":"You own the files; straightforward handoff","wcu.ns6":"Paced for pre-seed to Series A timelines",
@@ -822,15 +799,14 @@ const T={
 "wcu.ag1":"Retainers, change orders, and layered fees","wcu.ag2":"Junior-heavy teams behind the partner pitch","wcu.ag3":"Longer cycles and more meetings before shipping","wcu.ag4":"Narrative can drift across deliverables","wcu.ag5":"Total cost hard to predict upfront","wcu.ag6":"Rigid contracts and minimums",
 "wcu.cta":"Book a call",
 "roi.label":"ROI","roi.title":"Success in numbers","roi.desc":"Design that pays for itself when you ship faster and raise with confidence.",
-"roi.hero.n":"100+","roi.hero.t":"Projects shipped with founders\u2014identity, deck, and web in focused engagements.",
+"roi.hero.n":"100+","roi.hero.t":"Projects shipped with founders: identity, deck, and web in focused engagements.",
 "roi.s1n":"$100M+","roi.s1d":"Collective funding raised by teams we\u2019ve supported on brand and narrative.",
 "roi.s2n":"Weeks","roi.s2d":"Most launch packages land in a few weeks when feedback stays tight.",
-"roi.s3n":"Fixed price","roi.s3d":"Know the number before you sign\u2014no surprise invoices mid-sprint.",
+"roi.s3n":"Fixed price","roi.s3d":"Know the number before you sign, with no surprise invoices mid-sprint.",
 "roi.s4n":"50+ yrs","roi.s4d":"Combined experience across exited founders and senior designers.",
-"roi.s5n":"Direct","roi.s5d":"Access to the designer on your account\u2014not a rotating cast of juniors.",
+"roi.s5n":"Direct","roi.s5d":"Access to the designer on your account, not a rotating cast of juniors.",
 "roi.s6n":"Days","roi.s6d":"From kickoff to direction you can share with investors and engineering.",
 "roi.tag":"Supporting founders from messy brief to launch-ready brand.",
-"teams.ctaOverlay":"View case study",
 "uc.ch.t":"CircleHome","uc.ch.d":"Complete identity system for a connected-home brand, mockups, investor pitch deck, and web, plus logo system and product lines CirclePass & CircleSafe. Two funding rounds after our design and redesign.","uc.ch.f1":"Full identity system","uc.ch.f2":"Mockups & pitch deck","uc.ch.f3":"Web & launch assets","uc.ch.alt":"CircleHome | full identity, mockups, deck, and web",
 "uc.v.t":"Vira","uc.v.d":"Complete identity for Vira: the app and all of its content, full brand applications, plus promotional and in-app materials, typography, and layouts built for storytelling under pressure.","uc.v.f1":"Complete identity","uc.v.f2":"App & all content","uc.v.f3":"Promo & app slides","uc.v.alt":"Vira | app, content, identity, and brand applications",
 "uc.g.t":"Gale\u00f3n","uc.g.d":"Visual identity for Patrimonio Nacional (Gale\u00f3n): full brand system and applications, motion, digital, and campaign-ready assets tied to Spain\u2019s national heritage institution.","uc.g.f1":"Identity system","uc.g.f2":"Brand applications","uc.g.f3":"Video & motion","uc.g.alt":"Gale\u00f3n | Patrimonio Nacional identity",
