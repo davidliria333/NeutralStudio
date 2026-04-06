@@ -18,7 +18,6 @@
     <meta name="theme-color" content="#ffffff">
     <meta name="robots" content="index,follow">
     <link rel="alternate" hreflang="en" href="https://getaibases.com/marketing.html">
-    <link rel="alternate" hreflang="es" href="https://getaibases.com/marketing.html">
     <link rel="alternate" hreflang="x-default" href="https://getaibases.com/marketing.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,9 +57,6 @@
         .hdr-left{display:flex;align-items:center;gap:20px;min-width:0}
         .logo-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0;text-decoration:none}.logo-wrap img{height:26px;width:auto}.logo-txt{font-weight:700;font-size:1.05rem;letter-spacing:-.3px;color:var(--text)}.logo-icp{font-weight:600;font-size:1.05rem;letter-spacing:-.3px;color:var(--accent)}.back-arrow{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;border:1px solid var(--border);color:var(--text-s);transition:all .2s;flex-shrink:0}.back-arrow:hover{border-color:var(--border-hover);color:var(--text);background:var(--bg-alt)}
         .nav-r{display:flex;align-items:center;gap:10px;flex-shrink:0}
-        .lang-t{display:flex;background:var(--bg-alt);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-        .lang-t button{background:none;border:none;font-size:.78rem;font-weight:600;padding:5px 11px;cursor:pointer;color:var(--text-m);font-family:inherit;transition:all .2s}
-        .lang-t button.active{background:var(--primary);color:#fff}
         .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:10px;font-weight:600;font-size:.875rem;font-family:inherit;border:none;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
         .btn:active{transform:scale(.97)}
         .btn-p{background:var(--primary);color:#fff}
@@ -143,9 +139,6 @@
         .ft-bottom{padding-top:24px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
         @media(min-width:640px){.ft-bottom{flex-direction:row;justify-content:space-between;text-align:left}}
         .ft-bottom p{font-size:.8rem;color:rgba(255,255,255,.35)}
-        .ft-bottom .lang-t{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12)}
-        .ft-bottom .lang-t button{color:rgba(255,255,255,.4)}
-        .ft-bottom .lang-t button.active{background:rgba(255,255,255,.15);color:#fff}
 
         .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
         .reveal.vis{opacity:1;transform:translateY(0)}
@@ -156,7 +149,6 @@
             .badge-dot{animation:none}
         }
         a:focus-visible,.btn:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-        .lang-t button:focus-visible{z-index:1;position:relative}
 
         @media(max-width:640px){
             section{padding:64px 0}
@@ -177,7 +169,6 @@
             <a href="index.html" class="logo-wrap"><img src="logo.png" alt="Neutral Studio"><span class="logo-txt">Neutral Studio</span><span class="logo-icp" data-i18n="nav.icp">Brand</span></a>
         </div>
         <div class="nav-r">
-            <div class="lang-t"><button class="active" type="button" data-lang="en">EN</button><button type="button" data-lang="es">ES</button></div>
             <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p" data-i18n="nav.cta">Book a Call</a>
             <button class="menu-btn" type="button" id="menuBtn" aria-label="Menu">
                 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
@@ -188,7 +179,6 @@
 
 <div class="mob-nav" id="mobNav">
     <a href="index.html" data-i18n="nav.homeFull">Back to home</a>
-    <div class="lang-t" style="margin-top:8px;align-self:flex-start"><button class="active" type="button" data-lang="en">EN</button><button type="button" data-lang="es">ES</button></div>
     <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p" style="margin-top:12px;text-align:center" data-i18n="nav.cta">Book a Call</a>
 </div>
 
@@ -351,13 +341,12 @@
         </div>
         <div class="ft-bottom">
             <p>&copy; 2026 Neutral Studio. <span data-i18n="ft.rights">All rights reserved.</span></p>
-            <div class="lang-t"><button class="active" type="button" data-lang="en">EN</button><button type="button" data-lang="es">ES</button></div>
         </div>
     </div>
 </footer>
 
 <script>
-const T={en:{
+const T={
 "nav.home":"\u2190 Back to home","nav.icp":"Brand","nav.homeFull":"Back to home","nav.cta":"Start a project",
 "hero.badge":"Brand & identity","hero.h1":"A visual system investors and users believe",
 "hero.sub":"We design logos, typography, and color for early-stage startups: tight, coherent, and ready for your deck and site.",
@@ -392,47 +381,9 @@ const T={en:{
 "ft.uc":"Services","ft.how":"How It Works","ft.pr":"Pricing","ft.team":"Team","ft.rights":"All rights reserved.",
 "doc.title":"Brand & identity | Neutral Studio",
 "doc.desc":"Logo, typography, and color systems for early-stage startups."
-},es:{
-"nav.home":"\u2190 Volver al inicio","nav.icp":"Marca","nav.homeFull":"Volver al inicio","nav.cta":"Empezar proyecto",
-"hero.badge":"Marca e identidad","hero.h1":"Un sistema visual en el que creen inversores y usuarios",
-"hero.sub":"Dise\u00f1amos logo, tipograf\u00eda y color para startups en etapa temprana: coherente y listo para deck y web.",
-"hero.cta1":"Empezar proyecto","hero.cta2":"Escr\u00edbenos","hero.cta3":"Hacer una pregunta ",
-"ch.label":"El reto","ch.title":"Cuando la marca no est\u00e1 a la altura","ch.desc":"Las plantillas por defecto se quedan cortas; los inversores lo notan.",
-"ch.p1":"Logo y color de la semana uno ya no reflejan el producto del mes seis.",
-"ch.p2":"Deck, web y producto usan tipograf\u00edas distintas: no parece la misma empresa.",
-"ch.p3":"Sin escala tipogr\u00e1fica ni paleta documentada, cada pantalla es improvisaci\u00f3n.",
-"ch.p4":"Colaboradores no encuentran activos aprobados: todo en carpetas sueltas.",
-"ch.p5":"Las grandes agencias piden plazos y presupuestos que no encajan en runway temprano.",
-"sol.label":"Qu\u00e9 entregamos","sol.title":"Identidad incluida en el pack de 3.000 $","sol.desc":"Todo conecta con la misma narrativa: pitch y p\u00edxeles alineados.",
-"sol.c1t":"Logo y wordmark","sol.c1d":"Bloqueos, zona de respeto y uso en fondos claros y oscuros.",
-"sol.c2t":"Sistema tipogr\u00e1fico","sol.c2d":"Pareja titular/cuerpo con escalas para web y deck.",
-"sol.c3t":"Paleta de color","sol.c3d":"Base, acento y neutros con notas de contraste.",
-"sol.c4t":"Patrones de marca","sol.c4d":"Textura o ret\u00edcula sutil para que el marketing se sienta familia.",
-"sol.c5t":"Plantillas redes y deck","sol.c5d":"Layouts base reutilizables sin romper el sistema.",
-"sol.c6t":"Entrega de archivos","sol.c6d":"Exportaciones y fuentes ordenadas para que el equipo las posea.",
-"test.label":"Pruebas","test.title":"Qu\u00e9 cuentan los fundadores","test.desc":"Feedback ilustrativo de proyectos de identidad con Neutral Studio.",
-"test.q1":"Dejamos de disculpar los slides. El logo encajaba con el pitch.",
-"test.n1":"Cofundador","test.r1":"B2B SaaS, seed","test.m1":"Deck + web alineados",
-"test.q2":"La escala tipogr\u00e1fica simplific\u00f3 decisiones de producto.",
-"test.n2":"Product","test.r2":"Dev tools","test.m2":"Tokens claros",
-"test.q3":"Un paquete, sin inflar alcance. Sab\u00edamos qu\u00e9 compr\u00e1bamos.",
-"test.n3":"CEO","test.r3":"Fintech, pre-A","test.m3":"Alcance claro",
-"ba.label":"Antes / despu\u00e9s","ba.title":"Qu\u00e9 cambia con identidad deliberada","ba.desc":"Cambios t\u00edpicos tras un sprint de marca; el calendario puede variar.",
-"ba.r1l":"Deck inversores","ba.r1f":"Antes: plantilla gen\u00e9rica","ba.r1t":"Despu\u00e9s: narrativa de marca",
-"ba.r2l":"Web marketing","ba.r2f":"Antes: estilos inconexos","ba.r2t":"Despu\u00e9s: un sistema visual",
-"ba.r3l":"Handoff a externos","ba.r3f":"Antes: piezas sueltas","ba.r3t":"Despu\u00e9s: kit documentado",
-"cta.label":"Siguiente paso","cta.title":"\u00bfIdentidad que escale contigo?","cta.desc":"Escr\u00edbenos dos l\u00edneas sobre tu startup: confirmamos encaje y fechas para el pack de 3.000 $.",
-"cta.b1":"Escribir para empezar","cta.b2":"Hacer una pregunta","cta.b3":"M\u00e1s detalle ",
-"ft.brand":"Dise\u00f1o gr\u00e1fico para startups en etapa temprana: identidad, deck y web.","ft.product":"Producto","ft.company":"Empresa","ft.contact":"Contacto",
-"ft.uc":"Servicios","ft.how":"C\u00f3mo funciona","ft.pr":"Precios","ft.team":"Equipo","ft.rights":"Todos los derechos reservados.",
-"doc.title":"Marca e identidad | Neutral Studio",
-"doc.desc":"Logo, tipograf\u00eda y color para startups en etapa temprana."
-}};
-let lang='en';
-function setLang(l){
-    lang=l;
-    document.documentElement.lang=l;
-    const t=T[l];
+};
+function applyI18n(){
+    const t=T;
     if(t['doc.title'])document.title=t['doc.title'];
     const md=document.getElementById('metaDesc');
     if(md&&t['doc.desc'])md.setAttribute('content',t['doc.desc']);
@@ -443,9 +394,8 @@ function setLang(l){
         if(svg){el.textContent=t[k];el.appendChild(svg)}
         else{el.textContent=t[k]}
     });
-    document.querySelectorAll('.lang-t button').forEach(b=>b.classList.toggle('active',b.getAttribute('data-lang')===l));
 }
-document.querySelectorAll('.lang-t button').forEach(b=>b.addEventListener('click',()=>setLang(b.getAttribute('data-lang'))));
+applyI18n();
 
 const hdr=document.getElementById('hdr');
 window.addEventListener('scroll',()=>{

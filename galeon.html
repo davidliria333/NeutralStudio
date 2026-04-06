@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeón | Patrimonio Nacional | Neutral Studio</title>
-    <meta name="description" content="Identidad y aplicaciones para Galeón de Patrimonio Nacional: sistema de marca, vídeo y piezas digitales.">
+    <meta name="description" content="Visual identity and applications for Galeón (Patrimonio Nacional): brand system, video, and digital assets.">
     <link rel="icon" type="image/png" href="Logo_Mesa%20de%20trabajo%201%20copia.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,13 +23,17 @@
 .cs-video-wrap{width:100%;margin-top:32px;margin-bottom:40px;border-radius:16px;overflow:hidden;border:1px solid var(--bdr);background:#0f172a;box-shadow:var(--sh-m)}
 .cs-video-wrap video{width:100%;height:auto;display:block}
 .cs-kicker{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--acc);margin-bottom:12px}
-.cs-title{font-size:clamp(1.85rem,4vw,2.6rem);font-weight:800;letter-spacing:-1.2px;line-height:1.12;margin-bottom:20px}
+.cs-title{font-size:clamp(1.85rem,4vw,2.6rem);font-weight:800;letter-spacing:-1.2px;line-height:1.12;margin-bottom:14px}
+.cs-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;max-width:820px}
+.cs-tag{font-size:.72rem;font-weight:600;letter-spacing:.02em;display:inline-flex;padding:6px 12px;border-radius:100px;border:1px solid var(--bdr);background:var(--bg-a);color:var(--tx-s)}
+.cs-hero-wrap{width:100vw;position:relative;left:50%;margin-left:-50vw;margin-right:-50vw;margin-bottom:36px}
+.cs-hero-wrap img{width:100%;height:auto;display:block;max-height:min(52vh,560px);object-fit:cover;background:var(--bg-a)}
+@media(max-width:640px){.cs-hero-wrap img{max-height:42vh}}
 .cs-intro p{font-size:1.02rem;color:var(--tx-s);max-width:720px;margin-bottom:16px}
+.cs-cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:28px;padding-top:24px;border-top:1px solid var(--bdr)}
+.btn-p{background:var(--pri);color:#fff;border:1px solid var(--pri)}.btn-p:hover{background:var(--pri-h);border-color:var(--pri-h)}
 .cs-intro a{color:var(--acc);text-decoration:underline;text-underline-offset:3px}
 .cs-intro a:hover{color:var(--pri)}
-.cs-lang{margin-top:28px;padding-top:24px;border-top:1px solid var(--bdr)}
-.cs-lang .lab{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--acc);margin-bottom:8px}
-.cs-lang p{font-size:.95rem;color:var(--tx-s);max-width:720px}
 .cs-block{margin-top:48px}
 .cs-block h2{font-size:1.05rem;font-weight:600;letter-spacing:-.2px;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--bdr)}
 .cs-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -51,12 +55,22 @@
     <div class="container">
         <p class="cs-kicker">Case study</p>
         <h1 class="cs-title">Galeón · Patrimonio Nacional</h1>
+        <div class="cs-tags" aria-label="Project tags">
+            <span class="cs-tag">Heritage &amp; culture</span>
+            <span class="cs-tag">Public sector</span>
+            <span class="cs-tag">Identity</span>
+            <span class="cs-tag">Motion &amp; video</span>
+            <span class="cs-tag">Spain</span>
+        </div>
+        <div class="cs-hero-wrap">
+            <img src="Galeon/Treball-01.png" alt="Galeón identity artwork" width="1600" height="900" loading="eager">
+        </div>
         <div class="cs-intro">
-            <p><strong>EN: </strong>Visual identity and brand applications for <strong>Galeón</strong>, within the context of <a href="https://www.patrimonionacional.es/sobre-patrimonio/conoce-nuestra-historia" target="_blank" rel="noopener noreferrer">Patrimonio Nacional</a>, Spain’s public institution for the Crown’s historic and artistic heritage. The project covers the full identity system and its applications across touchpoints.</p>
-            <div class="cs-lang">
-                <p class="lab">ES</p>
-                <p>Identidad y aplicaciones de marca para <strong>Galeón</strong> en el marco de <a href="https://www.patrimonionacional.es/sobre-patrimonio/conoce-nuestra-historia" target="_blank" rel="noopener noreferrer">Patrimonio Nacional</a>. Se diseñó el sistema de identidad completo y sus aplicaciones en los distintos soportes.</p>
-            </div>
+            <p>Visual identity and brand applications for <strong>Galeón</strong>, within the context of <a href="https://www.patrimonionacional.es/sobre-patrimonio/conoce-nuestra-historia" target="_blank" rel="noopener noreferrer">Patrimonio Nacional</a>, Spain’s public institution for the Crown’s historic and artistic heritage. The project covers the full identity system and its applications across touchpoints.</p>
+        </div>
+        <div class="cs-cta-row">
+            <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p">Book a call</a>
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20%E2%80%94%20Gale%C3%B3n" class="btn btn-s">Email</a>
         </div>
 
         <div class="cs-video-wrap">
@@ -68,7 +82,6 @@
         <section class="cs-block" aria-labelledby="gl-assets">
             <h2 id="gl-assets">Identity &amp; applications</h2>
             <div class="cs-gallery">
-                <img src="Galeon/Treball-01.png" alt="Galeón identity artwork 01" loading="lazy">
                 <img src="Galeon/Treball_Mesa%20de%20trabajo%201%20copia.png" alt="Galeón brand applications" loading="lazy">
                 <img src="Galeon/Treball_Mesa%20de%20trabajo%201%20copia%202.png" alt="Galeón brand applications" loading="lazy">
                 <img src="Galeon/Treball_Mesa%20de%20trabajo%201%20copia%204.png" alt="Galeón brand applications" loading="lazy">

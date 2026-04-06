@@ -52,9 +52,6 @@
         .hdr-left{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
         .logo-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0;text-decoration:none}.logo-wrap img{height:26px;width:auto}.logo-txt{font-weight:700;font-size:1.05rem;letter-spacing:-.3px;color:var(--text)}.logo-icp{font-weight:600;font-size:1.05rem;letter-spacing:-.3px;color:var(--accent)}.back-arrow{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;border:1px solid var(--border);color:var(--text-s);transition:all .2s;flex-shrink:0}.back-arrow:hover{border-color:var(--border-hover);color:var(--text);background:var(--bg-alt)}
         .nav-r{display:flex;align-items:center;gap:12px;flex-shrink:0;margin-left:auto}
-        .lang-t{display:flex;background:var(--bg-alt);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-        .lang-t button{background:none;border:none;font-size:.78rem;font-weight:600;padding:5px 11px;cursor:pointer;color:var(--text-m);font-family:inherit;transition:all .2s}
-        .lang-t button.active{background:var(--primary);color:#fff}
         .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:10px;font-weight:600;font-size:.875rem;font-family:inherit;border:none;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
         .btn:active{transform:scale(.97)}
         .btn-p{background:var(--primary);color:#fff}
@@ -127,9 +124,6 @@
         .ft-col a:hover{color:#fff}
         .ft-bottom{padding-top:28px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
         .ft-bottom p{font-size:.8rem;color:rgba(255,255,255,.35)}
-        .ft-bottom .lang-t{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12)}
-        .ft-bottom .lang-t button{color:rgba(255,255,255,.4)}
-        .ft-bottom .lang-t button.active{background:rgba(255,255,255,.15);color:#fff}
 
         .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
         .reveal.vis{opacity:1;transform:translateY(0)}
@@ -140,7 +134,7 @@
             .test-grid{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}
             .ft-grid{grid-template-columns:1fr 1fr;gap:28px}
             .hdr-inner{flex-wrap:nowrap}
-            .nav-r .lang-t,.nav-r .btn-p{display:none}
+            .nav-r .btn-p{display:none}
             .menu-btn{display:block}
         }
         @media(max-width:640px){
@@ -169,7 +163,6 @@
             <a href="index.html" class="logo-wrap"><img src="logo.png" alt="Neutral Studio"><span class="logo-txt">Neutral Studio</span><span class="logo-icp" data-i18n="nav.icp">Systems</span></a>
         </div>
         <div class="nav-r">
-            <div class="lang-t"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
             <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p" data-i18n="nav.cta">Start a project</a>
         </div>
         <button class="menu-btn" id="menuBtn" aria-label="Menu">
@@ -180,7 +173,6 @@
 
 <div class="mob-nav" id="mobNav">
     <a href="index.html" data-i18n="nav.home">Back to home</a>
-    <div class="lang-t"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
     <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p" data-i18n="nav.cta">Start a project</a>
 </div>
 
@@ -367,13 +359,12 @@
         </div>
         <div class="ft-bottom">
             <p>&copy; 2026 Neutral Studio. <span data-i18n="ft.rights">All rights reserved.</span></p>
-            <div class="lang-t"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
         </div>
     </div>
 </footer>
 
 <script>
-const T={en:{
+const T={
 "nav.home":"Back to home","nav.icp":"Audit","nav.cta":"Book a Call",
 "hero.badge":"For Audit Firms","hero.h1":"Catch what others miss. In half the time.",
 "hero.sub":"We implement private AI that automates compliance checking, risk analysis, and report generation, so your team focuses on judgment, not spreadsheets.",
@@ -413,52 +404,9 @@ const T={en:{
 "ft.brand":"Private AI systems for professional services. Implemented in 1 week.",
 "ft.product":"Product","ft.company":"Company","ft.contact":"Contact","ft.rights":"All rights reserved.",
 "ft.uc":"Use Cases","ft.how":"How It Works","ft.pr":"Pricing","ft.team":"Team"
-},es:{
-"nav.home":"Volver al inicio","nav.icp":"Auditor\u00eda","nav.cta":"Reserva una Llamada",
-"hero.badge":"Para firmas de auditor\u00eda","hero.h1":"Atrapa lo que otros pasan por alto. En la mitad del tiempo.",
-"hero.sub":"Implementamos IA privada que automatiza el control de cumplimiento, el an\u00e1lisis de riesgos y la generaci\u00f3n de informes, para que tu equipo se centre en el juicio profesional, no en las hojas de c\u00e1lculo.",
-"hero.cta1":"Reservar una demo","hero.cta2":"Auditor\u00eda gratuita","hero.cta3":"Ver demo",
-"chal.label":"El reto","chal.title":"Qu\u00e9 frena a los equipos de auditor\u00eda",
-"chal.desc":"Los procesos manuales y los l\u00edmites del muestreo dejan lagunas y consumen capacidad que los socios no pueden permitirse.",
-"chal.p1":"Controles de cumplimiento manuales que no escalan con el volumen de encargos.",
-"chal.p2":"Muestreo limitado cuando reguladores y clientes esperan mayor cobertura.",
-"chal.p3":"Generaci\u00f3n lenta de informes y formateo interminable entre herramientas.",
-"chal.p4":"Los cambios normativos son dif\u00edciles de seguir e integrar en cada flujo de trabajo.",
-"chal.p5":"An\u00e1lisis en Excel, propenso a errores y dif\u00edcil de auditar.",
-"sol.label":"Nuestro enfoque","sol.title":"Qu\u00e9 implementamos para firmas de auditor\u00eda",
-"sol.desc":"Sistemas privados adaptados a tus metodolog\u00edas, plantillas y datos, con el mismo rigor que esperas de cualquier encargo.",
-"sol.f1t":"Monitorizaci\u00f3n de cumplimiento","sol.f1d":"Controles continuos frente a tus reglas, listas de verificaci\u00f3n y bibliotecas de pol\u00edticas.",
-"sol.f2t":"An\u00e1lisis de riesgos","sol.f2d":"Puntuaci\u00f3n estructurada y apoyo narrativo basado en tu evidencia.",
-"sol.f3t":"Informes automatizados","sol.f3d":"Primeros borradores de hallazgos, papeles de trabajo y apartados listos para el cliente, siempre coherentes.",
-"sol.f4t":"Seguimiento regulatorio","sol.f4d":"Alertas y res\u00famenes cuando cambian normas o gu\u00edas, alineados con tus plantillas.",
-"sol.f5t":"An\u00e1lisis de poblaci\u00f3n completa","sol.f5d":"Ve m\u00e1s all\u00e1 del muestreo cuando el volumen de datos lo permite, sin aumentar plantilla.",
-"sol.f6t":"Detecci\u00f3n de anomal\u00edas","sol.f6d":"Pon de relieve valores at\u00edpicos y patrones que el equipo puede pasar por alto en revisi\u00f3n manual.",
-"test.label":"Resultados","test.title":"Lo que cuentan los l\u00edderes de auditor\u00eda",
-"test.desc":"Resultados ilustrativos de firmas que adoptaron automatizaci\u00f3n estructurada con GetAI.",
-"test.q1":"Los controles de cumplimiento que a nuestro equipo le llevaban 3 d\u00edas completos ahora llevan 4 horas. Y ya no se nos escapa nada.",
-"test.n1":"Directora de auditor\u00eda","test.r1":"Firma de auditor\u00eda, 120 empleados",
-"test.m1":"85% m\u00e1s r\u00e1pido en controles de cumplimiento",
-"test.q2":"Detectamos un 23% m\u00e1s de incidencias de cumplimiento en el primer mes. La IA detecta patrones que se nos escapan.",
-"test.n2":"Socio","test.r2":"Firma de auditor\u00eda, 80 empleados","test.m2":"23% m\u00e1s incidencias detectadas",
-"test.q3":"El equipo pas\u00f3 de temer la temporada alta a disfrutar el trabajo. Nos centramos en el an\u00e1lisis, no en meter datos.",
-"test.n3":"Senior Manager","test.r3":"Firma de auditor\u00eda, 50 empleados","test.m3":"60% menos trabajo manual",
-"ba.label":"Antes / despu\u00e9s","ba.title":"Ahorros de tiempo t\u00edpicos",
-"ba.desc":"Referencias orientativas seg\u00fan encargos; el resultado depende del acceso a datos y del alcance.",
-"ba.r1b":"Control de cumplimiento: 3 d\u00edas","ba.r1a":"4 horas",
-"ba.r2b":"Generaci\u00f3n del informe: 2 d\u00edas","ba.r2a":"3 horas",
-"ba.r3b":"Evaluaci\u00f3n de riesgos: 1 semana","ba.r3a":"1 d\u00eda",
-"cta.label":"Siguiente paso","cta.title":"V\u00e9alo en sus propios encargos",
-"cta.desc":"Reserve una demo breve. Trazaremos un flujo de cumplimiento o informes y mostraremos c\u00f3mo ser\u00eda una implementaci\u00f3n privada en su firma.",
-"cta.b1":"Reservar una demo","cta.b2":"Auditor\u00eda gratuita","cta.b3":"Ver demo",
-"ft.brand":"Sistemas de IA privados para servicios profesionales. Implementados en 1 semana.",
-"ft.product":"Producto","ft.company":"Empresa","ft.contact":"Contacto","ft.rights":"Todos los derechos reservados.",
-"ft.uc":"Casos de uso","ft.how":"C\u00f3mo funciona","ft.pr":"Precios","ft.team":"Equipo"
-}};
-let lang='en';
-function setLang(l){
-    lang=l;
-    document.documentElement.lang=l;
-    const t=T[l];
+};
+function applyI18n(){
+    const t=T;
     document.querySelectorAll('[data-i18n]').forEach(el=>{
         const k=el.getAttribute('data-i18n');
         if(!t[k])return;
@@ -466,9 +414,8 @@ function setLang(l){
         if(svg){el.textContent=t[k];el.appendChild(svg)}
         else{el.textContent=t[k]}
     });
-    document.querySelectorAll('.lang-t button').forEach(b=>b.classList.toggle('active',b.getAttribute('data-lang')===l));
 }
-document.querySelectorAll('.lang-t button').forEach(b=>b.addEventListener('click',()=>setLang(b.getAttribute('data-lang'))));
+applyI18n();
 
 const hdr=document.getElementById('hdr');
 window.addEventListener('scroll',()=>{

@@ -44,9 +44,6 @@
 .dd-menu a:hover{background:var(--bg-a);color:var(--tx)}
 .dd-menu a span{display:block;font-size:.75rem;color:var(--tx-m);margin-top:1px}
 .nav-r{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.lang-t{display:flex;background:var(--bg-a);border:1px solid var(--bdr);border-radius:8px;overflow:hidden}
-.lang-t button{background:none;border:none;font-size:.75rem;font-weight:600;padding:4px 10px;cursor:pointer;color:var(--tx-m);font-family:inherit;transition:all .2s}
-.lang-t button.active{background:var(--pri);color:#fff}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:10px;font-weight:600;font-size:.875rem;font-family:inherit;border:none;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
 .btn:active{transform:scale(.97)}
 .btn-p{background:var(--pri);color:#fff}
@@ -102,6 +99,49 @@ section{padding:100px 0;position:relative}
 .portfolio-more{text-align:center;margin-top:40px;padding-top:36px;border-top:1px solid var(--bdr);max-width:560px;margin-left:auto;margin-right:auto}
 .portfolio-more-line{font-size:1.35rem;font-weight:700;letter-spacing:-.4px;color:var(--tx);margin-bottom:10px}
 .portfolio-more-sub{font-size:.95rem;color:var(--tx-s);line-height:1.6}
+
+/* WHY CHOOSE US (compare) */
+.wcu-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--bdr);border-radius:16px;overflow:hidden;background:var(--bg);box-shadow:var(--sh-s)}
+.wcu-col{border-right:1px solid var(--bdr);min-width:0;display:flex;flex-direction:column}
+.wcu-col:last-child{border-right:none}
+.wcu-col-head{padding:18px 16px;font-size:.82rem;font-weight:700;letter-spacing:-.2px;border-bottom:1px solid var(--bdr);background:var(--bg-a);text-align:center;line-height:1.35}
+.wcu-col--ns .wcu-col-head{background:linear-gradient(180deg,#ecfdf5 0%,#f0fdf4 100%);color:var(--tx);border-bottom-color:#bbf7d0}
+.wcu-list{list-style:none;margin:0;padding:14px 14px 18px;flex:1;display:flex;flex-direction:column;gap:0}
+.wcu-list li{font-size:.78rem;color:var(--tx-s);line-height:1.5;padding:10px 0;border-bottom:1px solid var(--bdr);display:flex;align-items:flex-start;gap:8px}
+.wcu-list li:last-child{border-bottom:none;padding-bottom:0}
+.wcu-list--pos li{color:var(--tx)}
+.wcu-ic{flex-shrink:0;width:16px;height:16px;margin-top:2px}
+.wcu-list--pos .wcu-ic{color:var(--acc)}
+.wcu-list--neg .wcu-ic{color:var(--tx-m);opacity:.75}
+@media(max-width:1024px){
+.wcu-grid{grid-template-columns:repeat(2,1fr);border-radius:14px}
+.wcu-col{border-right:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+.wcu-col:nth-child(2n){border-right:none}
+.wcu-col:nth-child(n+3){border-bottom:none}
+}
+@media(max-width:640px){
+.wcu-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:4px 0 16px;margin:0 -24px;padding-left:24px;padding-right:24px;border:none;background:transparent;box-shadow:none;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.wcu-col{flex:0 0 min(88vw,300px);scroll-snap-align:start;border:1px solid var(--bdr);border-radius:14px;overflow:hidden;background:var(--bg);box-shadow:var(--sh-s)}
+.wcu-col{border-right:1px solid var(--bdr)!important;border-bottom:none!important}
+}
+
+/* ROI (Success in numbers) */
+.roi{background:var(--bg);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+.roi-hero{text-align:center;margin-bottom:48px;padding:8px 0 0}
+.roi-hero-num{font-size:clamp(3rem,9vw,5.25rem);font-weight:800;letter-spacing:-.06em;line-height:1;color:var(--pri);margin-bottom:12px}
+.roi-hero-txt{font-size:clamp(.95rem,2vw,1.1rem);color:var(--tx-s);max-width:520px;margin:0 auto;line-height:1.55;font-weight:500}
+.roi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.roi-card{background:var(--bg-a);border:1px solid var(--bdr);border-radius:16px;padding:24px 22px 26px;transition:border-color .2s,box-shadow .2s}
+.roi-card:hover{border-color:var(--bdr-h);box-shadow:var(--sh-s)}
+.roi-card-num{font-size:clamp(1.35rem,2.8vw,1.85rem);font-weight:800;letter-spacing:-.04em;color:var(--pri);line-height:1.15;margin-bottom:10px}
+.roi-card-desc{font-size:.84rem;color:var(--tx-s);line-height:1.55;margin:0}
+.roi-tagline{text-align:center;margin-top:44px;font-size:.95rem;color:var(--tx-m);max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6}
+@media(max-width:900px){
+.roi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px){
+.roi-grid{grid-template-columns:1fr}
+}
 
 /* USE CASES */
 @media (prefers-reduced-motion:reduce){
@@ -216,6 +256,12 @@ section{padding:100px 0;position:relative}
 .f-cta{text-align:center;padding:100px 0;background:#fff;color:var(--tx)}
 .f-cta .s-desc{margin:0 auto 36px}
 .f-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.smash{padding:clamp(80px,14vw,140px) 0;background:var(--pri);color:#fff;text-align:center}
+.smash-quote{font-size:clamp(1.45rem,4.2vw,2.85rem);font-weight:700;letter-spacing:-.045em;line-height:1.18;max-width:900px;margin:0 auto 32px;padding:0 16px;color:#fff}
+.smash-quote em{font-style:italic;font-weight:500;color:rgba(255,255,255,.88)}
+.smash .btn-p{background:var(--acc);color:#fff;border:1px solid var(--acc);padding:14px 28px;font-size:.95rem}
+.smash .btn-p:hover{background:#0d9488;border-color:#0d9488;color:#fff;box-shadow:0 8px 24px rgba(15,118,110,.35)}
+.smash-sub{font-size:.9rem;color:rgba(255,255,255,.55);margin-top:20px;max-width:420px;margin-left:auto;margin-right:auto;padding:0 16px}
 
 /* FOOTER */
 .footer{background:var(--bg);color:var(--tx);padding:56px 0 28px;border-top:1px solid var(--bdr)}
@@ -237,7 +283,6 @@ section{padding:100px 0;position:relative}
 /* RESPONSIVE */
 @media(max-width:1024px){
 .nav-l{display:none}.menu-btn{display:block}
-.nav-r .lang-t{display:none}
 .nav-r{margin-left:auto;gap:8px}
 .menu-btn{margin-right:0}
 .steps{grid-template-columns:1fr 1fr;gap:28px}
@@ -283,13 +328,14 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                 </div>
             </div>
             <a href="#use-cases" data-i18n="nav.sw">Selected Work</a>
+            <a href="#why-us" data-i18n="nav.why">Why us</a>
+            <a href="#roi" data-i18n="nav.roi">ROI</a>
             <a href="#how-it-works" data-i18n="nav.how">How It Works</a>
             <a href="#pricing" data-i18n="nav.pr">Pricing</a>
             <a href="#team" data-i18n="nav.team">Team</a>
             <a href="#faq">FAQ</a>
         </nav>
         <div class="nav-r">
-            <div class="lang-t"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
             <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p" data-i18n="nav.cta">Book a call</a>
         </div>
         <button class="menu-btn" id="menuBtn" aria-label="Menu">
@@ -309,11 +355,12 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
         </div>
     </div>
     <a href="#use-cases" data-i18n="nav.sw">Selected Work</a>
+    <a href="#why-us" data-i18n="nav.why">Why us</a>
+    <a href="#roi" data-i18n="nav.roi">ROI</a>
     <a href="#how-it-works" data-i18n="nav.how">How It Works</a>
     <a href="#pricing" data-i18n="nav.pr">Pricing</a>
     <a href="#team" data-i18n="nav.team">Team</a>
     <a href="#faq">FAQ</a>
-    <div class="lang-t" style="margin-top:12px;align-self:flex-start"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
     <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p" style="margin-top:8px;text-align:center" data-i18n="nav.cta">Book a call</a>
 </div>
 
@@ -379,8 +426,8 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                 <div class="uc-thumb-over" aria-hidden="true"><span><span data-i18n="teams.ctaOverlay">View case study</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></div>
                 <div class="uc-card-inner">
                     <h3 data-i18n="uc.v.t">Vira</h3>
-                    <p data-i18n="uc.v.d">Complete identity for Vira: the app and its full brand applications, plus investor pitch deck, typography, and layouts built for storytelling under pressure.</p>
-                    <ul class="uc-feats"><li data-i18n="uc.v.f1">Complete identity</li><li data-i18n="uc.v.f2">App &amp; applications</li><li data-i18n="uc.v.f3">Investor pitch deck</li></ul>
+                    <p data-i18n="uc.v.d">Complete identity for Vira: the app and all of its content, full brand applications, plus promotional and in-app materials, typography, and layouts built for storytelling under pressure.</p>
+                    <ul class="uc-feats"><li data-i18n="uc.v.f1">Complete identity</li><li data-i18n="uc.v.f2">App &amp; all content</li><li data-i18n="uc.v.f3">Promo &amp; app slides</li></ul>
                     <span class="uc-link" data-i18n="uc.more">View case study &rarr;</span>
                 </div>
             </a>
@@ -409,6 +456,90 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <p class="portfolio-more-line" data-i18n="teams.more">+100 other projects</p>
             <p class="portfolio-more-sub" data-i18n="teams.raised">We&rsquo;ve helped startups that have raised +$100M.</p>
         </div>
+    </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why-us" class="bg-a">
+    <div class="container">
+        <div class="s-hdr reveal">
+            <p class="s-label" data-i18n="wcu.label">Compare</p>
+            <h2 class="s-title" data-i18n="wcu.title">Why choose us</h2>
+            <p class="s-desc" data-i18n="wcu.desc">Neutral Studio vs. the usual alternatives for early-stage design, identity, deck, and web.</p>
+        </div>
+        <div class="wcu-grid reveal" role="region" aria-label="Service comparison">
+            <div class="wcu-col wcu-col--ns">
+                <div class="wcu-col-head" data-i18n="wcu.h.ns">Neutral Studio</div>
+                <ul class="wcu-list wcu-list--pos">
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="wcu.ns1">Kick off in days with a clear, fixed scope</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="wcu.ns2">Project pricing you can plan around, no surprise invoices</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="wcu.ns3">Senior designers with startup and product experience</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="wcu.ns4">Identity, deck, and web designed as one coherent system</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="wcu.ns5">You own the files; straightforward handoff</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="wcu.ns6">Paced for pre-seed to Series A timelines</span></li>
+                </ul>
+            </div>
+            <div class="wcu-col">
+                <div class="wcu-col-head" data-i18n="wcu.h.in">In-house hire</div>
+                <ul class="wcu-list wcu-list--neg">
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.in1">4–8+ weeks to hire before design work starts</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.in2">Salary, benefits, and management overhead</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.in3">One person’s bandwidth for brand, deck, and web at once</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.in4">You own HR, tools, and process setup</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.in5">Hard to scale down when priorities shift</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.in6">Notice periods and employment contracts</span></li>
+                </ul>
+            </div>
+            <div class="wcu-col">
+                <div class="wcu-col-head" data-i18n="wcu.h.fr">Freelancers</div>
+                <ul class="wcu-list wcu-list--neg">
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.fr1">Availability and quality vary by individual</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.fr2">Hourly billing and scope creep add up</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.fr3">You vet, brief, and manage each engagement</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.fr4">Brand, deck, and site often split across people</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.fr5">No single owner of the full launch package</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.fr6">Context lost between gigs and handoffs</span></li>
+                </ul>
+            </div>
+            <div class="wcu-col">
+                <div class="wcu-col-head" data-i18n="wcu.h.ag">Agencies</div>
+                <ul class="wcu-list wcu-list--neg">
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.ag1">Retainers, change orders, and layered fees</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.ag2">Junior-heavy teams behind the partner pitch</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.ag3">Longer cycles and more meetings before shipping</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.ag4">Narrative can drift across deliverables</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.ag5">Total cost hard to predict upfront</span></li>
+                    <li><svg class="wcu-ic" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="wcu.ag6">Rigid contracts and minimums</span></li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:40px" class="reveal">
+            <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-lg" data-i18n="wcu.cta">Book a call</a>
+        </div>
+    </div>
+</section>
+
+<!-- ROI / SUCCESS IN NUMBERS -->
+<section id="roi" class="roi">
+    <div class="container">
+        <div class="s-hdr reveal">
+            <p class="s-label" data-i18n="roi.label">ROI</p>
+            <h2 class="s-title" data-i18n="roi.title">Success in numbers</h2>
+            <p class="s-desc" data-i18n="roi.desc">Design that pays for itself when you ship faster and raise with confidence.</p>
+        </div>
+        <div class="roi-hero reveal">
+            <p class="roi-hero-num" data-i18n="roi.hero.n">100+</p>
+            <p class="roi-hero-txt" data-i18n="roi.hero.t">Projects shipped with founders—identity, deck, and web in focused engagements.</p>
+        </div>
+        <div class="roi-grid">
+            <div class="roi-card reveal"><p class="roi-card-num" data-i18n="roi.s1n">$100M+</p><p class="roi-card-desc" data-i18n="roi.s1d">Collective funding raised by teams we&rsquo;ve supported on brand and narrative.</p></div>
+            <div class="roi-card reveal reveal-d1"><p class="roi-card-num" data-i18n="roi.s2n">Weeks</p><p class="roi-card-desc" data-i18n="roi.s2d">Most launch packages land in a few weeks when feedback stays tight.</p></div>
+            <div class="roi-card reveal reveal-d2"><p class="roi-card-num" data-i18n="roi.s3n">Fixed price</p><p class="roi-card-desc" data-i18n="roi.s3d">Know the number before you sign—no surprise invoices mid-sprint.</p></div>
+            <div class="roi-card reveal reveal-d3"><p class="roi-card-num" data-i18n="roi.s4n">50+ yrs</p><p class="roi-card-desc" data-i18n="roi.s4d">Combined experience across exited founders and senior designers.</p></div>
+            <div class="roi-card reveal"><p class="roi-card-num" data-i18n="roi.s5n">Direct</p><p class="roi-card-desc" data-i18n="roi.s5d">Access to the designer on your account—not a rotating cast of juniors.</p></div>
+            <div class="roi-card reveal reveal-d1"><p class="roi-card-num" data-i18n="roi.s6n">Days</p><p class="roi-card-desc" data-i18n="roi.s6d">From kickoff to direction you can share with investors and engineering.</p></div>
+        </div>
+        <p class="roi-tagline reveal" data-i18n="roi.tag">Supporting founders from messy brief to launch-ready brand.</p>
     </div>
 </section>
 
@@ -629,6 +760,17 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     </div>
 </section>
 
+<!-- SMASH CTA (Zyner-style closer) -->
+<section id="smash" class="smash" aria-labelledby="smash-heading">
+    <div class="container">
+        <h2 id="smash-heading" class="smash-quote reveal" data-i18n="smash.h1">I guess all I&rsquo;m trying to say is<br>you should smash the <em>damn</em> button.</h2>
+        <div class="reveal">
+            <a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-lg" data-i18n="smash.cta">Book a call</a>
+        </div>
+        <p class="smash-sub reveal" data-i18n="smash.sub">Pick a slot. We&rsquo;ll figure out the rest.</p>
+    </div>
+</section>
+
 </main>
 
 <footer class="footer">
@@ -638,20 +780,19 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
                 <div class="logo-wrap"><img src="Logo-01.png" alt="Neutral Studio" style="height:36px"></div>
                 <p data-i18n="ft.brand">Graphic design for early-stage startups, identity, deck, and web, fast and fairly priced.</p>
             </div>
-            <div class="ft-col"><h4 data-i18n="ft.product">Product</h4><a href="#use-cases" data-i18n="nav.uc">Services</a><a href="#how-it-works" data-i18n="nav.how">How It Works</a><a href="#pricing" data-i18n="nav.pr">Pricing</a></div>
+            <div class="ft-col"><h4 data-i18n="ft.product">Product</h4><a href="#use-cases" data-i18n="nav.uc">Services</a><a href="#why-us" data-i18n="nav.why">Why us</a><a href="#roi" data-i18n="nav.roi">ROI</a><a href="#how-it-works" data-i18n="nav.how">How It Works</a><a href="#pricing" data-i18n="nav.pr">Pricing</a></div>
             <div class="ft-col"><h4 data-i18n="ft.company">Company</h4><a href="#team" data-i18n="nav.team">Team</a><a href="#faq">FAQ</a></div>
             <div class="ft-col"><h4 data-i18n="ft.contact">Contact</h4><a href="https://cal.eu/neutraldesign/30min" target="_blank" rel="noopener noreferrer" data-i18n="nav.cta">Book a call</a><a href="mailto:arnaupinyolwork@gmail.com">arnaupinyolwork@gmail.com</a></div>
         </div>
         <div class="ft-bottom">
             <p>&copy; 2026 Neutral Studio. <span data-i18n="ft.rights">All rights reserved.</span></p>
-            <div class="lang-t"><button class="active" data-lang="en">EN</button><button data-lang="es">ES</button></div>
         </div>
     </div>
 </footer>
 
 <script>
-const T={en:{
-"nav.uc":"Services","nav.sw":"Selected Work","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Book a call",
+const T={
+"nav.uc":"Services","nav.sw":"Selected Work","nav.why":"Why us","nav.roi":"ROI","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Book a call",
 "dd.mkt":"Brand & identity","dd.mkt.d":"Logo, type, and visual language","dd.audit":"Systems & guidelines","dd.audit.d":"Consistency as you scale","dd.ind":"Web & digital","dd.ind.d":"Site design and launch-ready UI","dd.strat":"Pitch & narrative","dd.strat.d":"Decks investors actually read",
 "hero.badge":"Fast \u00b7 agile \u00b7 built for early-stage teams","hero.h1":"Your <em>design</em> partner for<br>early stage <em>startups</em>","hero.sub":"Neutral Studio is a graphic design studio for founders who need clarity and speed: identity, deck, and web, without the agency overhead.","hero.cta1":"Book a call","hero.cta2":"Email us","hero.cta3":"Ask a question ","hero.imgalt":"Studio preview",
 "svc.label":"Services","svc.title":"What we design for teams","svc.desc":"End-to-end brand and digital craft: identity, product, narrative, and campaign-ready assets in one coherent system.",
@@ -665,9 +806,25 @@ const T={en:{
 "svc.8t":"Packaging & Merchandise","svc.8d":"Boxes, labels, and swag, designed for production and shelf impact.",
 "teams.label":"Selected work","teams.title":"Projects we\u2019ve shipped with founders","teams.desc":"Selected client work from our launch package, identity, deck, and digital touchpoints. More projects are added as we ship them.",
 "teams.more":"+100 other projects","teams.raised":"We\u2019ve helped startups that have raised +$100M.",
+"wcu.label":"Compare","wcu.title":"Why choose us","wcu.desc":"Neutral Studio vs. the usual alternatives for early-stage design, identity, deck, and web.",
+"wcu.h.ns":"Neutral Studio","wcu.h.in":"In-house hire","wcu.h.fr":"Freelancers","wcu.h.ag":"Agencies",
+"wcu.ns1":"Kick off in days with a clear, fixed scope","wcu.ns2":"Project pricing you can plan around, no surprise invoices","wcu.ns3":"Senior designers with startup and product experience","wcu.ns4":"Identity, deck, and web designed as one coherent system","wcu.ns5":"You own the files; straightforward handoff","wcu.ns6":"Paced for pre-seed to Series A timelines",
+"wcu.in1":"4\u20138+ weeks to hire before design work starts","wcu.in2":"Salary, benefits, and management overhead","wcu.in3":"One person\u2019s bandwidth for brand, deck, and web at once","wcu.in4":"You own HR, tools, and process setup","wcu.in5":"Hard to scale down when priorities shift","wcu.in6":"Notice periods and employment contracts",
+"wcu.fr1":"Availability and quality vary by individual","wcu.fr2":"Hourly billing and scope creep add up","wcu.fr3":"You vet, brief, and manage each engagement","wcu.fr4":"Brand, deck, and site often split across people","wcu.fr5":"No single owner of the full launch package","wcu.fr6":"Context lost between gigs and handoffs",
+"wcu.ag1":"Retainers, change orders, and layered fees","wcu.ag2":"Junior-heavy teams behind the partner pitch","wcu.ag3":"Longer cycles and more meetings before shipping","wcu.ag4":"Narrative can drift across deliverables","wcu.ag5":"Total cost hard to predict upfront","wcu.ag6":"Rigid contracts and minimums",
+"wcu.cta":"Book a call",
+"roi.label":"ROI","roi.title":"Success in numbers","roi.desc":"Design that pays for itself when you ship faster and raise with confidence.",
+"roi.hero.n":"100+","roi.hero.t":"Projects shipped with founders\u2014identity, deck, and web in focused engagements.",
+"roi.s1n":"$100M+","roi.s1d":"Collective funding raised by teams we\u2019ve supported on brand and narrative.",
+"roi.s2n":"Weeks","roi.s2d":"Most launch packages land in a few weeks when feedback stays tight.",
+"roi.s3n":"Fixed price","roi.s3d":"Know the number before you sign\u2014no surprise invoices mid-sprint.",
+"roi.s4n":"50+ yrs","roi.s4d":"Combined experience across exited founders and senior designers.",
+"roi.s5n":"Direct","roi.s5d":"Access to the designer on your account\u2014not a rotating cast of juniors.",
+"roi.s6n":"Days","roi.s6d":"From kickoff to direction you can share with investors and engineering.",
+"roi.tag":"Supporting founders from messy brief to launch-ready brand.",
 "teams.ctaOverlay":"View case study",
 "uc.ch.t":"CircleHome","uc.ch.d":"Complete identity system for a connected-home brand, mockups, investor pitch deck, and web, plus logo system and product lines CirclePass & CircleSafe. Two funding rounds after our design and redesign.","uc.ch.f1":"Full identity system","uc.ch.f2":"Mockups & pitch deck","uc.ch.f3":"Web & launch assets","uc.ch.alt":"CircleHome | full identity, mockups, deck, and web",
-"uc.v.t":"Vira","uc.v.d":"Complete identity for Vira: the app and its full brand applications, plus investor pitch deck, typography, and layouts built for storytelling under pressure.","uc.v.f1":"Complete identity","uc.v.f2":"App & applications","uc.v.f3":"Investor pitch deck","uc.v.alt":"Vira | identity, app, and brand applications",
+"uc.v.t":"Vira","uc.v.d":"Complete identity for Vira: the app and all of its content, full brand applications, plus promotional and in-app materials, typography, and layouts built for storytelling under pressure.","uc.v.f1":"Complete identity","uc.v.f2":"App & all content","uc.v.f3":"Promo & app slides","uc.v.alt":"Vira | app, content, identity, and brand applications",
 "uc.g.t":"Gale\u00f3n","uc.g.d":"Visual identity for Patrimonio Nacional (Gale\u00f3n): full brand system and applications, motion, digital, and campaign-ready assets tied to Spain\u2019s national heritage institution.","uc.g.f1":"Identity system","uc.g.f2":"Brand applications","uc.g.f3":"Video & motion","uc.g.alt":"Gale\u00f3n | Patrimonio Nacional identity",
 "uc.ar.t":"Arkuos","uc.ar.d":"Visual identity for Arkuos, a socio-educational nonprofit: logo system, warm palette, campaign imagery, and assets for arkuos.org.","uc.ar.f1":"Logo & identity","uc.ar.f2":"Campaign & photography","uc.ar.f3":"Digital presence","uc.ar.alt":"Arkuos | socio-educational identity",
 "uc.more":"View case study \u2192",
@@ -702,64 +859,12 @@ const T={en:{
 "faq.q5":"What if we need more than the package? ","faq.a5":"We can scope add-ons after the first delivery, extra pages, motion, or campaign templates, without renegotiating the whole project.",
 "faq.q6":"Why is pricing so straightforward? ","faq.a6":"Startups need predictability. One fixed price keeps everyone aligned on what ships and when.",
 "cta.label":"Ready?","cta.title":"Stop looking like a rough draft.","cta.desc":"Tell us what you\u2019re building and when you need to show up. We\u2019ll reply with next steps and timing.","cta.b1":"Email to start","cta.b2":"Ask a question",
+"smash.h1":"I guess all I\u2019m trying to say is<br>you should smash the <em>damn</em> button.","smash.cta":"Book a call","smash.sub":"Pick a slot. We\u2019ll figure out the rest.",
 "ft.brand":"Graphic design for early-stage startups, identity, deck, and web, fast and fairly priced.","ft.product":"Product","ft.company":"Company","ft.contact":"Contact","ft.rights":"All rights reserved."
-},es:{
-"nav.uc":"Servicios","nav.sw":"Trabajos","nav.how":"C\u00f3mo trabajamos","nav.pr":"Precios","nav.team":"Equipo","nav.cta":"Reservar llamada",
-"dd.mkt":"Marca e identidad","dd.mkt.d":"Logo, tipograf\u00eda y lenguaje visual","dd.audit":"Sistemas y gu\u00edas","dd.audit.d":"Coherencia al escalar","dd.ind":"Web y digital","dd.ind.d":"Dise\u00f1o web listo para lanzar","dd.strat":"Pitch y narrativa","dd.strat.d":"Decks que s\u00ed leen los inversores",
-"hero.badge":"R\u00e1pido \u00b7 \u00e1gil \u00b7 para equipos en etapa temprana","hero.h1":"Tu socio de <em>dise\u00f1o</em> para<br><em>startups</em> en etapa temprana","hero.sub":"Neutral Studio es un estudio de dise\u00f1o gr\u00e1fico para fundadores que necesitan claridad y velocidad: identidad, deck y web, sin el peso de una gran agencia.","hero.cta1":"Reservar llamada","hero.cta2":"Escr\u00edbenos","hero.cta3":"Hacer una pregunta ","hero.imgalt":"Vista previa del estudio",
-"svc.label":"Servicios","svc.title":"Lo que dise\u00f1amos para equipos","svc.desc":"Craft de marca y digital de punta a punta: identidad, producto, narrativa y piezas de campa\u00f1a en un sistema coherente.",
-"svc.1t":"Identidad de marca","svc.1d":"Sistemas de logo, tipograf\u00eda, color y gu\u00edas que escalan con vuestra empresa.",
-"svc.2t":"Dise\u00f1o web","svc.2d":"Webs de marketing y p\u00e1ginas clave: layouts responsive y UI lista para lanzar.",
-"svc.3t":"Dise\u00f1o UI/UX","svc.3d":"Flujos, componentes y sistemas para productos que la gente usa de verdad.",
-"svc.4t":"Dise\u00f1o de pitch decks","svc.4d":"Decks para inversores y ventas con jerarqu\u00eda clara y narrativa s\u00f3lida.",
-"svc.5t":"Motion design","svc.5d":"Animaci\u00f3n de marca, promos y motion para redes alineado con la identidad.",
-"svc.6t":"Redes sociales y creatividades publicitarias","svc.6d":"Social org\u00e1nico, paid media y display con mensaje y est\u00e9tica consistentes.",
-"svc.7t":"Dise\u00f1o para impresi\u00f3n","svc.7d":"Editorial, carteles y piezas f\u00edsicas: archivos y especificaciones para imprenta.",
-"svc.8t":"Packaging y merchandising","svc.8d":"Cajas, etiquetas y merch: dise\u00f1o pensado para producci\u00f3n y estanter\u00eda.",
-"teams.label":"Trabajos","teams.title":"Proyectos con fundadores","teams.desc":"Trabajos recientes del pack de lanzamiento: identidad, deck y piezas digitales. Iremos a\u00f1adiendo proyectos conforme salgan.",
-"teams.more":"+100 proyectos m\u00e1s","teams.raised":"Hemos trabajado con startups que han levantado +100M$.",
-"teams.ctaOverlay":"Ver caso",
-"uc.ch.t":"CircleHome","uc.ch.d":"Sistema completo de identidad para una marca de hogar conectado: mockups, pitch deck y web, m\u00e1s sistema de logo y l\u00edneas CirclePass y CircleSafe. Dos rondas de financiaci\u00f3n tras nuestro dise\u00f1o y redise\u00f1o.","uc.ch.f1":"Identidad completa","uc.ch.f2":"Mockups y pitch deck","uc.ch.f3":"Web y lanzamiento","uc.ch.alt":"CircleHome: identidad, mockups, deck y web",
-"uc.v.t":"Vira","uc.v.d":"Identidad completa para Vira: la app y todas sus aplicaciones de marca, m\u00e1s pitch para inversores, tipograf\u00eda y maquetaci\u00f3n bajo presi\u00f3n.","uc.v.f1":"Identidad completa","uc.v.f2":"App y aplicaciones","uc.v.f3":"Pitch para inversores","uc.v.alt":"Vira: identidad, app y aplicaciones",
-"uc.g.t":"Gale\u00f3n","uc.g.d":"Identidad para Patrimonio Nacional (Gale\u00f3n): sistema completo de marca y aplicaciones en todos los soportes, con piezas para v\u00eddeo y entornos digitales.","uc.g.f1":"Sistema de identidad","uc.g.f2":"Aplicaciones de marca","uc.g.f3":"V\u00eddeo y motion","uc.g.alt":"Gale\u00f3n: identidad Patrimonio Nacional",
-"uc.ar.t":"Arkuos","uc.ar.d":"Identidad visual para Arkuos, espacio de acci\u00f3n socio-educativa: sistema de marca, paleta c\u00e1lida, campa\u00f1a y piezas para arkuos.org.","uc.ar.f1":"Logo e identidad","uc.ar.f2":"Campa\u00f1a y fotograf\u00eda","uc.ar.f3":"Presencia digital","uc.ar.alt":"Arkuos: identidad socio-educativa",
-"uc.more":"Ver caso \u2192",
-"tools.label":"Herramientas","tools.title":"En el stack que ya us\u00e1is","tools.desc":"Dise\u00f1amos en herramientas actuales para que compartir con agencias y equipo interno sea sencillo.",
-"how.label":"Proceso","how.title":"Del brief ca\u00f3tico a marca lista para lanzar","how.desc":"Un ciclo corto para etapas tempranas: feedback r\u00e1pido, hitos claros, sin postureo.",
-"how.s1tag":"Kickoff","how.s1t":"Descubrimiento","how.s1d":"Alineamos audiencia, posicionamiento y qu\u00e9 es \u00e9xito en los pr\u00f3ximos 90 d\u00edas.",
-"how.s2tag":"D\u00edas 2\u20135","how.s2t":"Direcci\u00f3n","how.s2d":"Rutas de concepto para identidad y narrativa: eliges camino y afinamos con tu equipo.",
-"how.s3tag":"D\u00edas 6\u201312","how.s3t":"Producci\u00f3n","how.s3d":"Logo, tipo, color, deck y web seg\u00fan la direcci\u00f3n elegida.",
-"how.s4tag":"Entrega","how.s4t":"Handoff","how.s4d":"Archivos ordenados, especificaciones y una sesi\u00f3n breve para que pod\u00e1is publicar.",
-"how.cta":"Ver calendario",
-"part.label":"Colaboraci\u00f3n","part.title":"Cerca del fundador, no una cola de tickets","part.desc":"Las startups pivotan. Nos quedamos cerca del producto y de la ronda para que el dise\u00f1o sea coherente.",
-"part.f1":"Acceso directo al dise\u00f1ador del proyecto","part.f2":"Actualizaciones async con hitos claros","part.f3":"Bucles de feedback realistas para equipos ocupados","part.f4":"Handoff empaquetado para que ingenier\u00eda avance","part.f5":"Narrativa lista para inversores en el deck","part.f6":"Disciplina de alcance: cuidamos tu runway","part.f7":"Sprints opcionales cuando escal\u00e9is","part.cta":"Escribir para empezar",
-"sec.label":"Propiedad y claridad","sec.title":"Tus activos. Tus archivos. Sin ataduras.","sec.desc":"Entregamos trabajo que pod\u00e9is operar vosotros mismos.",
-"sec.c1t":"T\u00fa tienes los entregables","sec.c1d":"Fuentes de dise\u00f1o y exportaciones: logos, tipograf\u00edas, tokens de color y masters del deck.",
-"sec.c2t":"Handoff ordenado","sec.c2d":"Nombres, carpetas y specs para que producto y marketing reutilicen sin fricci\u00f3n.",
-"sec.c3t":"Stack flexible","sec.c3d":"Figma, slides o web: lo que encaje con vuestro equipo y colaboradores.",
-"cl.label":"Conf\u00edan en nosotros","cl.title":"Equipos que necesitaban velocidad y credibilidad","cl.desc":"Trabajamos con fundadores de startups en etapa temprana, pre-seed a Series A, en SaaS, fintech, climate y deep tech.",
-"cl.b1":"B2B SaaS pre-seed","cl.b2":"Fintech seed","cl.b3":"Hardware clim\u00e1tico","cl.b4":"Infraestructura IA","cl.b5":"Dev tools","cl.b6":"Marketplace","cl.b7":"Health tech","cl.b8":"Consumer mobile","cl.b9":"Aceleradoras","cl.b10":"Spinouts universitarios","cl.more":"y m\u00e1s",
-"pr.label":"Precios","pr.title":"Dos packs. Elige tu velocidad de lanzamiento.","pr.desc":"Precio transparente para equipos en etapa temprana, sin sorpresas ni alcance inflado.",
-"pr.p1.name":"Identidad visual completa","pr.p1.sub":"Un sistema de identidad completo para escalar, sin dise\u00f1o web ni pitch deck.","pr.p1.from":"Proyecto cerrado","pr.p1.type":"Un encargo \u00b7 entregables claros",
-"pr.p1.i1":"Sistema de logo y marcas","pr.p1.i2":"Tipograf\u00eda y paleta de color","pr.p1.i3":"Activos clave + plantillas","pr.p1.i4":"Gu\u00eda de marca (ligera)","pr.p1.cta":"Escribir para reservar",
-"pr.p2.name":"Pack completo","pr.p2.sub":"Identidad + pitch deck + dise\u00f1o web, pensados para salir juntos, r\u00e1pido.","pr.p2.from":"Proyecto cerrado","pr.p2.type":"Todo incluido \u00b7 entrega end-to-end",
-"pr.p2.i1":"Identidad visual completa","pr.p2.i2":"Pitch deck listo para inversores","pr.p2.i3":"Dise\u00f1o web y layouts clave","pr.p2.i4":"Handoff ordenado + especificaciones","pr.p2.cta":"Escribir para reservar",
-"tm.label":"Equipo","tm.title":"Fundadores, l\u00edderes de dise\u00f1o y makers","tm.desc":"Unimos fundadores de startups que han salido (exit), antiguos chiefs of design de startups y dise\u00f1adores senior: m\u00e1s de 50 a\u00f1os de experiencia combinada, con un equipo lo bastante peque\u00f1o para ir r\u00e1pido.",
-"tm.c1t":"Fundadores con exit","tm.c1d":"Personas que han construido y vendido empresas: runway, urgencia y shippear son el d\u00eda a d\u00eda.","tm.c2t":"Ex chiefs of design de startups","tm.c2d":"Liderazgo que ha llevado marca y producto en equipos de alto crecimiento, no teor\u00eda desde fuera.","tm.c3t":"Dise\u00f1adores","tm.c3d":"Oficio en tipograf\u00eda, color, maquetaci\u00f3n y digital para que todo llegue coherente.","tm.c4t":"+50 a\u00f1os en conjunto","tm.c4d":"Profundidad por etapas, categor\u00edas y mercados, sin capas de agencia.","tm.l3":"y m\u00e1s",
-"tm.sv1":"+50 a\u00f1os","tm.sl1":"Experiencia combinada del equipo","tm.sv2":"R\u00e1pido","tm.sl2":"Plazos de etapa temprana","tm.sv3":"Justo","tm.sl3":"Precio competitivo sin recortar calidad",
-"faq.title":"Preguntas frecuentes",
-"faq.q1":"\u00bfPara qui\u00e9n es Neutral Studio? ","faq.a1":"Startups en etapa temprana que necesitan identidad, pitch y web cre\u00edbles r\u00e1pido, sin contratar una agencia completa.",
-"faq.q2":"\u00bfHace falta un brief perfecto? ","faq.a2":"No. Traed notas, capturas y referencias; el brief lo afilamos hablando.",
-"faq.q3":"\u00bfCu\u00e1nto dura un proyecto? ","faq.a3":"La mayor\u00eda de packs de lanzamiento tardan unas semanas; m\u00e1s r\u00e1pido si el feedback es \u00e1gil. Los hitos los fijamos en el kickoff.",
-"faq.q4":"\u00bfQu\u00e9 recibo al final? ","faq.a4":"Fuentes y exportaciones para identidad, deck y web, organizadas para vuestro equipo.",
-"faq.q5":"\u00bfY si necesitamos m\u00e1s? ","faq.a5":"Podemos a\u00f1adir alcance despu\u00e9s del primer entregable, p\u00e1ginas extra, motion o plantillas de campa\u00f1a.",
-"faq.q6":"\u00bfPor qu\u00e9 un solo precio? ","faq.a6":"Las startups necesitan previsibilidad. Un precio fijo alinea expectativas.",
-"cta.label":"\u00bfHablamos?","cta.title":"Dejad de parecer un borrador.","cta.desc":"Contad qu\u00e9 constru\u00eds y cu\u00e1ndo ten\u00e9is que ense\u00f1arlo. Respondemos con siguientes pasos.","cta.b1":"Escribir para empezar","cta.b2":"Hacer una pregunta",
-"ft.brand":"Dise\u00f1o gr\u00e1fico para startups en etapa temprana: identidad, deck y web, r\u00e1pido y con precio claro.","ft.product":"Producto","ft.company":"Empresa","ft.contact":"Contacto","ft.rights":"Todos los derechos reservados."
-}};
-let lang='en';
-function setLang(l){lang=l;document.documentElement.lang=l;const t=T[l];document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]){const svg=el.querySelector('svg');if(svg){el.childNodes.forEach(n=>{if(n.nodeType===3)n.remove()});el.insertBefore(document.createTextNode(t[k]),svg)}else if(t[k].includes('<')){el.innerHTML=t[k]}else{el.textContent=t[k]}}});document.querySelectorAll('[data-i18n-alt]').forEach(el=>{const k=el.getAttribute('data-i18n-alt');if(t[k])el.setAttribute('alt',t[k])});document.querySelectorAll('.lang-t button').forEach(b=>b.classList.toggle('active',b.getAttribute('data-lang')===l))}
-document.querySelectorAll('.lang-t button').forEach(b=>b.addEventListener('click',()=>setLang(b.getAttribute('data-lang'))));
+
+};
+function applyI18n(){const t=T;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]){const svg=el.querySelector('svg');if(svg){el.childNodes.forEach(n=>{if(n.nodeType===3)n.remove()});el.insertBefore(document.createTextNode(t[k]),svg)}else if(t[k].includes('<')){el.innerHTML=t[k]}else{el.textContent=t[k]}}});document.querySelectorAll('[data-i18n-alt]').forEach(el=>{const k=el.getAttribute('data-i18n-alt');if(t[k])el.setAttribute('alt',t[k])})}
+applyI18n();
 
 // Scroll bar
 window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('scrollBar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%'});
