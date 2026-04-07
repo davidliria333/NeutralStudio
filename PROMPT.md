@@ -27,7 +27,7 @@ Rewrite `index.html` completely. I want a website that looks like it cost $100,0
    - FAQ (expandable, clean)
    - Final CTA section
    - Footer (minimal)
-7. **CTA everywhere**: https://cal.eu/getai/demo ("Reserva una consulta" or "Habla con nosotros")
+7. **CTA everywhere**: https://cal.com/neutralstudio/30min ("Reserva una consulta" or "Habla con nosotros")
 8. **NO stock photos**. Use geometric patterns, gradients, or abstract shapes if needed. Or just great typography and spacing.
 9. **Mobile perfect**: test every section mentally for mobile.
 10. **Fast**: no external JS libraries, no heavy images.
