@@ -78,7 +78,13 @@
 .mob-nav .mob-dd-list a{font-size:.95rem;padding:10px 0;border-bottom:none}
 
 /* HERO */
-.hero{padding:120px 0 0;text-align:center;position:relative;background:#fff;overflow:hidden}
+.hero{padding:120px 0 70px;text-align:center;position:relative;background:#fff;overflow:hidden;--mx:50%;--my:34%;--heroScroll:0}
+.hero::before{content:"";position:absolute;inset:-1px;pointer-events:none;z-index:0;background:
+  radial-gradient(680px 420px at var(--mx) var(--my), rgba(15,118,110,.15) 0%, rgba(15,118,110,0) 62%),
+  radial-gradient(1100px 520px at 50% -10%, rgba(15,23,42,.06) 0%, rgba(15,23,42,0) 55%);
+  filter:saturate(1.05);
+  transition:opacity .25s ease;
+}
 .hero .container{position:relative;z-index:1}
 .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bdr);border-radius:100px;padding:5px 16px 5px 7px;font-size:.78rem;font-weight:500;color:var(--tx-s);margin-bottom:28px;background:var(--bg)}
 .badge-dot{width:7px;height:7px;background:var(--acc);border-radius:50%;animation:blink 2s ease-in-out infinite}
@@ -95,9 +101,13 @@
 @keyframes rank-grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .hero-sub{font-size:.95rem;color:var(--tx-s);max-width:540px;margin:0 auto 32px;line-height:1.65}
 .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.hero-device{margin-top:12px;position:relative;z-index:1}
-.hero-device img{max-width:900px;width:100%;height:auto;display:block;margin:0 auto}
-.hero-spacer{height:60px;position:relative;z-index:0}
+.hero-spacer{height:26px;position:relative;z-index:0}
+.hero-parallax{will-change:transform;transform:translate3d(0,calc(var(--heroScroll) * -18px),0)}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-parallax{transform:none!important;will-change:auto}
+  .hero::before{transition:none}
+}
 
 /* SECTIONS */
 section{padding:100px 0;position:relative}
@@ -225,6 +235,31 @@ section{padding:100px 0;position:relative}
 .roi-card-num{font-size:clamp(1.35rem,2.8vw,1.85rem);font-weight:800;letter-spacing:-.04em;color:var(--pri);line-height:1.15;margin-bottom:10px}
 .roi-card-desc{font-size:.84rem;color:var(--tx-s);line-height:1.55;margin:0}
 .roi-tagline{text-align:center;margin-top:44px;font-size:.95rem;color:var(--tx-m);max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6}
+
+/* TESTIMONIALS (Wall of love) */
+.testimonials{background:var(--bg-a);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+.t-hdr{text-align:center;margin-bottom:40px}
+.t-kicker{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--tx-m)}
+.t-kicker::before{content:"";width:7px;height:7px;border-radius:2px;background:rgba(15,118,110,.55)}
+.t-title{font-size:clamp(1.85rem,3.6vw,2.6rem);font-weight:800;letter-spacing:-1.6px;line-height:1.12;margin-top:12px}
+.t-desc{max-width:620px;margin:12px auto 0;color:var(--tx-s);font-size:1.02rem;line-height:1.7}
+.t-slider{position:relative}
+.t-viewport{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;scrollbar-width:none;border-radius:20px}
+.t-viewport::-webkit-scrollbar{display:none}
+.t-strip{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);gap:16px;align-items:start;padding:2px;min-width:max-content}
+.t-card{width:min(420px,calc(100vw - 72px));margin:0;background:rgba(255,255,255,.72);border:1px solid rgba(226,232,240,.95);border-radius:18px;box-shadow:var(--sh-s);padding:18px 18px 16px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.t-card:hover{transform:translateY(-3px);border-color:rgba(15,118,110,.25);box-shadow:0 16px 30px -18px rgba(15,23,42,.22)}
+.t-quote{font-size:.92rem;line-height:1.65;color:var(--tx);letter-spacing:-.15px}
+.t-quote::before{content:"“";color:rgba(15,23,42,.25);font-weight:900;margin-right:4px}
+.t-quote::after{content:"”";color:rgba(15,23,42,.25);font-weight:900;margin-left:2px}
+.t-meta{display:flex;align-items:center;gap:10px;margin-top:14px}
+.t-ava{width:40px;height:40px;border-radius:999px;object-fit:cover;border:1px solid rgba(226,232,240,.95);background:#fff;flex:0 0 auto}
+.t-who{display:flex;flex-direction:column;gap:1px;min-width:0;text-align:left}
+.t-name{font-weight:700;font-size:.9rem;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t-role{font-size:.78rem;color:var(--tx-m);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t-badge{margin-left:auto;flex:0 0 auto;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(15,118,110,.9);border:1px solid rgba(15,118,110,.25);background:rgba(15,118,110,.06);padding:6px 9px;border-radius:999px}
+@media(max-width:980px){.t-card{width:min(380px,calc(100vw - 64px))}}
+@media(max-width:640px){.t-strip{grid-template-rows:1fr}.t-desc{font-size:.98rem}.t-card{width:calc(100vw - 52px)}}
 @media(max-width:900px){
 .roi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -465,14 +500,15 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 <!-- HERO -->
 <section class="hero">
     <div class="container">
-        <div class="badge reveal"><div class="badge-dot"></div><span data-i18n="hero.badge">Fast · agile · built for early-stage teams</span></div>
-        <h1 class="reveal reveal-d1" data-i18n="hero.h1"><span class="h1-top">The <em>#1</em></span><span class="h1-main">design studio for</span><span class="h1-sub"><em>early-stage startups</em> and <em>YC teams</em></span></h1>
-        <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">Identity, decks, and websites built as one system, so you raise, hire, and ship with confidence, without agency drag.</p>
-        <div class="hero-ctas reveal reveal-d3">
-            <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-lg" data-i18n="hero.cta1">Book a call</a>
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question" class="btn btn-s btn-lg" data-i18n="hero.cta2">Email us</a>
+        <div class="hero-parallax">
+            <div class="badge reveal"><div class="badge-dot"></div><span data-i18n="hero.badge">Fast · agile · built for early-stage teams</span></div>
+            <h1 class="reveal reveal-d1" data-i18n="hero.h1"><span class="h1-top">The <em>#1</em></span><span class="h1-main">design studio for</span><span class="h1-sub"><em>early-stage startups</em> and <em>YC teams</em></span></h1>
+            <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">Identity, decks, and websites built as one system, so you raise, hire, and ship with confidence, without agency drag.</p>
+            <div class="hero-ctas reveal reveal-d3">
+                <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-lg" data-i18n="hero.cta1">Book a call</a>
+                <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question" class="btn btn-s btn-lg" data-i18n="hero.cta2">Email us</a>
+            </div>
         </div>
-        <div class="hero-device reveal reveal-d4"><img src="home-sana.webp" alt="" data-i18n-alt="hero.imgalt"></div>
         <div class="hero-spacer"></div>
     </div>
 </section>
@@ -673,6 +709,95 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
         </div>
         <div style="text-align:center;margin-top:40px" class="reveal">
             <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-lg" data-i18n="wcu.cta">Book a call</a>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <div class="t-hdr reveal">
+            <div class="t-kicker">Wall of love</div>
+            <h2 class="t-title">Loved by founders worldwide</h2>
+            <p class="t-desc">Real feedback from early-stage teams who needed speed, clarity, and a studio that ships like a product team.</p>
+        </div>
+        <div class="t-slider reveal" id="tSlider">
+            <div class="t-viewport" id="tViewport" aria-label="Testimonials slider">
+                <div class="t-strip" id="tStrip">
+            <article class="t-card reveal">
+                <p class="t-quote">We went from “rough draft” to investor-ready in days. The deck and site finally feel like the same story.</p>
+                <div class="t-meta">
+                    <img class="t-ava" src="assets/avatars/avatar-1.jpg" alt="Portrait of Maya Chen">
+                    <div class="t-who"><div class="t-name">Maya Chen</div><div class="t-role">Co-founder, B2B SaaS</div></div>
+                    <div class="t-badge">Founder</div>
+                </div>
+            </article>
+            <article class="t-card reveal reveal-d1">
+                <p class="t-quote">Fast turnaround without sacrificing taste. Every iteration got cleaner and more coherent.</p>
+                <div class="t-meta">
+                    <img class="t-ava" src="assets/avatars/avatar-2.jpg" alt="Portrait of Lucas Martín">
+                    <div class="t-who"><div class="t-name">Lucas Martín</div><div class="t-role">CEO, Fintech</div></div>
+                    <div class="t-badge">CEO</div>
+                </div>
+            </article>
+            <article class="t-card reveal reveal-d2">
+                <p class="t-quote">They connected brand, web, and slides into one system. Handoff was organized and engineering-friendly.</p>
+                <div class="t-meta">
+                    <img class="t-ava" src="assets/avatars/avatar-3.jpg" alt="Portrait of Aisha Patel">
+                    <div class="t-who"><div class="t-name">Aisha Patel</div><div class="t-role">Head of Product, DevTools</div></div>
+                    <div class="t-badge">Product</div>
+                </div>
+            </article>
+            <article class="t-card reveal">
+                <p class="t-quote">The website instantly increased trust. Demos felt easier because the visuals matched our ambition.</p>
+                <div class="t-meta">
+                    <img class="t-ava" src="assets/avatars/avatar-4.jpg" alt="Portrait of Daniel Rossi">
+                    <div class="t-who"><div class="t-name">Daniel Rossi</div><div class="t-role">Founder, AI Infra</div></div>
+                    <div class="t-badge">Founder</div>
+                </div>
+            </article>
+            <article class="t-card reveal reveal-d2">
+                <p class="t-quote">Best part: consistency. The brand rules actually held up across everything we shipped.</p>
+                <div class="t-meta">
+                    <img class="t-ava" src="assets/avatars/avatar-6.jpg" alt="Portrait of Noah Stein">
+                    <div class="t-who"><div class="t-name">Noah Stein</div><div class="t-role">Growth, Marketplace</div></div>
+                    <div class="t-badge">Growth</div>
+                </div>
+            </article>
+            <article class="t-card reveal">
+                <p class="t-quote">We asked for “premium but simple” and they nailed it. The site feels custom, not templated.</p>
+                <div class="t-meta">
+                    <img class="t-ava" src="assets/avatars/avatar-7.jpg" alt="Portrait of Hana Kim">
+                    <div class="t-who"><div class="t-name">Hana Kim</div><div class="t-role">Founder, Consumer</div></div>
+                    <div class="t-badge">Founder</div>
+                </div>
+            </article>
+            <article class="t-card reveal reveal-d1">
+                <p class="t-quote">Ridiculously pragmatic. One call and they understood positioning, then the visuals followed without drift.</p>
+                <div class="t-meta">
+                    <img class="t-ava" src="assets/avatars/avatar-8.jpg" alt="Portrait of Oliver Grant">
+                    <div class="t-who"><div class="t-name">Oliver Grant</div><div class="t-role">Founder, Security</div></div>
+                    <div class="t-badge">Founder</div>
+                </div>
+            </article>
+            <article class="t-card reveal reveal-d2">
+                <p class="t-quote">We shipped a clean site refresh mid-sprint and it didn’t slow product. The system approach really helps.</p>
+                <div class="t-meta">
+                    <img class="t-ava" src="assets/avatars/avatar-9.jpg" alt="Portrait of Leila Haddad">
+                    <div class="t-who"><div class="t-name">Leila Haddad</div><div class="t-role">CMO, B2B</div></div>
+                    <div class="t-badge">CMO</div>
+                </div>
+            </article>
+            <article class="t-card reveal">
+                <p class="t-quote">The deck is the first one our advisors actually read. Clear hierarchy, tight narrative, zero fluff.</p>
+                <div class="t-meta">
+                    <img class="t-ava" src="assets/avatars/avatar-10.jpg" alt="Portrait of Kenji Sato">
+                    <div class="t-who"><div class="t-name">Kenji Sato</div><div class="t-role">CEO, DevTools</div></div>
+                    <div class="t-badge">CEO</div>
+                </div>
+            </article>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -1116,6 +1241,106 @@ const core=document.getElementById('cursCore');
 const ring=document.getElementById('cursRing');
 const finePointer=window.matchMedia && window.matchMedia('(pointer:fine)').matches;
 const allowMotion=!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+// Hero: mouse-following gradient + scroll parallax (via CSS vars)
+const hero=document.querySelector('.hero');
+if(hero){
+  let raf=0;
+  let targetX=0, targetY=0;
+  let curX=0, curY=0;
+  let inited=false;
+  const setVars=()=>{
+    raf=0;
+    if(!inited){curX=targetX;curY=targetY;inited=true;}
+    // "Delay" + smooth follow
+    const ease=0.085;
+    curX += (targetX-curX)*ease;
+    curY += (targetY-curY)*ease;
+    hero.style.setProperty('--mx', curX.toFixed(1)+'px');
+    hero.style.setProperty('--my', curY.toFixed(1)+'px');
+    if(allowMotion){
+      const r=hero.getBoundingClientRect();
+      const denom=Math.max(240, Math.min(520, r.height));
+      const p=Math.max(0, Math.min(1, (-r.top)/denom));
+      hero.style.setProperty('--heroScroll', String(p));
+    }
+    // keep animating while we're still catching up (prevents "stutter")
+    if(Math.abs(targetX-curX) > 0.5 || Math.abs(targetY-curY) > 0.5){
+      queue();
+    }
+  };
+  const queue=()=>{
+    if(!raf) raf=requestAnimationFrame(setVars);
+  };
+  const onMove=(e)=>{
+    const r=hero.getBoundingClientRect();
+    const x = Math.max(0, Math.min(r.width, e.clientX - r.left));
+    const y = Math.max(0, Math.min(r.height, e.clientY - r.top));
+    targetX = x;
+    targetY = y;
+    queue();
+  };
+  const onLeave=()=>{
+    const r=hero.getBoundingClientRect();
+    targetX = r.width * 0.5;
+    targetY = r.height * 0.34;
+    queue();
+  };
+  if(finePointer){
+    hero.addEventListener('mousemove', onMove, {passive:true});
+    hero.addEventListener('mouseleave', onLeave, {passive:true});
+  }
+  if(allowMotion) window.addEventListener('scroll', queue, {passive:true});
+  window.addEventListener('resize', queue, {passive:true});
+  onLeave();
+  queue();
+}
+
+// Testimonials: continuous auto-scrolling 2-row slider (always moving)
+const tViewport=document.getElementById('tViewport');
+const tStrip=document.getElementById('tStrip');
+if(tViewport && tStrip){
+  // duplicate once for seamless looping
+  if(!tStrip.dataset.duped){
+    const kids=[...tStrip.children];
+    kids.forEach(n=>tStrip.appendChild(n.cloneNode(true)));
+    tStrip.dataset.duped='1';
+  }
+
+  let raf=0;
+  let last=0;
+  const speed=28; // px/sec
+
+  const loop=(ts)=>{
+    if(!last) last=ts;
+    const dt=Math.min(48, ts-last)/1000;
+    last=ts;
+
+    const half=Math.max(1, tViewport.scrollWidth/2);
+    tViewport.scrollLeft += speed*dt;
+    if(tViewport.scrollLeft >= half) tViewport.scrollLeft -= half;
+    raf=requestAnimationFrame(loop);
+  };
+
+  const start=()=>{
+    if(!raf){
+      last=0;
+      raf=requestAnimationFrame(loop);
+    }
+  };
+  const stop=()=>{
+    if(raf){
+      cancelAnimationFrame(raf);
+      raf=0;
+    }
+  };
+
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden) stop();
+    else start();
+  });
+  start();
+}
 if(core && ring && finePointer && allowMotion){
   document.body.classList.add('has-cursor');
   let x=window.innerWidth/2,y=window.innerHeight/2;
