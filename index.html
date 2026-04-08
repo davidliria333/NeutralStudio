@@ -26,8 +26,9 @@
 .scroll-bar{position:fixed;top:0;left:0;height:2px;background:var(--pri);z-index:9999;width:0;transition:width .1s linear}
 
 /* HEADER */
-.hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.88);backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%)}
-.hdr-in{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.hdr{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:1000;background:rgba(255,255,255,.88);backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);border:1px solid rgba(226,232,240,.9);box-shadow:var(--sh-m);border-radius:999px;transition:transform .25s ease,opacity .25s ease;opacity:1;width:min(1120px,calc(100% - 32px))}
+.hdr.hide{transform:translate(-50%,-120%);opacity:0}
+.hdr-in{max-width:1120px;margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;height:56px}
 .logo-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .logo-wrap img{height:36px;width:auto}
 .logo-txt{font-weight:700;font-size:1.1rem;letter-spacing:-.3px}
@@ -46,15 +47,28 @@
 .nav-r{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:10px;font-weight:600;font-size:.875rem;font-family:inherit;border:none;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
 .btn:active{transform:scale(.97)}
-.btn-p{background:var(--pri);color:#fff}
-.btn-p:hover{background:var(--pri-h);box-shadow:var(--sh-m)}
+.btn-p{background:linear-gradient(120deg,var(--pri) 0%, #111827 35%, var(--pri) 70%);background-size:220% 220%;color:#fff;position:relative;overflow:hidden;animation:btn-grad 6s ease-in-out infinite,btn-glow 2.9s ease-in-out infinite}
+.btn-p::after{content:"";position:absolute;inset:-2px;background:linear-gradient(110deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.18) 45%,rgba(255,255,255,0) 60%);transform:translateX(-60%);transition:transform .6s ease;pointer-events:none}
+.btn-p>*{position:relative}
+.btn-p:hover{box-shadow:var(--sh-m);filter:saturate(1.02)}
+.btn-p:hover::after{transform:translateX(60%)}
+@keyframes btn-grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes btn-glow{
+  0%,100%{box-shadow:0 10px 22px -18px rgba(15,23,42,.22),0 0 0 0 rgba(15,118,110,0)}
+  50%{box-shadow:0 18px 34px -20px rgba(15,23,42,.28),0 0 0 6px rgba(15,118,110,.10)}
+}
 .btn-s{background:var(--bg);color:var(--tx);border:1px solid var(--bdr)}
 .btn-s:hover{border-color:var(--bdr-h);background:var(--bg-a)}
 .btn-lg{padding:10px 22px;font-size:.88rem;border-radius:10px}
 .btn-txt{background:none;color:var(--tx-s);font-weight:500;padding:10px 4px}
 .btn-txt:hover{color:var(--tx)}
+
+@media (prefers-reduced-motion: reduce){
+  .btn-p{animation:none}
+  .btn-p::after{transition:none}
+}
 .menu-btn{display:none;background:none;border:none;color:var(--tx);cursor:pointer;padding:8px}
-.mob-nav{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);z-index:999;padding:24px;flex-direction:column;gap:4px;overflow-y:auto}
+.mob-nav{display:none;position:fixed;top:82px;left:0;right:0;bottom:0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);z-index:999;padding:24px;flex-direction:column;gap:4px;overflow-y:auto}
 .mob-nav.open{display:flex}
 .mob-nav a{font-size:1.05rem;font-weight:500;color:var(--tx-s);padding:14px 0;border-bottom:1px solid var(--bdr)}
 .mob-nav .mob-dd{border-bottom:1px solid var(--bdr);padding:14px 0}
@@ -70,7 +84,15 @@
 .badge-dot{width:7px;height:7px;background:var(--acc);border-radius:50%;animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .hero h1{font-size:clamp(2rem,4.5vw,3.1rem);font-weight:800;line-height:1.12;letter-spacing:-1.5px;margin-bottom:20px;max-width:780px;margin-left:auto;margin-right:auto}
-.hero h1 em{font-style:italic;font-weight:400}
+.hero h1 em{font-style:italic;font-weight:650}
+.hero h1 .h1-top{display:inline-flex;align-items:center;gap:10px;font-size:1.02rem;font-weight:750;letter-spacing:-.02em;text-transform:none;color:var(--tx);margin-bottom:12px}
+.hero h1 .h1-top em{font-style:normal;font-weight:900;letter-spacing:-.02em;color:#fff;background:linear-gradient(135deg,var(--acc) 0%, #0d9488 45%, #22c55e 75%, var(--acc) 100%);background-size:240% 240%;padding:7px 13px;border-radius:999px;box-shadow:0 14px 24px -16px rgba(15,118,110,.65);border:1px solid rgba(15,118,110,.35);animation:rank-grad 4.2s ease-in-out infinite}
+.hero h1 .h1-top em::before{content:"";display:inline-block;width:6px;height:6px;border-radius:2px;background:rgba(255,255,255,.8);margin-right:8px;vertical-align:middle}
+.hero h1 .h1-top span{opacity:.88}
+.hero h1 .h1-main{display:block;font-size:clamp(2.15rem,5.2vw,3.35rem);line-height:1.06;letter-spacing:-1.7px}
+.hero h1 .h1-sub{display:block;margin-top:10px;font-size:clamp(1.3rem,3.1vw,1.75rem);line-height:1.18;font-weight:650;letter-spacing:-.7px;color:var(--tx-s)}
+.hero h1 .h1-sub em{font-style:normal;color:var(--tx)}
+@keyframes rank-grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .hero-sub{font-size:.95rem;color:var(--tx-s);max-width:540px;margin:0 auto 32px;line-height:1.65}
 .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .hero-device{margin-top:12px;position:relative;z-index:1}
@@ -80,6 +102,7 @@
 /* SECTIONS */
 section{padding:100px 0;position:relative}
 .bg-a{background:var(--bg-a)}
+.sep-top{border-top:1px solid var(--bdr)}
 .s-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--acc);margin-bottom:12px}
 .s-title{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;letter-spacing:-1.5px;line-height:1.15;margin-bottom:12px}
 .s-desc{font-size:1.05rem;color:var(--tx-s);max-width:520px;line-height:1.7}
@@ -89,15 +112,58 @@ section{padding:100px 0;position:relative}
 /* SERVICES */
 .svc-wrap{background:var(--bg);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:100px 0}
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.svc-card{background:var(--bg);border:1px solid var(--bdr);border-radius:16px;padding:26px 22px 28px;transition:all .25s;display:flex;flex-direction:column;min-height:100%}
-.svc-card:hover{border-color:var(--bdr-h);box-shadow:var(--sh-m);transform:translateY(-3px)}
+.svc-card{background:linear-gradient(180deg,#fff 0%,#fff 70%,rgba(248,250,252,.8) 100%);border:1px solid var(--bdr);border-radius:18px;padding:22px 20px 20px;transition:transform .22s,border-color .22s,box-shadow .22s,background .22s;display:flex;flex-direction:column;min-height:100%;position:relative;overflow:hidden}
+.svc-card::after{content:"";position:absolute;inset:-80px;pointer-events:none;background:radial-gradient(320px 180px at 20% 10%, rgba(15,118,110,.10) 0%, rgba(15,118,110,0) 60%);opacity:0;transition:opacity .25s ease}
+.svc-card:hover{border-color:rgba(15,118,110,.30);box-shadow:0 16px 30px -18px rgba(15,23,42,.22);transform:translateY(-4px)}
+.svc-card:hover::after{opacity:1}
 .svc-card h3{font-size:1.05rem;font-weight:600;letter-spacing:-.35px;margin-bottom:10px;line-height:1.25;color:var(--tx)}
 .svc-card p{font-size:.84rem;color:var(--tx-s);line-height:1.55;margin:0;flex:1}
-.svc-card .svc-ix{width:36px;height:36px;border-radius:10px;background:#ecfdf5;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:.72rem;font-weight:700;color:var(--acc);letter-spacing:.5px}
+.svc-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.svc-ic{width:40px;height:40px;border-radius:14px;border:1px solid var(--bdr);background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);display:flex;align-items:center;justify-content:center;color:var(--acc);flex-shrink:0;transition:transform .22s,border-color .22s}
+.svc-ic svg{width:20px;height:20px}
+.svc-card:hover .svc-ic{transform:translateY(-1px) scale(1.03);border-color:rgba(15,118,110,.25)}
+.svc-k{font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-m);display:inline-flex;align-items:center;gap:8px}
+.svc-k::before{content:"";width:6px;height:6px;border-radius:2px;background:rgba(15,118,110,.55)}
+.svc-more{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.svc-more span{font-size:.8rem;color:var(--tx-m);font-weight:600}
+.svc-more svg{width:14px;height:14px;color:var(--tx-m);transition:transform .2s,color .2s}
+.svc-card:hover .svc-more svg{transform:translateX(3px);color:var(--acc)}
+.svc-more-btn{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:none;border:none;padding:0;cursor:pointer;text-align:left}
+.svc-more-btn span{font-size:.8rem;color:var(--tx-m);font-weight:600}
+.svc-more-btn svg{width:14px;height:14px;color:var(--tx-m);transition:transform .2s,color .2s}
+.svc-card:hover .svc-more-btn svg{transform:translateX(3px);color:var(--acc)}
+.svc-more-btn:focus-visible{outline:2px solid rgba(15,118,110,.45);outline-offset:6px;border-radius:10px}
+
+/* SERVICES MODAL */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:24px;z-index:100000}
+.modal.open{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(2,6,23,.55);backdrop-filter:blur(8px) saturate(120%)}
+.modal-panel{position:relative;width:min(820px,100%);border-radius:20px;border:1px solid rgba(226,232,240,.35);background:rgba(255,255,255,.92);backdrop-filter:blur(18px) saturate(150%);box-shadow:0 24px 60px rgba(2,6,23,.35);overflow:hidden}
+.modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 22px 16px;border-bottom:1px solid rgba(226,232,240,.8)}
+.modal-k{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-m);display:inline-flex;align-items:center;gap:8px}
+.modal-k::before{content:"";width:7px;height:7px;border-radius:2px;background:rgba(15,118,110,.55)}
+.modal-title{font-size:1.25rem;font-weight:800;letter-spacing:-.5px;margin-top:8px}
+.modal-desc{font-size:.95rem;color:var(--tx-s);margin-top:6px;line-height:1.6}
+.modal-close{flex:0 0 auto;width:40px;height:40px;border-radius:12px;border:1px solid rgba(226,232,240,.9);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s}
+.modal-close:hover{background:var(--bg-a);border-color:var(--bdr-h)}
+.modal-body{padding:18px 22px 22px}
+.modal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.modal-item{border:1px solid rgba(226,232,240,.9);background:#fff;border-radius:14px;padding:12px 12px 12px;display:flex;gap:10px;align-items:flex-start}
+.modal-item svg{width:16px;height:16px;color:var(--acc);margin-top:2px;flex-shrink:0}
+.modal-item strong{display:block;font-size:.88rem;letter-spacing:-.2px;margin-bottom:2px}
+.modal-item span{display:block;font-size:.82rem;color:var(--tx-s);line-height:1.45}
+@media(max-width:640px){.modal-grid{grid-template-columns:1fr}.modal{padding:16px}}
 
 /* PORTFOLIO CTA + LOGO MARQUEE */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .logo-marquee-wrap{margin:28px -24px 0;padding:0;position:relative}
+.logo-marquee-wrap.in-pill{margin:14px 0 0;padding:10px 12px;position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--bdr);background:var(--bg);width:100%;max-width:100%}
+.logo-marquee-wrap.in-pill::before,.logo-marquee-wrap.in-pill::after{content:"";position:absolute;top:0;bottom:0;width:34px;pointer-events:none;z-index:2}
+.logo-marquee-wrap.in-pill::before{left:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(255,255,255,0) 100%)}
+.logo-marquee-wrap.in-pill::after{right:0;background:linear-gradient(270deg,var(--bg) 0%,rgba(255,255,255,0) 100%)}
+.logo-marquee-wrap.in-pill .logo-marquee{border-radius:12px;position:relative;z-index:1;mask-image:none;-webkit-mask-image:none;width:100%;max-width:100%;overflow:hidden}
+.logo-marquee-wrap.in-pill .logo-marquee-group{gap:clamp(28px,5vw,64px);padding:0 18px}
+.logo-marquee-wrap.in-pill .logo-marquee-group img{height:34px;opacity:.8}
 .logo-marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%)}
 .logo-marquee-track{display:flex;width:max-content;animation:logo-marquee 38s linear infinite}
 @keyframes logo-marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -111,9 +177,14 @@ section{padding:100px 0;position:relative}
 .logo-marquee-group{flex-wrap:wrap;justify-content:center;padding:0 16px}
 }
 .portfolio-cta-block{text-align:center;max-width:640px;margin:44px auto 0;padding:40px 32px 44px;border:1px solid var(--bdr);border-radius:20px;background:var(--bg);box-shadow:var(--sh-s)}
-.portfolio-cta-stats{margin-bottom:16px}
+.portfolio-cta-stats{margin-bottom:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+.portfolio-cta-stats-txt{min-width:0;width:100%}
 .portfolio-more-line{font-size:1.35rem;font-weight:700;letter-spacing:-.4px;color:var(--tx);margin-bottom:8px}
 .portfolio-more-sub{font-size:.95rem;color:var(--tx-s);line-height:1.6;margin:0}
+.portfolio-cta-mock{flex:0 0 auto;width:min(560px,100%);border-radius:18px;overflow:hidden;border:1px solid var(--bdr);background:var(--bg-a);box-shadow:var(--sh-l);transition:transform .2s,border-color .2s,box-shadow .2s}
+.portfolio-cta-mock img{display:block;width:100%;height:auto}
+.portfolio-cta-mock:hover{border-color:var(--bdr-h);box-shadow:var(--sh-l);transform:translateY(-1px)}
+.portfolio-cta-mock:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
 .portfolio-cta-lead{font-size:1.02rem;color:var(--tx-s);line-height:1.65;margin:0 0 8px;max-width:52ch;margin-left:auto;margin-right:auto}
 .portfolio-cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px;align-items:center}
 .portfolio-cta-note{font-size:.82rem;color:var(--tx-m);margin-top:18px;line-height:1.5;max-width:42ch;margin-left:auto;margin-right:auto}
@@ -167,13 +238,28 @@ section{padding:100px 0;position:relative}
 .tool-logo svg{width:24px;height:24px;color:var(--acc);opacity:.7}
 
 /* STEPS */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.step{text-align:center}
-.step-n{width:56px;height:56px;border-radius:50%;border:2px solid #d1fae5;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.15rem;font-weight:700;color:var(--acc);transition:all .3s;background:#ecfdf5}
-.step:hover .step-n{border-color:var(--acc);background:var(--acc);color:#fff}
-.step-tag{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--acc);margin-bottom:8px;display:block}
-.step h3{font-size:1.05rem;font-weight:600;margin-bottom:8px;letter-spacing:-.2px}
-.step p{font-size:.88rem;color:var(--tx-s);line-height:1.6}
+.process{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:stretch}
+.process-nav{display:flex;flex-direction:column;gap:10px}
+.process-btn{width:100%;text-align:left;display:flex;gap:14px;align-items:flex-start;padding:16px 16px;border-radius:16px;border:1px solid var(--bdr);background:var(--bg);cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s,background .15s;font-family:inherit}
+.process-btn:hover{border-color:var(--bdr-h);box-shadow:var(--sh-s);transform:translateY(-1px)}
+.process-btn[aria-selected="true"]{border-color:rgba(15,118,110,.35);box-shadow:0 10px 18px -10px rgba(15,118,110,.35);background:linear-gradient(180deg,#ffffff 0%,#f0fdf4 100%)}
+.process-ic{width:40px;height:40px;border-radius:12px;border:1px solid var(--bdr);background:var(--bg-a);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--acc)}
+.process-ic svg{width:18px;height:18px}
+.process-meta{min-width:0}
+.process-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--acc);display:block;margin-bottom:6px}
+.process-title{font-size:.98rem;font-weight:650;letter-spacing:-.2px;margin-bottom:6px;color:var(--tx)}
+.process-blurb{font-size:.83rem;color:var(--tx-s);line-height:1.55;margin:0}
+.process-panel{border:1px solid var(--bdr);border-radius:18px;background:var(--bg);box-shadow:var(--sh-s);padding:22px 22px 20px;display:flex;flex-direction:column;min-height:100%}
+.process-panel h3{font-size:1.15rem;font-weight:700;letter-spacing:-.35px;margin:0 0 10px}
+.process-panel p{font-size:.92rem;color:var(--tx-s);line-height:1.65;margin:0 0 14px}
+.process-preview{border-radius:16px;border:1px solid var(--bdr);background:linear-gradient(180deg,#fff 0%,var(--bg-a) 100%);overflow:hidden;margin-top:10px}
+.process-preview-in{padding:16px 16px 18px}
+.process-preview-h{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.1px;color:var(--tx-m);margin-bottom:8px}
+.process-preview-row{display:flex;gap:10px;flex-wrap:wrap}
+.process-preview-chip{font-size:.78rem;font-weight:650;color:var(--tx);border:1px solid var(--bdr);background:#fff;padding:8px 10px;border-radius:12px}
+.process-preview-chip strong{font-weight:800}
+.process-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.process-pill{font-size:.74rem;font-weight:600;color:var(--tx-s);background:var(--bg-a);border:1px solid var(--bdr);padding:8px 10px;border-radius:999px}
 
 /* PARTNERSHIP (Sana-style) */
 .part-lay{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
@@ -274,12 +360,23 @@ section{padding:100px 0;position:relative}
 .reveal-d1{transition-delay:.08s}.reveal-d2{transition-delay:.16s}.reveal-d3{transition-delay:.24s}.reveal-d4{transition-delay:.32s}
 .ck{width:16px;height:16px}
 
+/* CUSTOM CURSOR */
+body.has-cursor{cursor:none}
+.curs{position:fixed;left:0;top:0;pointer-events:none;z-index:99999;opacity:0;transition:opacity .2s ease}
+.curs-core{width:10px;height:10px;background:#0f172a;border-radius:2px;transform:translate3d(-50%,-50%,0)}
+.curs-ring{width:26px;height:26px;border:1.5px solid rgba(15,23,42,.85);border-radius:6px;transform:translate3d(-50%,-50%,0)}
+.curs.is-on{opacity:1}
+@media (prefers-reduced-motion: reduce){
+  .curs{display:none!important}
+  body.has-cursor{cursor:auto}
+}
+
 /* RESPONSIVE */
 @media(max-width:1024px){
 .nav-l{display:none}.menu-btn{display:block}
 .nav-r{margin-left:auto;gap:8px}
 .menu-btn{margin-right:0}
-.steps{grid-template-columns:1fr 1fr;gap:28px}
+.process{grid-template-columns:1fr;gap:14px}
 .sec-lay{grid-template-columns:1fr}.part-lay{grid-template-columns:1fr;gap:24px}
 .team-lay{grid-template-columns:1fr;gap:40px}.ft-grid{grid-template-columns:1fr 1fr;gap:28px}
 .svc-grid{grid-template-columns:repeat(2,1fr)}.pr-prices{grid-template-columns:1fr}
@@ -293,6 +390,8 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 .hero h1{font-size:2.2rem}
 .hero-ctas{flex-direction:column;align-items:stretch}
 .hero-ctas .btn{text-align:center}
+.portfolio-cta-stats{align-items:stretch}
+.portfolio-cta-mock{margin:6px auto 0}
 .f-cta-btns{flex-direction:column;align-items:center}
 .ft-grid{grid-template-columns:1fr;gap:20px}.ft-bottom{flex-direction:column;gap:12px;text-align:center}
 .part-services{grid-template-columns:1fr}
@@ -305,6 +404,9 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 </head>
 <body>
 
+<div class="curs" id="cursCore" aria-hidden="true"><div class="curs-core"></div></div>
+<div class="curs" id="cursRing" aria-hidden="true"><div class="curs-ring"></div></div>
+
 <div class="scroll-bar" id="scrollBar"></div>
 
 <header class="hdr">
@@ -314,10 +416,10 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <div class="dd" id="ddUc">
                 <button class="dd-trigger" data-i18n="nav.uc">Services <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg></button>
                 <div class="dd-menu">
-                    <a href="#use-cases"><strong data-i18n="dd.mkt">Brand &amp; identity</strong><span data-i18n="dd.mkt.d">Logo, type, and visual language</span></a>
-                    <a href="#use-cases"><strong data-i18n="dd.audit">Systems &amp; guidelines</strong><span data-i18n="dd.audit.d">Consistency as you scale</span></a>
-                    <a href="#use-cases"><strong data-i18n="dd.ind">Web &amp; digital</strong><span data-i18n="dd.ind.d">Site design and launch-ready UI</span></a>
-                    <a href="#use-cases"><strong data-i18n="dd.strat">Pitch &amp; narrative</strong><span data-i18n="dd.strat.d">Decks investors actually read</span></a>
+                    <a href="#services"><strong data-i18n="dd.mkt">Brand &amp; identity</strong><span data-i18n="dd.mkt.d">Logo, type, and visual language</span></a>
+                    <a href="#services"><strong data-i18n="dd.audit">Systems &amp; guidelines</strong><span data-i18n="dd.audit.d">Consistency as you scale</span></a>
+                    <a href="#services"><strong data-i18n="dd.ind">Web &amp; digital</strong><span data-i18n="dd.ind.d">Site design and launch-ready UI</span></a>
+                    <a href="#services"><strong data-i18n="dd.strat">Pitch &amp; narrative</strong><span data-i18n="dd.strat.d">Decks investors actually read</span></a>
                 </div>
             </div>
             <a href="#use-cases" data-i18n="nav.sw">Portfolio</a>
@@ -342,10 +444,10 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
     <div class="mob-dd" id="mobDd">
         <div class="mob-dd-title" data-i18n="nav.uc">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg></div>
         <div class="mob-dd-list">
-            <a href="#use-cases" data-i18n="dd.mkt">Brand &amp; identity</a>
-            <a href="#use-cases" data-i18n="dd.audit">Systems &amp; guidelines</a>
-            <a href="#use-cases" data-i18n="dd.ind">Web &amp; digital</a>
-            <a href="#use-cases" data-i18n="dd.strat">Pitch &amp; narrative</a>
+            <a href="#services" data-i18n="dd.mkt">Brand &amp; identity</a>
+            <a href="#services" data-i18n="dd.audit">Systems &amp; guidelines</a>
+            <a href="#services" data-i18n="dd.ind">Web &amp; digital</a>
+            <a href="#services" data-i18n="dd.strat">Pitch &amp; narrative</a>
         </div>
     </div>
     <a href="#use-cases" data-i18n="nav.sw">Portfolio</a>
@@ -364,8 +466,8 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 <section class="hero">
     <div class="container">
         <div class="badge reveal"><div class="badge-dot"></div><span data-i18n="hero.badge">Fast · agile · built for early-stage teams</span></div>
-        <h1 class="reveal reveal-d1" data-i18n="hero.h1">Number 1 design studio for early stage startups and YC companies</h1>
-        <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">Neutral Studio is a graphic design studio for founders who need clarity and speed: identity, deck, and web, without the agency overhead.</p>
+        <h1 class="reveal reveal-d1" data-i18n="hero.h1"><span class="h1-top">The <em>#1</em></span><span class="h1-main">design studio for</span><span class="h1-sub"><em>early-stage startups</em> and <em>YC teams</em></span></h1>
+        <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">Identity, decks, and websites built as one system, so you raise, hire, and ship with confidence, without agency drag.</p>
         <div class="hero-ctas reveal reveal-d3">
             <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-lg" data-i18n="hero.cta1">Book a call</a>
             <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question" class="btn btn-s btn-lg" data-i18n="hero.cta2">Email us</a>
@@ -384,14 +486,85 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <p class="s-desc" data-i18n="svc.desc">End-to-end brand and digital craft: identity, product, narrative, and campaign-ready assets in one coherent system.</p>
         </div>
         <div class="svc-grid">
-            <div class="svc-card reveal"><span class="svc-ix" aria-hidden="true">01</span><h3 data-i18n="svc.1t">Brand Identity</h3><p data-i18n="svc.1d">Logo systems, typography, color, and guidelines that scale with your company.</p></div>
-            <div class="svc-card reveal reveal-d1"><span class="svc-ix" aria-hidden="true">02</span><h3 data-i18n="svc.2t">Web Design</h3><p data-i18n="svc.2d">Marketing sites and key pages, responsive layouts and launch-ready UI.</p></div>
-            <div class="svc-card reveal reveal-d2"><span class="svc-ix" aria-hidden="true">03</span><h3 data-i18n="svc.3t">UI/UX Design</h3><p data-i18n="svc.3d">Flows, components, and systems for products people actually use.</p></div>
-            <div class="svc-card reveal reveal-d3"><span class="svc-ix" aria-hidden="true">04</span><h3 data-i18n="svc.4t">Deck Design</h3><p data-i18n="svc.4d">Investor and sales decks with clear hierarchy and narrative structure.</p></div>
-            <div class="svc-card reveal"><span class="svc-ix" aria-hidden="true">05</span><h3 data-i18n="svc.5t">Motion Design</h3><p data-i18n="svc.5d">Logo animation, promos, and social-first motion that matches the brand.</p></div>
-            <div class="svc-card reveal reveal-d1"><span class="svc-ix" aria-hidden="true">06</span><h3 data-i18n="svc.6t">Social Media &amp; Ad Creatives</h3><p data-i18n="svc.6d">Paid social, organic, and display formats that stay on-message.</p></div>
-            <div class="svc-card reveal reveal-d2"><span class="svc-ix" aria-hidden="true">07</span><h3 data-i18n="svc.7t">Print Design</h3><p data-i18n="svc.7d">Editorial, posters, and collateral, print-ready files and specs.</p></div>
-            <div class="svc-card reveal reveal-d3"><span class="svc-ix" aria-hidden="true">08</span><h3 data-i18n="svc.8t">Packaging &amp; Merchandise</h3><p data-i18n="svc.8d">Boxes, labels, and swag, designed for production and shelf impact.</p></div>
+            <div class="svc-card reveal" data-svc="brand">
+                <div class="svc-top">
+                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 6-8 6-8-6 8-6z"/><path d="M4 9v6l8 6 8-6V9"/></svg></div>
+                    <span class="svc-k">01</span>
+                </div>
+                <h3 data-i18n="svc.1t">Brand Identity</h3>
+                <p data-i18n="svc.1d">Logo systems, typography, color, and guidelines that scale with your company.</p>
+                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+
+            <div class="svc-card reveal reveal-d1" data-svc="web">
+                <div class="svc-top">
+                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 13h6" stroke-linecap="round"/></svg></div>
+                    <span class="svc-k">02</span>
+                </div>
+                <h3 data-i18n="svc.2t">Web Design</h3>
+                <p data-i18n="svc.2d">Marketing sites and key pages, responsive layouts and launch-ready UI.</p>
+                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+
+            <div class="svc-card reveal reveal-d2" data-svc="uiux">
+                <div class="svc-top">
+                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 7h10v10H7z"/><path d="M4 12h3M17 12h3M12 4v3M12 17v3" stroke-linecap="round"/></svg></div>
+                    <span class="svc-k">03</span>
+                </div>
+                <h3 data-i18n="svc.3t">UI/UX Design</h3>
+                <p data-i18n="svc.3d">Flows, components, and systems for products people actually use.</p>
+                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+
+            <div class="svc-card reveal reveal-d3" data-svc="deck">
+                <div class="svc-top">
+                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 6h14v12H5z"/><path d="M8 9h8M8 12h6M8 15h7" stroke-linecap="round"/></svg></div>
+                    <span class="svc-k">04</span>
+                </div>
+                <h3 data-i18n="svc.4t">Deck Design</h3>
+                <p data-i18n="svc.4d">Investor and sales decks with clear hierarchy and narrative structure.</p>
+                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+
+            <div class="svc-card reveal" data-svc="motion">
+                <div class="svc-top">
+                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 16c3-2 5-8 12-8" stroke-linecap="round"/><path d="M6 12c3-2 5-6 12-6" stroke-linecap="round"/><path d="M6 20c3-2 5-10 12-10" stroke-linecap="round"/></svg></div>
+                    <span class="svc-k">05</span>
+                </div>
+                <h3 data-i18n="svc.5t">Motion Design</h3>
+                <p data-i18n="svc.5d">Logo animation, promos, and social-first motion that matches the brand.</p>
+                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+
+            <div class="svc-card reveal reveal-d1" data-svc="social">
+                <div class="svc-top">
+                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12v9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke-linecap="round"/></svg></div>
+                    <span class="svc-k">06</span>
+                </div>
+                <h3 data-i18n="svc.6t">Social Media &amp; Ad Creatives</h3>
+                <p data-i18n="svc.6d">Paid social, organic, and display formats that stay on-message.</p>
+                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+
+            <div class="svc-card reveal reveal-d2" data-svc="print">
+                <div class="svc-top">
+                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4h10v16H7z"/><path d="M9 7h6M9 10h6M9 13h5" stroke-linecap="round"/></svg></div>
+                    <span class="svc-k">07</span>
+                </div>
+                <h3 data-i18n="svc.7t">Print Design</h3>
+                <p data-i18n="svc.7d">Editorial, posters, and collateral, print-ready files and specs.</p>
+                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+
+            <div class="svc-card reveal reveal-d3" data-svc="packaging">
+                <div class="svc-top">
+                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12v10H6z"/><path d="M9 7V5h6v2" stroke-linecap="round"/><path d="M8 12h8" stroke-linecap="round"/></svg></div>
+                    <span class="svc-k">08</span>
+                </div>
+                <h3 data-i18n="svc.8t">Packaging &amp; Merchandise</h3>
+                <p data-i18n="svc.8d">Boxes, labels, and swag, designed for production and shelf impact.</p>
+                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
         </div>
     </div>
 </section>
@@ -404,31 +577,35 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <h2 class="s-title" data-i18n="teams.title">Get a portfolio built for your diligence</h2>
             <p class="s-desc" data-i18n="teams.desc">We don&rsquo;t publish full case studies here. Ask for a curated deck with identity, decks, web, and motion, tailored to your sector, stage, and what you need to decide.</p>
         </div>
-        <div class="logo-marquee-wrap reveal">
-            <p class="sr-only" data-i18n="teams.marqueeA11y">Scrolling row of sample marks from recent branding work.</p>
-            <div class="logo-marquee" aria-hidden="true">
-                <div class="logo-marquee-track">
-                    <div class="logo-marquee-group">
-                        <img src="Logos/00_logo-14.png" alt="" width="180" height="48" loading="lazy" decoding="async">
-                        <img src="Logos/00_logo_Mesa de trabajo 16 copia.png" alt="" width="200" height="48" loading="lazy" decoding="async">
-                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 2.png" alt="" width="200" height="48" loading="lazy" decoding="async">
-                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 3.png" alt="" width="200" height="48" loading="lazy" decoding="async">
-                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 4.png" alt="" width="200" height="48" loading="lazy" decoding="async">
-                    </div>
-                    <div class="logo-marquee-group">
-                        <img src="Logos/00_logo-14.png" alt="" width="180" height="48" loading="lazy" decoding="async">
-                        <img src="Logos/00_logo_Mesa de trabajo 16 copia.png" alt="" width="200" height="48" loading="lazy" decoding="async">
-                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 2.png" alt="" width="200" height="48" loading="lazy" decoding="async">
-                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 3.png" alt="" width="200" height="48" loading="lazy" decoding="async">
-                        <img src="Logos/00_logo_Mesa de trabajo 16 copia 4.png" alt="" width="200" height="48" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="portfolio-cta-block reveal reveal-d1">
             <div class="portfolio-cta-stats">
-                <p class="portfolio-more-line" data-i18n="teams.more">+100 other projects</p>
-                <p class="portfolio-more-sub" data-i18n="teams.raised">We&rsquo;ve helped startups that have raised +$100M.</p>
+                <a class="portfolio-cta-mock" href="assets/portfolio-mockup.png" target="_blank" rel="noopener noreferrer" aria-label="Open portfolio mockup image">
+                    <img src="assets/portfolio-mockup.png" alt="" loading="lazy" decoding="async">
+                </a>
+                <div class="portfolio-cta-stats-txt">
+                    <p class="portfolio-more-line" data-i18n="teams.more">+100 other projects</p>
+                    <p class="portfolio-more-sub" data-i18n="teams.raised">We&rsquo;ve helped startups that have raised +$100M.</p>
+                    <div class="logo-marquee-wrap in-pill" aria-label="Scrolling row of sample marks from recent branding work">
+                        <div class="logo-marquee" aria-hidden="true">
+                            <div class="logo-marquee-track">
+                                <div class="logo-marquee-group">
+                                    <img src="Logos/00_logo-14.png" alt="" width="180" height="48" loading="lazy" decoding="async">
+                                    <img src="Logos/00_logo_Mesa de trabajo 16 copia.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                                    <img src="Logos/00_logo_Mesa de trabajo 16 copia 2.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                                    <img src="Logos/00_logo_Mesa de trabajo 16 copia 3.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                                    <img src="Logos/00_logo_Mesa de trabajo 16 copia 4.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                                </div>
+                                <div class="logo-marquee-group">
+                                    <img src="Logos/00_logo-14.png" alt="" width="180" height="48" loading="lazy" decoding="async">
+                                    <img src="Logos/00_logo_Mesa de trabajo 16 copia.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                                    <img src="Logos/00_logo_Mesa de trabajo 16 copia 2.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                                    <img src="Logos/00_logo_Mesa de trabajo 16 copia 3.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                                    <img src="Logos/00_logo_Mesa de trabajo 16 copia 4.png" alt="" width="200" height="48" loading="lazy" decoding="async">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <p class="portfolio-cta-lead" data-i18n="teams.ctaLead">Tell us what you&rsquo;re evaluating, and we&rsquo;ll reply with a fuller portfolio and next steps, usually within one business day.</p>
             <div class="portfolio-cta-actions">
@@ -441,7 +618,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 </section>
 
 <!-- WHY CHOOSE US -->
-<section id="why-us" class="bg-a">
+<section id="why-us" class="sep-top">
     <div class="container">
         <div class="s-hdr reveal">
             <p class="s-label" data-i18n="wcu.label">Compare</p>
@@ -554,11 +731,61 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
             <h2 class="s-title" data-i18n="how.title">From messy brief to launch-ready brand</h2>
             <p class="s-desc" data-i18n="how.desc">A tight loop built for early-stage constraints: fast feedback, clear milestones, no theatre.</p>
         </div>
-        <div class="steps">
-            <div class="step reveal"><div class="step-n">1</div><span class="step-tag" data-i18n="how.s1tag">Kickoff</span><h3 data-i18n="how.s1t">Discovery</h3><p data-i18n="how.s1d">We align on audience, positioning, and what &ldquo;success&rdquo; looks like for your next 90 days.</p></div>
-            <div class="step reveal reveal-d1"><div class="step-n">2</div><span class="step-tag" data-i18n="how.s2tag">Days 2–5</span><h3 data-i18n="how.s2t">Direction</h3><p data-i18n="how.s2d">Concept routes for identity and narrative; you pick a lane, we refine with your team.</p></div>
-            <div class="step reveal reveal-d2"><div class="step-n">3</div><span class="step-tag" data-i18n="how.s3tag">Days 6–12</span><h3 data-i18n="how.s3t">Production</h3><p data-i18n="how.s3d">Logo, type, color, deck, and web visuals are built to match the chosen direction.</p></div>
-            <div class="step reveal reveal-d3"><div class="step-n">4</div><span class="step-tag" data-i18n="how.s4tag">Handoff</span><h3 data-i18n="how.s4t">Delivery</h3><p data-i18n="how.s4d">Organized files, export specs, and a short walkthrough so your team can ship confidently.</p></div>
+        <div class="process reveal" id="process">
+            <div class="process-nav" role="tablist" aria-label="Project process">
+                <button class="process-btn" type="button" role="tab" aria-selected="true" data-step="1">
+                    <span class="process-ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3.5 10.5l3.2 3.2L16.5 4.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="process-meta">
+                        <span class="process-tag" data-i18n="how.s1tag">Kickoff</span>
+                        <span class="process-title" data-i18n="how.s1t">Discovery</span>
+                        <span class="process-blurb" data-i18n="how.s1d">We align on audience, positioning, and what &ldquo;success&rdquo; looks like for your next 90 days.</span>
+                    </span>
+                </button>
+                <button class="process-btn" type="button" role="tab" aria-selected="false" data-step="2">
+                    <span class="process-ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 10h8" stroke-linecap="round"/><path d="M10 6v8" stroke-linecap="round"/><path d="M4.5 4.5h11v11h-11z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="process-meta">
+                        <span class="process-tag" data-i18n="how.s2tag">Days 2–5</span>
+                        <span class="process-title" data-i18n="how.s2t">Direction</span>
+                        <span class="process-blurb" data-i18n="how.s2d">Concept routes for identity and narrative; you pick a lane, we refine with your team.</span>
+                    </span>
+                </button>
+                <button class="process-btn" type="button" role="tab" aria-selected="false" data-step="3">
+                    <span class="process-ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4.5 15.5l11-11" stroke-linecap="round"/><path d="M6 4.5h3.5v3.5H6zM10.5 9h3.5v3.5h-3.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="process-meta">
+                        <span class="process-tag" data-i18n="how.s3tag">Days 6–12</span>
+                        <span class="process-title" data-i18n="how.s3t">Production</span>
+                        <span class="process-blurb" data-i18n="how.s3d">Logo, type, color, deck, and web visuals are built to match the chosen direction.</span>
+                    </span>
+                </button>
+                <button class="process-btn" type="button" role="tab" aria-selected="false" data-step="4">
+                    <span class="process-ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.5 3.5h7v13h-7z" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 7h3M8.5 10h3M8.5 13h2" stroke-linecap="round"/></svg></span>
+                    <span class="process-meta">
+                        <span class="process-tag" data-i18n="how.s4tag">Handoff</span>
+                        <span class="process-title" data-i18n="how.s4t">Delivery</span>
+                        <span class="process-blurb" data-i18n="how.s4d">Organized files, export specs, and a short walkthrough so your team can ship confidently.</span>
+                    </span>
+                </button>
+            </div>
+
+            <div class="process-panel" role="tabpanel" aria-live="polite">
+                <h3 id="processPanelTitle">Discovery</h3>
+                <p id="processPanelDesc">We align on audience, positioning, and what &ldquo;success&rdquo; looks like for your next 90 days.</p>
+                <div class="process-preview" aria-hidden="true">
+                    <div class="process-preview-in">
+                        <div class="process-preview-h">You get</div>
+                        <div class="process-preview-row" id="processPanelChips">
+                            <span class="process-preview-chip"><strong>Brief</strong> alignment</span>
+                            <span class="process-preview-chip"><strong>Scope</strong> &amp; milestones</span>
+                            <span class="process-preview-chip"><strong>Constraints</strong> captured</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="process-pills" id="processPanelPills" aria-label="Step outputs">
+                    <span class="process-pill">Call + notes</span>
+                    <span class="process-pill">Timeline</span>
+                    <span class="process-pill">Decision criteria</span>
+                </div>
+            </div>
         </div>
         <div style="text-align:center;margin-top:48px" class="reveal">
             <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Project%20inquiry" class="btn btn-p btn-lg" data-i18n="how.cta">Start your timeline</a>
@@ -754,6 +981,25 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 
 </main>
 
+<div class="modal" id="svcModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="svcModalTitle" aria-describedby="svcModalDesc">
+        <div class="modal-top">
+            <div>
+                <div class="modal-k" id="svcModalK">Services</div>
+                <div class="modal-title" id="svcModalTitle">Brand Identity</div>
+                <div class="modal-desc" id="svcModalDesc">What’s typically included in this category.</div>
+            </div>
+            <button class="modal-close" type="button" aria-label="Close" data-close="1">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-grid" id="svcModalGrid"></div>
+        </div>
+    </div>
+</div>
+
 <footer class="footer">
     <div class="container">
         <div class="ft-grid">
@@ -775,7 +1021,7 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 const T={
 "nav.uc":"Services","nav.sw":"Portfolio","nav.why":"Why us","nav.roi":"ROI","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Book a call",
 "dd.mkt":"Brand & identity","dd.mkt.d":"Logo, type, and visual language","dd.audit":"Systems & guidelines","dd.audit.d":"Consistency as you scale","dd.ind":"Web & digital","dd.ind.d":"Site design and launch-ready UI","dd.strat":"Pitch & narrative","dd.strat.d":"Decks investors actually read",
-"hero.badge":"Fast \u00b7 agile \u00b7 built for early-stage teams","hero.h1":"Number 1 design studio for early stage startups and YC companies","hero.sub":"Neutral Studio is a graphic design studio for founders who need clarity and speed: identity, deck, and web, without the agency overhead.","hero.cta1":"Book a call","hero.cta2":"Email us","hero.cta3":"Ask a question ","hero.imgalt":"Studio preview",
+"hero.badge":"Fast \u00b7 agile \u00b7 built for early-stage teams","hero.h1":"<span class=\"h1-top\">The <em>#1</em></span><span class=\"h1-main\">design studio for</span><span class=\"h1-sub\"><em>early-stage startups</em> and <em>YC teams</em></span>","hero.sub":"Identity, decks, and websites built as one system, so you raise, hire, and ship with confidence, without agency drag.","hero.cta1":"Book a call","hero.cta2":"Email us","hero.cta3":"Ask a question ","hero.imgalt":"Studio preview",
 "svc.label":"Services","svc.title":"What we design for teams","svc.desc":"End-to-end brand and digital craft: identity, product, narrative, and campaign-ready assets in one coherent system.",
 "svc.1t":"Brand Identity","svc.1d":"Logo systems, typography, color, and guidelines that scale with your company.",
 "svc.2t":"Web Design","svc.2d":"Marketing sites and key pages, responsive layouts and launch-ready UI.",
@@ -850,6 +1096,262 @@ const T={
 };
 function applyI18n(){const t=T;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]){const svg=el.querySelector('svg');if(svg){el.childNodes.forEach(n=>{if(n.nodeType===3)n.remove()});el.insertBefore(document.createTextNode(t[k]),svg)}else if(t[k].includes('<')){el.innerHTML=t[k]}else{el.textContent=t[k]}}});document.querySelectorAll('[data-i18n-alt]').forEach(el=>{const k=el.getAttribute('data-i18n-alt');if(t[k])el.setAttribute('alt',t[k])})}
 applyI18n();
+
+// Floating header: hide while scrolling, show on idle
+const hdrEl=document.querySelector('.hdr');
+let hdrScrollT=null;
+if(hdrEl){
+  const showHdr=()=>hdrEl.classList.remove('hide');
+  const hideHdr=()=>hdrEl.classList.add('hide');
+  window.addEventListener('scroll',()=>{
+    hideHdr();
+    if(hdrScrollT)window.clearTimeout(hdrScrollT);
+    hdrScrollT=window.setTimeout(showHdr,180);
+  },{passive:true});
+  showHdr();
+}
+
+// Custom cursor: square core + trailing stroke square
+const core=document.getElementById('cursCore');
+const ring=document.getElementById('cursRing');
+const finePointer=window.matchMedia && window.matchMedia('(pointer:fine)').matches;
+const allowMotion=!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+if(core && ring && finePointer && allowMotion){
+  document.body.classList.add('has-cursor');
+  let x=window.innerWidth/2,y=window.innerHeight/2;
+  let rx=x,ry=y;
+  let raf=0;
+  let idleT=0;
+  const idleMs=140;
+  const easeMove=0.12;
+  const easeIdle=0.28;
+  let isIdle=true;
+  const place=(el,px,py)=>{el.style.left=px+'px';el.style.top=py+'px';};
+  const ringBox=ring.querySelector('.curs-ring');
+
+  const loop=()=>{
+    const ease=isIdle?easeIdle:easeMove;
+    rx += (x-rx)*ease;
+    ry += (y-ry)*ease;
+    place(core,x,y);
+    place(ring,rx,ry);
+    raf=requestAnimationFrame(loop);
+  };
+
+  window.addEventListener('mousemove',(e)=>{
+    x=e.clientX;y=e.clientY;
+    isIdle=false;
+    core.classList.add('is-on');
+    ring.classList.add('is-on');
+    if(!raf) raf=requestAnimationFrame(loop);
+    if(idleT) window.clearTimeout(idleT);
+    idleT=window.setTimeout(()=>{
+      isIdle=true;
+    },idleMs);
+  },{passive:true});
+
+  window.addEventListener('mouseleave',()=>{
+    core.classList.remove('is-on');
+    ring.classList.remove('is-on');
+  });
+
+  // Slightly enlarge on interactive elements
+  const setHover=(on)=>{
+    if(!ringBox) return;
+    ringBox.style.transition = on ? 'transform .12s ease' : '';
+    ringBox.style.transform = on ? 'translate3d(-50%,-50%,0) scale(1.2)' : 'translate3d(-50%,-50%,0)';
+  };
+  document.addEventListener('pointerover',(e)=>{
+    const t=e.target;
+    if(t && t.closest && t.closest('a,button,.btn')) setHover(true);
+  });
+  document.addEventListener('pointerout',(e)=>{
+    const t=e.target;
+    if(t && t.closest && t.closest('a,button,.btn')) setHover(false);
+  });
+}
+
+// Process stepper
+const processRoot=document.getElementById('process');
+if(processRoot){
+  const btns=[...processRoot.querySelectorAll('.process-btn')];
+  const titleEl=document.getElementById('processPanelTitle');
+  const descEl=document.getElementById('processPanelDesc');
+  const chipsEl=document.getElementById('processPanelChips');
+  const pillsEl=document.getElementById('processPanelPills');
+
+  const steps={
+    1:{
+      titleKey:'how.s1t',descKey:'how.s1d',
+      chips:[['Brief','alignment'],['Scope','& milestones'],['Constraints','captured']],
+      pills:['Call + notes','Timeline','Decision criteria']
+    },
+    2:{
+      titleKey:'how.s2t',descKey:'how.s2d',
+      chips:[['Routes','2–3 options'],['Review','async + live'],['Decision','pick a lane']],
+      pills:['Moodboards','Direction deck','Route selection']
+    },
+    3:{
+      titleKey:'how.s3t',descKey:'how.s3d',
+      chips:[['System','type + color'],['Assets','deck + web'],['Iterations','tight loop']],
+      pills:['Identity kit','Deck layout','Web key screens']
+    },
+    4:{
+      titleKey:'how.s4t',descKey:'how.s4d',
+      chips:[['Files','organized'],['Exports','ready-to-ship'],['Walkthrough','handoff call']],
+      pills:['Source files','Exports','Specs + notes']
+    }
+  };
+
+  function setStep(n){
+    btns.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.step===String(n))));
+    const s=steps[n];
+    if(!s)return;
+    const title=T[s.titleKey]||titleEl?.textContent||'';
+    const desc=T[s.descKey]||descEl?.textContent||'';
+    if(titleEl)titleEl.textContent=title.replace(/<[^>]*>/g,'');
+    if(descEl)descEl.textContent=desc.replace(/<[^>]*>/g,'');
+    if(chipsEl){
+      chipsEl.innerHTML=s.chips.map(([a,b])=>`<span class="process-preview-chip"><strong>${a}</strong> ${b}</span>`).join('');
+    }
+    if(pillsEl){
+      pillsEl.innerHTML=s.pills.map(p=>`<span class="process-pill">${p}</span>`).join('');
+    }
+  }
+
+  btns.forEach(b=>b.addEventListener('click',()=>setStep(Number(b.dataset.step||1))));
+  setStep(1);
+}
+
+// Services modal (Explore)
+const svcModal=document.getElementById('svcModal');
+const svcModalTitle=document.getElementById('svcModalTitle');
+const svcModalDesc=document.getElementById('svcModalDesc');
+const svcModalGrid=document.getElementById('svcModalGrid');
+let svcLastFocus=null;
+const svcData={
+  brand:{
+    title:'Brand identity',
+    desc:'A coherent visual system your team can reuse everywhere.',
+    items:[
+      ['Logo system','Primary mark, lockups, and usage rules.'],
+      ['Type + color','A scale that works across web and deck.'],
+      ['Brand kit','Assets, templates, and exports for shipping.'],
+      ['Guidelines (light)','Practical rules teams follow, not fluff.']
+    ]
+  },
+  web:{
+    title:'Web design',
+    desc:'Launch-ready key pages with a dev-friendly handoff.',
+    items:[
+      ['IA + narrative','Page structure and story flow.'],
+      ['Key screens','Homepage + core sections / pages.'],
+      ['Responsive system','Desktop/mobile rhythm and hierarchy.'],
+      ['Handoff notes','Spacing, type styles, states, exports.']
+    ]
+  },
+  uiux:{
+    title:'UI/UX design',
+    desc:'Flows, components, and patterns that feel like one product.',
+    items:[
+      ['User flows','Critical paths mapped and simplified.'],
+      ['Component set','Reusable UI building blocks.'],
+      ['States','Empty/loading/error + edge cases.'],
+      ['Tokens','Type, color, spacing guidance for build.']
+    ]
+  },
+  deck:{
+    title:'Deck design',
+    desc:'Investor-ready narrative with ruthless clarity.',
+    items:[
+      ['Story structure','Messaging and sequence that lands fast.'],
+      ['Slide system','Layouts, grids, and hierarchy rules.'],
+      ['Charts + visuals','Readable data and visuals that support the pitch.'],
+      ['Deliverables','Export-ready PDF + editable source.']
+    ]
+  },
+  motion:{
+    title:'Motion design',
+    desc:'Movement that reinforces the brand without gimmicks.',
+    items:[
+      ['Logo motion','Simple, ownable animation language.'],
+      ['Product clips','Short loops for launch + socials.'],
+      ['Transitions','Reusable motion patterns for key assets.'],
+      ['Exports','Formats for web/social and handoff.']
+    ]
+  },
+  social:{
+    title:'Social + ad creatives',
+    desc:'Campaign-ready formats that stay on-message.',
+    items:[
+      ['Template set','Repeatable layouts for speed.'],
+      ['Creative system','Hooks, hierarchy, and rules per format.'],
+      ['Variants','Batch production for testing.'],
+      ['Delivery','Organized exports + editable files.']
+    ]
+  },
+  print:{
+    title:'Print design',
+    desc:'Collateral designed for production and clarity.',
+    items:[
+      ['Editorial/layout','Grid, typography, and pacing.'],
+      ['Production-ready','Bleeds, specs, and preflight.'],
+      ['Collateral','Posters, one-pagers, brochures.'],
+      ['File package','Source + print PDFs + usage notes.']
+    ]
+  },
+  packaging:{
+    title:'Packaging + merch',
+    desc:'Assets that look intentional on shelf and in-hand.',
+    items:[
+      ['Dielines','Layouts built on real production files.'],
+      ['Label system','Hierarchy and variants across SKUs.'],
+      ['Merch','Swag that matches the brand language.'],
+      ['Handoff','Print specs + exports + source files.']
+    ]
+  }
+};
+
+function svcOpen(key,triggerEl){
+  if(!svcModal||!svcModalTitle||!svcModalDesc||!svcModalGrid) return;
+  const d=svcData[key]||{title:'Services',desc:'',items:[]};
+  svcLastFocus=triggerEl||document.activeElement;
+  svcModalTitle.textContent=d.title;
+  svcModalDesc.textContent=d.desc;
+  svcModalGrid.innerHTML=d.items.map(([t,sub])=>(
+    `<div class="modal-item"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>${t}</strong><span>${sub}</span></div></div>`
+  )).join('');
+  svcModal.classList.add('open');
+  svcModal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  const closeBtn=svcModal.querySelector('[data-close]');
+  if(closeBtn) closeBtn.focus();
+}
+function svcClose(){
+  if(!svcModal) return;
+  svcModal.classList.remove('open');
+  svcModal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  if(svcLastFocus && svcLastFocus.focus) svcLastFocus.focus();
+}
+
+document.querySelectorAll('.svc-card .svc-more-btn').forEach(btn=>{
+  btn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    const card=btn.closest('.svc-card');
+    const key=card?.getAttribute('data-svc')||'brand';
+    svcOpen(key,btn);
+  });
+});
+if(svcModal){
+  svcModal.addEventListener('click',(e)=>{
+    const t=e.target;
+    if(t && t.getAttribute && t.getAttribute('data-close')) svcClose();
+  });
+  document.addEventListener('keydown',(e)=>{
+    if(e.key==='Escape' && svcModal.classList.contains('open')) svcClose();
+  });
+}
 
 // Scroll bar
 window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('scrollBar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%'});
