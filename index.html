@@ -30,7 +30,8 @@
 .hdr.hide{transform:translate(-50%,-120%);opacity:0}
 .hdr-in{max-width:1120px;margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;height:56px}
 .logo-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.logo-wrap img{height:36px;width:auto}
+.logo-full{height:36px;width:auto}
+.logo-fav{height:28px;width:28px;display:none}
 .logo-txt{font-weight:700;font-size:1.1rem;letter-spacing:-.3px}
 .nav-l{display:flex;align-items:center;gap:24px}
 .nav-l>a,.dd-trigger{font-size:.875rem;font-weight:450;color:var(--tx-s);transition:color .2s;cursor:pointer;position:relative;background:none;border:none;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0}
@@ -45,6 +46,9 @@
 .dd-menu a:hover{background:var(--bg-a);color:var(--tx)}
 .dd-menu a span{display:block;font-size:.75rem;color:var(--tx-m);margin-top:1px}
 .nav-r{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.btn-ic{width:40px;height:40px;padding:0;border-radius:12px}
+.btn-ic svg{width:18px;height:18px}
+.btn-ic span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:10px;font-weight:600;font-size:.875rem;font-family:inherit;border:none;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
 .btn:active{transform:scale(.97)}
 .btn-p{background:linear-gradient(120deg,var(--pri) 0%, #111827 35%, var(--pri) 70%);background-size:220% 220%;color:#fff;position:relative;overflow:hidden;animation:btn-grad 6s ease-in-out infinite,btn-glow 2.9s ease-in-out infinite}
@@ -87,10 +91,8 @@
 }
 .hero .container{position:relative;max-width:1120px;padding:0 18px}
 .hero-mock-glow{display:none}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:44px;align-items:stretch;text-align:left}
-.hero-copy{max-width:720px;margin:0;padding-bottom:70px}
-.hero-copy{position:relative;z-index:3}
-.hero-copy{align-self:end}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:44px;align-items:center;text-align:left}
+.hero-copy{max-width:720px;margin:0;padding-bottom:70px;position:relative;z-index:3;align-self:center}
 .hero-copy .badge{margin-left:0;margin-right:0}
 .hero h1{max-width:none;margin-left:0;margin-right:0}
 .hero-sub{margin-left:0;margin-right:0;max-width:56ch}
@@ -113,6 +115,8 @@
 .hero-col[data-dir="down"] .hero-track{animation-direction:reverse}
 .hero-col:hover .hero-track{animation-play-state:paused}
 @keyframes hero-col-marquee{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+.hero-row{display:none}
+.hero-row-track{display:none}
 .hcard{position:relative;width:100%;aspect-ratio:3/4;border-radius:18px;overflow:hidden;
   background:#fff;border:1px solid rgba(226,232,240,.9);
   box-shadow:0 18px 48px rgba(2,6,23,.14);
@@ -202,6 +206,15 @@ section{padding:100px 0;position:relative}
 .svc-wrap{background:var(--bg);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:100px 0}
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .svc-card{background:linear-gradient(180deg,#fff 0%,#fff 70%,rgba(248,250,252,.8) 100%);border:1px solid var(--bdr);border-radius:18px;padding:22px 20px 20px;transition:transform .22s,border-color .22s,box-shadow .22s,background .22s;display:flex;flex-direction:column;min-height:100%;position:relative;overflow:hidden}
+.svc-acc{appearance:none}
+.svc-acc summary{list-style:none}
+.svc-acc summary::-webkit-details-marker{display:none}
+.svc-acc-sum{cursor:pointer}
+.svc-acc-title{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.svc-acc-title h3{margin-bottom:0}
+.svc-acc-ch{width:18px;height:18px;color:var(--tx-m);transition:transform .2s ease,color .2s ease;flex:0 0 auto}
+.svc-acc[open] .svc-acc-ch{transform:rotate(180deg);color:var(--tx)}
+.svc-acc-body{padding-top:10px}
 .svc-card::after{content:"";position:absolute;inset:-80px;pointer-events:none;background:radial-gradient(320px 180px at 20% 10%, rgba(15,118,110,.10) 0%, rgba(15,118,110,0) 60%);opacity:0;transition:opacity .25s ease}
 .svc-card:hover{border-color:rgba(15,118,110,.30);box-shadow:0 16px 30px -18px rgba(15,23,42,.22);transform:translateY(-4px)}
 .svc-card:hover::after{opacity:1}
@@ -277,6 +290,14 @@ section{padding:100px 0;position:relative}
 .portfolio-cta-lead{font-size:1.02rem;color:var(--tx-s);line-height:1.65;margin:0 0 8px;max-width:52ch;margin-left:auto;margin-right:auto}
 .portfolio-cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px;align-items:center}
 .portfolio-cta-note{font-size:.82rem;color:var(--tx-m);margin-top:18px;line-height:1.5;max-width:42ch;margin-left:auto;margin-right:auto}
+
+/* PORTFOLIO MOBILE CARDS (animated strip) */
+.port-cards-wrap{display:none;margin:18px auto 0}
+.port-cards-mask{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(226,232,240,.9);background:rgba(255,255,255,.65);box-shadow:var(--sh-s)}
+.port-cards-mask::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg, rgba(248,250,252,1) 0%, rgba(248,250,252,0) 18%, rgba(248,250,252,0) 82%, rgba(248,250,252,1) 100%);z-index:2}
+.port-cards{position:relative;overflow:hidden;padding:10px}
+.port-track{display:flex;gap:12px;will-change:transform;transform:translate3d(0,0,0);width:max-content;animation:hero-row-marquee var(--dur,26s) linear infinite}
+.port-track .hcard{width:min(56vw,360px);aspect-ratio:3/4}
 
 /* WHY CHOOSE US (compare) */
 .wcu-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--bdr);border-radius:16px;overflow:hidden;background:var(--bg);box-shadow:var(--sh-s)}
@@ -474,6 +495,9 @@ section{padding:100px 0;position:relative}
 .reveal-d1{transition-delay:.08s}.reveal-d2{transition-delay:.16s}.reveal-d3{transition-delay:.24s}.reveal-d4{transition-delay:.32s}
 .ck{width:16px;height:16px}
 
+/* HERO should never be hidden by reveal */
+.hero .reveal{opacity:1;transform:none}
+
 /* CUSTOM CURSOR */
 body.has-cursor{cursor:none}
 .curs{position:fixed;left:0;top:0;pointer-events:none;z-index:99999;opacity:0;transition:opacity .2s ease}
@@ -495,22 +519,55 @@ body.has-cursor{cursor:none}
 .team-lay{grid-template-columns:1fr;gap:40px}.ft-grid{grid-template-columns:1fr 1fr;gap:28px}
 .svc-grid{grid-template-columns:repeat(2,1fr)}.pr-prices{grid-template-columns:1fr}
 .part-services{padding-left:0}
+/* Hero: stack + horizontal gallery */
+.hero-grid{grid-template-columns:1fr;align-items:start;gap:26px;text-align:center}
+.hero-copy{width:100%;max-width:640px;margin:0 auto;padding-bottom:22px;align-self:start}
+.hero-ctas{justify-content:center}
+.hero-sub{margin-left:auto;margin-right:auto}
+.hero h1{margin-left:auto;margin-right:auto}
+
+.hero-cards-mask{width:100%;justify-self:center}
+.hero-cards{width:100%;height:clamp(260px,44vw,420px);border-radius:22px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.hero-cards::-webkit-scrollbar{display:none}
+.hero-cards-mask{
+  -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 44px, #000 calc(100% - 44px), transparent 100%);
+  mask-image:linear-gradient(90deg, transparent 0, #000 44px, #000 calc(100% - 44px), transparent 100%);
 }
+.hero-cols{position:relative;inset:auto;display:block;padding:10px}
+.hero-col:nth-child(2),.hero-col:nth-child(3){display:none}
+.hero-col{position:relative;overflow:visible}
+.hero-track{position:relative;left:auto;right:auto;top:auto;display:flex;flex-direction:row;gap:12px;will-change:transform;transform:translate3d(0,0,0);width:max-content;animation:none}
+.hcard{width:min(50vw,340px);aspect-ratio:3/4;border-radius:18px}
+.hcard{scroll-snap-align:center}
+.hcard{transform:none}
+.hcard:hover{transform:none}
+
+.hero-gal-ui{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 0 0}
+.hero-gal-hint{font-size:.78rem;font-weight:650;letter-spacing:.02em;color:var(--tx-m);text-transform:uppercase}
+.hero-gal-bar{width:min(220px,60vw);height:2px;background:rgba(148,163,184,.35);border-radius:999px;overflow:hidden}
+.hero-gal-bar-in{height:100%;width:16%;background:rgba(15,23,42,.88);border-radius:999px;transform-origin:left center}
+}
+@keyframes hero-row-marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @media(max-width:640px){
 section{padding:72px 0}.hero{padding:100px 0 0}
 .steps{grid-template-columns:1fr}
 .team-creds{grid-template-columns:1fr}.team-vis{grid-template-columns:1fr}
 .team-stat:first-child{grid-column:span 1}
 .hero h1{font-size:2.2rem}
+.hero h1 .h1-top{justify-content:center;font-size:.92rem;margin-bottom:10px}
+.hero h1 .h1-main{font-size:clamp(2.15rem,8.2vw,2.65rem);line-height:1.03;letter-spacing:-1.4px}
+.hero h1 .h1-sub{font-size:clamp(1.08rem,4.8vw,1.32rem);line-height:1.14;margin-top:12px;letter-spacing:-.5px}
+.hero-sub{font-size:1.02rem;line-height:1.65;margin:0 auto 26px;max-width:44ch}
 .hero-ctas{flex-direction:column;align-items:stretch}
 .hero-ctas .btn{text-align:center}
-.hero-grid{grid-template-columns:1fr;gap:26px;text-align:left}
-.hero-copy{max-width:640px;margin:0}
-.hero-ctas{justify-content:flex-start}
-.hero-cards{width:min(560px,92vw);justify-self:start;height:clamp(340px,78vw,520px)}
-.hero-cards-mask{justify-self:start}
-.hero-cols{grid-template-columns:1fr}
-.hero-col:nth-child(2),.hero-col:nth-child(3){display:none}
+.hero-copy{padding-bottom:30px}
+.hero-cards-mask{display:none}
+.svc-card{padding:18px 16px 16px}
+.svc-top{margin-bottom:10px}
+.svc-acc-body{display:none}
+.svc-acc[open] .svc-acc-body{display:block}
+.svc-acc-body p{margin-top:6px}
+.svc-more-btn{margin-top:12px}
 .portfolio-cta-stats{align-items:stretch}
 .portfolio-cta-mock{margin:6px auto 0}
 .f-cta-btns{flex-direction:column;align-items:center}
@@ -520,6 +577,13 @@ section{padding:72px 0}.hero{padding:100px 0 0}
 .pr-grid{grid-template-columns:1fr}
 .svc-wrap{padding:72px 0}
 .svc-grid{grid-template-columns:1fr}
+
+/* Mobile: show animated cards inside Portfolio */
+.port-cards-wrap{display:block}
+
+/* Mobile header: use favicon so CTAs fit */
+.logo-full{display:none}
+.logo-fav{display:block}
 }
     </style>
 </head>
@@ -532,7 +596,10 @@ section{padding:72px 0}.hero{padding:100px 0 0}
 
 <header class="hdr">
     <div class="hdr-in">
-        <a href="#" class="logo-wrap"><img src="Logo-01.png" alt="Neutral Studio logo"></a>
+        <a href="#" class="logo-wrap" aria-label="Neutral Studio">
+            <img class="logo-full" src="Logo-01.png" alt="Neutral Studio logo">
+            <img class="logo-fav" src="Logo_Mesa%20de%20trabajo%201%20copia.png" alt="">
+        </a>
         <nav class="nav-l" id="navLinks">
             <div class="dd" id="ddUc">
                 <button class="dd-trigger" data-i18n="nav.uc">Services <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg></button>
@@ -552,7 +619,12 @@ section{padding:72px 0}.hero{padding:100px 0 0}
             <a href="#faq">FAQ</a>
         </nav>
         <div class="nav-r">
-            <a href="https://www.linkedin.com/in/arnau-pi%C3%B1ol-olabegoya-722329158/" target="_blank" rel="noopener noreferrer" class="btn btn-s">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/arnau-pi%C3%B1ol-olabegoya-722329158/" target="_blank" rel="noopener noreferrer" class="btn btn-s btn-ic" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M6.94 6.5A2.44 2.44 0 1 1 6.94 1.62a2.44 2.44 0 0 1 0 4.88ZM4.8 22.4h4.3V8.2H4.8v14.2ZM11.2 8.2h4.12v1.94h.06c.57-1.08 1.97-2.22 4.06-2.22 4.35 0 5.15 2.86 5.15 6.58v7.9h-4.3v-7c0-1.67-.03-3.82-2.33-3.82-2.33 0-2.69 1.82-2.69 3.7v7.12h-4.3V8.2Z"/>
+                </svg>
+                <span>LinkedIn</span>
+            </a>
             <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p" data-i18n="nav.cta">Book a call</a>
         </div>
         <button class="menu-btn" id="menuBtn" aria-label="Menu">
@@ -604,6 +676,10 @@ section{padding:72px 0}.hero{padding:100px 0 0}
                         <div class="hero-col" data-dir="up"><div class="hero-track"></div></div>
                     </div>
                 </div>
+                <div class="hero-gal-ui" aria-hidden="true">
+                    <div class="hero-gal-hint">Swipe</div>
+                    <div class="hero-gal-bar"><div class="hero-gal-bar-in" id="heroGalBar"></div></div>
+                </div>
             </div>
         </div>
         <div class="hero-spacer"></div>
@@ -619,45 +695,73 @@ section{padding:72px 0}.hero{padding:100px 0 0}
             <p class="s-desc" data-i18n="svc.desc">End-to-end brand and digital craft: identity, product, narrative, and campaign-ready assets in one coherent system.</p>
         </div>
         <div class="svc-grid">
-            <div class="svc-card reveal" data-svc="brand">
-                <div class="svc-top">
-                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 6-8 6-8-6 8-6z"/><path d="M4 9v6l8 6 8-6V9"/></svg></div>
-                    <span class="svc-k">01</span>
+            <details class="svc-card svc-acc reveal" data-svc="brand">
+                <summary class="svc-acc-sum">
+                    <div class="svc-top">
+                        <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 6-8 6-8-6 8-6z"/><path d="M4 9v6l8 6 8-6V9"/></svg></div>
+                        <span class="svc-k">01</span>
+                    </div>
+                    <div class="svc-acc-title">
+                        <h3 data-i18n="svc.1t">Brand Identity</h3>
+                        <svg class="svc-acc-ch" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                </summary>
+                <div class="svc-acc-body">
+                    <p data-i18n="svc.1d">Logo systems, typography, color, and guidelines that scale with your company.</p>
+                    <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
-                <h3 data-i18n="svc.1t">Brand Identity</h3>
-                <p data-i18n="svc.1d">Logo systems, typography, color, and guidelines that scale with your company.</p>
-                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            </div>
+            </details>
 
-            <div class="svc-card reveal reveal-d1" data-svc="web">
-                <div class="svc-top">
-                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 13h6" stroke-linecap="round"/></svg></div>
-                    <span class="svc-k">02</span>
+            <details class="svc-card svc-acc reveal reveal-d1" data-svc="web">
+                <summary class="svc-acc-sum">
+                    <div class="svc-top">
+                        <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 13h6" stroke-linecap="round"/></svg></div>
+                        <span class="svc-k">02</span>
+                    </div>
+                    <div class="svc-acc-title">
+                        <h3 data-i18n="svc.2t">Web Design</h3>
+                        <svg class="svc-acc-ch" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                </summary>
+                <div class="svc-acc-body">
+                    <p data-i18n="svc.2d">Marketing sites and key pages, responsive layouts and launch-ready UI.</p>
+                    <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
-                <h3 data-i18n="svc.2t">Web Design</h3>
-                <p data-i18n="svc.2d">Marketing sites and key pages, responsive layouts and launch-ready UI.</p>
-                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            </div>
+            </details>
 
-            <div class="svc-card reveal reveal-d2" data-svc="uiux">
-                <div class="svc-top">
-                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 7h10v10H7z"/><path d="M4 12h3M17 12h3M12 4v3M12 17v3" stroke-linecap="round"/></svg></div>
-                    <span class="svc-k">03</span>
+            <details class="svc-card svc-acc reveal reveal-d2" data-svc="uiux">
+                <summary class="svc-acc-sum">
+                    <div class="svc-top">
+                        <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 7h10v10H7z"/><path d="M4 12h3M17 12h3M12 4v3M12 17v3" stroke-linecap="round"/></svg></div>
+                        <span class="svc-k">03</span>
+                    </div>
+                    <div class="svc-acc-title">
+                        <h3 data-i18n="svc.3t">UI/UX Design</h3>
+                        <svg class="svc-acc-ch" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                </summary>
+                <div class="svc-acc-body">
+                    <p data-i18n="svc.3d">Flows, components, and systems for products people actually use.</p>
+                    <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
-                <h3 data-i18n="svc.3t">UI/UX Design</h3>
-                <p data-i18n="svc.3d">Flows, components, and systems for products people actually use.</p>
-                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            </div>
+            </details>
 
-            <div class="svc-card reveal reveal-d3" data-svc="deck">
-                <div class="svc-top">
-                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 6h14v12H5z"/><path d="M8 9h8M8 12h6M8 15h7" stroke-linecap="round"/></svg></div>
-                    <span class="svc-k">04</span>
+            <details class="svc-card svc-acc reveal reveal-d3" data-svc="deck">
+                <summary class="svc-acc-sum">
+                    <div class="svc-top">
+                        <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 6h14v12H5z"/><path d="M8 9h8M8 12h6M8 15h7" stroke-linecap="round"/></svg></div>
+                        <span class="svc-k">04</span>
+                    </div>
+                    <div class="svc-acc-title">
+                        <h3 data-i18n="svc.4t">Deck Design</h3>
+                        <svg class="svc-acc-ch" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                </summary>
+                <div class="svc-acc-body">
+                    <p data-i18n="svc.4d">Investor and sales decks with clear hierarchy and narrative structure.</p>
+                    <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
-                <h3 data-i18n="svc.4t">Deck Design</h3>
-                <p data-i18n="svc.4d">Investor and sales decks with clear hierarchy and narrative structure.</p>
-                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            </div>
+            </details>
 
             <div class="svc-card reveal" data-svc="motion">
                 <div class="svc-top">
@@ -710,6 +814,15 @@ section{padding:72px 0}.hero{padding:100px 0 0}
             <h2 class="s-title" data-i18n="teams.title">Get a portfolio built for your diligence</h2>
             <p class="s-desc" data-i18n="teams.desc">We don&rsquo;t publish full case studies here. Ask for a curated deck with identity, decks, web, and motion, tailored to your sector, stage, and what you need to decide.</p>
         </div>
+
+        <div class="port-cards-wrap reveal" aria-hidden="true">
+            <div class="port-cards-mask">
+                <div class="port-cards" id="portfolioCards">
+                    <div class="port-track" id="portfolioCardsTrack"></div>
+                </div>
+            </div>
+        </div>
+
         <div class="portfolio-cta-block reveal reveal-d1">
             <div class="portfolio-cta-stats">
                 <a class="portfolio-cta-mock" href="assets/portfolio-mockup.png" target="_blank" rel="noopener noreferrer" aria-label="Open portfolio mockup image">
@@ -1259,6 +1372,7 @@ section{padding:72px 0}.hero{padding:100px 0 0}
   if (!root) return;
 
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobileGallery = window.matchMedia && window.matchMedia('(max-width: 1024px)').matches;
   const cols = [...root.querySelectorAll('.hero-col')];
   if (cols.length !== 3) return;
 
@@ -1296,20 +1410,70 @@ section{padding:72px 0}.hero{padding:100px 0 0}
     return el;
   };
 
-  // Distribute across columns, then duplicate for seamless scroll.
-  cols.forEach((col, i) => {
-    const track = col.querySelector('.hero-track');
-    if (!track) return;
+  const initPortfolioMobileMarquee = () => {
+    const wrap = document.getElementById('portfolioCards');
+    const track = document.getElementById('portfolioCardsTrack');
+    if (!wrap || !track) return;
+
     track.innerHTML = '';
-    const items = cards.filter((_, idx) => idx % 3 === i);
-    items.forEach((src) => track.appendChild(makeCard(src)));
-    // duplicate once so keyframes translateY(-50%) loops cleanly
+    // Build once, then clone to loop cleanly with translateX(-50%)
+    cards.forEach((src) => track.appendChild(makeCard(src)));
     const clones = [...track.children].map((n) => n.cloneNode(true));
     clones.forEach((n) => track.appendChild(n));
-    // speed scales with number of unique cards in the column
-    const dur = reduceMotion ? 0 : Math.max(18, items.length * 6.2);
+
+    const dur = reduceMotion ? 0 : Math.max(18, cards.length * 1.35);
     track.style.setProperty('--dur', dur ? `${dur}s` : '0s');
-  });
+  };
+
+  if (isMobileGallery){
+    // Mobile: swipe gallery (no autoplay animation, no clones)
+    const col = cols[0];
+    const track = col && col.querySelector('.hero-track');
+    if (!track) return;
+    track.innerHTML = '';
+    cards.forEach((src) => track.appendChild(makeCard(src)));
+
+    // Progress indicator
+    const bar = document.getElementById('heroGalBar');
+    const updateBar = () => {
+      if (!bar) return;
+      const max = root.scrollWidth - root.clientWidth;
+      const p = max > 0 ? (root.scrollLeft / max) : 0;
+      const w = bar.getBoundingClientRect().width || 1;
+      const thumbW = Math.max(22, Math.round(w * 0.18));
+      bar.style.width = thumbW + 'px';
+      bar.style.transform = `translateX(${Math.round((w - thumbW) * p)}px)`;
+    };
+    updateBar();
+    root.addEventListener('scroll', () => requestAnimationFrame(updateBar), { passive: true });
+    window.addEventListener('resize', () => requestAnimationFrame(updateBar), { passive: true });
+
+    // Optional drag-to-scroll for non-touch trackpads/mouse
+    let down=false, sx=0, sl=0;
+    root.addEventListener('pointerdown',(e)=>{down=true;sx=e.clientX;sl=root.scrollLeft;root.setPointerCapture(e.pointerId);},{passive:true});
+    root.addEventListener('pointermove',(e)=>{if(!down)return;const dx=e.clientX-sx;root.scrollLeft=sl-dx;},{passive:true});
+    root.addEventListener('pointerup',()=>{down=false;},{passive:true});
+
+    // Also render the animated strip in the Portfolio section (mobile only)
+    if (window.matchMedia && window.matchMedia('(max-width: 640px)').matches){
+      initPortfolioMobileMarquee();
+    }
+  } else {
+    // Desktop: 3-column vertical marquee
+    cols.forEach((col, i) => {
+      const track = col.querySelector('.hero-track');
+      if (!track) return;
+      track.innerHTML = '';
+      const items = cards.filter((_, idx) => idx % 3 === i);
+      items.forEach((src) => track.appendChild(makeCard(src)));
+      // duplicate once so keyframes translateY(-50%) loops cleanly
+      const clones = [...track.children].map((n) => n.cloneNode(true));
+      clones.forEach((n) => track.appendChild(n));
+      // speed scales with number of unique cards in the column
+      const dur = reduceMotion ? 0 : Math.max(18, items.length * 6.2);
+      track.style.setProperty('--dur', dur ? `${dur}s` : '0s');
+    });
+  }
 
   // Click-to-zoom (lightbox)
   const modal = document.getElementById('cardZoom');
@@ -1367,7 +1531,7 @@ section{padding:72px 0}.hero{padding:100px 0 0}
 const T={
 "nav.uc":"Services","nav.sw":"Portfolio","nav.why":"Why us","nav.roi":"ROI","nav.how":"How It Works","nav.pr":"Pricing","nav.team":"Team","nav.cta":"Book a call",
 "dd.mkt":"Brand & identity","dd.mkt.d":"Logo, type, and visual language","dd.audit":"Systems & guidelines","dd.audit.d":"Consistency as you scale","dd.ind":"Web & digital","dd.ind.d":"Site design and launch-ready UI","dd.strat":"Pitch & narrative","dd.strat.d":"Decks investors actually read",
-"hero.badge":"Design that ships \u00b7 identity \u00b7 deck \u00b7 web","hero.h1":"<span class=\"h1-top\">The <em>#1</em> design studio for startups</span><span class=\"h1-main\">Make your startup look inevitable.</span><span class=\"h1-sub\">Identity, pitch, and web, built as <em>one system</em>.</span>","hero.sub":"A focused engagement for early-stage founders who need credibility fast: we align the story, design the system, and ship launch-ready assets without agency drag.","hero.cta1":"Book a call","hero.cta2":"Email us","hero.cta3":"Ask a question ","hero.imgalt":"Studio preview",
+"hero.badge":"The #1 design studio for startups","hero.h1":"<span class=\"h1-top\">The <em>#1</em><span>design studio for startups</span></span><span class=\"h1-main\">Make your startup look inevitable.</span><span class=\"h1-sub\">Identity, pitch, and web, built as <em>one system</em>.</span>","hero.sub":"A focused engagement for early-stage founders who need credibility fast: we align the story, design the system, and ship launch-ready assets without agency drag.","hero.cta1":"Book a call","hero.cta2":"Email us","hero.cta3":"Ask a question ","hero.imgalt":"Studio preview",
 "svc.label":"Services","svc.title":"What we design for teams","svc.desc":"End-to-end brand and digital craft: identity, product, narrative, and campaign-ready assets in one coherent system.",
 "svc.1t":"Brand Identity","svc.1d":"Logo systems, typography, color, and guidelines that scale with your company.",
 "svc.2t":"Web Design","svc.2d":"Marketing sites and key pages, responsive layouts and launch-ready UI.",
