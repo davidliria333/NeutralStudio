@@ -78,14 +78,46 @@
 .mob-nav .mob-dd-list a{font-size:.95rem;padding:10px 0;border-bottom:none}
 
 /* HERO */
-.hero{padding:120px 0 70px;text-align:center;position:relative;background:#fff;overflow:hidden;--mx:50%;--my:34%;--heroScroll:0}
+.hero{padding:120px 0 0;text-align:center;position:relative;background:#fff;overflow:hidden;--mx:50%;--my:34%;--heroScroll:0;--heroProg:0}
 .hero::before{content:"";position:absolute;inset:-1px;pointer-events:none;z-index:0;background:
   radial-gradient(680px 420px at var(--mx) var(--my), rgba(15,118,110,.15) 0%, rgba(15,118,110,0) 62%),
   radial-gradient(1100px 520px at 50% -10%, rgba(15,23,42,.06) 0%, rgba(15,23,42,0) 55%);
   filter:saturate(1.05);
   transition:opacity .25s ease;
 }
-.hero .container{position:relative;z-index:1}
+.hero .container{position:relative}
+.hero-mock-glow{display:none}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:44px;align-items:end;text-align:left}
+.hero-copy{max-width:720px;margin:0;padding-bottom:70px}
+.hero-copy{position:relative;z-index:3}
+.hero-copy .badge{margin-left:0;margin-right:0}
+.hero h1{max-width:none;margin-left:0;margin-right:0}
+.hero-sub{margin-left:0;margin-right:0;max-width:56ch}
+.hero-ctas{justify-content:flex-start}
+.hero-visual{display:flex;justify-content:center;align-items:center}
+.hero-mock{position:relative;z-index:1;justify-self:end;align-self:end;width:min(560px,46vw);margin-bottom:-21px}
+.hero-mock img{display:block;width:100%;height:auto;transform-origin:50% 100%;transform:scale(1.4);filter:drop-shadow(0 42px 90px rgba(2,6,23,.18))}
+
+.hero-phone--r{left:calc(50% - 5%);top:calc(50% - (var(--hdrOffset, 0px) / 2) + 72px + 30%);transform:translate3d(-50%,-50%,0);pointer-events:none;z-index:1}
+.hero-phone--r .hero-phone-in{transform:
+  translate3d(
+    calc(620px - (var(--heroProg) * 260px)),
+    calc(320px - (var(--heroProg) * 560px)),
+    0
+  )
+  translate3d(
+    calc(var(--phonePx, 0) * 18px),
+    calc(var(--phonePy, 0) * 14px),
+    0
+  )
+  rotateX(calc(var(--phonePy, 0) * -6deg))
+  rotateY(calc(var(--phonePx, 0) * -8deg))
+  scale(calc(1 - (var(--heroProg) * .03)));
+  transform-origin:center;
+  will-change:transform;
+  filter:drop-shadow(0 34px 80px rgba(2,6,23,.20));
+}
+.hero-phone--r img{width:min(242px,52vw)}
 .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bdr);border-radius:100px;padding:5px 16px 5px 7px;font-size:.78rem;font-weight:500;color:var(--tx-s);margin-bottom:28px;background:var(--bg)}
 .badge-dot{width:7px;height:7px;background:var(--acc);border-radius:50%;animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
@@ -101,8 +133,8 @@
 @keyframes rank-grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .hero-sub{font-size:.95rem;color:var(--tx-s);max-width:540px;margin:0 auto 32px;line-height:1.65}
 .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.hero-spacer{height:26px;position:relative;z-index:0}
-.hero-parallax{will-change:transform;transform:translate3d(0,calc(var(--heroScroll) * -18px),0)}
+.hero-spacer{height:0;position:relative;z-index:0}
+.hero-parallax{will-change:transform;transform:translate3d(0,calc(var(--heroProg) * -18px),0)}
 
 @media (prefers-reduced-motion: reduce){
   .hero-parallax{transform:none!important;will-change:auto}
@@ -418,13 +450,17 @@ body.has-cursor{cursor:none}
 .part-services{padding-left:0}
 }
 @media(max-width:640px){
-section{padding:72px 0}.hero{padding:100px 0 60px}
+section{padding:72px 0}.hero{padding:100px 0 0}
 .steps{grid-template-columns:1fr}
 .team-creds{grid-template-columns:1fr}.team-vis{grid-template-columns:1fr}
 .team-stat:first-child{grid-column:span 1}
 .hero h1{font-size:2.2rem}
 .hero-ctas{flex-direction:column;align-items:stretch}
 .hero-ctas .btn{text-align:center}
+.hero-grid{grid-template-columns:1fr;gap:26px;text-align:left}
+.hero-copy{max-width:640px;margin:0}
+.hero-ctas{justify-content:flex-start}
+.hero-mock{width:min(560px,92vw);justify-self:start}
 .portfolio-cta-stats{align-items:stretch}
 .portfolio-cta-mock{margin:6px auto 0}
 .f-cta-btns{flex-direction:column;align-items:center}
@@ -500,13 +536,18 @@ section{padding:72px 0}.hero{padding:100px 0 60px}
 <!-- HERO -->
 <section class="hero">
     <div class="container">
-        <div class="hero-parallax">
-            <div class="badge reveal"><div class="badge-dot"></div><span data-i18n="hero.badge">Fast · agile · built for early-stage teams</span></div>
-            <h1 class="reveal reveal-d1" data-i18n="hero.h1"><span class="h1-top">The <em>#1</em></span><span class="h1-main">design studio for</span><span class="h1-sub"><em>early-stage startups</em> and <em>YC teams</em></span></h1>
-            <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">Identity, decks, and websites built as one system, so you raise, hire, and ship with confidence, without agency drag.</p>
-            <div class="hero-ctas reveal reveal-d3">
-                <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-lg" data-i18n="hero.cta1">Book a call</a>
-                <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question" class="btn btn-s btn-lg" data-i18n="hero.cta2">Email us</a>
+        <div class="hero-parallax hero-grid">
+            <div class="hero-copy">
+                <div class="badge reveal"><div class="badge-dot"></div><span data-i18n="hero.badge">Fast · agile · built for early-stage teams</span></div>
+                <h1 class="reveal reveal-d1" data-i18n="hero.h1"><span class="h1-top">The <em>#1</em></span><span class="h1-main">design studio for</span><span class="h1-sub"><em>early-stage startups</em> and <em>YC teams</em></span></h1>
+                <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">Identity, decks, and websites built as one system, so you raise, hire, and ship with confidence, without agency drag.</p>
+                <div class="hero-ctas reveal reveal-d3">
+                    <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-lg" data-i18n="hero.cta1">Book a call</a>
+                    <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question" class="btn btn-s btn-lg" data-i18n="hero.cta2">Email us</a>
+                </div>
+            </div>
+            <div class="hero-mock reveal reveal-d2" aria-hidden="true">
+                <img src="iphone-14-pro-on-white-background-v5-front-view.png" alt="">
             </div>
         </div>
         <div class="hero-spacer"></div>
@@ -1245,10 +1286,15 @@ const allowMotion=!(window.matchMedia && window.matchMedia('(prefers-reduced-mot
 // Hero: mouse-following gradient + scroll parallax (via CSS vars)
 const hero=document.querySelector('.hero');
 if(hero){
+  const hdr=document.querySelector('.hdr');
   let raf=0;
   let targetX=0, targetY=0;
   let curX=0, curY=0;
   let inited=false;
+  let introStart=0;
+  const INTRO_DUR=520; // ms
+  const INTRO_TO=1; // complete position after load
+  const clamp01=(v)=>Math.max(0,Math.min(1,v));
   const setVars=()=>{
     raf=0;
     if(!inited){curX=targetX;curY=targetY;inited=true;}
@@ -1258,11 +1304,32 @@ if(hero){
     curY += (targetY-curY)*ease;
     hero.style.setProperty('--mx', curX.toFixed(1)+'px');
     hero.style.setProperty('--my', curY.toFixed(1)+'px');
+    // Header offset for vertical centering (fixed menu)
+    if(hdr){
+      const hr=hdr.getBoundingClientRect();
+      hero.style.setProperty('--hdrOffset', hr.bottom.toFixed(1)+'px');
+    }
+    // Phone parallax (cursor): normalized [-0.5..0.5]
     if(allowMotion){
       const r=hero.getBoundingClientRect();
-      const denom=Math.max(240, Math.min(520, r.height));
-      const p=Math.max(0, Math.min(1, (-r.top)/denom));
-      hero.style.setProperty('--heroScroll', String(p));
+      const nx = (r.width ? (curX / r.width) : 0.5) - 0.5;
+      const ny = (r.height ? (curY / r.height) : 0.5) - 0.5;
+      hero.style.setProperty('--phonePx', String(Math.max(-0.6, Math.min(0.6, nx))));
+      hero.style.setProperty('--phonePy', String(Math.max(-0.6, Math.min(0.6, ny))));
+    }else{
+      hero.style.setProperty('--phonePx', '0');
+      hero.style.setProperty('--phonePy', '0');
+    }
+    // Intro animation after load (no scroll needed)
+    if(allowMotion && introStart){
+      const t=performance.now();
+      const k=clamp01((t-introStart)/INTRO_DUR);
+      const eased=1-Math.pow(1-k,3);
+      const introP=INTRO_TO*eased;
+      hero.style.setProperty('--heroProg', String(introP));
+      if(k<1) queue();
+    }else{
+      hero.style.setProperty('--heroProg', '1');
     }
     // keep animating while we're still catching up (prevents "stutter")
     if(Math.abs(targetX-curX) > 0.5 || Math.abs(targetY-curY) > 0.5){
@@ -1290,10 +1357,16 @@ if(hero){
     hero.addEventListener('mousemove', onMove, {passive:true});
     hero.addEventListener('mouseleave', onLeave, {passive:true});
   }
-  if(allowMotion) window.addEventListener('scroll', queue, {passive:true});
   window.addEventListener('resize', queue, {passive:true});
+  window.addEventListener('scroll', queue, {passive:true});
   onLeave();
   queue();
+  if(allowMotion){
+    window.addEventListener('load', ()=>{
+      introStart=performance.now();
+      queue();
+    }, {once:true});
+  }
 }
 
 // Testimonials: continuous auto-scrolling 2-row slider (always moving)
