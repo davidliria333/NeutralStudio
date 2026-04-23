@@ -17,10 +17,10 @@
     <meta name="twitter:description" content="Logo, typography, colors, pitch deck, and website, one $3,000 launch package for startups. Fast, agile, competitive pricing.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Neutral Studio","url":"https://neutralstudio.example","description":"Graphic design studio for early-stage startups. One package includes visual identity, logo, typography, colors, pitch deck, and website design, fast, agile delivery at a fixed price.","contactPoint":{"@type":"ContactPoint","email":"arnaupinyolwork@gmail.com","contactType":"sales"}}</script>
     <style>
-:root{--bg:#fff;--bg-a:#f8fafc;--bdr:#e2e8f0;--bdr-h:#cbd5e1;--tx:#0f172a;--tx-s:#475569;--tx-m:#94a3b8;--pri:#0f172a;--pri-h:#1e293b;--acc:#0f766e;--r:12px;--sh-s:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--sh-m:0 4px 6px -1px rgba(0,0,0,.07),0 2px 4px -2px rgba(0,0,0,.05);--sh-l:0 10px 15px -3px rgba(0,0,0,.08),0 4px 6px -4px rgba(0,0,0,.04)}
+:root{--bg:#fff;--bg-a:#f8fafc;--bdr:#e2e8f0;--bdr-h:#cbd5e1;--tx:#0f172a;--tx-s:#475569;--tx-m:#64748b;--pri:#0f172a;--pri-h:#1e293b;--acc:#0f766e;--r:12px;--sh-s:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--sh-m:0 4px 6px -1px rgba(0,0,0,.07),0 2px 4px -2px rgba(0,0,0,.05);--sh-l:0 10px 15px -3px rgba(0,0,0,.08),0 4px 6px -4px rgba(0,0,0,.04)}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--tx);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit;text-decoration:none}ul{list-style:none}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
 .scroll-bar{position:fixed;top:0;left:0;height:2px;background:var(--pri);z-index:9999;width:0;transition:width .1s linear}
@@ -46,17 +46,16 @@
 .dd-menu a:hover{background:var(--bg-a);color:var(--tx)}
 .dd-menu a span{display:block;font-size:.75rem;color:var(--tx-m);margin-top:1px}
 .nav-r{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.btn-ic{width:40px;height:40px;padding:0;border-radius:12px}
+.btn-ic{width:44px;height:44px;padding:0;border-radius:12px}
 .btn-ic svg{width:18px;height:18px}
 .btn-ic span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:10px;font-weight:600;font-size:.875rem;font-family:inherit;border:none;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
 .btn:active{transform:scale(.97)}
-.btn-p{background:linear-gradient(120deg,var(--pri) 0%, #111827 35%, var(--pri) 70%);background-size:220% 220%;color:#fff;position:relative;overflow:hidden;animation:btn-grad 6s ease-in-out infinite,btn-glow 2.9s ease-in-out infinite}
-.btn-p::after{content:"";position:absolute;inset:-2px;background:linear-gradient(110deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.18) 45%,rgba(255,255,255,0) 60%);transform:translateX(-60%);transition:transform .6s ease;pointer-events:none}
+.btn-p{background:var(--pri);color:#fff;position:relative;overflow:hidden;animation:btn-glow 2.9s ease-in-out infinite}
+.btn-p::after{content:"";position:absolute;inset:-2px;background:linear-gradient(110deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.18) 45%,rgba(255,255,255,0) 60%);transform:translateX(-120%);transition:transform .55s ease;pointer-events:none}
 .btn-p>*{position:relative}
-.btn-p:hover{box-shadow:var(--sh-m);filter:saturate(1.02)}
-.btn-p:hover::after{transform:translateX(60%)}
-@keyframes btn-grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.btn-p:hover{background:var(--pri-h);box-shadow:var(--sh-m)}
+.btn-p:hover::after{transform:translateX(120%)}
 @keyframes btn-glow{
   0%,100%{box-shadow:0 10px 22px -18px rgba(15,23,42,.22),0 0 0 0 rgba(15,118,110,0)}
   50%{box-shadow:0 18px 34px -20px rgba(15,23,42,.28),0 0 0 6px rgba(15,118,110,.10)}
@@ -69,7 +68,7 @@
 
 @media (prefers-reduced-motion: reduce){
   .btn-p{animation:none}
-  .btn-p::after{transition:none}
+  .btn-p::after{transition:none;display:none}
 }
 .menu-btn{display:none;background:none;border:none;color:var(--tx);cursor:pointer;padding:8px}
 .mob-nav{display:none;position:fixed;top:82px;left:0;right:0;bottom:0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);z-index:999;padding:24px;flex-direction:column;gap:4px;overflow-y:auto}
@@ -173,13 +172,12 @@
 .hero h1{font-size:clamp(2rem,4.5vw,3.1rem);font-weight:800;line-height:1.12;letter-spacing:-1.5px;margin-bottom:20px;max-width:780px;margin-left:auto;margin-right:auto}
 .hero h1 em{font-style:italic;font-weight:650}
 .hero h1 .h1-top{display:inline-flex;align-items:center;gap:10px;font-size:1.02rem;font-weight:750;letter-spacing:-.02em;text-transform:none;color:var(--tx);margin-bottom:12px}
-.hero h1 .h1-top em{font-style:normal;font-weight:900;letter-spacing:-.02em;color:#fff;background:linear-gradient(135deg,var(--acc) 0%, #0d9488 45%, #22c55e 75%, var(--acc) 100%);background-size:240% 240%;padding:7px 13px;border-radius:999px;box-shadow:0 14px 24px -16px rgba(15,118,110,.65);border:1px solid rgba(15,118,110,.35);animation:rank-grad 4.2s ease-in-out infinite}
+.hero h1 .h1-top em{font-style:normal;font-weight:900;letter-spacing:-.02em;color:#fff;background:var(--acc);padding:7px 13px;border-radius:999px;box-shadow:0 14px 24px -16px rgba(15,118,110,.65);border:1px solid rgba(15,118,110,.35)}
 .hero h1 .h1-top em::before{content:"";display:inline-block;width:6px;height:6px;border-radius:2px;background:rgba(255,255,255,.8);margin-right:8px;vertical-align:middle}
 .hero h1 .h1-top span{opacity:.88}
 .hero h1 .h1-main{display:block;font-size:clamp(2.15rem,5.2vw,3.35rem);line-height:1.06;letter-spacing:-1.7px}
 .hero h1 .h1-sub{display:block;margin-top:10px;font-size:clamp(1.3rem,3.1vw,1.75rem);line-height:1.18;font-weight:650;letter-spacing:-.7px;color:var(--tx-s)}
 .hero h1 .h1-sub em{font-style:normal;color:var(--tx)}
-@keyframes rank-grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .hero-sub{font-size:.95rem;color:var(--tx-s);max-width:540px;margin:0 auto 32px;line-height:1.65}
 .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .hero-spacer{height:0;position:relative;z-index:0}
@@ -205,6 +203,12 @@ section{padding:100px 0;position:relative}
 /* SERVICES */
 .svc-wrap{background:var(--bg);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:100px 0}
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.svc-grid--secondary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.svc-card--secondary{background:var(--bg-a);border:1px solid var(--bdr);border-radius:14px;padding:16px 16px 14px;display:flex;align-items:center;gap:12px;transition:border-color .2s,box-shadow .2s}
+.svc-card--secondary:hover{border-color:var(--bdr-h);box-shadow:var(--sh-s)}
+.svc-card--secondary .svc-ic{width:32px;height:32px;border-radius:10px;flex-shrink:0}
+.svc-card--secondary h3{font-size:.88rem;font-weight:600;letter-spacing:-.2px;margin:0;color:var(--tx)}
+.svc-card--secondary p{display:none}
 .svc-card{background:linear-gradient(180deg,#fff 0%,#fff 70%,rgba(248,250,252,.8) 100%);border:1px solid var(--bdr);border-radius:18px;padding:22px 20px 20px;transition:transform .22s,border-color .22s,box-shadow .22s,background .22s;display:flex;flex-direction:column;min-height:100%;position:relative;overflow:hidden}
 .svc-acc{appearance:none}
 .svc-acc summary{list-style:none}
@@ -235,12 +239,19 @@ section{padding:100px 0;position:relative}
 .svc-more-btn svg{width:14px;height:14px;color:var(--tx-m);transition:transform .2s,color .2s}
 .svc-card:hover .svc-more-btn svg{transform:translateX(3px);color:var(--acc)}
 .svc-more-btn:focus-visible{outline:2px solid rgba(15,118,110,.45);outline-offset:6px;border-radius:10px}
+.btn:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.faq-q:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:6px}
+.process-btn:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.dd-trigger:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:6px}
+.part-svc-cta:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.client-badge:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.hcard:focus-visible{outline:2px solid var(--acc);outline-offset:3px;z-index:10}
 
 /* SERVICES MODAL */
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:24px;z-index:100000}
 .modal.open{display:flex}
 .modal-backdrop{position:absolute;inset:0;background:rgba(2,6,23,.55);backdrop-filter:blur(8px) saturate(120%)}
-.modal-panel{position:relative;width:min(820px,100%);border-radius:20px;border:1px solid rgba(226,232,240,.35);background:rgba(255,255,255,.92);backdrop-filter:blur(18px) saturate(150%);box-shadow:0 24px 60px rgba(2,6,23,.35);overflow:hidden}
+.modal-panel{position:relative;width:min(820px,100%);border-radius:20px;border:1px solid var(--bdr);background:#fff;box-shadow:0 24px 60px rgba(2,6,23,.28);overflow:hidden}
 .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 22px 16px;border-bottom:1px solid rgba(226,232,240,.8)}
 .modal-k{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-m);display:inline-flex;align-items:center;gap:8px}
 .modal-k::before{content:"";width:7px;height:7px;border-radius:2px;background:rgba(15,118,110,.55)}
@@ -330,6 +341,7 @@ section{padding:100px 0;position:relative}
 .roi-hero-num{font-size:clamp(3rem,9vw,5.25rem);font-weight:800;letter-spacing:-.06em;line-height:1;color:var(--pri);margin-bottom:12px}
 .roi-hero-txt{font-size:clamp(.95rem,2vw,1.1rem);color:var(--tx-s);max-width:520px;margin:0 auto;line-height:1.55;font-weight:500}
 .roi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.roi-grid--three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .roi-card{background:var(--bg-a);border:1px solid var(--bdr);border-radius:16px;padding:24px 22px 26px;transition:border-color .2s,box-shadow .2s}
 .roi-card:hover{border-color:var(--bdr-h);box-shadow:var(--sh-s)}
 .roi-card-num{font-size:clamp(1.35rem,2.8vw,1.85rem);font-weight:800;letter-spacing:-.04em;color:var(--pri);line-height:1.15;margin-bottom:10px}
@@ -361,10 +373,10 @@ section{padding:100px 0;position:relative}
 @media(max-width:980px){.t-card{width:min(380px,calc(100vw - 64px))}}
 @media(max-width:640px){.t-strip{grid-template-rows:1fr}.t-desc{font-size:.98rem}.t-card{width:calc(100vw - 52px)}}
 @media(max-width:900px){
-.roi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.roi-grid,.roi-grid--three{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-@media(max-width:520px){
-.roi-grid{grid-template-columns:1fr}
+@media(max-width:640px){
+.roi-grid,.roi-grid--three{grid-template-columns:1fr}
 }
 
 /* TOOLS */
@@ -497,6 +509,8 @@ section{padding:100px 0;position:relative}
 
 /* HERO should never be hidden by reveal */
 .hero .reveal{opacity:1;transform:none}
+/* Static mobile hero: hidden on desktop (gallery takes over) */
+.hero-static-img{display:none}
 
 /* CUSTOM CURSOR */
 body.has-cursor{cursor:none}
@@ -517,7 +531,7 @@ body.has-cursor{cursor:none}
 .process{grid-template-columns:1fr;gap:14px}
 .sec-lay{grid-template-columns:1fr}.part-lay{grid-template-columns:1fr;gap:24px}
 .team-lay{grid-template-columns:1fr;gap:40px}.ft-grid{grid-template-columns:1fr 1fr;gap:28px}
-.svc-grid{grid-template-columns:repeat(2,1fr)}.pr-prices{grid-template-columns:1fr}
+.svc-grid{grid-template-columns:repeat(2,1fr)}.svc-grid--secondary{grid-template-columns:repeat(2,1fr)}.pr-prices{grid-template-columns:1fr}
 .part-services{padding-left:0}
 /* Hero: stack + horizontal gallery */
 .hero-grid{grid-template-columns:1fr;align-items:start;gap:26px;text-align:center}
@@ -576,10 +590,13 @@ section{padding:72px 0}.hero{padding:100px 0 0}
 .pr-includes{grid-template-columns:1fr}.sec-lay{grid-template-columns:1fr}
 .pr-grid{grid-template-columns:1fr}
 .svc-wrap{padding:72px 0}
-.svc-grid{grid-template-columns:1fr}
+.svc-grid{grid-template-columns:1fr}.svc-grid--secondary{grid-template-columns:repeat(2,1fr)}
 
 /* Mobile: show animated cards inside Portfolio */
 .port-cards-wrap{display:block}
+/* Mobile hero static fallback */
+.hero-static-img{display:block;width:100%;max-width:480px;margin:0 auto 18px;border-radius:18px;overflow:hidden;border:1px solid var(--bdr);box-shadow:var(--sh-m)}
+.hero-static-img img{width:100%;height:auto;display:block}
 
 /* Mobile header: use favicon so CTAs fit */
 .logo-full{display:none}
@@ -667,6 +684,9 @@ section{padding:72px 0}.hero{padding:100px 0 0}
                     <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noopener noreferrer" class="btn btn-p btn-lg" data-i18n="hero.cta1">Book a call</a>
                     <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question" class="btn btn-s btn-lg" data-i18n="hero.cta2">Email us</a>
                 </div>
+            </div>
+            <div class="hero-static-img" aria-hidden="true">
+                <img src="assets/hero-cards/algo_2-15-21c9f4dc-2f52-499a-bb67-e6412ed61a27.png" alt="" loading="lazy" decoding="async">
             </div>
             <div class="hero-cards-mask reveal reveal-d2" aria-hidden="true">
                 <div class="hero-cards" id="heroCards">
@@ -763,44 +783,24 @@ section{padding:72px 0}.hero{padding:100px 0 0}
                 </div>
             </details>
 
-            <div class="svc-card reveal" data-svc="motion">
-                <div class="svc-top">
-                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 16c3-2 5-8 12-8" stroke-linecap="round"/><path d="M6 12c3-2 5-6 12-6" stroke-linecap="round"/><path d="M6 20c3-2 5-10 12-10" stroke-linecap="round"/></svg></div>
-                    <span class="svc-k">05</span>
-                </div>
-                <h3 data-i18n="svc.5t">Motion Design</h3>
-                <p data-i18n="svc.5d">Logo animation, promos, and social-first motion that matches the brand.</p>
-                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            </div>
+        </div>
 
-            <div class="svc-card reveal reveal-d1" data-svc="social">
-                <div class="svc-top">
-                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12v9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke-linecap="round"/></svg></div>
-                    <span class="svc-k">06</span>
-                </div>
-                <h3 data-i18n="svc.6t">Social Media &amp; Ad Creatives</h3>
-                <p data-i18n="svc.6d">Paid social, organic, and display formats that stay on-message.</p>
-                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="svc-grid--secondary reveal">
+            <div class="svc-card--secondary" data-svc="motion">
+                <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" color="var(--acc)"><path d="M6 16c3-2 5-8 12-8" stroke-linecap="round"/><path d="M6 12c3-2 5-6 12-6" stroke-linecap="round"/><path d="M6 20c3-2 5-10 12-10" stroke-linecap="round"/></svg></div>
+                <h3>Motion Design</h3>
             </div>
-
-            <div class="svc-card reveal reveal-d2" data-svc="print">
-                <div class="svc-top">
-                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4h10v16H7z"/><path d="M9 7h6M9 10h6M9 13h5" stroke-linecap="round"/></svg></div>
-                    <span class="svc-k">07</span>
-                </div>
-                <h3 data-i18n="svc.7t">Print Design</h3>
-                <p data-i18n="svc.7d">Editorial, posters, and collateral, print-ready files and specs.</p>
-                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="svc-card--secondary" data-svc="social">
+                <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" color="var(--acc)"><path d="M6 8h12v9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke-linecap="round"/></svg></div>
+                <h3>Social &amp; Ad Creatives</h3>
             </div>
-
-            <div class="svc-card reveal reveal-d3" data-svc="packaging">
-                <div class="svc-top">
-                    <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12v10H6z"/><path d="M9 7V5h6v2" stroke-linecap="round"/><path d="M8 12h8" stroke-linecap="round"/></svg></div>
-                    <span class="svc-k">08</span>
-                </div>
-                <h3 data-i18n="svc.8t">Packaging &amp; Merchandise</h3>
-                <p data-i18n="svc.8d">Boxes, labels, and swag, designed for production and shelf impact.</p>
-                <button class="svc-more-btn" type="button"><span>Explore</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="svc-card--secondary" data-svc="print">
+                <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" color="var(--acc)"><path d="M7 4h10v16H7z"/><path d="M9 7h6M9 10h6M9 13h5" stroke-linecap="round"/></svg></div>
+                <h3>Print Design</h3>
+            </div>
+            <div class="svc-card--secondary" data-svc="packaging">
+                <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" color="var(--acc)"><path d="M6 7h12v10H6z"/><path d="M9 7V5h6v2" stroke-linecap="round"/><path d="M8 12h8" stroke-linecap="round"/></svg></div>
+                <h3>Packaging &amp; Merchandise</h3>
             </div>
         </div>
     </div>
@@ -1020,28 +1020,30 @@ section{padding:72px 0}.hero{padding:100px 0 0}
             <h2 class="s-title" data-i18n="roi.title">Success in numbers</h2>
             <p class="s-desc" data-i18n="roi.desc">Design that pays for itself when you ship faster and raise with confidence.</p>
         </div>
-        <div class="roi-hero reveal">
-            <p class="roi-hero-num" data-i18n="roi.hero.n">100+</p>
-            <p class="roi-hero-txt" data-i18n="roi.hero.t">Projects shipped with founders: identity, deck, and web in focused engagements.</p>
-        </div>
-        <div class="roi-grid">
-            <div class="roi-card reveal"><p class="roi-card-num" data-i18n="roi.s1n">$100M+</p><p class="roi-card-desc" data-i18n="roi.s1d">Collective funding raised by teams we&rsquo;ve supported on brand and narrative.</p></div>
-            <div class="roi-card reveal reveal-d1"><p class="roi-card-num" data-i18n="roi.s2n">Weeks</p><p class="roi-card-desc" data-i18n="roi.s2d">Most launch packages land in a few weeks when feedback stays tight.</p></div>
-            <div class="roi-card reveal reveal-d2"><p class="roi-card-num" data-i18n="roi.s3n">Fixed price</p><p class="roi-card-desc" data-i18n="roi.s3d">Know the number before you sign, with no surprise invoices mid-sprint.</p></div>
-            <div class="roi-card reveal reveal-d3"><p class="roi-card-num" data-i18n="roi.s4n">50+ yrs</p><p class="roi-card-desc" data-i18n="roi.s4d">Combined experience across exited founders and senior designers.</p></div>
-            <div class="roi-card reveal"><p class="roi-card-num" data-i18n="roi.s5n">Direct</p><p class="roi-card-desc" data-i18n="roi.s5d">Access to the designer on your account, not a rotating cast of juniors.</p></div>
-            <div class="roi-card reveal reveal-d1"><p class="roi-card-num" data-i18n="roi.s6n">Days</p><p class="roi-card-desc" data-i18n="roi.s6d">From kickoff to direction you can share with investors and engineering.</p></div>
+        <div class="roi-grid roi-grid--three reveal">
+            <div class="roi-card">
+                <p class="roi-card-num">100+</p>
+                <p class="roi-card-desc">Projects shipped, identity, deck, and web, in focused engagements with early-stage founders.</p>
+            </div>
+            <div class="roi-card reveal-d1">
+                <p class="roi-card-num">$100M+</p>
+                <p class="roi-card-desc">Collective funding raised by the startups we&rsquo;ve supported on brand and narrative.</p>
+            </div>
+            <div class="roi-card reveal-d2">
+                <p class="roi-card-num">2&ndash;3 wks</p>
+                <p class="roi-card-desc">Typical delivery window for a full launch package, faster when feedback is tight.</p>
+            </div>
         </div>
         <p class="roi-tagline reveal" data-i18n="roi.tag">Supporting founders from messy brief to launch-ready brand.</p>
     </div>
 </section>
 
 <!-- TOOLS -->
-<section>
+<section aria-labelledby="tools-heading">
     <div class="container">
         <div class="s-hdr reveal">
             <p class="s-label" data-i18n="tools.label">Tooling</p>
-            <h2 class="s-title" data-i18n="tools.title">Built in the tools your team already uses</h2>
+            <h2 id="tools-heading" class="s-title" data-i18n="tools.title">Built in the tools your team already uses</h2>
             <p class="s-desc" data-i18n="tools.desc">We design in modern stacks, so files are easy to share with contractors, agencies, and your internal team.</p>
         </div>
         <div class="tools-row reveal">
@@ -1130,11 +1132,11 @@ section{padding:72px 0}.hero{padding:100px 0 0}
 </section>
 
 <!-- PARTNERSHIP SERVICES -->
-<section>
+<section aria-labelledby="part-heading">
     <div class="container">
         <div class="s-hdr reveal">
             <p class="s-label" data-i18n="part.label">Collaboration</p>
-            <h2 class="s-title" data-i18n="part.title">Embedded with founders, not a ticket queue</h2>
+            <h2 id="part-heading" class="s-title" data-i18n="part.title">Embedded with founders, not a ticket queue</h2>
             <p class="s-desc" data-i18n="part.desc">Startups change their minds. We stay close to the product and the raise so design decisions stay coherent.</p>
         </div>
         <div class="part-lay reveal">
@@ -1167,15 +1169,15 @@ section{padding:72px 0}.hero{padding:100px 0 0}
             <div class="sec-img reveal"><img src="security-phone.png" alt="Brand assets on device"></div>
             <div class="sec-cards">
                 <div class="sec-card reveal">
-                    <div class="sec-icon">&#128274;</div>
+                    <div class="sec-icon" aria-hidden="true">&#128274;</div>
                     <div><h3 data-i18n="sec.c1t">You own the outputs</h3><p data-i18n="sec.c1d">Source files and exports are yours, logos, fonts, color tokens, and slide masters included.</p></div>
                 </div>
                 <div class="sec-card reveal reveal-d1">
-                    <div class="sec-icon">&#9989;</div>
+                    <div class="sec-icon" aria-hidden="true">&#9989;</div>
                     <div><h3 data-i18n="sec.c2t">Organized handoff</h3><p data-i18n="sec.c2d">Naming, folders, and specs structured so product and marketing can reuse without guesswork.</p></div>
                 </div>
                 <div class="sec-card reveal reveal-d2">
-                    <div class="sec-icon">&#9881;</div>
+                    <div class="sec-icon" aria-hidden="true">&#9881;</div>
                     <div><h3 data-i18n="sec.c3t">Flexible stack</h3><p data-i18n="sec.c3d">We meet you in Figma, slides, or web tools, whatever fits your team and contractors.</p></div>
                 </div>
             </div>
@@ -1184,11 +1186,11 @@ section{padding:72px 0}.hero{padding:100px 0 0}
 </section>
 
 <!-- ANONYMOUS CLIENTS -->
-<section>
+<section aria-labelledby="clients-heading">
     <div class="container">
         <div class="s-hdr reveal">
             <p class="s-label" data-i18n="cl.label">Trusted by</p>
-            <h2 class="s-title" data-i18n="cl.title">Teams who needed speed and credibility</h2>
+            <h2 id="clients-heading" class="s-title" data-i18n="cl.title">Teams who needed speed and credibility</h2>
             <p class="s-desc" data-i18n="cl.desc">We work with founders at early-stage startups, pre-seed to Series A, across SaaS, fintech, climate, and deep tech.</p>
         </div>
         <div class="clients-grid reveal">
@@ -1366,6 +1368,24 @@ section{padding:72px 0}.hero{padding:100px 0 0}
 </div>
 
 <script>
+// Shared focus trap — used by hero lightbox and service modal
+const FOCUSABLE_SEL = 'button:not([disabled]),a[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
+function trapFocus(modalEl) {
+  const els = [...modalEl.querySelectorAll(FOCUSABLE_SEL)];
+  if (!els.length) return () => {};
+  const first = els[0], last = els[els.length - 1];
+  const handler = (e) => {
+    if (e.key !== 'Tab') return;
+    if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+    else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+  };
+  modalEl.addEventListener('keydown', handler);
+  requestAnimationFrame(() => first.focus());
+  return () => modalEl.removeEventListener('keydown', handler);
+}
+</script>
+
+<script>
 // Hero cards: 3-column vertical marquee (Superside-inspired)
 (() => {
   const root = document.getElementById('heroCards');
@@ -1402,6 +1422,9 @@ section{padding:72px 0}.hero{padding:100px 0 0}
   const makeCard = (src) => {
     const el = document.createElement('div');
     el.className = 'hcard';
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-label', 'View portfolio image');
     const img = document.createElement('img');
     img.src = src;
     img.alt = '';
@@ -1478,25 +1501,41 @@ section{padding:72px 0}.hero{padding:100px 0 0}
   // Click-to-zoom (lightbox)
   const modal = document.getElementById('cardZoom');
   const modalImg = document.getElementById('cardZoomImg');
-  const openZoom = (src) => {
+  let _zoomTrigger = null, _zoomReleaseTrap = null;
+  const openZoom = (src, trigger) => {
     if (!modal || !modalImg) return;
+    _zoomTrigger = trigger || null;
     modalImg.src = src;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(() => { _zoomReleaseTrap = trapFocus(modal); });
   };
   const closeZoom = () => {
     if (!modal || !modalImg) return;
+    if (_zoomReleaseTrap) { _zoomReleaseTrap(); _zoomReleaseTrap = null; }
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
     modalImg.removeAttribute('src');
     document.documentElement.style.overflow = '';
+    if (_zoomTrigger) { _zoomTrigger.focus(); _zoomTrigger = null; }
   };
 
   root.addEventListener('click', (e) => {
-    const img = e.target && e.target.closest ? e.target.closest('.hcard img') : null;
+    const card = e.target && e.target.closest ? e.target.closest('.hcard') : null;
+    if (!card) return;
+    const img = card.querySelector('img');
     if (!img) return;
-    openZoom(img.getAttribute('src') || img.src);
+    openZoom(img.getAttribute('src') || img.src, card);
+  });
+  // Keyboard activation for hcards
+  root.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target && e.target.closest ? e.target.closest('.hcard') : null;
+    if (!card) return;
+    e.preventDefault();
+    const img = card.querySelector('img');
+    if (img) openZoom(img.getAttribute('src') || img.src, card);
   });
   if (modal) {
     modal.addEventListener('click', (e) => {
@@ -1870,7 +1909,7 @@ const svcModal=document.getElementById('svcModal');
 const svcModalTitle=document.getElementById('svcModalTitle');
 const svcModalDesc=document.getElementById('svcModalDesc');
 const svcModalGrid=document.getElementById('svcModalGrid');
-let svcLastFocus=null;
+let svcLastFocus=null,_svcReleaseTrap=null;
 const svcData={
   brand:{
     title:'Brand identity',
@@ -1966,11 +2005,11 @@ function svcOpen(key,triggerEl){
   svcModal.classList.add('open');
   svcModal.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
-  const closeBtn=svcModal.querySelector('[data-close]');
-  if(closeBtn) closeBtn.focus();
+  requestAnimationFrame(()=>{ _svcReleaseTrap=trapFocus(svcModal); });
 }
 function svcClose(){
   if(!svcModal) return;
+  if(_svcReleaseTrap){_svcReleaseTrap();_svcReleaseTrap=null;}
   svcModal.classList.remove('open');
   svcModal.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
