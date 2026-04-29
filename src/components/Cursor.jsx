@@ -1,12 +1,15 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Cursor() {
   const dot = useRef(null)
   const ring = useRef(null)
+  const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
-    if (window.matchMedia('(pointer: coarse)').matches) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const fine = window.matchMedia('(pointer: fine)').matches
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!fine || reduced) return
+    setEnabled(true)
 
     let mx = 0, my = 0, rx = 0, ry = 0
     let raf = 0
@@ -37,6 +40,7 @@ export default function Cursor() {
     }
   }, [])
 
+  if (!enabled) return null
   return (
     <>
       <div ref={dot} style={{
@@ -50,9 +54,7 @@ export default function Cursor() {
         mixBlendMode: 'difference',
       }} />
       <style>{`
-        @media (pointer: coarse) { div[data-hover] { display: none; } }
-        body { cursor: none; }
-        @media (pointer: coarse) { body { cursor: auto; } }
+        @media (pointer: fine) { body { cursor: none; } }
       `}</style>
     </>
   )

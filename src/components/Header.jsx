@@ -39,10 +39,10 @@ export default function Header() {
         padding: '10px 14px 10px 20px',
         transition: 'all .35s var(--ease)',
       }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Logomark />
-          <span style={{ fontSize: 14, fontWeight: 600, letterSpacing: '-0.01em' }}>Neutral Studio</span>
-          <span style={{ fontSize: 11, color: 'var(--ink-3)', fontFamily: 'var(--mono)', marginLeft: 4 }}>® 26</span>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--ink)' }}>
+          <img src="/brand-favicon.svg" alt="" width="26" height="26" style={{ borderRadius: 6, display: 'block' }} />
+          <img src="/brand-logo.svg" alt="Neutral" height="20" style={{ display: 'block', filter: 'invert(1)' }} className="brand-word" />
+          <span style={{ fontSize: 11, color: 'var(--ink-3)', fontFamily: 'var(--mono)', marginLeft: 2, letterSpacing: '0.04em' }}>STUDIO</span>
         </Link>
 
         <nav className="desktop-nav" style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
@@ -92,20 +92,11 @@ export default function Header() {
           .desktop-nav { display: none !important; }
           .mobile-toggle { display: flex !important; align-items: center; justify-content: center; flex-direction: column; }
         }
+        @media (max-width: 480px) {
+          .brand-word { display: none !important; }
+          header .btn--primary { padding: 8px 14px !important; font-size: 12px !important; }
+        }
       `}</style>
     </header>
-  )
-}
-
-function Logomark() {
-  return (
-    <div style={{
-      width: 26, height: 26, borderRadius: 8,
-      background: 'linear-gradient(135deg, var(--acc) 0%, var(--acc-2) 100%)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      boxShadow: '0 4px 12px -4px rgba(216, 255, 62, 0.4)',
-    }}>
-      <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#0a0a0b' }} />
-    </div>
   )
 }
