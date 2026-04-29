@@ -4,3 +4,5 @@ dist/
 *.local
 .vite/
 .vercel
+react-gallery/node_modules/
+react-gallery/dist/
