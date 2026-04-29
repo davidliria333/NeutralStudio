@@ -7,6 +7,15 @@ export default function CircleHome() {
       tags={['IoT & smart home', 'Startup', 'Identity', 'Web & launch', 'Pitch deck']}
       hero="/David/CIRCLEHOME/We%20are%20live.jpg"
       intro="We built the full identity system for this connected-home startup: mockups, investor pitch deck, and web, alongside a flexible logo system, product-line art direction for CirclePass and CircleSafe, and launch-ready campaign visuals so the brand reads clearly everywhere. With our design and redesign, the team has closed two funding rounds."
+      domeImages={[
+        { src: '/David/CIRCLEHOME/We%20are%20live.jpg', alt: 'CircleHome launch visual' },
+        { src: '/David/CIRCLEHOME/MockUp_3.png', alt: 'CircleHome mockup' },
+        { src: '/David/CIRCLEHOME/003.jpg', alt: 'CircleHome campaign still' },
+        { src: '/David/CIRCLEHOME/flatten.jpg', alt: 'CircleHome flat lay' },
+        { src: '/David/CIRCLEHOME/Logos-01.png', alt: 'CircleHome logo exploration' },
+        { src: '/David/CIRCLEHOME/CirclePass/009_Treball%204-02.jpg', alt: 'CirclePass product art direction' },
+        { src: '/David/CIRCLEHOME/CircleSafe/4.jpg', alt: 'CircleSafe campaign visual' },
+      ]}
       sections={[
         {
           label: 'Logos',

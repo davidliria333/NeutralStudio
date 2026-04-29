@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import DomeGallery from './DomeGallery.jsx'
 
-export default function CaseLayout({ title, tags, hero, intro, sections, externalUrl }) {
+export default function CaseLayout({ title, tags, hero, intro, sections, externalUrl, domeImages = [] }) {
+  const galleryImages = domeImages.length
+    ? domeImages
+    : sections.flatMap(section => section.images.map(img => ({ src: img, alt: `${title} — ${section.title}` })))
+
   return (
     <>
       <section style={{ padding: '140px var(--gut) 60px' }}>
@@ -58,6 +63,45 @@ export default function CaseLayout({ title, tags, hero, intro, sections, externa
           </div>
         </div>
       </section>
+
+      {galleryImages.length > 0 && (
+        <section className="section section--tight">
+          <div className="container">
+            <div className="eyebrow" style={{ marginBottom: 18 }}>Immersive gallery</div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 18, flexWrap: 'wrap', marginBottom: 28 }}>
+              <h2 className="h3" style={{ margin: 0, maxWidth: 12 }}>
+                Explore the system in motion.
+              </h2>
+              <p style={{ margin: 0, maxWidth: 420, color: 'var(--ink-3)' }}>
+                Drag to rotate the dome and open any frame for a closer look at the case study details.
+              </p>
+            </div>
+            <div style={{
+              height: 'min(78vh, 860px)',
+              minHeight: 520,
+              border: '1px solid var(--line)',
+              borderRadius: 'var(--r-xl)',
+              overflow: 'hidden',
+              background:
+                'radial-gradient(circle at 50% 28%, rgba(216,255,62,0.10), transparent 32%), linear-gradient(180deg, rgba(15,15,17,0.98) 0%, rgba(10,10,11,1) 100%)',
+            }}>
+              <DomeGallery
+                images={galleryImages}
+                fit={0.7}
+                segments={22}
+                grayscale={false}
+                minRadius={420}
+                padFactor={0.18}
+                overlayBlurColor="#0a0a0b"
+                openedImageWidth="320px"
+                openedImageHeight="440px"
+                imageBorderRadius="24px"
+                openedImageBorderRadius="28px"
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {sections.map((s, i) => (
         <section key={i} className="section section--tight" style={{ background: i % 2 === 0 ? 'var(--bg-1)' : 'var(--bg)' }}>

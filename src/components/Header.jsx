@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const NAV = [
   { label: 'Services', href: '#services' },
@@ -11,6 +11,8 @@ const NAV = [
 ]
 
 export default function Header() {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -20,6 +22,21 @@ export default function Header() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    setOpen(false)
+  }, [location.pathname, location.hash])
+
+  const onNavClick = (href) => {
+    if (location.pathname === '/') {
+      if (window.location.hash !== href) {
+        window.history.replaceState(null, '', href)
+      }
+      window.dispatchEvent(new HashChangeEvent('hashchange'))
+      return
+    }
+    navigate(`/${href}`)
+  }
 
   return (
     <header style={{
@@ -47,13 +64,15 @@ export default function Header() {
 
         <nav className="desktop-nav" style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
           {NAV.map(n => (
-            <a key={n.href} href={n.href} style={{
+            <button key={n.href} type="button" style={{
               fontSize: 13, padding: '8px 14px', color: 'var(--ink-2)',
               borderRadius: 999, transition: 'all .2s var(--ease)',
-            }} onMouseEnter={e => { e.currentTarget.style.color = 'var(--ink)'; e.currentTarget.style.background = 'var(--bg-elev)' }}
+              background: 'transparent', border: 'none', cursor: 'pointer',
+            }} onClick={() => onNavClick(n.href)}
+               onMouseEnter={e => { e.currentTarget.style.color = 'var(--ink)'; e.currentTarget.style.background = 'var(--bg-elev)' }}
                onMouseLeave={e => { e.currentTarget.style.color = 'var(--ink-2)'; e.currentTarget.style.background = 'transparent' }}>
               {n.label}
-            </a>
+            </button>
           ))}
         </nav>
 
@@ -61,27 +80,34 @@ export default function Header() {
           <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer" className="btn btn--primary" style={{ padding: '10px 18px', fontSize: 13 }}>
             Book a call <span className="arrow">→</span>
           </a>
-          <button className="mobile-toggle" onClick={() => setOpen(o => !o)} aria-label="Menu" style={{
+          <button className="mobile-toggle" onClick={() => setOpen(o => !o)} aria-label="Menu" aria-expanded={open ? 'true' : 'false'} aria-controls="mobile-nav" style={{
             display: 'none', background: 'transparent', border: '1px solid var(--line-2)', color: 'var(--ink)',
             width: 38, height: 38, borderRadius: 999,
           }}>
-            <span style={{ display: 'block', width: 14, height: 1, background: 'var(--ink)', margin: '0 auto 4px' }} />
-            <span style={{ display: 'block', width: 14, height: 1, background: 'var(--ink)', margin: '0 auto' }} />
+            {open ? (
+              <span style={{ fontSize: 18, lineHeight: 1 }}>×</span>
+            ) : (
+              <>
+                <span style={{ display: 'block', width: 14, height: 1, background: 'var(--ink)', margin: '0 auto 4px' }} />
+                <span style={{ display: 'block', width: 14, height: 1, background: 'var(--ink)', margin: '0 auto' }} />
+              </>
+            )}
           </button>
         </div>
       </div>
 
       {open && (
-        <div style={{
+        <div id="mobile-nav" style={{
           position: 'fixed', inset: 0, top: 70, background: 'rgba(10,10,11,0.96)',
           backdropFilter: 'blur(20px)', padding: 'var(--gut)', zIndex: 79,
         }} onClick={() => setOpen(false)}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 24 }}>
             {NAV.map(n => (
-              <a key={n.href} href={n.href} onClick={() => setOpen(false)} style={{
+              <button key={n.href} type="button" onClick={() => onNavClick(n.href)} style={{
                 fontSize: 28, fontWeight: 500, padding: '14px 0', borderBottom: '1px solid var(--line)',
                 letterSpacing: '-0.02em',
-              }}>{n.label}</a>
+                background: 'transparent', color: 'var(--ink)', textAlign: 'left', borderTop: 'none', borderLeft: 'none', borderRight: 'none',
+              }}>{n.label}</button>
             ))}
           </div>
         </div>

@@ -118,6 +118,7 @@ img, video, canvas { display: block; max-width: 100%; }
 .section {
   padding: clamp(80px, 10vw, 160px) 0;
   position: relative;
+  scroll-margin-top: 112px;
 }
 .section--tight { padding: clamp(56px, 7vw, 96px) 0; }
 .section--hero { padding-top: 0; padding-bottom: clamp(40px, 6vw, 80px); }

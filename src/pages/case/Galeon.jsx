@@ -7,6 +7,12 @@ export default function Galeon() {
       tags={['Heritage & culture', 'Public sector', 'Identity', 'Motion & video', 'Spain']}
       hero="/Galeon/Treball-01.png"
       intro="Visual identity and brand applications for Galeón, within the context of Patrimonio Nacional, Spain's public institution for the Crown's historic and artistic heritage. The project covers the full identity system and its applications across touchpoints."
+      domeImages={[
+        { src: '/Galeon/Treball-01.png', alt: 'Galeón hero identity visual' },
+        { src: '/Galeon/Treball_Mesa%20de%20trabajo%201%20copia.png', alt: 'Galeón brand application' },
+        { src: '/Galeon/Treball_Mesa%20de%20trabajo%201%20copia%202.png', alt: 'Galeón design system board' },
+        { src: '/Galeon/Treball_Mesa%20de%20trabajo%201%20copia%204.png', alt: 'Galeón motion and collateral exploration' },
+      ]}
       sections={[
         {
           label: 'Identity',

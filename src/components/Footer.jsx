@@ -1,6 +1,20 @@
-import { Link } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function Footer() {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const onSectionClick = (href) => {
+    if (location.pathname === '/') {
+      if (window.location.hash !== href) {
+        window.history.replaceState(null, '', href)
+      }
+      window.dispatchEvent(new HashChangeEvent('hashchange'))
+      return
+    }
+    navigate(`/${href}`)
+  }
+
   return (
     <footer style={{ background: '#070708', color: 'var(--ink)', borderTop: '1px solid var(--line)' }}>
       <div className="container" style={{ padding: 'clamp(60px, 8vw, 110px) var(--gut) 40px' }}>
@@ -27,15 +41,15 @@ export default function Footer() {
           <FCol title="Product" items={[
             ['Portfolio', '#portfolio'], ['Services', '#services'], ['Why us', '#compare'],
             ['ROI', '#roi'], ['Process', '#process'], ['Pricing', '#pricing'],
-          ]} />
+          ]} onSectionClick={onSectionClick} />
           <FCol title="Company" items={[
             ['Team', '#team'], ['FAQ', '#faq'],
-          ]} />
+          ]} onSectionClick={onSectionClick} />
           <FCol title="Contact" items={[
             ['Book a call', 'https://cal.com/neutralstudio/30min', true],
             ['arnaupinyolwork@gmail.com', 'mailto:arnaupinyolwork@gmail.com', true],
             ['LinkedIn', 'https://www.linkedin.com/in/arnau-pi%C3%B1ol-olabegoya-722329158/', true],
-          ]} />
+          ]} onSectionClick={onSectionClick} />
         </div>
 
         <div style={{
@@ -60,19 +74,29 @@ export default function Footer() {
   )
 }
 
-function FCol({ title, items }) {
+function FCol({ title, items, onSectionClick }) {
   return (
     <div>
       <div className="eyebrow" style={{ marginBottom: 18 }}>{title}</div>
       <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
         {items.map(([label, href, ext]) => (
           <li key={label}>
-            <a href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noreferrer' : undefined}
-               style={{ fontSize: 14, color: 'var(--ink-2)', transition: 'color .2s' }}
-               onMouseEnter={e => e.currentTarget.style.color = 'var(--acc)'}
-               onMouseLeave={e => e.currentTarget.style.color = 'var(--ink-2)'}>
-              {label}
-            </a>
+            {ext ? (
+              <a href={href} target="_blank" rel="noreferrer"
+                 style={{ fontSize: 14, color: 'var(--ink-2)', transition: 'color .2s' }}
+                 onMouseEnter={e => e.currentTarget.style.color = 'var(--acc)'}
+                 onMouseLeave={e => e.currentTarget.style.color = 'var(--ink-2)'}>
+                {label}
+              </a>
+            ) : (
+              <button type="button"
+                 onClick={() => onSectionClick(href)}
+                 style={{ fontSize: 14, color: 'var(--ink-2)', transition: 'color .2s', background: 'transparent', border: 'none', padding: 0, textAlign: 'left' }}
+                 onMouseEnter={e => e.currentTarget.style.color = 'var(--acc)'}
+                 onMouseLeave={e => e.currentTarget.style.color = 'var(--ink-2)'}>
+                {label}
+              </button>
+            )}
           </li>
         ))}
       </ul>

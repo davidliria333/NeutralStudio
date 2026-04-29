@@ -22,12 +22,12 @@ export default function Portfolio() {
     <section className="section" id="portfolio">
       <div className="container">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24 }}>
-          <SectionHead eyebrow="Portfolio" title="A portfolio built for diligence"
-            desc="We don't publish full case studies. Below: featured projects. Ask for a curated deck tailored to your sector and stage." />
+          <SectionHead eyebrow="Portfolio" title="A portfolio that feels built, not templated"
+            desc="Inside the full portfolio, we show identity, decks, web, and motion with the same premium, hand-crafted standard we bring to client work, curated to your sector, stage, and what you need to evaluate." />
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6 }}>
             <span className="serif" style={{ fontSize: 32, color: 'var(--ink)' }}>+100</span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              projects · $100M+ raised
+              projects · polished, credible, above template-level
             </span>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function Portfolio() {
           </a>
           <a className="btn btn--ghost" href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">Book a call</a>
           <span style={{ color: 'var(--ink-3)', fontSize: 13, marginLeft: 8 }}>
-            Prefer async? PDF, slides, or short Loom walkthrough.
+            Prefer async? We can share PDFs, slides, or a short Loom walkthrough with the strongest-fit examples.
           </span>
         </div>
       </div>
@@ -89,7 +89,7 @@ function Card({ item, index }) {
           willChange: 'transform',
         }}>
         <img src={item.img} alt={item.title} style={{
-          width: '100%', height: '100%', objectFit: 'cover', transition: 'transform .8s var(--ease)',
+          width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', transition: 'transform .8s var(--ease)', padding: 12, background: 'var(--bg)',
         }} />
         <div style={{
           position: 'absolute', inset: 0,
