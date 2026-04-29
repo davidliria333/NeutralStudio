@@ -48,8 +48,8 @@ const getDataNumber = (el, name, fallback) => {
 
 function buildItems(pool, seg) {
   const xCols = Array.from({ length: seg }, (_, i) => -37 + i * 2)
-  const evenYs = [-4, -2, 0, 2, 4]
-  const oddYs = [-3, -1, 1, 3, 5]
+  const evenYs = [0]
+  const oddYs = [1]
 
   const coords = xCols.flatMap((x, c) => {
     const ys = c % 2 === 0 ? evenYs : oddYs
