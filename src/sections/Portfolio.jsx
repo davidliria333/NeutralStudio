@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { SectionHead } from './Services.jsx'
 
 const ITEMS = [
@@ -71,6 +71,17 @@ export default function Portfolio() {
 
 function Card({ item, index }) {
   const ref = useRef(null)
+  const [aspectRatio, setAspectRatio] = useState(4 / 3)
+
+  useEffect(() => {
+    const img = new window.Image()
+    img.src = item.img
+    img.onload = () => {
+      if (!img.naturalWidth || !img.naturalHeight) return
+      setAspectRatio(img.naturalWidth / img.naturalHeight)
+    }
+  }, [item.img])
+
   const onMove = (e) => {
     const el = ref.current; if (!el) return
     const r = el.getBoundingClientRect()
@@ -85,7 +96,7 @@ function Card({ item, index }) {
         style={{
           position: 'relative', borderRadius: 'var(--r-l)', overflow: 'hidden',
           border: '1px solid var(--line)', background: 'var(--bg-1)',
-          aspectRatio: '4/3', transition: 'transform .35s var(--ease)',
+          aspectRatio: `${aspectRatio}`, transition: 'transform .35s var(--ease)',
           willChange: 'transform',
         }}>
         <img src={item.img} alt={item.title} style={{

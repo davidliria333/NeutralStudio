@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+
+const HeroTorus = lazy(() => import('../components/three/HeroTorus.jsx'))
 
 function useIsSmall() {
   const [small, setSmall] = useState(false)
@@ -152,6 +154,16 @@ function MobileDecor() {
 function DesktopDecor() {
   return (
     <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+      <div style={{
+        position: 'absolute',
+        inset: '12% 18% 14%',
+        zIndex: 0,
+        opacity: 0.9,
+      }}>
+        <Suspense fallback={null}>
+          <HeroTorus />
+        </Suspense>
+      </div>
       <div style={{
         position: 'absolute',
         top: '8%',
