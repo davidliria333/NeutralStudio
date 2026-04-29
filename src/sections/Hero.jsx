@@ -1,7 +1,5 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-
-const HeroScene = lazy(() => import('../components/three/HeroScene.jsx'))
 
 function useIsSmall() {
   const [small, setSmall] = useState(false)
@@ -28,11 +26,7 @@ export default function Hero() {
       overflow: 'hidden',
       background: 'radial-gradient(120% 80% at 50% 20%, #18181f 0%, #0a0a0b 60%)',
     }}>
-      {!isSmall && (
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.85 }}>
-          <Suspense fallback={null}><HeroScene /></Suspense>
-        </div>
-      )}
+      {!isSmall && <DesktopDecor />}
 
       {/* Strong center vignette that protects text legibility */}
       <div style={{
@@ -152,5 +146,64 @@ function MobileDecor() {
         filter: 'blur(20px)', zIndex: 0, pointerEvents: 'none',
       }} />
     </>
+  )
+}
+
+function DesktopDecor() {
+  return (
+    <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+      <div style={{
+        position: 'absolute',
+        top: '8%',
+        left: '50%',
+        width: 'min(72vw, 980px)',
+        height: 'min(72vw, 980px)',
+        transform: 'translateX(-50%)',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(216,255,62,0.14) 0%, rgba(216,255,62,0.07) 20%, rgba(106,140,255,0.04) 42%, transparent 72%)',
+        filter: 'blur(18px)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: '18% 16% auto',
+        height: 1,
+        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 'auto 10% 20%',
+        height: '28%',
+        borderRadius: '999px',
+        border: '1px solid rgba(255,255,255,0.07)',
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))',
+        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05)',
+        transform: 'perspective(900px) rotateX(70deg)',
+        opacity: 0.85,
+      }} />
+      <div style={{
+        position: 'absolute',
+        left: '18%',
+        top: '24%',
+        width: 240,
+        height: 240,
+        borderRadius: 48,
+        border: '1px solid rgba(255,255,255,0.07)',
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015))',
+        transform: 'rotate(-14deg)',
+        opacity: 0.3,
+      }} />
+      <div style={{
+        position: 'absolute',
+        right: '16%',
+        bottom: '18%',
+        width: 300,
+        height: 180,
+        borderRadius: 40,
+        border: '1px solid rgba(255,255,255,0.06)',
+        background: 'linear-gradient(180deg, rgba(106,140,255,0.10), rgba(255,255,255,0.02))',
+        transform: 'rotate(12deg)',
+        opacity: 0.35,
+      }} />
+    </div>
   )
 }

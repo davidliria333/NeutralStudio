@@ -1,8 +1,6 @@
-import { useState, lazy, Suspense } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SectionHead } from './Services.jsx'
-
-const CTASphere = lazy(() => import('../components/three/CTASphere.jsx'))
 
 /* ===== TOOLING ===== */
 export function Tooling() {
@@ -213,9 +211,13 @@ export function SmashCTA() {
       position: 'relative', padding: 'clamp(100px, 12vw, 180px) var(--gut)',
       background: '#070708', overflow: 'hidden',
     }}>
-      <div style={{ position: 'absolute', inset: 0, opacity: 0.7, pointerEvents: 'none' }}>
-        <Suspense fallback={null}><CTASphere /></Suspense>
-      </div>
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        opacity: 0.95,
+        pointerEvents: 'none',
+        background: 'radial-gradient(56% 58% at 50% 42%, rgba(216,255,62,0.14), transparent 72%), radial-gradient(40% 36% at 70% 65%, rgba(106,140,255,0.10), transparent 76%)',
+      }} />
       <div style={{ position: 'relative', maxWidth: 880, margin: '0 auto', textAlign: 'center' }}>
         <div className="eyebrow" style={{ justifyContent: 'center', marginBottom: 24 }}>Ready</div>
         <h2 className="h1" style={{ fontSize: 'clamp(44px, 7vw, 96px)', margin: '0 0 32px', letterSpacing: '-0.04em' }}>

@@ -1,7 +1,4 @@
-import { lazy, Suspense } from 'react'
 import { SectionHead } from './Services.jsx'
-
-const CTASphere = lazy(() => import('../components/three/CTASphere.jsx'))
 
 const PLANS = [
   {
@@ -41,10 +38,12 @@ export default function Pricing() {
             }}>
               {p.featured && (
                 <div style={{
-                  position: 'absolute', inset: 0, opacity: 0.6, pointerEvents: 'none',
-                }}>
-                  <Suspense fallback={null}><CTASphere /></Suspense>
-                </div>
+                  position: 'absolute',
+                  inset: 0,
+                  opacity: 0.9,
+                  pointerEvents: 'none',
+                  background: 'radial-gradient(60% 60% at 50% 35%, rgba(216,255,62,0.12), transparent 72%)',
+                }} />
               )}
               <div style={{ position: 'relative' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>

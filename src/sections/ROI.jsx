@@ -1,7 +1,4 @@
 import { SectionHead } from './Services.jsx'
-import { lazy, Suspense } from 'react'
-
-const AmbientField = lazy(() => import('../components/three/AmbientField.jsx'))
 
 const STATS = [
   { k: '100+', label: 'projects', desc: 'Shipped with founders: identity, deck, and web in focused engagements.' },
@@ -15,11 +12,12 @@ const STATS = [
 export default function ROI() {
   return (
     <section className="section" id="roi" style={{ position: 'relative', overflow: 'hidden' }}>
-      <Suspense fallback={null}>
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.5, pointerEvents: 'none' }}>
-          <AmbientField density={160} />
-        </div>
-      </Suspense>
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        pointerEvents: 'none',
+        background: 'radial-gradient(70% 60% at 50% 0%, rgba(216,255,62,0.08), transparent 70%)',
+      }} />
       <div className="container" style={{ position: 'relative' }}>
         <SectionHead eyebrow="ROI" title="Success in numbers"
           desc="Design that pays for itself when you ship faster and raise with confidence." />
