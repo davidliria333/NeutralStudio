@@ -18,7 +18,6 @@ export default function Vira() {
         { src: '/David/VIRA/PDF-13.png', alt: 'Vira layout system' },
       ]}
       sections={[
-        { label: 'Logo', title: 'Logo system', cols: 1, aspect: '16/9', images: ['/David/VIRA/00_logo.png'] },
         {
           label: 'App + Promo',
           title: 'Promotional & app content',
