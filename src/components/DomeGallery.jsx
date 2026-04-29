@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useCallback } from 'react'
+import { useEffect, useMemo, useRef, useCallback, useState } from 'react'
 import { useGesture } from '@use-gesture/react'
 import './DomeGallery.css'
 
@@ -67,7 +67,7 @@ function buildItems(pool, seg) {
 
   const normalizedImages = pool.map(image => {
     if (typeof image === 'string') return { src: image, alt: '' }
-    return { src: image.src || '', alt: image.alt || '' }
+    return { src: image.src || '', alt: image.alt || '', aspectRatio: image.aspectRatio }
   })
 
   let imageCursor = 0
@@ -84,9 +84,14 @@ function buildItems(pool, seg) {
 
     const image = normalizedImages[imageCursor % normalizedImages.length]
     imageCursor += 1
+    const aspectRatio = image.aspectRatio && Number.isFinite(image.aspectRatio) ? image.aspectRatio : 1.6
+    const sizeX = 1.9
+    const sizeY = clamp(sizeX / aspectRatio, 0.8, 1.7)
     return {
       ...c,
       type: 'image',
+      sizeX,
+      sizeY,
       src: image.src,
       alt: image.alt,
     }
@@ -119,6 +124,7 @@ export default function DomeGallery({
   openedImageBorderRadius = '30px',
   grayscale = true,
 }) {
+  const [resolvedImages, setResolvedImages] = useState(images)
   const rootRef = useRef(null)
   const mainRef = useRef(null)
   const sphereRef = useRef(null)
@@ -153,7 +159,46 @@ export default function DomeGallery({
     document.body.classList.remove('dg-scroll-lock')
   }, [])
 
-  const items = useMemo(() => buildItems(images, segments), [images, segments])
+  useEffect(() => {
+    let cancelled = false
+
+    Promise.all(
+      images.map(image => new Promise(resolve => {
+        if (typeof image === 'string') {
+          const img = new Image()
+          img.onload = () => resolve({
+            src: image,
+            alt: '',
+            aspectRatio: img.naturalWidth && img.naturalHeight ? img.naturalWidth / img.naturalHeight : 1.6,
+          })
+          img.onerror = () => resolve({ src: image, alt: '', aspectRatio: 1.6 })
+          img.src = image
+          return
+        }
+
+        if (image.aspectRatio && Number.isFinite(image.aspectRatio)) {
+          resolve(image)
+          return
+        }
+
+        const img = new Image()
+        img.onload = () => resolve({
+          ...image,
+          aspectRatio: img.naturalWidth && img.naturalHeight ? img.naturalWidth / img.naturalHeight : 1.6,
+        })
+        img.onerror = () => resolve({ ...image, aspectRatio: 1.6 })
+        img.src = image.src || ''
+      })),
+    ).then(result => {
+      if (!cancelled) setResolvedImages(result)
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [images])
+
+  const items = useMemo(() => buildItems(resolvedImages, segments), [resolvedImages, segments])
 
   const applyTransform = (xDeg, yDeg) => {
     if (sphereRef.current) {
