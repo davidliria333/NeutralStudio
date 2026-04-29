@@ -24,6 +24,15 @@ const DEFAULTS = {
   segments: 35,
 }
 
+const PILL_THEMES = [
+  { eyebrow: 'Identity', label: 'Built to be remembered', tone: 'lime' },
+  { eyebrow: 'Web', label: 'Clear story. Sharp rhythm.', tone: 'violet' },
+  { eyebrow: 'Launch', label: 'Designed to look funded', tone: 'orange' },
+  { eyebrow: 'Systems', label: 'One brand, many touchpoints', tone: 'blue' },
+  { eyebrow: 'Deck', label: 'Readable in the room', tone: 'red' },
+  { eyebrow: 'Motion', label: 'Static is only the start', tone: 'teal' },
+]
+
 const clamp = (v, min, max) => Math.min(Math.max(v, min), max)
 const normalizeAngle = d => ((d % 360) + 360) % 360
 const wrapAngleSigned = deg => {
@@ -48,33 +57,40 @@ function buildItems(pool, seg) {
   })
 
   const totalSlots = coords.length
-  if (pool.length === 0) return coords.map(c => ({ ...c, src: '', alt: '' }))
+  if (pool.length === 0) {
+    return coords.map((c, i) => ({
+      ...c,
+      type: 'pill',
+      ...PILL_THEMES[i % PILL_THEMES.length],
+    }))
+  }
 
   const normalizedImages = pool.map(image => {
     if (typeof image === 'string') return { src: image, alt: '' }
     return { src: image.src || '', alt: image.alt || '' }
   })
 
-  const usedImages = Array.from({ length: totalSlots }, (_, i) => normalizedImages[i % normalizedImages.length])
+  let imageCursor = 0
 
-  for (let i = 1; i < usedImages.length; i += 1) {
-    if (usedImages[i].src === usedImages[i - 1].src) {
-      for (let j = i + 1; j < usedImages.length; j += 1) {
-        if (usedImages[j].src !== usedImages[i].src) {
-          const tmp = usedImages[i]
-          usedImages[i] = usedImages[j]
-          usedImages[j] = tmp
-          break
-        }
+  return coords.map((c, i) => {
+    const usePill = normalizedImages.length > 1 && i % 2 === 1
+    if (usePill) {
+      return {
+        ...c,
+        type: 'pill',
+        ...PILL_THEMES[i % PILL_THEMES.length],
       }
     }
-  }
 
-  return coords.map((c, i) => ({
-    ...c,
-    src: usedImages[i].src,
-    alt: usedImages[i].alt,
-  }))
+    const image = normalizedImages[imageCursor % normalizedImages.length]
+    imageCursor += 1
+    return {
+      ...c,
+      type: 'image',
+      src: image.src,
+      alt: image.alt,
+    }
+  })
 }
 
 function computeItemBaseRotation(offsetX, offsetY, sizeX, sizeY, segments) {
@@ -584,7 +600,7 @@ export default function DomeGallery({
               <div
                 key={`${it.x},${it.y},${i}`}
                 className="item"
-                data-src={it.src}
+                data-src={it.src || ''}
                 data-offset-x={it.x}
                 data-offset-y={it.y}
                 data-size-x={it.sizeX}
@@ -596,17 +612,24 @@ export default function DomeGallery({
                   '--item-size-y': it.sizeY,
                 }}
               >
-                <div
-                  className="item__image"
-                  role="button"
-                  tabIndex={0}
-                  aria-label={it.alt || 'Open image'}
-                  onClick={onTileClick}
-                  onPointerUp={onTilePointerUp}
-                  onKeyDown={onTileKeyDown}
-                >
-                  <img src={it.src} draggable={false} alt={it.alt} />
-                </div>
+                {it.type === 'pill' ? (
+                  <div className={`item__pill item__pill--${it.tone}`}>
+                    <span className="item__pill-eyebrow">{it.eyebrow}</span>
+                    <strong className="item__pill-label">{it.label}</strong>
+                  </div>
+                ) : (
+                  <div
+                    className="item__image"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={it.alt || 'Open image'}
+                    onClick={onTileClick}
+                    onPointerUp={onTilePointerUp}
+                    onKeyDown={onTileKeyDown}
+                  >
+                    <img src={it.src} draggable={false} alt={it.alt} />
+                  </div>
+                )}
               </div>
             ))}
           </div>
