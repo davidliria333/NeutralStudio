@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import FluidGlassMenu from './FluidGlassMenu.jsx'
+
+const FluidGlassMenu = lazy(() => import('./FluidGlassMenu.jsx'))
 
 const NAV = [
   { label: 'Services', href: '#services' },
@@ -16,12 +17,25 @@ export default function Header() {
   const location = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [showFluidMenu, setShowFluidMenu] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const shouldEnable = () => {
+      const desktop = window.innerWidth > 880
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      setShowFluidMenu(desktop && !reduced)
+    }
+
+    shouldEnable()
+    window.addEventListener('resize', shouldEnable)
+    return () => window.removeEventListener('resize', shouldEnable)
   }, [])
 
   useEffect(() => {
@@ -43,6 +57,33 @@ export default function Header() {
     }
     navigate({ pathname: '/', hash: href })
   }
+
+  const fallbackNav = (
+    <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+      {NAV.map(n => (
+        <button
+          key={n.href}
+          type="button"
+          style={{
+            fontSize: 13, padding: '8px 14px', color: 'var(--ink-2)',
+            borderRadius: 999, transition: 'all .2s var(--ease)',
+            background: 'transparent', border: 'none', cursor: 'pointer',
+          }}
+          onClick={() => onNavClick(n.href)}
+          onMouseEnter={e => {
+            e.currentTarget.style.color = 'var(--ink)'
+            e.currentTarget.style.background = 'var(--bg-elev)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.color = 'var(--ink-2)'
+            e.currentTarget.style.background = 'transparent'
+          }}
+        >
+          {n.label}
+        </button>
+      ))}
+    </div>
+  )
 
   return (
     <header style={{
@@ -69,7 +110,11 @@ export default function Header() {
         </Link>
 
         <nav className="desktop-nav" style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-          <FluidGlassMenu items={NAV} onNavClick={onNavClick} />
+          {showFluidMenu ? (
+            <Suspense fallback={fallbackNav}>
+              <FluidGlassMenu items={NAV} onNavClick={onNavClick} />
+            </Suspense>
+          ) : fallbackNav}
         </nav>
 
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
