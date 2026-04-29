@@ -9,10 +9,15 @@ export default function Footer() {
       if (window.location.hash !== href) {
         window.history.replaceState(null, '', href)
       }
-      window.dispatchEvent(new HashChangeEvent('hashchange'))
+      const target = document.querySelector(href)
+      if (target) {
+        const headerOffset = 112
+        const top = target.getBoundingClientRect().top + window.scrollY - headerOffset
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+      }
       return
     }
-    navigate(`/${href}`)
+    navigate({ pathname: '/', hash: href })
   }
 
   return (

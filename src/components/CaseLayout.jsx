@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import DomeGallery from './DomeGallery.jsx'
 
 export default function CaseLayout({ title, tags, hero, intro, sections, externalUrl, domeImages = [] }) {
   const galleryImages = domeImages.length
@@ -67,37 +66,43 @@ export default function CaseLayout({ title, tags, hero, intro, sections, externa
       {galleryImages.length > 0 && (
         <section className="section section--tight">
           <div className="container">
-            <div className="eyebrow" style={{ marginBottom: 18 }}>Immersive gallery</div>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 18, flexWrap: 'wrap', marginBottom: 28 }}>
-              <h2 className="h3" style={{ margin: 0, maxWidth: 12 }}>
-                Explore the system in motion.
-              </h2>
+              <div className="eyebrow">Gallery</div>
               <p style={{ margin: 0, maxWidth: 420, color: 'var(--ink-3)' }}>
-                Drag to rotate the dome and open any frame for a closer look at the case study details.
+                A selection of project frames shown at their natural proportions.
               </p>
             </div>
-            <div style={{
-              height: 'min(78vh, 860px)',
-              minHeight: 520,
-              border: '1px solid var(--line)',
-              borderRadius: 'var(--r-xl)',
-              overflow: 'hidden',
-              background:
-                'radial-gradient(circle at 50% 28%, rgba(216,255,62,0.10), transparent 32%), linear-gradient(180deg, rgba(15,15,17,0.98) 0%, rgba(10,10,11,1) 100%)',
-            }}>
-              <DomeGallery
-                images={galleryImages}
-                fit={0.7}
-                segments={22}
-                grayscale={false}
-                minRadius={420}
-                padFactor={0.18}
-                overlayBlurColor="#0a0a0b"
-                openedImageWidth="320px"
-                openedImageHeight="440px"
-                imageBorderRadius="24px"
-                openedImageBorderRadius="28px"
-              />
+            <div
+              className="case-gallery-masonry"
+              style={{
+                columnCount: 3,
+                columnGap: 18,
+              }}
+            >
+              {galleryImages.map((item, index) => (
+                <motion.div
+                  key={`${item.src}-${index}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.12 }}
+                  transition={{ duration: 0.65, delay: index * 0.03, ease: [0.22, 1, 0.36, 1] }}
+                  style={{
+                    breakInside: 'avoid',
+                    marginBottom: 18,
+                    borderRadius: 'var(--r-l)',
+                    overflow: 'hidden',
+                    border: '1px solid var(--line)',
+                    background: 'var(--bg-1)',
+                  }}
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt || ''}
+                    loading="lazy"
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                  />
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
@@ -110,7 +115,7 @@ export default function CaseLayout({ title, tags, hero, intro, sections, externa
             <h2 className="h3" style={{ margin: '0 0 36px' }}>{s.title}</h2>
             <div style={{
               display: 'grid', gridTemplateColumns: s.cols === 1 ? '1fr' : `repeat(${s.cols || 2}, 1fr)`, gap: 18,
-            }}>
+            }} className="case-section-grid">
               {s.images.map((img, j) => (
                 <motion.div
                   key={j}
@@ -120,9 +125,9 @@ export default function CaseLayout({ title, tags, hero, intro, sections, externa
                   transition={{ duration: 0.7, delay: j * 0.06, ease: [0.22, 1, 0.36, 1] }}
                   style={{
                     borderRadius: 'var(--r-m)', overflow: 'hidden', border: '1px solid var(--line)',
-                    background: 'var(--bg)', aspectRatio: s.aspect || '4/3',
+                    background: 'var(--bg)',
                   }}>
-                  <img src={img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={img} alt="" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block' }} />
                 </motion.div>
               ))}
             </div>
@@ -140,6 +145,16 @@ export default function CaseLayout({ title, tags, hero, intro, sections, externa
           </a>
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 980px) {
+          .case-gallery-masonry { column-count: 2 !important; }
+        }
+        @media (max-width: 680px) {
+          .case-gallery-masonry { column-count: 1 !important; }
+          .case-section-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </>
   )
 }
