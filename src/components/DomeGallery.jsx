@@ -25,12 +25,12 @@ const DEFAULTS = {
 }
 
 const PILL_THEMES = [
-  { eyebrow: 'Identity', label: 'Built to be remembered', tone: 'lime' },
-  { eyebrow: 'Web', label: 'Clear story. Sharp rhythm.', tone: 'violet' },
-  { eyebrow: 'Launch', label: 'Designed to look funded', tone: 'orange' },
-  { eyebrow: 'Systems', label: 'One brand, many touchpoints', tone: 'blue' },
-  { eyebrow: 'Deck', label: 'Readable in the room', tone: 'red' },
-  { eyebrow: 'Motion', label: 'Static is only the start', tone: 'teal' },
+  { tone: 'lime' },
+  { tone: 'violet' },
+  { tone: 'orange' },
+  { tone: 'blue' },
+  { tone: 'red' },
+  { tone: 'teal' },
 ]
 
 const clamp = (v, min, max) => Math.min(Math.max(v, min), max)
@@ -613,10 +613,7 @@ export default function DomeGallery({
                 }}
               >
                 {it.type === 'pill' ? (
-                  <div className={`item__pill item__pill--${it.tone}`}>
-                    <span className="item__pill-eyebrow">{it.eyebrow}</span>
-                    <strong className="item__pill-label">{it.label}</strong>
-                  </div>
+                  <div className={`item__pill item__pill--${it.tone}`} aria-hidden="true" />
                 ) : (
                   <div
                     className="item__image"
