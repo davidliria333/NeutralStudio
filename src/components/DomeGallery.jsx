@@ -49,11 +49,11 @@ const getDataNumber = (el, name, fallback) => {
 function buildItems(pool, seg) {
   const xCols = Array.from({ length: seg }, (_, i) => -37 + i * 2)
   const evenYs = [0]
-  const oddYs = [1]
+  const oddYs = [0]
 
   const coords = xCols.flatMap((x, c) => {
     const ys = c % 2 === 0 ? evenYs : oddYs
-    return ys.map(y => ({ x, y, sizeX: 2, sizeY: 2 }))
+    return ys.map(y => ({ x, y, sizeX: 1.9, sizeY: 1.15 }))
   })
 
   const totalSlots = coords.length
