@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import FluidGlassMenu from './FluidGlassMenu.jsx'
 
 const NAV = [
   { label: 'Services', href: '#services' },
@@ -68,17 +69,7 @@ export default function Header() {
         </Link>
 
         <nav className="desktop-nav" style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-          {NAV.map(n => (
-            <button key={n.href} type="button" style={{
-              fontSize: 13, padding: '8px 14px', color: 'var(--ink-2)',
-              borderRadius: 999, transition: 'all .2s var(--ease)',
-              background: 'transparent', border: 'none', cursor: 'pointer',
-            }} onClick={() => onNavClick(n.href)}
-               onMouseEnter={e => { e.currentTarget.style.color = 'var(--ink)'; e.currentTarget.style.background = 'var(--bg-elev)' }}
-               onMouseLeave={e => { e.currentTarget.style.color = 'var(--ink-2)'; e.currentTarget.style.background = 'transparent' }}>
-              {n.label}
-            </button>
-          ))}
+          <FluidGlassMenu items={NAV} onNavClick={onNavClick} />
         </nav>
 
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
