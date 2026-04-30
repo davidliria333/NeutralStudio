@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
-const HeroTorus = lazy(() => import('../components/three/HeroTorus.jsx'))
+const Prism = lazy(() => import('../components/Prism.jsx'))
 
 function useIsSmall() {
   const [small, setSmall] = useState(false)
@@ -156,12 +156,25 @@ function DesktopDecor() {
     <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
       <div style={{
         position: 'absolute',
-        inset: '12% 18% 14%',
+        inset: '4% 8% 8%',
         zIndex: 0,
-        opacity: 0.9,
+        opacity: 0.92,
       }}>
         <Suspense fallback={null}>
-          <HeroTorus />
+          <Prism
+            animationType="rotate"
+            timeScale={0.42}
+            height={3.2}
+            baseWidth={5.2}
+            scale={3.4}
+            hueShift={0.28}
+            colorFrequency={0.82}
+            noise={0.18}
+            glow={1.35}
+            bloom={1.15}
+            offset={{ x: 0, y: -8 }}
+            suspendWhenOffscreen
+          />
         </Suspense>
       </div>
       <div style={{
@@ -172,8 +185,8 @@ function DesktopDecor() {
         height: 'min(72vw, 980px)',
         transform: 'translateX(-50%)',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(216,255,62,0.14) 0%, rgba(216,255,62,0.07) 20%, rgba(106,140,255,0.04) 42%, transparent 72%)',
-        filter: 'blur(18px)',
+        background: 'radial-gradient(circle, rgba(216,255,62,0.12) 0%, rgba(216,255,62,0.06) 20%, rgba(106,140,255,0.08) 42%, transparent 74%)',
+        filter: 'blur(26px)',
       }} />
       <div style={{
         position: 'absolute',
