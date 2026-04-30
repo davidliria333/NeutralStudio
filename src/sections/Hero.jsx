@@ -156,7 +156,7 @@ function DesktopDecor() {
     <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
       <div style={{
         position: 'absolute',
-        inset: '4% 8% 8%',
+        inset: '-6% -12% -8%',
         zIndex: 0,
         opacity: 0.92,
       }}>
@@ -166,7 +166,7 @@ function DesktopDecor() {
             timeScale={0.42}
             height={3.2}
             baseWidth={5.2}
-            scale={3.4}
+            scale={3.08}
             hueShift={0.28}
             colorFrequency={0.82}
             noise={0.18}
