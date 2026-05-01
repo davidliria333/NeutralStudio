@@ -96,7 +96,7 @@ export default function ServiceLayout({ badge, title, accent, intro, painPoints,
                   </div>
                   <p style={{ margin: 0, color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.55 }}>"{r.quote}"</p>
                   <div style={{ marginTop: 18, fontSize: 12, color: 'var(--ink-3)', fontFamily: 'var(--mono)', letterSpacing: '0.04em' }}>
-                    — {r.who}
+                    {r.who}
                   </div>
                 </div>
               ))}

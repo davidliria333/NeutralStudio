@@ -47,7 +47,7 @@ export default function Portfolio() {
       <div className="container">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24 }}>
           <SectionHead eyebrow="Portfolio" title="One example per category. Real work."
-            desc="Identity, launch systems, product design, and marketing — one representative piece from each discipline. The full portfolio goes deeper." />
+            desc="Identity, launch systems, product design, and marketing: one representative piece from each discipline. The full portfolio goes deeper." />
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6 }}>
             <span className="serif" style={{ fontSize: 32, color: 'var(--ink)' }}>+100</span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
@@ -137,7 +137,7 @@ function Card({ item, index }) {
           display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16,
         }}>
           <div>
-            {/* Category label — the key differentiator */}
+            {/* Category label */}
             <div style={{
               display: 'inline-flex', alignItems: 'center',
               padding: '3px 10px', borderRadius: 999,

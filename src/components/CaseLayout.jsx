@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 export default function CaseLayout({ title, tags, hero, intro, sections, externalUrl, domeImages = [] }) {
   const galleryImages = domeImages.length
     ? domeImages
-    : sections.flatMap(section => section.images.map(img => ({ src: img, alt: `${title} — ${section.title}` })))
+    : sections.flatMap(section => section.images.map(img => ({ src: img, alt: `${title}: ${section.title}` })))
 
   return (
     <>

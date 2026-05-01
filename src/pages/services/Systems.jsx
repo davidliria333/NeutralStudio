@@ -17,7 +17,7 @@ export default function Systems() {
       deliverables={[
         { t: 'Type & hierarchy', d: 'Display, headline, body, and micro scales with line-height tokens.' },
         { t: 'Color & accessibility', d: 'Tokens that pass contrast checks for product and marketing.' },
-        { t: 'UI components', d: 'Buttons, inputs, cards, modals — primitives ready for engineering.' },
+        { t: 'UI components', d: 'Buttons, inputs, cards, modals: primitives ready for engineering.' },
         { t: 'Logo & spacing', d: 'Clear-space rules, minimum sizes, lockup variants.' },
         { t: 'Deck & web alignment', d: 'Shared tokens between Figma slides and the site.' },
         { t: 'Handoff format', d: 'Tokens exported as JSON / CSS variables, ready to paste.' },
