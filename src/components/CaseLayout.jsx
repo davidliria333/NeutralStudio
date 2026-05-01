@@ -60,6 +60,30 @@ export default function CaseLayout({ title, tags, hero, intro, sections, externa
             )}
             <a className="btn btn--ghost" href="mailto:arnaupinyolwork@gmail.com">Email us</a>
           </div>
+
+          {/* Portfolio request nudge */}
+          <div style={{
+            marginTop: 36,
+            display: 'inline-flex', alignItems: 'center', gap: 14,
+            padding: '14px 20px',
+            borderRadius: 'var(--r-m)',
+            border: '1px solid var(--line-2)',
+            background: 'var(--bg-1)',
+          }}>
+            <span style={{ fontSize: 13, color: 'var(--ink-3)', lineHeight: 1.4 }}>
+              Want to see the full portfolio?
+            </span>
+            <a
+              href="mailto:arnaupinyolwork@gmail.com?subject=Full%20portfolio%20request%20-%20Neutral%20Studio"
+              style={{
+                fontSize: 13, fontWeight: 500, color: 'var(--ink)',
+                textDecoration: 'none', whiteSpace: 'nowrap',
+                display: 'inline-flex', alignItems: 'center', gap: 6,
+              }}
+            >
+              Request it <span style={{ color: 'var(--acc)' }}>→</span>
+            </a>
+          </div>
         </div>
       </section>
 

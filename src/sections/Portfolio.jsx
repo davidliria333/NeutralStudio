@@ -3,10 +3,34 @@ import { useEffect, useRef, useState } from 'react'
 import { SectionHead } from './Services.jsx'
 
 const ITEMS = [
-  { slug: 'galeon', title: 'Galeón', tag: 'Patrimonio Nacional · Heritage', img: '/Galeon/Treball-01.png' },
-  { slug: 'arkuos', title: 'Arkuos', tag: 'Nonprofit · Identity', img: '/David/ARKUOS/campaign-hero.png' },
-  { slug: 'circlehome', title: 'CircleHome', tag: 'IoT · Launch system', img: '/David/CIRCLEHOME/We%20are%20live.jpg' },
-  { slug: 'vira', title: 'Vira', tag: 'App · Identity', img: '/David/VIRA/PDF-04.png' },
+  {
+    slug: 'vira',
+    title: 'Vira',
+    category: 'Product Design',
+    tag: 'App · Identity',
+    img: '/David/VIRA/PDF-04.png',
+  },
+  {
+    slug: 'galeon',
+    title: 'Galeón',
+    category: 'Marketing',
+    tag: 'Patrimonio Nacional · Heritage',
+    img: '/Galeon/Treball-01.png',
+  },
+  {
+    slug: 'arkuos',
+    title: 'Arkuos',
+    category: 'Personal Identity',
+    tag: 'Nonprofit · Identity',
+    img: '/David/ARKUOS/campaign-hero.png',
+  },
+  {
+    slug: 'circlehome',
+    title: 'CircleHome',
+    category: 'New Launches',
+    tag: 'IoT · Launch system',
+    img: '/David/CIRCLEHOME/We%20are%20live.jpg',
+  },
 ]
 
 const LOGOS = [
@@ -22,8 +46,8 @@ export default function Portfolio() {
     <section className="section" id="portfolio">
       <div className="container">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24 }}>
-          <SectionHead eyebrow="Portfolio" title="A portfolio that feels built, not templated"
-            desc="Inside the full portfolio, we show identity, decks, web, and motion with the same premium, hand-crafted standard we bring to client work, curated to your sector, stage, and what you need to evaluate." />
+          <SectionHead eyebrow="Portfolio" title="One example per category. Real work."
+            desc="Identity, launch systems, product design, and marketing — one representative piece from each discipline. The full portfolio goes deeper." />
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6 }}>
             <span className="serif" style={{ fontSize: 32, color: 'var(--ink)' }}>+100</span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
@@ -90,6 +114,7 @@ function Card({ item, index }) {
     el.style.transform = `perspective(1100px) rotateX(${-py * 6}deg) rotateY(${px * 8}deg) translateY(-4px)`
   }
   const onLeave = () => { if (ref.current) ref.current.style.transform = '' }
+
   return (
     <Link to={`/case/${item.slug}`} style={{ display: 'block' }}>
       <div ref={ref} onMouseMove={onMove} onMouseLeave={onLeave}
@@ -100,17 +125,29 @@ function Card({ item, index }) {
           willChange: 'transform',
         }}>
         <img src={item.img} alt={item.title} style={{
-          width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', transition: 'transform .8s var(--ease)', padding: 12, background: 'var(--bg)',
+          width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center',
+          transition: 'transform .8s var(--ease)', padding: 12, background: 'var(--bg)',
         }} />
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(180deg, transparent 40%, rgba(10,10,11,0.85) 100%)',
+          background: 'linear-gradient(180deg, transparent 35%, rgba(10,10,11,0.9) 100%)',
         }} />
         <div style={{
           position: 'absolute', left: 24, right: 24, bottom: 22,
           display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16,
         }}>
           <div>
+            {/* Category label — the key differentiator */}
+            <div style={{
+              display: 'inline-flex', alignItems: 'center',
+              padding: '3px 10px', borderRadius: 999,
+              background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255,255,255,0.15)',
+              fontFamily: 'var(--mono)', fontSize: 10, color: 'rgba(255,255,255,0.75)',
+              letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8,
+            }}>
+              {item.category}
+            </div>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 6 }}>
               {String(index + 1).padStart(2, '0')} · {item.tag}
             </div>
@@ -119,6 +156,7 @@ function Card({ item, index }) {
           <div style={{
             width: 44, height: 44, borderRadius: 999, background: 'var(--acc)', color: '#0a0a0b',
             display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, fontWeight: 500,
+            flexShrink: 0,
           }}>→</div>
         </div>
       </div>

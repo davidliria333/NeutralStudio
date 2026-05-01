@@ -8,6 +8,7 @@ const PLANS = [
     features: ['Logo system & brand marks', 'Typography & color palette', 'Core identity assets & templates', 'Brand guidelines (lightweight)'],
     cta: 'Email to book',
     href: 'mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20%243%2C000%20identity%20package',
+    badge: 'Identity only',
     featured: false,
   },
   {
@@ -17,6 +18,7 @@ const PLANS = [
     features: ['Complete visual identity', 'Investor-ready pitch deck', 'Marketing website design & key layouts', 'Organized handoff + export specs'],
     cta: 'Email to book',
     href: 'mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20%245%2C500%20full%20package',
+    badge: 'Most popular',
     featured: true,
   },
 ]
@@ -48,7 +50,7 @@ export default function Pricing() {
               <div style={{ position: 'relative' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
                   <span className="eyebrow" style={{ color: p.featured ? 'var(--acc)' : 'var(--ink-3)' }}>
-                    {p.featured ? 'Most popular' : 'Identity only'}
+                    {p.badge}
                   </span>
                   {p.featured && (
                     <span style={{
@@ -83,8 +85,60 @@ export default function Pricing() {
             </article>
           ))}
         </div>
+
+        {/* Third tier: custom / open conversation */}
+        <article style={{
+          marginTop: 24,
+          position: 'relative',
+          padding: '40px 48px',
+          borderRadius: 'var(--r-l)',
+          border: '1px solid var(--line-2)',
+          background: 'var(--bg-1)',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 40,
+        }} className="price-custom">
+          {/* Subtle noise texture overlay */}
+          <div style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.018,
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")',
+            backgroundSize: '200px 200px',
+          }} />
+
+          <div style={{ position: 'relative', maxWidth: 560 }}>
+            <span className="eyebrow" style={{ color: 'var(--ink-3)', marginBottom: 14, display: 'block' }}>Custom</span>
+            <h3 className="h4" style={{ margin: '0 0 10px' }}>
+              New upcoming launch? Specific needs?{' '}
+              <span className="serif" style={{ color: 'var(--acc)' }}>Let's talk.</span>
+            </h3>
+            <p style={{ color: 'var(--ink-3)', fontSize: 14, margin: 0, maxWidth: '52ch', lineHeight: 1.65 }}>
+              Pre-launch, niche scope, or somewhere between the two packs above. Send us a note and we'll tell you honestly if we're the right fit.
+            </p>
+          </div>
+
+          <div style={{ position: 'relative', display: 'flex', gap: 12, flexShrink: 0, flexWrap: 'wrap' }} className="price-custom-ctas">
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Custom%20project"
+              className="btn btn--ghost" style={{ whiteSpace: 'nowrap' }}>
+              Send a note <span className="arrow">→</span>
+            </a>
+            <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer"
+              className="btn btn--ghost" style={{ whiteSpace: 'nowrap' }}>
+              Book a call
+            </a>
+          </div>
+        </article>
       </div>
-      <style>{`@media (max-width: 760px) { .price-grid { grid-template-columns: 1fr !important; } }`}</style>
+
+      <style>{`
+        @media (max-width: 760px) {
+          .price-grid { grid-template-columns: 1fr !important; }
+          .price-custom { flex-direction: column !important; padding: 32px 24px !important; align-items: flex-start !important; }
+          .price-custom-ctas { width: 100%; }
+          .price-custom-ctas .btn { flex: 1; justify-content: center; }
+        }
+      `}</style>
     </section>
   )
 }
