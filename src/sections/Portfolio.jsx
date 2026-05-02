@@ -157,8 +157,8 @@ export default function Portfolio() {
           position: relative;
           z-index: 1;
           display: grid;
-          grid-template-columns: 1.2fr 0.8fr 1fr;
-          grid-auto-rows: minmax(240px, 28vw);
+          grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+          grid-auto-rows: clamp(250px, 22vw, 360px);
           gap: clamp(12px, 1.5vw, 18px);
         }
 
@@ -180,11 +180,11 @@ export default function Portfolio() {
         }
 
         .proof-lab__tile:nth-child(2) {
-          grid-column: span 2;
+          grid-column: auto;
         }
 
         .proof-lab__tile:nth-child(4) {
-          grid-column: span 2;
+          grid-column: 1 / -1;
         }
 
         .proof-lab__tile:active {
@@ -454,11 +454,16 @@ export default function Portfolio() {
             grid-auto-rows: minmax(260px, auto);
           }
 
-          .proof-lab__tile:nth-child(1),
-          .proof-lab__tile:nth-child(2),
-          .proof-lab__tile:nth-child(4) {
+          .proof-lab__tile:nth-child(1) {
+            grid-row: span 2;
+          }
+
+          .proof-lab__tile:nth-child(2) {
             grid-column: auto;
-            grid-row: auto;
+          }
+
+          .proof-lab__tile:nth-child(4) {
+            grid-column: 1 / -1;
           }
         }
 
@@ -471,6 +476,13 @@ export default function Portfolio() {
           .proof-lab__grid {
             grid-template-columns: 1fr;
             grid-auto-rows: minmax(280px, auto);
+          }
+
+          .proof-lab__tile:nth-child(1),
+          .proof-lab__tile:nth-child(2),
+          .proof-lab__tile:nth-child(4) {
+            grid-column: auto;
+            grid-row: auto;
           }
 
           .proof-lab__meta {
