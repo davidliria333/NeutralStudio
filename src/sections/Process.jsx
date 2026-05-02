@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 import { SectionHead } from './Services.jsx'
 
 const STEPS = [
-  { tag: 'Day 1', title: 'Focus', desc: 'We lock audience, positioning, offer, and what the website must prove before anyone designs pixels.', out: ['Call + notes', 'Sprint timeline', 'Decision criteria'] },
-  { tag: 'Days 2-3', title: 'Direction', desc: 'Identity and narrative routes move quickly; you pick a lane and we tighten it with founder-level feedback.', out: ['Visual direction', 'Messaging spine', 'Route selection'] },
-  { tag: 'Days 4-5', title: 'Build', desc: 'Logo, type, color, core pages, and launch visuals are produced as one connected system.', out: ['Identity kit', 'Web key pages', 'Launch assets'] },
-  { tag: 'Days 6-7', title: 'Launch', desc: 'Files, exports, and a working website are handed over with the decisions documented clearly.', out: ['Source files', 'Live-ready site', 'Specs + notes'] },
+  { tag: 'Kickoff', title: 'Discovery', desc: 'We align on audience, positioning, and what "success" looks like for your next 90 days.', out: ['Call + notes', 'Timeline', 'Decision criteria'] },
+  { tag: 'Days 2-5', title: 'Direction', desc: 'Concept routes for identity and narrative; you pick a lane, we refine with your team.', out: ['Moodboards', 'Direction deck', 'Route selection'] },
+  { tag: 'Days 6-12', title: 'Production', desc: 'Logo, type, color, deck, and web visuals are built to match the chosen direction.', out: ['Identity kit', 'Deck layout', 'Web key screens'] },
+  { tag: 'Handoff', title: 'Delivery', desc: 'Organized files, export specs, and a short walkthrough so your team can ship confidently.', out: ['Source files', 'Exports', 'Specs + notes'] },
 ]
 
 export default function Process() {
@@ -14,8 +14,8 @@ export default function Process() {
   return (
     <section className="section" id="process" style={{ background: 'var(--bg-1)' }}>
       <div className="container">
-        <SectionHead eyebrow="Process" title="From messy brief to live in under a week"
-          desc="A tight loop for early-stage constraints: fast feedback, clear milestones, and no theatre." />
+        <SectionHead eyebrow="Process" title="From messy brief to launch-ready"
+          desc="A tight loop built for early-stage constraints: fast feedback, clear milestones, no theatre." />
 
         <div style={{ marginTop: 64, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56 }} className="proc-grid">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>

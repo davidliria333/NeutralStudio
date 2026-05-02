@@ -20,8 +20,8 @@ export default function Services() {
   return (
     <section className="section" id="services">
       <div className="container">
-        <SectionHead eyebrow="Services" title="What we design in the sprint"
-          desc="Identity, website, product narrative, and launch assets shaped together so your new presence can be live in less than a week." />
+        <SectionHead eyebrow="Services" title="What we design for teams"
+          desc="End-to-end brand and digital craft: identity, product, narrative, and campaign-ready assets in one coherent system." />
 
         <div style={{ marginTop: 64, display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 48 }} className="svc-grid">
           <div style={{ borderTop: '1px solid var(--line)' }}>
@@ -85,7 +85,7 @@ export default function Services() {
               ))}
             </div>
             <p className="serif" style={{ fontSize: 22, color: 'var(--ink-2)', marginTop: 24, marginBottom: 0 }}>
-              One sprint, every launch surface.
+              One studio, every surface.
             </p>
           </div>
         </div>

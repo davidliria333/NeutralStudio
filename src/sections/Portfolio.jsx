@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 
 const ITEMS = [
   {
@@ -57,7 +57,7 @@ export default function Portfolio() {
         </div>
 
         <div className="portfolio-private__grid">
-          {ITEMS.map((it, i) => <Card key={it.slug} item={it} index={i} variant={i === 0 ? 'hero' : i === 3 ? 'wide' : 'stack'} />)}
+          {ITEMS.map((it, i) => <Card key={it.slug} item={it} index={i} />)}
         </div>
 
         <div className="portfolio-private__footer">
@@ -99,36 +99,19 @@ export default function Portfolio() {
         .portfolio-private__grid {
           margin-top: clamp(48px, 7vw, 88px);
           display: grid;
-          grid-template-columns: repeat(12, minmax(0, 1fr));
-          grid-auto-rows: clamp(176px, 18vw, 246px);
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: clamp(14px, 1.6vw, 22px);
           align-items: stretch;
         }
 
-        .portfolio-private__card--hero {
+        .portfolio-private__card {
           display: block;
-          grid-column: span 7;
-          grid-row: span 2;
-        }
-
-        .portfolio-private__card--stack {
-          display: block;
-          grid-column: span 5;
-          grid-row: span 1;
-        }
-
-        .portfolio-private__card--wide {
-          display: block;
-          grid-column: 1 / -1;
-          grid-row: span 1;
-          width: 100%;
-          max-width: min(860px, 72vw);
-          justify-self: end;
+          min-width: 0;
         }
 
         .portfolio-private__cover {
           position: relative;
-          height: 100%;
+          aspect-ratio: 1 / 1;
           border-radius: var(--r-l);
           overflow: hidden;
           border: 1px solid var(--line);
@@ -246,28 +229,20 @@ export default function Portfolio() {
         }
 
         @media (max-width: 900px) {
-          .portfolio-private__intro,
-          .portfolio-private__grid {
+          .portfolio-private__intro {
             grid-template-columns: 1fr;
-            grid-auto-rows: auto;
           }
 
-          .portfolio-private__card--hero,
-          .portfolio-private__card--stack,
-          .portfolio-private__card--wide {
-            grid-row: auto;
-            grid-column: auto;
-            max-width: none;
-            justify-self: stretch;
-          }
-
-          .portfolio-private__cover {
-            height: auto;
-            min-height: 0;
+          .portfolio-private__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
           }
         }
 
         @media (max-width: 560px) {
+          .portfolio-private__grid {
+            grid-template-columns: 1fr;
+          }
+
           .portfolio-private__meta {
             grid-template-columns: 1fr;
           }
@@ -281,18 +256,8 @@ export default function Portfolio() {
   )
 }
 
-function Card({ item, index, variant }) {
+function Card({ item, index }) {
   const ref = useRef(null)
-  const [aspectRatio, setAspectRatio] = useState(4 / 3)
-
-  useEffect(() => {
-    const img = new window.Image()
-    img.src = item.img
-    img.onload = () => {
-      if (!img.naturalWidth || !img.naturalHeight) return
-      setAspectRatio(img.naturalWidth / img.naturalHeight)
-    }
-  }, [item.img])
 
   const onMove = (e) => {
     const el = ref.current
@@ -308,13 +273,12 @@ function Card({ item, index, variant }) {
   const href = `mailto:arnaupinyolwork@gmail.com?subject=${encodeURIComponent(`Portfolio request: ${item.title}`)}`
 
   return (
-    <a className={`portfolio-private__card portfolio-private__card--${variant}`} href={href} aria-label={`Request more information about ${item.title}`}>
+    <a className="portfolio-private__card" href={href} aria-label={`Request more information about ${item.title}`}>
       <div
         ref={ref}
         className="portfolio-private__cover"
         onMouseMove={onMove}
         onMouseLeave={onLeave}
-        style={{ aspectRatio: variant === 'hero' ? '4 / 5' : variant === 'wide' ? '16 / 7' : `${Math.max(1.2, Math.min(aspectRatio, 1.9))}` }}
       >
         <img src={item.img} alt={`${item.title} portfolio cover`} />
         <div className="portfolio-private__meta">

@@ -153,7 +153,7 @@ export function Team() {
 const FAQS = [
   ['Who is Neutral Studio for?', 'Early-stage startups that need a credible identity, pitch, and web presence quickly, without hiring a full agency roster.'],
   ['Do I need a full brand brief?', 'No. Bring what you have, notes, product screenshots, competitor links, and we\'ll shape the brief through conversation.'],
-  ['How long does a project take?', 'Most launch packages are built to go live in less than a week when feedback is tight. We agree milestones at kickoff.'],
+  ['How long does a project take?', 'Most launch packages land in a few weeks, faster when feedback is tight. We agree milestones at kickoff.'],
   ['What do I receive at the end?', 'Source files and exports for identity, deck, and web, organized for your team and contractors.'],
   ['What if we need more than the package?', 'We can scope add-ons after the first delivery, extra pages, motion, or campaign templates, without renegotiating.'],
   ['Why is pricing so straightforward?', 'Startups need predictability. One fixed price keeps everyone aligned on what ships and when.'],
@@ -224,18 +224,18 @@ export function SmashCTA() {
           Stop looking like a <span className="serif" style={{ color: 'var(--acc)', fontWeight: 400 }}>rough draft.</span>
         </h2>
         <p className="lead" style={{ margin: '0 auto 40px', maxWidth: '52ch' }}>
-          Tell us what you are building. In less than a week, your new identity and website can be live, credible, and ready to send.
+          Tell us what you're building and when you need to show up. We reply with next steps and timing.
         </p>
         <div style={{ display: 'inline-flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
           <a className="btn btn--primary" href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">
-            Start the 7-day sprint <span className="arrow">→</span>
+            Smash the damn button <span className="arrow">→</span>
           </a>
           <a className="btn btn--ghost" href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Project%20inquiry">
             Email to start
           </a>
         </div>
         <p className="serif" style={{ marginTop: 56, fontSize: 22, color: 'var(--ink-3)' }}>
-          Pick a slot. We will map the week.
+          Pick a slot. We'll figure out the rest.
         </p>
       </div>
     </section>
