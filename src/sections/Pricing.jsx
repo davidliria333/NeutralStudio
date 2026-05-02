@@ -4,8 +4,8 @@ const PLANS = [
   {
     name: 'Complete Visual Identity',
     price: '$3,000',
-    sub: 'A full identity system built to scale, without web design or pitch deck.',
-    features: ['Logo system & brand marks', 'Typography & color palette', 'Core identity assets & templates', 'Brand guidelines (lightweight)'],
+    sub: 'A focused identity sprint when the website can wait.',
+    features: ['Logo system & brand marks', 'Typography & color palette', 'Core identity assets & templates', 'Lightweight guidelines in under a week'],
     cta: 'Email to book',
     href: 'mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20%243%2C000%20identity%20package',
     badge: 'Identity only',
@@ -14,8 +14,8 @@ const PLANS = [
   {
     name: 'Full Launch Package',
     price: '$5,500',
-    sub: 'Identity + pitch deck + web design, built to ship together, fast.',
-    features: ['Complete visual identity', 'Investor-ready pitch deck', 'Marketing website design & key layouts', 'Organized handoff + export specs'],
+    sub: 'Your new identity and website live in less than a week.',
+    features: ['Complete visual identity', 'Investor-ready pitch language', 'Marketing website design & key layouts', 'Live-ready handoff + export specs'],
     cta: 'Email to book',
     href: 'mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20%245%2C500%20full%20package',
     badge: 'Most popular',
@@ -28,7 +28,7 @@ export default function Pricing() {
     <section className="section" id="pricing">
       <div className="container">
         <SectionHead eyebrow="Pricing" title="Two packs. Pick your launch speed."
-          desc="Transparent pricing for early-stage teams, no surprises, no bloated scope." />
+          desc="Transparent pricing for early-stage teams that need a credible identity and website this week, not next quarter." />
 
         <div style={{ marginTop: 64, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }} className="price-grid">
           {PLANS.map(p => (

@@ -57,7 +57,7 @@ export default function Portfolio() {
         </div>
 
         <div className="portfolio-private__grid">
-          {ITEMS.map((it, i) => <Card key={it.slug} item={it} index={i} />)}
+          {ITEMS.map((it, i) => <Card key={it.slug} item={it} index={i} variant={i === 0 ? 'hero' : i === 3 ? 'wide' : 'stack'} />)}
         </div>
 
         <div className="portfolio-private__footer">
@@ -99,23 +99,36 @@ export default function Portfolio() {
         .portfolio-private__grid {
           margin-top: clamp(48px, 7vw, 88px);
           display: grid;
-          grid-template-columns: 1.15fr 0.85fr;
-          gap: 18px;
-          align-items: start;
+          grid-template-columns: repeat(12, minmax(0, 1fr));
+          grid-auto-rows: clamp(176px, 18vw, 246px);
+          gap: clamp(14px, 1.6vw, 22px);
+          align-items: stretch;
         }
 
-        .portfolio-private__card:nth-child(1) {
+        .portfolio-private__card--hero {
+          display: block;
+          grid-column: span 7;
           grid-row: span 2;
         }
 
-        .portfolio-private__card:nth-child(4) {
+        .portfolio-private__card--stack {
+          display: block;
+          grid-column: span 5;
+          grid-row: span 1;
+        }
+
+        .portfolio-private__card--wide {
+          display: block;
           grid-column: 1 / -1;
-          max-width: min(760px, 66vw);
-          margin-left: auto;
+          grid-row: span 1;
+          width: 100%;
+          max-width: min(860px, 72vw);
+          justify-self: end;
         }
 
         .portfolio-private__cover {
           position: relative;
+          height: 100%;
           border-radius: var(--r-l);
           overflow: hidden;
           border: 1px solid var(--line);
@@ -207,10 +220,6 @@ export default function Portfolio() {
           transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), background 180ms ease-out;
         }
 
-        .portfolio-private__card:hover .portfolio-private__cover {
-          border-color: rgba(216,255,62,0.34);
-        }
-
         .portfolio-private__card:hover .portfolio-private__request {
           transform: translateY(-2px);
           background: rgba(216,255,62,0.14);
@@ -240,14 +249,21 @@ export default function Portfolio() {
           .portfolio-private__intro,
           .portfolio-private__grid {
             grid-template-columns: 1fr;
+            grid-auto-rows: auto;
           }
 
-          .portfolio-private__card:nth-child(1),
-          .portfolio-private__card:nth-child(4) {
+          .portfolio-private__card--hero,
+          .portfolio-private__card--stack,
+          .portfolio-private__card--wide {
             grid-row: auto;
             grid-column: auto;
             max-width: none;
-            margin-left: 0;
+            justify-self: stretch;
+          }
+
+          .portfolio-private__cover {
+            height: auto;
+            min-height: 0;
           }
         }
 
@@ -265,7 +281,7 @@ export default function Portfolio() {
   )
 }
 
-function Card({ item, index }) {
+function Card({ item, index, variant }) {
   const ref = useRef(null)
   const [aspectRatio, setAspectRatio] = useState(4 / 3)
 
@@ -292,13 +308,13 @@ function Card({ item, index }) {
   const href = `mailto:arnaupinyolwork@gmail.com?subject=${encodeURIComponent(`Portfolio request: ${item.title}`)}`
 
   return (
-    <a className="portfolio-private__card" href={href} aria-label={`Request more information about ${item.title}`}>
+    <a className={`portfolio-private__card portfolio-private__card--${variant}`} href={href} aria-label={`Request more information about ${item.title}`}>
       <div
         ref={ref}
         className="portfolio-private__cover"
         onMouseMove={onMove}
         onMouseLeave={onLeave}
-        style={{ aspectRatio: `${aspectRatio}` }}
+        style={{ aspectRatio: variant === 'hero' ? '4 / 5' : variant === 'wide' ? '16 / 7' : `${Math.max(1.2, Math.min(aspectRatio, 1.9))}` }}
       >
         <img src={item.img} alt={`${item.title} portfolio cover`} />
         <div className="portfolio-private__meta">

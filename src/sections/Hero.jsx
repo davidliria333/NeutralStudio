@@ -60,7 +60,7 @@ export default function Hero() {
             color: 'var(--ink-2)', marginBottom: 'clamp(20px, 4vh, 36px)',
           }}>
           <span style={{ width: 6, height: 6, borderRadius: 999, background: 'var(--acc)', boxShadow: '0 0 12px var(--acc)' }} />
-          Fast · agile · early-stage teams
+          Identity + web live in under 7 days
         </motion.div>
 
         <motion.h1
@@ -77,11 +77,11 @@ export default function Hero() {
             color: 'var(--ink)',
             textShadow: '0 2px 30px rgba(10,10,11,0.6)',
           }}>
-          Make your startup look{' '}
+          New identity and website,{' '}
           <span className="serif" style={{
             color: 'var(--acc)', fontWeight: 400,
             textShadow: '0 0 40px rgba(216,255,62,0.35)',
-          }}>inevitable.</span>
+          }}>live in a week.</span>
         </motion.h1>
 
         <motion.p
@@ -96,8 +96,8 @@ export default function Hero() {
             lineHeight: 1.55,
             textShadow: '0 1px 20px rgba(10,10,11,0.6)',
           }}>
-          The #1 design studio for early-stage startups. Identity, pitch, and web,
-          built as one system, by senior designers and exited founders.
+          A focused launch sprint for early-stage teams: strategy, identity, pitch language,
+          and a credible website built as one system in less than a week.
         </motion.p>
 
         <motion.div
@@ -106,7 +106,7 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           style={{ display: 'inline-flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>
           <a className="btn btn--primary" href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">
-            Book a call <span className="arrow">→</span>
+            Start the 7-day sprint <span className="arrow">→</span>
           </a>
           <a className="btn btn--ghost" href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question"
             style={{ background: 'rgba(10,10,11,0.5)', backdropFilter: 'blur(8px)' }}>

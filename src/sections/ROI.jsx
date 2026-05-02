@@ -3,7 +3,7 @@ import { SectionHead } from './Services.jsx'
 const STATS = [
   { k: '100+', label: 'projects', desc: 'Shipped with founders: identity, deck, and web in focused engagements.' },
   { k: '$100M+', label: 'raised', desc: 'Collective funding raised by teams we\'ve supported on brand and narrative.' },
-  { k: 'Weeks', label: 'turnaround', desc: 'Most launch packages land in a few weeks when feedback stays tight.' },
+  { k: '<7', label: 'days to launch', desc: 'A new identity and website can be live in less than a week when feedback stays tight.' },
   { k: 'Fixed', label: 'price', desc: 'Know the number before you sign, with no surprise invoices mid-sprint.' },
   { k: '50+ yr', label: 'experience', desc: 'Combined experience across exited founders and senior designers.' },
   { k: 'Days', label: 'to direction', desc: 'From kickoff to direction you can share with investors and engineering.' },
@@ -19,8 +19,8 @@ export default function ROI() {
         background: 'radial-gradient(70% 60% at 50% 0%, rgba(216,255,62,0.08), transparent 70%)',
       }} />
       <div className="container" style={{ position: 'relative' }}>
-        <SectionHead eyebrow="ROI" title="Success in numbers"
-          desc="Design that pays for itself when you ship faster and raise with confidence." />
+        <SectionHead eyebrow="ROI" title="Speed without looking rushed"
+          desc="A sharper identity and website pays for itself when you can show up credibly this week." />
 
         <div style={{
           marginTop: 64, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1,
@@ -40,7 +40,7 @@ export default function ROI() {
         </div>
 
         <p style={{ textAlign: 'center', color: 'var(--ink-3)', marginTop: 48, fontSize: 15 }}>
-          Supporting founders from messy brief to launch-ready brand.
+          Supporting founders from messy brief to a live-ready identity and website.
         </p>
       </div>
       <style>{`
