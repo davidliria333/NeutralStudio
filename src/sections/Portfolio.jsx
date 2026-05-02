@@ -1,92 +1,264 @@
-import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import { SectionHead } from './Services.jsx'
 
 const ITEMS = [
   {
     slug: 'vira',
     title: 'Vira',
     category: 'Product Design',
-    tag: 'App · Identity',
+    tag: 'App identity',
+    scope: 'UI, promo, presentation',
     img: '/David/VIRA/PDF-04.png',
   },
   {
     slug: 'galeon',
-    title: 'Galeón',
+    title: 'Galeon',
     category: 'Marketing',
-    tag: 'Patrimonio Nacional · Heritage',
+    tag: 'Heritage platform',
+    scope: 'Identity, deck, web',
     img: '/Galeon/Treball-01.png',
   },
   {
     slug: 'arkuos',
     title: 'Arkuos',
     category: 'Personal Identity',
-    tag: 'Nonprofit · Identity',
+    tag: 'Nonprofit identity',
+    scope: 'Brand system, campaign',
     img: '/David/ARKUOS/campaign-hero.png',
   },
   {
     slug: 'circlehome',
     title: 'CircleHome',
     category: 'New Launches',
-    tag: 'IoT · Launch system',
+    tag: 'IoT launch',
+    scope: 'Pitch, web, product story',
     img: '/David/CIRCLEHOME/We%20are%20live.jpg',
   },
 ]
 
-const LOGOS = [
-  '/Logos/00_logo-14.png',
-  '/Logos/00_logo_Mesa de trabajo 16 copia.png',
-  '/Logos/00_logo_Mesa de trabajo 16 copia 2.png',
-  '/Logos/00_logo_Mesa de trabajo 16 copia 3.png',
-  '/Logos/00_logo_Mesa de trabajo 16 copia 4.png',
-]
-
 export default function Portfolio() {
   return (
-    <section className="section" id="portfolio">
+    <section className="section portfolio-private" id="portfolio">
       <div className="container">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24 }}>
-          <SectionHead eyebrow="Portfolio" title="One example per category. Real work."
-            desc="Identity, launch systems, product design, and marketing: one representative piece from each discipline. The full portfolio goes deeper." />
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6 }}>
-            <span className="serif" style={{ fontSize: 32, color: 'var(--ink)' }}>+100</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              projects · polished, credible, above template-level
-            </span>
+        <div className="portfolio-private__intro">
+          <div>
+            <div className="eyebrow" style={{ marginBottom: 18 }}>Private portfolio</div>
+            <h2 className="h2" style={{ margin: 0, maxWidth: 760 }}>
+              One example per category. Full cases on request.
+            </h2>
+          </div>
+          <div className="portfolio-private__note">
+            <p>
+              Public pages stay intentionally limited. Tell us what you are building and we will send the closest-fit identity, deck, web, and product references.
+            </p>
+            <a className="btn btn--primary" href="mailto:arnaupinyolwork@gmail.com?subject=Curated%20portfolio%20request%20-%20Neutral%20Studio">
+              Request curated examples <span className="arrow">→</span>
+            </a>
           </div>
         </div>
 
-        <div style={{
-          marginTop: 64, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28,
-        }} className="port-grid">
+        <div className="portfolio-private__grid">
           {ITEMS.map((it, i) => <Card key={it.slug} item={it} index={i} />)}
         </div>
 
-        <div style={{
-          marginTop: 80, padding: '32px 0', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)',
-          overflow: 'hidden', position: 'relative',
-        }}>
-          <div style={{ display: 'flex', gap: 80, animation: 'marquee-x 40s linear infinite', width: 'max-content' }}>
-            {[...LOGOS, ...LOGOS, ...LOGOS].map((l, i) => (
-              <img key={i} src={l} alt="" style={{ height: 32, opacity: 0.55, filter: 'brightness(0) invert(1)' }} />
-            ))}
-          </div>
-        </div>
-
-        <div style={{ marginTop: 48, display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
-          <a className="btn btn--primary" href="mailto:arnaupinyolwork@gmail.com?subject=Portfolio%20request%20-%20Neutral%20Studio">
-            Request full portfolio <span className="arrow">→</span>
-          </a>
-          <a className="btn btn--ghost" href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">Book a call</a>
-          <span style={{ color: 'var(--ink-3)', fontSize: 13, marginLeft: 8 }}>
-            Prefer async? We can share PDFs, slides, or a short Loom walkthrough with the strongest-fit examples.
-          </span>
+        <div className="portfolio-private__footer">
+          <span>01 · Shortlist by sector</span>
+          <span>02 · Send private PDF or Loom</span>
+          <span>03 · Walk through decisions on a call</span>
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 760px) {
-          .port-grid { grid-template-columns: 1fr !important; }
+        .portfolio-private {
+          background:
+            linear-gradient(180deg, rgba(245,245,244,0.025), transparent 18%),
+            radial-gradient(80% 70% at 76% 18%, rgba(216,255,62,0.055), transparent 72%);
+        }
+
+        .portfolio-private__intro {
+          display: grid;
+          grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+          gap: clamp(28px, 5vw, 84px);
+          align-items: end;
+        }
+
+        .portfolio-private__note {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 22px;
+          padding-bottom: 8px;
+        }
+
+        .portfolio-private__note p {
+          margin: 0;
+          color: var(--ink-2);
+          line-height: 1.6;
+          max-width: 44ch;
+        }
+
+        .portfolio-private__grid {
+          margin-top: clamp(48px, 7vw, 88px);
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 18px;
+          align-items: start;
+        }
+
+        .portfolio-private__card:nth-child(1) {
+          grid-row: span 2;
+        }
+
+        .portfolio-private__card:nth-child(4) {
+          grid-column: 1 / -1;
+          max-width: min(760px, 66vw);
+          margin-left: auto;
+        }
+
+        .portfolio-private__cover {
+          position: relative;
+          border-radius: var(--r-l);
+          overflow: hidden;
+          border: 1px solid var(--line);
+          background: var(--bg-1);
+          transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1), border-color 180ms ease-out;
+          will-change: transform;
+        }
+
+        .portfolio-private__cover:active {
+          transform: scale(0.985);
+        }
+
+        .portfolio-private__cover img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+          padding: clamp(8px, 1vw, 14px);
+          background: var(--bg);
+        }
+
+        .portfolio-private__cover::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(180deg, rgba(10,10,11,0.02) 0%, rgba(10,10,11,0.2) 46%, rgba(10,10,11,0.88) 100%),
+            linear-gradient(90deg, rgba(10,10,11,0.36), transparent 38%);
+          pointer-events: none;
+        }
+
+        .portfolio-private__meta {
+          position: absolute;
+          left: clamp(18px, 2vw, 28px);
+          right: clamp(18px, 2vw, 28px);
+          bottom: clamp(18px, 2vw, 26px);
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 18px;
+          align-items: end;
+          z-index: 1;
+        }
+
+        .portfolio-private__category {
+          display: inline-flex;
+          align-items: center;
+          padding: 3px 10px;
+          border-radius: 999px;
+          border: 1px solid rgba(245,245,244,0.15);
+          background: rgba(245,245,244,0.1);
+          color: rgba(245,245,244,0.75);
+          font-family: var(--mono);
+          font-size: 10px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          margin-bottom: 8px;
+        }
+
+        .portfolio-private__label {
+          font-family: var(--mono);
+          font-size: 11px;
+          color: var(--ink-3);
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          margin-bottom: 7px;
+        }
+
+        .portfolio-private__title {
+          margin: 0;
+          color: var(--ink);
+          line-height: 1.05;
+        }
+
+        .portfolio-private__scope {
+          margin: 8px 0 0;
+          color: var(--ink-2);
+          font-size: 13px;
+        }
+
+        .portfolio-private__request {
+          min-width: 104px;
+          padding: 10px 13px;
+          border-radius: 999px;
+          border: 1px solid rgba(245,245,244,0.2);
+          color: var(--ink);
+          background: rgba(10,10,11,0.58);
+          font-size: 12px;
+          text-align: center;
+          transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), background 180ms ease-out;
+        }
+
+        .portfolio-private__card:hover .portfolio-private__cover {
+          border-color: rgba(216,255,62,0.34);
+        }
+
+        .portfolio-private__card:hover .portfolio-private__request {
+          transform: translateY(-2px);
+          background: rgba(216,255,62,0.14);
+        }
+
+        .portfolio-private__footer {
+          margin-top: clamp(34px, 5vw, 58px);
+          padding-top: 22px;
+          border-top: 1px solid var(--line);
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px 28px;
+          color: var(--ink-3);
+          font-family: var(--mono);
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+          .portfolio-private__card:hover .portfolio-private__cover {
+            transform: translateY(-4px);
+          }
+        }
+
+        @media (max-width: 900px) {
+          .portfolio-private__intro,
+          .portfolio-private__grid {
+            grid-template-columns: 1fr;
+          }
+
+          .portfolio-private__card:nth-child(1),
+          .portfolio-private__card:nth-child(4) {
+            grid-row: auto;
+            grid-column: auto;
+            max-width: none;
+            margin-left: 0;
+          }
+        }
+
+        @media (max-width: 560px) {
+          .portfolio-private__meta {
+            grid-template-columns: 1fr;
+          }
+
+          .portfolio-private__request {
+            width: max-content;
+          }
         }
       `}</style>
     </section>
@@ -107,59 +279,40 @@ function Card({ item, index }) {
   }, [item.img])
 
   const onMove = (e) => {
-    const el = ref.current; if (!el) return
+    const el = ref.current
+    if (!el) return
     const r = el.getBoundingClientRect()
     const px = (e.clientX - r.left) / r.width - 0.5
     const py = (e.clientY - r.top) / r.height - 0.5
     el.style.transform = `perspective(1100px) rotateX(${-py * 6}deg) rotateY(${px * 8}deg) translateY(-4px)`
   }
-  const onLeave = () => { if (ref.current) ref.current.style.transform = '' }
+  const onLeave = () => {
+    if (ref.current) ref.current.style.transform = ''
+  }
+  const href = `mailto:arnaupinyolwork@gmail.com?subject=${encodeURIComponent(`Portfolio request: ${item.title}`)}`
 
   return (
-    <Link to={`/case/${item.slug}`} style={{ display: 'block' }}>
-      <div ref={ref} onMouseMove={onMove} onMouseLeave={onLeave}
-        style={{
-          position: 'relative', borderRadius: 'var(--r-l)', overflow: 'hidden',
-          border: '1px solid var(--line)', background: 'var(--bg-1)',
-          aspectRatio: `${aspectRatio}`, transition: 'transform .35s var(--ease)',
-          willChange: 'transform',
-        }}>
-        <img src={item.img} alt={item.title} style={{
-          width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center',
-          transition: 'transform .8s var(--ease)', padding: 12, background: 'var(--bg)',
-        }} />
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(180deg, transparent 35%, rgba(10,10,11,0.9) 100%)',
-        }} />
-        <div style={{
-          position: 'absolute', left: 24, right: 24, bottom: 22,
-          display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16,
-        }}>
+    <a className="portfolio-private__card" href={href} aria-label={`Request more information about ${item.title}`}>
+      <div
+        ref={ref}
+        className="portfolio-private__cover"
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
+        style={{ aspectRatio: `${aspectRatio}` }}
+      >
+        <img src={item.img} alt={`${item.title} portfolio cover`} />
+        <div className="portfolio-private__meta">
           <div>
-            {/* Category label */}
-            <div style={{
-              display: 'inline-flex', alignItems: 'center',
-              padding: '3px 10px', borderRadius: 999,
-              background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255,255,255,0.15)',
-              fontFamily: 'var(--mono)', fontSize: 10, color: 'rgba(255,255,255,0.75)',
-              letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8,
-            }}>
-              {item.category}
-            </div>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 6 }}>
+            <div className="portfolio-private__category">{item.category}</div>
+            <div className="portfolio-private__label">
               {String(index + 1).padStart(2, '0')} · {item.tag}
             </div>
-            <div className="h4" style={{ margin: 0, fontWeight: 500 }}>{item.title}</div>
+            <h3 className="h4 portfolio-private__title">{item.title}</h3>
+            <p className="portfolio-private__scope">{item.scope}</p>
           </div>
-          <div style={{
-            width: 44, height: 44, borderRadius: 999, background: 'var(--acc)', color: '#0a0a0b',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, fontWeight: 500,
-            flexShrink: 0,
-          }}>→</div>
+          <span className="portfolio-private__request">Request info</span>
         </div>
       </div>
-    </Link>
+    </a>
   )
 }
