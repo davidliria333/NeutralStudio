@@ -99,9 +99,11 @@ export default function Portfolio() {
         .portfolio-private__grid {
           margin-top: clamp(48px, 7vw, 88px);
           display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: clamp(14px, 1.6vw, 22px);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: clamp(18px, 2.4vw, 34px);
           align-items: stretch;
+          max-width: 1120px;
+          margin-inline: auto;
         }
 
         .portfolio-private__card {
@@ -129,7 +131,7 @@ export default function Portfolio() {
           height: 100%;
           object-fit: contain;
           object-position: center;
-          padding: clamp(8px, 1vw, 14px);
+          padding: clamp(10px, 1.4vw, 20px);
           background: var(--bg);
         }
 
@@ -233,9 +235,6 @@ export default function Portfolio() {
             grid-template-columns: 1fr;
           }
 
-          .portfolio-private__grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
         }
 
         @media (max-width: 560px) {
