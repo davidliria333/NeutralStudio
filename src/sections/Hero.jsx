@@ -27,10 +27,11 @@ export default function Hero() {
       minHeight: '100svh',
       paddingTop: 'clamp(110px, 14vh, 150px)',
       paddingBottom: 'clamp(48px, 8vh, 80px)',
-      paddingInline: 'var(--gut)',
+      paddingInline: 0,
       overflow: 'hidden',
       background: 'radial-gradient(120% 90% at 75% 30%, #15151c 0%, #0a0a0b 65%)',
       display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
+      width: '100%',
     }}>
       {!isSmall && <DesktopDecor />}
       {isSmall && <MobileDecor />}
@@ -54,6 +55,7 @@ export default function Hero() {
         gap: 24,
         marginTop: 'clamp(28px, 6vh, 64px)',
         width: '100%', maxWidth: 'var(--maxw)', marginInline: 'auto',
+        paddingInline: 'var(--gut)',
       }}>
         {/* TOP-LEFT META */}
         <motion.div
@@ -222,7 +224,7 @@ function DesktopDecor() {
       {/* Prism — bleed to the right edge */}
       <div style={{
         position: 'absolute',
-        inset: '-6% -16% -10% 22%',
+        inset: '-6% -8% -10% 28%',
         zIndex: 0,
         opacity: 0.95,
       }}>
