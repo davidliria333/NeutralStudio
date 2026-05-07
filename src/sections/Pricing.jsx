@@ -168,7 +168,7 @@ export default function Pricing() {
               className="btn btn--ghost" style={{ whiteSpace: 'nowrap' }}>
               Send a note <span className="arrow">→</span>
             </a>
-            <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer"
+            <a href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer"
               className="btn btn--ghost" style={{ whiteSpace: 'nowrap' }}>
               Book a call
             </a>

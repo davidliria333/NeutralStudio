@@ -139,7 +139,7 @@ export default function Hero() {
           </p>
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <Magnetic radius={90} strength={0.34}>
-              <a className="btn btn--primary" data-magnet href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">
+              <a className="btn btn--primary" data-magnet href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer">
                 Book a call <span className="arrow">→</span>
               </a>
             </Magnetic>

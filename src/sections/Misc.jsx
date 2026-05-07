@@ -255,7 +255,7 @@ export function SmashCTA() {
         </p>
         <div style={{ display: 'inline-flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
           <Magnetic radius={100} strength={0.36}>
-            <a className="btn btn--primary" data-magnet href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">
+            <a className="btn btn--primary" data-magnet href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer">
               Pick a slot <span className="arrow">→</span>
             </a>
           </Magnetic>

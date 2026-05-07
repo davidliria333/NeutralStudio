@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, flexShrink: 0 }} className="footer-ctas">
-            <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer"
+            <a href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer"
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                 padding: '14px 28px', borderRadius: 'var(--r-m)',
@@ -134,7 +134,7 @@ export default function Footer() {
             ['Team', '#team'], ['FAQ', '#faq'],
           ]} onSectionClick={onSectionClick} />
           <FCol title="Contact" items={[
-            ['Book a call', 'https://cal.com/neutralstudio/30min', true],
+            ['Book a call', 'https://cal.com/neutralstudio/30min?overlayCalendar=true', true],
             ['arnaupinyolwork@gmail.com', 'mailto:arnaupinyolwork@gmail.com', true],
             ['LinkedIn', 'https://www.linkedin.com/in/arnau-pi%C3%B1ol-olabegoya-722329158/', true],
           ]} onSectionClick={onSectionClick} />

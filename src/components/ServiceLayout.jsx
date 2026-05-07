@@ -31,7 +31,7 @@ export default function ServiceLayout({ badge, title, accent, intro, painPoints,
           </motion.h1>
           <p className="lead" style={{ fontSize: 'var(--fs-lead)', maxWidth: '54ch' }}>{intro}</p>
           <div style={{ marginTop: 32, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <a className="btn btn--primary" href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">
+            <a className="btn btn--primary" href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer">
               Book a call <span className="arrow">→</span>
             </a>
             <a className="btn btn--ghost" href="mailto:arnaupinyolwork@gmail.com">Email us</a>
@@ -133,7 +133,7 @@ export default function ServiceLayout({ badge, title, accent, intro, painPoints,
           <h2 className="h2" style={{ margin: '0 0 24px' }}>
             Ready? <span className="serif" style={{ color: 'var(--ink-2)' }}>Let's start.</span>
           </h2>
-          <a className="btn btn--primary" href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">
+          <a className="btn btn--primary" href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer">
             Book a call <span className="arrow">→</span>
           </a>
         </div>
