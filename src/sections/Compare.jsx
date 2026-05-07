@@ -28,8 +28,8 @@ export default function Compare() {
                 {COLS.map((c, i) => (
                   <th key={c} style={{
                     ...th,
-                    background: i === 0 ? 'rgba(216,255,62,0.06)' : 'transparent',
-                    color: i === 0 ? 'var(--acc)' : 'var(--ink-3)',
+                    background: i === 0 ? 'rgba(245,245,244,0.04)' : 'transparent',
+                    color: i === 0 ? 'var(--ink)' : 'var(--ink-3)',
                     fontFamily: i === 0 ? 'var(--sans)' : 'var(--mono)',
                     fontSize: i === 0 ? 14 : 11,
                     letterSpacing: i === 0 ? '-0.005em' : '0.12em',
@@ -50,7 +50,7 @@ export default function Compare() {
                   {row.slice(1).map((cell, c) => (
                     <td key={c} style={{
                       ...td,
-                      background: c === 0 ? 'rgba(216,255,62,0.04)' : 'transparent',
+                      background: c === 0 ? 'rgba(245,245,244,0.025)' : 'transparent',
                       color: c === 0 ? 'var(--ink)' : 'var(--ink-2)',
                     }}>
                       <span style={{
@@ -59,9 +59,9 @@ export default function Compare() {
                         <span style={{
                           width: 14, height: 14, borderRadius: 999, flexShrink: 0,
                           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                          background: c === 0 ? 'var(--acc)' : 'transparent',
+                          background: c === 0 ? 'var(--ink)' : 'transparent',
                           border: c === 0 ? 'none' : '1px solid var(--line-3)',
-                          color: '#0a0a0b', fontSize: 9, fontWeight: 700,
+                          color: c === 0 ? 'var(--bg)' : 'var(--ink-3)', fontSize: 9, fontWeight: 700,
                         }}>{c === 0 ? '✓' : '×'}</span>
                         {cell}
                       </span>

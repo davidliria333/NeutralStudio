@@ -1,14 +1,12 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, lazy, Suspense } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import Cursor from './components/Cursor.jsx'
 import Home from './pages/Home.jsx'
+import RouteProgress from './components/RouteProgress.jsx'
 
-const Galeon = lazy(() => import('./pages/case/Galeon.jsx'))
-const Arkuos = lazy(() => import('./pages/case/Arkuos.jsx'))
-const Vira = lazy(() => import('./pages/case/Vira.jsx'))
-const CircleHome = lazy(() => import('./pages/case/CircleHome.jsx'))
 const Brand = lazy(() => import('./pages/services/Brand.jsx'))
 const Systems = lazy(() => import('./pages/services/Systems.jsx'))
 const Web = lazy(() => import('./pages/services/Web.jsx'))
@@ -46,26 +44,37 @@ function ScrollManager() {
   return null
 }
 
+const PAGE_TRANSITION = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -8 },
+  transition: { duration: 0.36, ease: [0.22, 1, 0.36, 1] },
+}
+
+function Page({ children }) {
+  return <motion.div {...PAGE_TRANSITION}>{children}</motion.div>
+}
+
 export default function App() {
+  const location = useLocation()
   return (
     <>
       <Cursor />
       <ScrollManager />
+      <RouteProgress />
       <Header />
       <main>
-        <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/case/galeon" element={<Galeon />} />
-            <Route path="/case/arkuos" element={<Arkuos />} />
-            <Route path="/case/vira" element={<Vira />} />
-            <Route path="/case/circlehome" element={<CircleHome />} />
-            <Route path="/services/brand" element={<Brand />} />
-            <Route path="/services/systems" element={<Systems />} />
-            <Route path="/services/web" element={<Web />} />
-            <Route path="/services/consulting" element={<Consulting />} />
-            <Route path="*" element={<Home />} />
-          </Routes>
+        <Suspense fallback={<RouteProgress active />}>
+          <AnimatePresence mode="wait" initial={false}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Page><Home /></Page>} />
+              <Route path="/services/brand" element={<Page><Brand /></Page>} />
+              <Route path="/services/systems" element={<Page><Systems /></Page>} />
+              <Route path="/services/web" element={<Page><Web /></Page>} />
+              <Route path="/services/consulting" element={<Page><Consulting /></Page>} />
+              <Route path="*" element={<Page><Home /></Page>} />
+            </Routes>
+          </AnimatePresence>
         </Suspense>
       </main>
       <Footer />

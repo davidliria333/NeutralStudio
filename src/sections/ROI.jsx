@@ -28,10 +28,10 @@ export default function ROI() {
         }} className="roi-grid">
           {STATS.map(s => (
             <div key={s.label} style={{ background: 'var(--bg)', padding: '36px 28px' }}>
-              <div className="serif" style={{ fontSize: 'clamp(48px, 6vw, 80px)', lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--ink)' }}>
+              <div className="serif tabular" style={{ fontSize: 'clamp(48px, 6vw, 80px)', lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--ink)' }}>
                 {s.k}
               </div>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--acc)', letterSpacing: '0.16em', textTransform: 'uppercase', marginTop: 12, marginBottom: 14 }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)', letterSpacing: '0.16em', textTransform: 'uppercase', marginTop: 12, marginBottom: 14 }}>
                 {s.label}
               </div>
               <div style={{ color: 'var(--ink-3)', fontSize: 13, lineHeight: 1.55, maxWidth: '34ch' }}>{s.desc}</div>

@@ -30,7 +30,51 @@ export default function Pricing() {
         <SectionHead eyebrow="Pricing" title="Two packs. Pick your launch speed."
           desc="Transparent pricing for early-stage teams, no surprises, no bloated scope." />
 
-        <div style={{ marginTop: 64, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }} className="price-grid">
+        {/* One-week ribbon */}
+        <div style={{
+          marginTop: 40,
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16,
+          padding: '14px 22px',
+          borderRadius: 999,
+          border: '1px solid rgba(216,255,62,0.35)',
+          background: 'linear-gradient(90deg, rgba(216,255,62,0.07), rgba(216,255,62,0.01))',
+        }} className="price-ribbon">
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+            <span style={{
+              width: 6, height: 6, borderRadius: 999, background: 'var(--acc)',
+              boxShadow: '0 0 10px var(--acc)',
+              animation: 'pulse-dot-pricing 3.6s ease-in-out infinite',
+            }} />
+            <span style={{
+              fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--acc)',
+              letterSpacing: '0.14em', textTransform: 'uppercase',
+            }}>
+              Launch in 1 week
+            </span>
+            <span style={{ color: 'var(--ink-2)', fontSize: 13.5, lineHeight: 1.5 }}>
+              Limited slots this month for sprint engagements.
+            </span>
+          </span>
+          <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%201-week%20launch%20sprint"
+             style={{
+               fontSize: 13, fontWeight: 500, color: 'var(--ink)',
+               display: 'inline-flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap',
+             }}>
+            Reserve a slot <span style={{ color: 'var(--acc)' }}>→</span>
+          </a>
+        </div>
+
+        <style>{`
+          @keyframes pulse-dot-pricing {
+            0%, 100% { box-shadow: 0 0 8px var(--acc); }
+            50% { box-shadow: 0 0 16px var(--acc); }
+          }
+          @media (max-width: 640px) {
+            .price-ribbon { padding: 14px 18px !important; }
+          }
+        `}</style>
+
+        <div style={{ marginTop: 24, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }} className="price-grid">
           {PLANS.map(p => (
             <article key={p.name} style={{
               position: 'relative', padding: 36, borderRadius: 'var(--r-l)',
@@ -49,12 +93,12 @@ export default function Pricing() {
               )}
               <div style={{ position: 'relative' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
-                  <span className="eyebrow" style={{ color: p.featured ? 'var(--acc)' : 'var(--ink-3)' }}>
+                  <span className="eyebrow" style={{ color: 'var(--ink-3)' }}>
                     {p.badge}
                   </span>
                   {p.featured && (
                     <span style={{
-                      padding: '4px 10px', borderRadius: 999, background: 'var(--acc)', color: '#0a0a0b',
+                      padding: '4px 10px', borderRadius: 999, background: 'var(--ink)', color: 'var(--bg)',
                       fontSize: 10, fontFamily: 'var(--mono)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600,
                     }}>Featured</span>
                   )}
@@ -62,17 +106,18 @@ export default function Pricing() {
                 <h3 className="h4" style={{ margin: '0 0 10px' }}>{p.name}</h3>
                 <p style={{ color: 'var(--ink-3)', fontSize: 14, margin: '0 0 28px', maxWidth: '36ch' }}>{p.sub}</p>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 28 }}>
-                  <span className="serif" style={{ fontSize: 'clamp(56px, 6vw, 80px)', lineHeight: 1, color: 'var(--ink)' }}>{p.price}</span>
+                  <span className="serif tabular" style={{ fontSize: 'clamp(56px, 6vw, 80px)', lineHeight: 1, color: 'var(--ink)' }}>{p.price}</span>
                   <span style={{ color: 'var(--ink-3)', fontSize: 13 }}>fixed price</span>
                 </div>
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px', display: 'flex', flexDirection: 'column', gap: 12 }}>
                   {p.features.map(f => (
                     <li key={f} style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 14, color: 'var(--ink-2)' }}>
                       <span style={{
-                        width: 18, height: 18, borderRadius: 999, background: p.featured ? 'var(--acc)' : 'var(--bg-elev)',
-                        color: p.featured ? '#0a0a0b' : 'var(--acc)',
+                        width: 18, height: 18, borderRadius: 999, background: 'var(--bg-elev)',
+                        color: 'var(--ink)',
                         display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                         fontSize: 11, flexShrink: 0,
+                        border: '1px solid var(--line-2)',
                       }}>✓</span>
                       {f}
                     </li>

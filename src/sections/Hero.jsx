@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import Magnetic from '../components/Magnetic.jsx'
 
 const Prism = lazy(() => import('../components/Prism.jsx'))
 
@@ -15,122 +16,186 @@ function useIsSmall() {
   return small
 }
 
+const SPRING = { type: 'spring', stiffness: 180, damping: 22 }
+
 export default function Hero() {
   const isSmall = useIsSmall()
 
   return (
     <section style={{
-      position: 'relative', minHeight: '100svh',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      paddingTop: 'clamp(110px, 14vh, 160px)',
-      paddingBottom: 'clamp(60px, 10vh, 100px)',
+      position: 'relative',
+      minHeight: '100svh',
+      paddingTop: 'clamp(110px, 14vh, 150px)',
+      paddingBottom: 'clamp(48px, 8vh, 80px)',
       paddingInline: 'var(--gut)',
       overflow: 'hidden',
-      background: 'radial-gradient(120% 80% at 50% 20%, #18181f 0%, #0a0a0b 60%)',
+      background: 'radial-gradient(120% 90% at 75% 30%, #15151c 0%, #0a0a0b 65%)',
+      display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
     }}>
       {!isSmall && <DesktopDecor />}
+      {isSmall && <MobileDecor />}
 
-      {/* Strong center vignette that protects text legibility */}
+      {/* Anchor-left vignette so type reads */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
         background: isSmall
           ? 'none'
-          : 'radial-gradient(60% 50% at 50% 50%, rgba(10,10,11,0.85) 0%, rgba(10,10,11,0.55) 40%, transparent 75%)',
+          : 'linear-gradient(90deg, rgba(10,10,11,0.86) 0%, rgba(10,10,11,0.55) 38%, rgba(10,10,11,0) 62%)',
       }} />
-
-      {/* Top + bottom fade for header / scroll cue */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
-        background: 'linear-gradient(180deg, rgba(10,10,11,0.6) 0%, transparent 18%, transparent 80%, rgba(10,10,11,0.9) 100%)',
+        background: 'linear-gradient(180deg, rgba(10,10,11,0.55) 0%, transparent 14%, transparent 82%, rgba(10,10,11,0.92) 100%)',
       }} />
 
-      {/* Mobile-only static decoration */}
-      {isSmall && <MobileDecor />}
-
-      <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', width: '100%', maxWidth: 880 }}>
+      <div className="hero-grid" style={{
+        position: 'relative', zIndex: 2,
+        display: 'grid',
+        gridTemplateColumns: 'repeat(12, 1fr)',
+        gap: 24,
+        marginTop: 'clamp(28px, 6vh, 64px)',
+        width: '100%', maxWidth: 'var(--maxw)', marginInline: 'auto',
+      }}>
+        {/* TOP-LEFT META */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ ...SPRING, delay: 0.05 }}
           style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10, padding: '7px 14px',
-            border: '1px solid var(--line-2)', borderRadius: 999,
-            background: 'rgba(10,10,11,0.6)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
-            fontSize: 11, fontFamily: 'var(--mono)', letterSpacing: '0.06em',
-            color: 'var(--ink-2)', marginBottom: 'clamp(20px, 4vh, 36px)',
+            gridColumn: '1 / span 5',
+            display: 'flex', flexDirection: 'column', gap: 8,
+            fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)',
+            letterSpacing: '0.12em', textTransform: 'uppercase',
           }}>
-          <span style={{ width: 6, height: 6, borderRadius: 999, background: 'var(--acc)', boxShadow: '0 0 12px var(--acc)' }} />
-          Fast · agile · early-stage teams
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span style={{
+              width: 6, height: 6, borderRadius: 999, background: 'var(--acc)',
+              boxShadow: '0 0 12px var(--acc)',
+              animation: 'pulse-dot 3.6s ease-in-out infinite',
+            }} />
+            Available now · Launch in 1 week
+          </span>
+          <span style={{ color: 'var(--ink-4)' }}>BCN · 2026</span>
         </motion.div>
 
+        {/* HEADLINE — asymmetric, mixed scale */}
         <motion.h1
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           style={{
-            margin: '0 auto 24px',
-            maxWidth: '14ch',
-            fontSize: 'clamp(40px, 8.5vw, 116px)',
+            gridColumn: '1 / span 9',
+            margin: 'clamp(20px, 5vh, 56px) 0 0',
+            fontFamily: 'var(--sans)',
             fontWeight: 500,
-            lineHeight: 0.96,
-            letterSpacing: '-0.045em',
             color: 'var(--ink)',
-            textShadow: '0 2px 30px rgba(10,10,11,0.6)',
+            letterSpacing: '-0.052em',
+            lineHeight: 0.92,
+            fontSize: 'clamp(44px, 9vw, 132px)',
+            display: 'flex', flexDirection: 'column', gap: '0.04em',
           }}>
-          Make your startup look{' '}
-          <span className="serif" style={{
-            color: 'var(--acc)', fontWeight: 400,
-            textShadow: '0 0 40px rgba(216,255,62,0.35)',
-          }}>inevitable.</span>
+          <Word delay={0.15} style={{ fontSize: '0.62em', alignSelf: 'flex-start', color: 'var(--ink-2)', fontWeight: 400 }}>
+            Make
+          </Word>
+          <Word delay={0.25} style={{ alignSelf: 'flex-start' }}>
+            your startup look
+          </Word>
+          <Word delay={0.4} style={{
+            alignSelf: 'flex-start',
+            fontFamily: 'var(--serif)',
+            fontStyle: 'italic',
+            fontWeight: 400,
+            color: 'var(--acc)',
+            fontSize: '0.92em',
+            marginLeft: '0.6em',
+            letterSpacing: '-0.03em',
+            textShadow: '0 0 30px rgba(216,255,62,0.25)',
+          }}>
+            inevitable.
+          </Word>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            color: 'var(--ink-2)',
-            fontSize: 'clamp(15px, 1.6vw, 19px)',
-            maxWidth: '52ch',
-            margin: '0 auto clamp(28px, 4vh, 40px)',
-            lineHeight: 1.55,
-            textShadow: '0 1px 20px rgba(10,10,11,0.6)',
-          }}>
-          The #1 design studio for early-stage startups. Identity, pitch, and web,
-          built as one system, by senior designers and exited founders.
-        </motion.p>
-
+        {/* SUB + CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          style={{ display: 'inline-flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>
-          <a className="btn btn--primary" href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">
-            Book a call <span className="arrow">→</span>
-          </a>
-          <a className="btn btn--ghost" href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question"
-            style={{ background: 'rgba(10,10,11,0.5)', backdropFilter: 'blur(8px)' }}>
-            Email us
-          </a>
+          transition={{ ...SPRING, delay: 0.55 }}
+          style={{
+            gridColumn: '1 / span 5',
+            marginTop: 'clamp(28px, 6vh, 48px)',
+            display: 'flex', flexDirection: 'column', gap: 24,
+          }}>
+          <p style={{
+            margin: 0,
+            color: 'var(--ink-2)',
+            fontSize: 'clamp(15px, 1.4vw, 17px)',
+            lineHeight: 1.55,
+            maxWidth: '40ch',
+            textShadow: '0 1px 16px rgba(10,10,11,0.55)',
+          }}>
+            The #1 design studio for early-stage startups. Identity, pitch,
+            and web, built as one system, by senior designers and exited founders.
+          </p>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            <Magnetic radius={90} strength={0.34}>
+              <a className="btn btn--primary" data-magnet href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">
+                Book a call <span className="arrow">→</span>
+              </a>
+            </Magnetic>
+            <Magnetic radius={70} strength={0.22}>
+              <a className="btn btn--ghost" data-magnet href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question"
+                style={{ background: 'rgba(10,10,11,0.5)', backdropFilter: 'blur(8px)' }}>
+                Email us
+              </a>
+            </Magnetic>
+          </div>
         </motion.div>
-      </div>
 
-      {!isSmall && (
+        {/* BOTTOM-RIGHT spec block — recipe-style */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
+          transition={{ duration: 0.8, delay: 1.1 }}
           style={{
-            position: 'absolute', left: '50%', bottom: 28, transform: 'translateX(-50%)',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
-            color: 'var(--ink-3)', fontSize: 10, fontFamily: 'var(--mono)', letterSpacing: '0.16em',
-            zIndex: 2,
-          }}>
-          <span>SCROLL</span>
-          <div style={{ width: 1, height: 30, background: 'linear-gradient(180deg, var(--ink-3), transparent)' }} />
+            gridColumn: '10 / span 3',
+            alignSelf: 'end',
+            marginTop: 'clamp(28px, 6vh, 48px)',
+            paddingTop: 16,
+            borderTop: '1px solid var(--line)',
+            fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--ink-3)',
+            letterSpacing: '0.14em', textTransform: 'uppercase',
+            display: 'flex', flexDirection: 'column', gap: 6,
+          }} className="hero-spec">
+          <span>Output / Identity · Pitch · Web</span>
+          <span>Lead time / 1–4 weeks</span>
+          <span>From / $3,000</span>
         </motion.div>
-      )}
+      </div>
+
+      <style>{`
+        @keyframes pulse-dot {
+          0%, 100% { box-shadow: 0 0 8px var(--acc); }
+          50% { box-shadow: 0 0 18px var(--acc); }
+        }
+        @media (max-width: 880px) {
+          .hero-grid { gap: 16px !important; }
+          .hero-grid > * { grid-column: 1 / -1 !important; }
+          .hero-spec { display: none !important; }
+        }
+      `}</style>
     </section>
+  )
+}
+
+function Word({ children, style, delay = 0 }) {
+  return (
+    <motion.span
+      initial={{ opacity: 0, y: '0.6em' }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: 'spring', stiffness: 160, damping: 22, delay }}
+      style={{ display: 'inline-block', ...style }}
+    >
+      {children}
+    </motion.span>
   )
 }
 
@@ -154,11 +219,12 @@ function MobileDecor() {
 function DesktopDecor() {
   return (
     <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+      {/* Prism — bleed to the right edge */}
       <div style={{
         position: 'absolute',
-        inset: '-6% -12% -8%',
+        inset: '-6% -16% -10% 22%',
         zIndex: 0,
-        opacity: 0.92,
+        opacity: 0.95,
       }}>
         <Suspense fallback={null}>
           <Prism
@@ -166,68 +232,34 @@ function DesktopDecor() {
             timeScale={0.42}
             height={3.2}
             baseWidth={5.2}
-            scale={3.08}
+            scale={3.0}
             hueShift={0.28}
             colorFrequency={0.82}
             noise={0.18}
-            glow={1.35}
-            bloom={1.15}
+            glow={1.3}
+            bloom={1.1}
             offset={{ x: 0, y: -8 }}
             suspendWhenOffscreen
           />
         </Suspense>
       </div>
+      {/* Halo — anchored right, off-center */}
       <div style={{
         position: 'absolute',
-        top: '8%',
-        left: '50%',
+        top: '6%',
+        right: '-8%',
         width: 'min(72vw, 980px)',
         height: 'min(72vw, 980px)',
-        transform: 'translateX(-50%)',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(216,255,62,0.12) 0%, rgba(216,255,62,0.06) 20%, rgba(106,140,255,0.08) 42%, transparent 74%)',
+        background: 'radial-gradient(circle, rgba(216,255,62,0.10) 0%, rgba(106,140,255,0.07) 38%, transparent 70%)',
         filter: 'blur(26px)',
       }} />
+      {/* Hairline rule — right side only */}
       <div style={{
         position: 'absolute',
-        inset: '18% 16% auto',
+        inset: '20% 6% auto 50%',
         height: 1,
-        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent)',
-      }} />
-      <div style={{
-        position: 'absolute',
-        inset: 'auto 10% 20%',
-        height: '28%',
-        borderRadius: '999px',
-        border: '1px solid rgba(255,255,255,0.07)',
-        background: 'linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))',
-        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05)',
-        transform: 'perspective(900px) rotateX(70deg)',
-        opacity: 0.85,
-      }} />
-      <div style={{
-        position: 'absolute',
-        left: '18%',
-        top: '24%',
-        width: 240,
-        height: 240,
-        borderRadius: 48,
-        border: '1px solid rgba(255,255,255,0.07)',
-        background: 'linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015))',
-        transform: 'rotate(-14deg)',
-        opacity: 0.3,
-      }} />
-      <div style={{
-        position: 'absolute',
-        right: '16%',
-        bottom: '18%',
-        width: 300,
-        height: 180,
-        borderRadius: 40,
-        border: '1px solid rgba(255,255,255,0.06)',
-        background: 'linear-gradient(180deg, rgba(106,140,255,0.10), rgba(255,255,255,0.02))',
-        transform: 'rotate(12deg)',
-        opacity: 0.35,
+        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent)',
       }} />
     </div>
   )

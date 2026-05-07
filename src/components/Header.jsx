@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import FluidGlassMenu from './FluidGlassMenu.jsx'
+import Magnetic from './Magnetic.jsx'
 
 const NAV = [
   { label: 'Services', href: '#services' },
@@ -73,9 +74,11 @@ export default function Header() {
         </nav>
 
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer" className="btn btn--primary" style={{ padding: '10px 18px', fontSize: 13 }}>
-            Book a call <span className="arrow">→</span>
-          </a>
+          <Magnetic radius={70} strength={0.28}>
+            <a href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer" data-magnet className="btn btn--primary" style={{ padding: '10px 18px', fontSize: 13 }}>
+              Book a call <span className="arrow">→</span>
+            </a>
+          </Magnetic>
           <button className="mobile-toggle" onClick={() => setOpen(o => !o)} aria-label="Menu" aria-expanded={open ? 'true' : 'false'} aria-controls="mobile-nav" style={{
             display: 'none', background: 'transparent', border: '1px solid var(--line-2)', color: 'var(--ink)',
             width: 38, height: 38, borderRadius: 999,

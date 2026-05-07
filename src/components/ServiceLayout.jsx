@@ -20,7 +20,7 @@ export default function ServiceLayout({ badge, title, accent, intro, painPoints,
           <div style={{
             display: 'inline-flex', marginTop: 28, padding: '6px 14px', borderRadius: 999,
             border: '1px solid var(--line-2)', fontSize: 11, fontFamily: 'var(--mono)',
-            color: 'var(--acc)', letterSpacing: '0.1em', textTransform: 'uppercase',
+            color: 'var(--ink-3)', letterSpacing: '0.1em', textTransform: 'uppercase',
           }}>{badge}</div>
           <motion.h1
             initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ export default function ServiceLayout({ badge, title, accent, intro, painPoints,
                 <div style={{
                   width: 36, height: 36, borderRadius: 10, background: 'var(--bg-elev)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20,
-                  fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--acc)',
+                  fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-3)',
                 }}>{String(i + 1).padStart(2, '0')}</div>
                 <h3 style={{ margin: '0 0 8px', fontSize: 17, fontWeight: 500 }}>{d.t}</h3>
                 <p style={{ margin: 0, color: 'var(--ink-3)', fontSize: 13.5, lineHeight: 1.55 }}>{d.d}</p>
@@ -91,7 +91,7 @@ export default function ServiceLayout({ badge, title, accent, intro, painPoints,
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18 }} className="res-grid">
               {results.map((r, i) => (
                 <div key={i} className="card" style={{ padding: 28 }}>
-                  <div className="serif" style={{ fontSize: 'clamp(40px, 4vw, 56px)', color: 'var(--acc)', lineHeight: 1, marginBottom: 16 }}>
+                  <div className="serif" style={{ fontSize: 'clamp(40px, 4vw, 56px)', color: 'var(--ink)', lineHeight: 1, marginBottom: 16 }}>
                     {r.metric}
                   </div>
                   <p style={{ margin: 0, color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.55 }}>"{r.quote}"</p>
@@ -119,7 +119,7 @@ export default function ServiceLayout({ badge, title, accent, intro, painPoints,
                 }} className="ba-row">
                   <div style={{ fontSize: 14, color: 'var(--ink-3)' }}>{b.what}</div>
                   <div style={{ fontSize: 14, color: 'var(--ink-2)', textDecoration: 'line-through' }}>{b.before}</div>
-                  <div style={{ fontSize: 14, color: 'var(--acc)', fontWeight: 500 }}>→ {b.after}</div>
+                  <div style={{ fontSize: 14, color: 'var(--ink)', fontWeight: 500 }}>→ {b.after}</div>
                 </div>
               ))}
             </div>
@@ -131,7 +131,7 @@ export default function ServiceLayout({ badge, title, accent, intro, painPoints,
       <section className="section" style={{ textAlign: 'center', background: '#070708' }}>
         <div className="container" style={{ maxWidth: 640 }}>
           <h2 className="h2" style={{ margin: '0 0 24px' }}>
-            Ready? <span className="serif" style={{ color: 'var(--acc)' }}>Let's start.</span>
+            Ready? <span className="serif" style={{ color: 'var(--ink-2)' }}>Let's start.</span>
           </h2>
           <a className="btn btn--primary" href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">
             Book a call <span className="arrow">→</span>

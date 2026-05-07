@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SectionHead } from './Services.jsx'
+import Magnetic from '../components/Magnetic.jsx'
 
 /* ===== TOOLING ===== */
 export function Tooling() {
@@ -52,9 +53,10 @@ export function Partnership() {
               {list.map(item => (
                 <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 14, color: 'var(--ink-2)', fontSize: 14 }}>
                   <span style={{
-                    width: 22, height: 22, borderRadius: 999, background: 'rgba(216,255,62,0.12)',
-                    color: 'var(--acc)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                    width: 22, height: 22, borderRadius: 999, background: 'var(--bg-elev)',
+                    color: 'var(--ink)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                     fontSize: 11, flexShrink: 0, marginTop: 1,
+                    border: '1px solid var(--line-2)',
                   }}>✓</span>
                   {item}
                 </li>
@@ -99,7 +101,7 @@ export function Ownership() {
               <div style={{
                 width: 44, height: 44, borderRadius: 12, background: 'var(--bg-elev)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22,
-                fontFamily: 'var(--mono)', fontSize: 13, color: 'var(--acc)',
+                fontFamily: 'var(--mono)', fontSize: 13, color: 'var(--ink-3)',
               }}>0{i + 1}</div>
               <h3 className="h5" style={{ margin: '0 0 10px' }}>{it.title}</h3>
               <p style={{ margin: 0, color: 'var(--ink-3)', fontSize: 14, lineHeight: 1.6 }}>{it.desc}</p>
@@ -115,10 +117,10 @@ export function Ownership() {
 /* ===== TEAM ===== */
 export function Team() {
   const cards = [
-    ['Exited founders', 'People who have built and sold companies, so runway, urgency, and shipping are second nature.'],
-    ['Former chiefs of design', 'Leaders who have owned brand and product design inside high-growth teams, not theory from the sidelines.'],
-    ['Senior designers', 'Hands-on craft across typography, color, layout, and digital, so deliverables stay coherent end to end.'],
-    ['50+ years combined', 'Depth across stages, categories, and markets, without the agency layers.'],
+    { mono: 'EF', tag: 'Exited founders', body: 'People who have built and sold companies, so runway, urgency, and shipping are second nature.' },
+    { mono: 'CD', tag: 'Former chiefs of design', body: 'Leaders who have owned brand and product design inside high-growth teams, not theory from the sidelines.' },
+    { mono: 'SD', tag: 'Senior designers', body: 'Hands-on craft across typography, color, layout, and digital, so deliverables stay coherent end to end.' },
+    { mono: '50', tag: 'Years combined', body: 'Depth across stages, categories, and markets, without the agency layers.' },
   ]
   return (
     <section className="section" id="team">
@@ -128,10 +130,23 @@ export function Team() {
         <div style={{
           marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20,
         }} className="team-grid">
-          {cards.map(([t, d]) => (
-            <div key={t} className="card" style={{ padding: 32 }}>
-              <h3 className="h5" style={{ margin: '0 0 10px' }}>{t}</h3>
-              <p style={{ margin: 0, color: 'var(--ink-3)', fontSize: 14, lineHeight: 1.6 }}>{d}</p>
+          {cards.map((c, i) => (
+            <div key={c.tag} className="card" style={{ padding: 28, display: 'flex', gap: 22, alignItems: 'flex-start' }}>
+              <div style={{
+                width: 54, height: 54, borderRadius: 14, flexShrink: 0,
+                background: i % 2 === 0
+                  ? 'linear-gradient(135deg, var(--bg-elev), var(--bg-2))'
+                  : 'linear-gradient(135deg, var(--bg-2), var(--bg-1))',
+                border: '1px solid var(--line-2)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontFamily: 'var(--sans)', fontWeight: 500, fontSize: 18,
+                letterSpacing: '-0.02em', color: 'var(--ink)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)',
+              }}>{c.mono}</div>
+              <div style={{ flex: 1 }}>
+                <h3 className="h5" style={{ margin: '0 0 8px' }}>{c.tag}</h3>
+                <p style={{ margin: 0, color: 'var(--ink-3)', fontSize: 14, lineHeight: 1.6 }}>{c.body}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -176,11 +191,23 @@ export function FAQ() {
                 <span className="h5" style={{ margin: 0, fontWeight: 500 }}>{q}</span>
                 <span style={{
                   width: 32, height: 32, borderRadius: 999, border: '1px solid var(--line-2)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  background: open === i ? 'var(--acc)' : 'transparent',
-                  color: open === i ? '#0a0a0b' : 'var(--ink-3)', flexShrink: 0,
-                  transition: 'all .3s var(--ease)',
-                }}>{open === i ? '−' : '+'}</span>
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                  background: open === i ? 'var(--ink)' : 'transparent',
+                  position: 'relative',
+                  transition: 'background-color 320ms cubic-bezier(0.34, 1.56, 0.64, 1), border-color 280ms var(--ease)',
+                }}>
+                  <span style={{
+                    position: 'absolute', width: 11, height: 1.5, borderRadius: 1,
+                    background: open === i ? 'var(--bg)' : 'var(--ink-3)',
+                    transition: 'background-color 240ms var(--ease)',
+                  }} />
+                  <span style={{
+                    position: 'absolute', width: 11, height: 1.5, borderRadius: 1,
+                    background: open === i ? 'var(--bg)' : 'var(--ink-3)',
+                    transform: open === i ? 'rotate(0deg)' : 'rotate(90deg)',
+                    transition: 'transform 360ms cubic-bezier(0.34, 1.56, 0.64, 1), background-color 240ms var(--ease)',
+                  }} />
+                </span>
               </button>
               <AnimatePresence>
                 {open === i && (
@@ -227,15 +254,19 @@ export function SmashCTA() {
           Tell us what you're building and when you need to show up. We reply with next steps and timing.
         </p>
         <div style={{ display: 'inline-flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
-          <a className="btn btn--primary" href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">
-            Smash the damn button <span className="arrow">→</span>
-          </a>
-          <a className="btn btn--ghost" href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Project%20inquiry">
-            Email to start
-          </a>
+          <Magnetic radius={100} strength={0.36}>
+            <a className="btn btn--primary" data-magnet href="https://cal.com/neutralstudio/30min" target="_blank" rel="noreferrer">
+              Pick a slot <span className="arrow">→</span>
+            </a>
+          </Magnetic>
+          <Magnetic radius={70} strength={0.22}>
+            <a className="btn btn--ghost" data-magnet href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Project%20inquiry">
+              Email to start
+            </a>
+          </Magnetic>
         </div>
         <p className="serif" style={{ marginTop: 56, fontSize: 22, color: 'var(--ink-3)' }}>
-          Pick a slot. We'll figure out the rest.
+          Reply within a working day.
         </p>
       </div>
     </section>

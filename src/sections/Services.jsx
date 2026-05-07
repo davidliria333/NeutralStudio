@@ -33,7 +33,7 @@ export default function Services() {
                   cursor: 'pointer', transition: 'all .3s var(--ease)',
                 }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 24 }}>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 12, color: open === i ? 'var(--acc)' : 'var(--ink-3)', minWidth: 28 }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 12, color: open === i ? 'var(--ink)' : 'var(--ink-3)', minWidth: 28, transition: 'color 220ms var(--ease)' }}>
                     {s.n}
                   </span>
                   <div style={{ flex: 1 }}>
@@ -58,12 +58,22 @@ export default function Services() {
                   </div>
                   <span style={{
                     width: 32, height: 32, borderRadius: 999, border: '1px solid var(--line-2)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    transition: 'all .3s var(--ease)',
-                    background: open === i ? 'var(--acc)' : 'transparent',
-                    color: open === i ? '#0a0a0b' : 'var(--ink-3)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                    background: open === i ? 'var(--ink)' : 'transparent',
+                    position: 'relative',
+                    transition: 'background-color 320ms cubic-bezier(0.34, 1.56, 0.64, 1), border-color 280ms var(--ease)',
                   }}>
-                    {open === i ? '−' : '+'}
+                    <span style={{
+                      position: 'absolute', width: 11, height: 1.5, borderRadius: 1,
+                      background: open === i ? 'var(--bg)' : 'var(--ink-3)',
+                      transition: 'background-color 240ms var(--ease)',
+                    }} />
+                    <span style={{
+                      position: 'absolute', width: 11, height: 1.5, borderRadius: 1,
+                      background: open === i ? 'var(--bg)' : 'var(--ink-3)',
+                      transform: open === i ? 'rotate(0deg)' : 'rotate(90deg)',
+                      transition: 'transform 360ms cubic-bezier(0.34, 1.56, 0.64, 1), background-color 240ms var(--ease)',
+                    }} />
                   </span>
                 </div>
               </div>

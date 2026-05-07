@@ -30,11 +30,12 @@ export default function Process() {
                 }}>
                 <span style={{
                   width: 36, height: 36, borderRadius: 999, flexShrink: 0,
-                  background: active === i ? 'var(--acc)' : 'transparent',
-                  border: '1px solid', borderColor: active === i ? 'var(--acc)' : 'var(--line-2)',
-                  color: active === i ? '#0a0a0b' : 'var(--ink-3)',
+                  background: active === i ? 'var(--ink)' : 'transparent',
+                  border: '1px solid', borderColor: active === i ? 'var(--ink)' : 'var(--line-2)',
+                  color: active === i ? 'var(--bg)' : 'var(--ink-3)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 600,
+                  transition: 'all 280ms var(--ease)',
                 }}>{String(i + 1).padStart(2, '0')}</span>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 4 }}>
@@ -56,7 +57,7 @@ export default function Process() {
               background: 'linear-gradient(180deg, var(--bg-2), var(--bg))',
               position: 'sticky', top: 110, alignSelf: 'start',
             }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--acc)', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 12 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 12 }}>
               Step {active + 1} / {STEPS.length}
             </div>
             <h3 className="h3" style={{ margin: '0 0 16px' }}>{STEPS[active].title}</h3>
@@ -67,7 +68,7 @@ export default function Process() {
                 <div key={o} style={{
                   display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0', borderBottom: '1px solid var(--line)',
                 }}>
-                  <span style={{ width: 4, height: 4, borderRadius: 999, background: 'var(--acc)' }} />
+                  <span style={{ width: 4, height: 4, borderRadius: 999, background: 'var(--ink-3)' }} />
                   <span style={{ fontSize: 14, color: 'var(--ink-2)' }}>{o}</span>
                 </div>
               ))}

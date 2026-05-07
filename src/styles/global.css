@@ -55,7 +55,7 @@
 }
 
 * { box-sizing: border-box; }
-*::selection { background: var(--acc); color: #0a0a0b; }
+*::selection { background: var(--ink); color: var(--bg); }
 
 html, body {
   margin: 0;
@@ -74,6 +74,11 @@ html, body {
 body { min-height: 100svh; }
 
 html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 112px; }
+
+/* Type features — opt into stylistic alts + tabular figures where it counts */
+body { font-feature-settings: "ss01", "cv11"; font-variant-ligatures: contextual; }
+.tabular { font-variant-numeric: tabular-nums lining-nums; }
 
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; }
@@ -142,19 +147,26 @@ img, video, canvas { display: block; max-width: 100%; }
   border: 1px solid transparent;
   background: transparent;
   color: var(--ink);
-  transition: all var(--d-1) var(--ease);
   white-space: nowrap;
   position: relative;
   overflow: hidden;
+  transform: translate3d(var(--mx, 0), var(--my, 0), 0) scale(var(--press, 1));
+  transition: transform 240ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 200ms var(--ease),
+              border-color 200ms var(--ease),
+              box-shadow 260ms var(--ease),
+              color 200ms var(--ease);
+  will-change: transform;
 }
+.btn:active { --press: 0.97; transition-duration: 90ms; }
+.btn[data-magnet] { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
 .btn--primary {
   background: var(--acc);
   color: #0a0a0b;
   border-color: var(--acc);
 }
 .btn--primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px -8px rgba(216, 255, 62, 0.5);
+  box-shadow: 0 12px 32px -10px rgba(216, 255, 62, 0.45);
 }
 .btn--ghost {
   border-color: var(--line-3);
@@ -168,7 +180,7 @@ img, video, canvas { display: block; max-width: 100%; }
   background: var(--ink);
   color: #0a0a0b;
 }
-.btn--dark:hover { transform: translateY(-1px); }
+.btn--dark:hover { box-shadow: 0 8px 22px -10px rgba(245, 245, 244, 0.35); }
 
 .btn .arrow {
   display: inline-block;
