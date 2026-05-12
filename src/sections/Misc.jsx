@@ -4,30 +4,182 @@ import { SectionHead } from './Services.jsx'
 import Magnetic from '../components/Magnetic.jsx'
 
 /* ===== TOOLING ===== */
+const TOOLS = [
+  {
+    name: 'Figma',
+    use: 'Identity, UI, design systems',
+    color: '#F24E1E',
+    Icon: () => (
+      <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none">
+        <path d="M8 24c2.2 0 4-1.79 4-4v-4H8c-2.21 0-4 1.79-4 4s1.79 4 4 4z" fill="#0ACF83"/>
+        <path d="M4 12c0-2.21 1.79-4 4-4h4v8H8c-2.21 0-4-1.79-4-4z" fill="#A259FF"/>
+        <path d="M4 4c0-2.21 1.79-4 4-4h4v8H8C5.79 8 4 6.21 4 4z" fill="#F24E1E"/>
+        <path d="M12 0h4c2.21 0 4 1.79 4 4s-1.79 4-4 4h-4V0z" fill="#FF7262"/>
+        <path d="M20 12c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4z" fill="#1ABCFE"/>
+      </svg>
+    ),
+  },
+  {
+    name: 'Adobe CC',
+    use: 'Print, illustration, finals',
+    color: '#FF61F6',
+    Icon: () => (
+      <svg viewBox="0 0 24 24" width="100%" height="100%">
+        <rect width="24" height="24" rx="4" fill="#FA0F00"/>
+        <path d="M7.3 16.2l-.83-2.5h-2.7l-.83 2.5H1l3-9h2L9 16.2H7.3zM5.13 8.7l-1 3h2l-1-3zm9.97 7.5V8.65c.3-.13.86-.25 1.6-.3.93-.06 1.7.16 2.25.7.55.55.83 1.36.83 2.45 0 1.2-.34 2.16-.97 2.74-.6.56-1.5.85-2.43.85-.46 0-.84-.02-1.28-.1zm1.34-1.27c.13.03.3.04.55.04.5 0 1-.16 1.34-.5.36-.36.55-.95.55-1.6 0-1.27-.66-2-1.83-2-.32 0-.55.04-.6.07v3.99z" fill="#fff"/>
+      </svg>
+    ),
+  },
+  {
+    name: 'Keynote / Slides',
+    use: 'Investor decks, pitches',
+    color: '#FBBC04',
+    Icon: () => (
+      <svg viewBox="0 0 24 24" width="100%" height="100%">
+        <rect x="3" y="4" width="18" height="14" rx="2" fill="#FBBC04"/>
+        <rect x="6" y="7" width="12" height="1.6" rx="0.8" fill="#fff" opacity="0.95"/>
+        <rect x="6" y="10.5" width="9" height="1.4" rx="0.7" fill="#fff" opacity="0.75"/>
+        <rect x="6" y="13.5" width="6.5" height="1.4" rx="0.7" fill="#fff" opacity="0.55"/>
+        <rect x="10" y="18.5" width="4" height="1.4" rx="0.7" fill="#FBBC04"/>
+      </svg>
+    ),
+  },
+  {
+    name: 'Webflow',
+    use: 'Marketing sites, handoff',
+    color: '#146EF5',
+    Icon: () => (
+      <svg viewBox="0 0 24 24" width="100%" height="100%">
+        <rect width="24" height="24" rx="4" fill="#146EF5"/>
+        <path d="M5 8l2 8h2l1.5-4.5L12 16h2l2-8h-2l-1 5-1.5-5h-1.4L8.5 13 7.5 8H5z" fill="#fff"/>
+      </svg>
+    ),
+  },
+  {
+    name: 'Notion',
+    use: 'Docs, briefs, handoff',
+    color: '#ffffff',
+    Icon: () => (
+      <svg viewBox="0 0 24 24" width="100%" height="100%">
+        <rect width="24" height="24" rx="4" fill="#fff"/>
+        <path d="M7.5 6h2l5 7V6h2v12h-2l-5-7v7h-2V6z" fill="#0a0a0b"/>
+      </svg>
+    ),
+  },
+  {
+    name: 'Google Workspace',
+    use: 'Async collab, sharing',
+    color: '#4285F4',
+    Icon: () => (
+      <svg viewBox="0 0 24 24" width="100%" height="100%">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="#4285F4" strokeWidth="2.4"/>
+        <path d="M12 7v5l3.5 2" stroke="#4285F4" strokeWidth="2.4" strokeLinecap="round" fill="none"/>
+        <circle cx="12" cy="12" r="1.6" fill="#34A853"/>
+      </svg>
+    ),
+  },
+]
+
 export function Tooling() {
-  const tools = ['Figma', 'Adobe CC', 'Slides', 'Webflow', 'Framer', 'Notion', 'Workspace', 'Linear']
   return (
     <section className="section section--tight">
       <div className="container">
-        <SectionHead eyebrow="Tooling" title="Built in the tools your team already uses"
-          desc="We design in modern stacks, so files are easy to share with contractors, agencies, and your internal team." />
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24 }}>
+          <SectionHead eyebrow="Tooling" title="Built in the tools your team already uses"
+            desc="Modern stacks, so files are easy to share with contractors, agencies, and your internal team." />
+          <div style={{
+            fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)',
+            letterSpacing: '0.12em', textTransform: 'uppercase',
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+          }}>
+            <span style={{ color: 'var(--ink-4)' }}>Stack /</span>
+            <span className="tabular" style={{ color: 'var(--ink-2)' }}>{String(TOOLS.length).padStart(2, '0')} tools</span>
+          </div>
+        </div>
+
         <div style={{
-          marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: 1,
-          background: 'var(--line)', border: '1px solid var(--line)', borderRadius: 'var(--r-l)', overflow: 'hidden',
+          marginTop: 56,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 18,
         }} className="tools-grid">
-          {tools.map(t => (
-            <div key={t} style={{
-              background: 'var(--bg)', padding: '32px 16px', textAlign: 'center',
-              fontSize: 13, color: 'var(--ink-2)', fontFamily: 'var(--mono)', letterSpacing: '0.04em',
-            }}>{t}</div>
+          {TOOLS.map((tool, i) => (
+            <ToolCard key={tool.name} tool={tool} index={i} />
           ))}
         </div>
       </div>
       <style>{`
-        @media (max-width: 880px) { .tools-grid { grid-template-columns: repeat(4, 1fr) !important; } }
-        @media (max-width: 480px) { .tools-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 880px) { .tools-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 480px) { .tools-grid { grid-template-columns: 1fr !important; } }
       `}</style>
     </section>
+  )
+}
+
+function ToolCard({ tool, index }) {
+  const { Icon } = tool
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+      style={{
+        position: 'relative',
+        borderRadius: 'var(--r-l)',
+        border: '1px solid var(--line)',
+        background: 'linear-gradient(180deg, var(--bg-1) 0%, var(--bg) 100%)',
+        padding: 26,
+        overflow: 'hidden',
+        cursor: 'default',
+        transition: 'border-color 260ms var(--ease)',
+        '--brand': tool.color,
+      }}
+      className="tool-card"
+      data-hover
+    >
+      {/* Brand-color halo behind icon — only visible on hover */}
+      <span aria-hidden style={{
+        position: 'absolute',
+        top: -30, left: -30,
+        width: 160, height: 160,
+        borderRadius: '50%',
+        background: `radial-gradient(circle, ${tool.color}40 0%, transparent 60%)`,
+        filter: 'blur(20px)',
+        opacity: 0,
+        transition: 'opacity 320ms var(--ease)',
+        pointerEvents: 'none',
+      }} className="tool-halo" />
+
+      <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 22 }}>
+        <div style={{
+          width: 40, height: 40,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          transition: 'transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+        }} className="tool-icon">
+          <Icon />
+        </div>
+        <div>
+          <h3 style={{
+            margin: '0 0 6px',
+            fontSize: 16, fontWeight: 500, color: 'var(--ink)',
+            letterSpacing: '-0.01em',
+          }}>{tool.name}</h3>
+          <p style={{
+            margin: 0,
+            fontSize: 12.5, color: 'var(--ink-3)',
+            fontFamily: 'var(--mono)', letterSpacing: '0.01em',
+            lineHeight: 1.5,
+          }}>{tool.use}</p>
+        </div>
+      </div>
+
+      <style>{`
+        .tool-card:hover { border-color: var(--line-3) !important; }
+        .tool-card:hover .tool-halo { opacity: 1 !important; }
+        .tool-card:hover .tool-icon { transform: translateY(-2px) !important; }
+      `}</style>
+    </motion.article>
   )
 }
 
