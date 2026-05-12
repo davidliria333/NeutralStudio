@@ -1,6 +1,5 @@
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useMemo, useRef } from 'react'
-import * as THREE from 'three'
+import { useMemo, useRef, useEffect, useState } from 'react'
 
 function ParticleCloud({ count = 220, color = '#f5f5f4' }) {
   const ref = useRef()
@@ -31,14 +30,40 @@ function ParticleCloud({ count = 220, color = '#f5f5f4' }) {
 }
 
 export default function AmbientField({ density = 220 }) {
+  // Mount only when near-viewport, unmount when far away; respect reduced-motion + coarse pointers
+  const wrapRef = useRef(null)
+  const [active, setActive] = useState(false)
+  const [allowed, setAllowed] = useState(true)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const small = window.matchMedia('(max-width: 760px)').matches
+    if (reduced || small) { setAllowed(false); return }
+
+    const el = wrapRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting),
+      { rootMargin: '120px' }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
   return (
-    <Canvas
-      camera={{ position: [0, 0, 4], fov: 50 }}
-      style={{ position: 'absolute', inset: 0 }}
-      dpr={[1, 1.5]}
-      gl={{ alpha: true, antialias: false }}
-    >
-      <ParticleCloud count={density} />
-    </Canvas>
+    <div ref={wrapRef} style={{ position: 'absolute', inset: 0 }}>
+      {allowed && active && (
+        <Canvas
+          camera={{ position: [0, 0, 4], fov: 50 }}
+          style={{ position: 'absolute', inset: 0 }}
+          dpr={[1, 1.5]}
+          gl={{ alpha: true, antialias: false, powerPreference: 'low-power' }}
+          frameloop="always"
+        >
+          <ParticleCloud count={density} />
+        </Canvas>
+      )}
+    </div>
   )
 }

@@ -79,6 +79,10 @@ section[id] { scroll-margin-top: 112px; }
 /* Type features — opt into stylistic alts + tabular figures where it counts */
 body { font-feature-settings: "ss01", "cv11"; font-variant-ligatures: contextual; }
 .tabular { font-variant-numeric: tabular-nums lining-nums; }
+/* All numeric mono blocks default to tabular */
+.mono, [class*="mono"] { font-variant-numeric: tabular-nums; }
+/* Paragraph line-length guard */
+p, .lead { text-wrap: pretty; }
 
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; }
@@ -194,9 +198,11 @@ img, video, canvas { display: block; max-width: 100%; }
   border: 1px solid var(--line);
   border-radius: var(--r-l);
   padding: 28px;
-  transition: border-color var(--d-2) var(--ease), transform var(--d-2) var(--ease);
+  transition: border-color var(--d-2) var(--ease), transform var(--d-2) var(--ease), background-color var(--d-2) var(--ease);
 }
 .card:hover { border-color: var(--line-2); }
+a.card, button.card, .card[role="button"] { cursor: pointer; }
+a.card:hover, button.card:hover { border-color: var(--line-3); }
 
 /* === GRID HELPERS === */
 .grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-l); overflow: hidden; }
@@ -215,7 +221,14 @@ img, video, canvas { display: block; max-width: 100%; }
 .reveal.in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Kill marquee + pulses entirely (they have no end state otherwise) */
+  [class*="marquee"], [style*="marquee"] { animation: none !important; }
 }
 
 /* === MOBILE GLOBAL FIXES === */
@@ -249,10 +262,24 @@ img, video, canvas { display: block; max-width: 100%; }
 ::-webkit-scrollbar-thumb:hover { background: var(--line-3); }
 
 /* === FOCUS === */
+:focus { outline: none; }
 :focus-visible {
   outline: 2px solid var(--acc);
   outline-offset: 3px;
   border-radius: 6px;
+  transition: outline-offset 120ms var(--ease);
+}
+.btn:focus-visible { outline-offset: 4px; }
+a:focus-visible, button:focus-visible { box-shadow: 0 0 0 4px rgba(216, 255, 62, 0.18); }
+.card:focus-within { border-color: var(--line-3); }
+
+/* === MOTION-SAFE perpetual hairline breath on eyebrow underline === */
+@media (prefers-reduced-motion: no-preference) {
+  .eyebrow::before { animation: hairline-breath 6s ease-in-out infinite; }
+}
+@keyframes hairline-breath {
+  0%, 100% { width: 18px; opacity: 0.6; }
+  50% { width: 26px; opacity: 1; }
 }
 
 /* === CANVAS BG (R3F overlays) === */
