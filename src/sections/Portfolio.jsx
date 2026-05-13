@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { useMotionValue, useSpring, motion } from 'framer-motion'
 
 const PROOFS = [
   {
@@ -505,9 +506,18 @@ export default function Portfolio() {
   )
 }
 
+const SPRING_TILT = { stiffness: 280, damping: 28, mass: 0.6 }
+
 function ProofTile({ item, index }) {
   const ref = useRef(null)
   const href = `mailto:arnaupinyolwork@gmail.com?subject=${encodeURIComponent(`Private portfolio request: ${item.type}`)}`
+
+  const rotX = useMotionValue(0)
+  const rotY = useMotionValue(0)
+  const lift = useMotionValue(0)
+  const springRotX = useSpring(rotX, SPRING_TILT)
+  const springRotY = useSpring(rotY, SPRING_TILT)
+  const springLift = useSpring(lift, SPRING_TILT)
 
   const onMove = (e) => {
     const el = ref.current
@@ -519,24 +529,34 @@ function ProofTile({ item, index }) {
     const py = y / r.height - 0.5
     el.style.setProperty('--px', `${x}px`)
     el.style.setProperty('--py', `${y}px`)
-    el.style.transform = `perspective(1200px) rotateX(${-py * 4}deg) rotateY(${px * 5}deg) translateY(-3px)`
+    rotX.set(-py * 4)
+    rotY.set(px * 5)
+    lift.set(-4)
   }
 
   const onLeave = () => {
     if (!ref.current) return
-    ref.current.style.transform = ''
     ref.current.style.removeProperty('--px')
     ref.current.style.removeProperty('--py')
+    rotX.set(0)
+    rotY.set(0)
+    lift.set(0)
   }
 
   return (
-    <a
+    <motion.a
       ref={ref}
       className="proof-lab__tile"
       href={href}
       aria-label={`Request private proof for ${item.type}`}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
+      style={{
+        rotateX: springRotX,
+        rotateY: springRotY,
+        y: springLift,
+        transformPerspective: 1200,
+      }}
     >
       <Visual kind={item.kind} />
       <div className="proof-lab__meta">
@@ -547,7 +567,7 @@ function ProofTile({ item, index }) {
         </div>
         <span className="proof-lab__badge">{item.accent}</span>
       </div>
-    </a>
+    </motion.a>
   )
 }
 

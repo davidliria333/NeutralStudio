@@ -74,13 +74,17 @@ export default function Pricing() {
           }
         `}</style>
 
-        <div style={{ marginTop: 24, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }} className="price-grid">
+        <div style={{ marginTop: 24, display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 24, alignItems: 'start' }} className="price-grid">
           {PLANS.map(p => (
             <article key={p.name} style={{
-              position: 'relative', padding: 36, borderRadius: 'var(--r-l)',
-              border: '1px solid', borderColor: p.featured ? 'var(--acc)' : 'var(--line-2)',
-              background: p.featured ? 'linear-gradient(180deg, rgba(216,255,62,0.06), rgba(216,255,62,0.01))' : 'var(--bg-1)',
+              position: 'relative', padding: p.featured ? 40 : 32, borderRadius: 'var(--r-l)',
+              border: '1px solid', borderColor: p.featured ? 'var(--acc)' : 'var(--line)',
+              background: p.featured
+                ? 'linear-gradient(180deg, rgba(216,255,62,0.06), rgba(216,255,62,0.01))'
+                : 'var(--bg-1)',
               overflow: 'hidden',
+              transform: p.featured ? 'translateY(-8px)' : 'none',
+              boxShadow: p.featured ? '0 24px 64px -16px rgba(0,0,0,0.55), 0 0 0 1px rgba(216,255,62,0.12)' : 'none',
             }}>
               {p.featured && (
                 <div style={{
@@ -106,18 +110,23 @@ export default function Pricing() {
                 <h3 className="h4" style={{ margin: '0 0 10px' }}>{p.name}</h3>
                 <p style={{ color: 'var(--ink-3)', fontSize: 14, margin: '0 0 28px', maxWidth: '36ch' }}>{p.sub}</p>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 28 }}>
-                  <span className="serif tabular" style={{ fontSize: 'clamp(56px, 6vw, 80px)', lineHeight: 1, color: 'var(--ink)' }}>{p.price}</span>
+                  <span className="serif tabular" style={{
+                    fontSize: p.featured ? 'clamp(56px, 6vw, 80px)' : 'clamp(44px, 5vw, 64px)',
+                    lineHeight: 1,
+                    color: p.featured ? 'var(--ink)' : 'var(--ink-2)',
+                  }}>{p.price}</span>
                   <span style={{ color: 'var(--ink-3)', fontSize: 13 }}>fixed price</span>
                 </div>
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px', display: 'flex', flexDirection: 'column', gap: 12 }}>
                   {p.features.map(f => (
-                    <li key={f} style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 14, color: 'var(--ink-2)' }}>
+                    <li key={f} style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 14, color: p.featured ? 'var(--ink-2)' : 'var(--ink-3)' }}>
                       <span style={{
-                        width: 18, height: 18, borderRadius: 999, background: 'var(--bg-elev)',
-                        color: 'var(--ink)',
+                        width: 18, height: 18, borderRadius: 999,
+                        background: p.featured ? 'var(--ink)' : 'var(--bg-elev)',
+                        color: p.featured ? 'var(--bg)' : 'var(--ink-3)',
                         display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 11, flexShrink: 0,
-                        border: '1px solid var(--line-2)',
+                        fontSize: 10, flexShrink: 0,
+                        border: p.featured ? 'none' : '1px solid var(--line)',
                       }}>✓</span>
                       {f}
                     </li>
@@ -179,6 +188,7 @@ export default function Pricing() {
       <style>{`
         @media (max-width: 760px) {
           .price-grid { grid-template-columns: 1fr !important; }
+          .price-grid article { transform: none !important; }
           .price-custom { flex-direction: column !important; padding: 32px 24px !important; align-items: flex-start !important; }
           .price-custom-ctas { width: 100%; }
           .price-custom-ctas .btn { flex: 1; justify-content: center; }

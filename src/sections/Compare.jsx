@@ -18,7 +18,8 @@ export default function Compare() {
         <SectionHead eyebrow="Compare" title="Why founders choose us"
           desc="Neutral Studio vs. the usual alternatives for early-stage identity, deck, and web." />
 
-        <div style={{ marginTop: 56, overflowX: 'auto', borderRadius: 'var(--r-l)', border: '1px solid var(--line)' }}>
+        {/* Desktop table */}
+        <div className="compare-table-wrap" style={{ marginTop: 56, overflowX: 'auto', borderRadius: 'var(--r-l)', border: '1px solid var(--line)' }}>
           <table style={{
             width: '100%', minWidth: 760, borderCollapse: 'collapse', fontSize: 14,
           }}>
@@ -72,7 +73,128 @@ export default function Compare() {
             </tbody>
           </table>
         </div>
+
+        {/* Mobile card stack */}
+        <div className="compare-cards">
+          {ROWS.map((row, r) => (
+            <div key={r} className="compare-card">
+              <div className="compare-card__label">{row[0]}</div>
+              <div className="compare-card__ns">
+                <span className="compare-card__check">✓</span>
+                <span>{row[1]}</span>
+              </div>
+              <div className="compare-card__others">
+                {COLS.slice(1).map((col, i) => (
+                  <div key={i} className="compare-card__other">
+                    <span className="compare-card__x">×</span>
+                    <span className="compare-card__other-label">{col}</span>
+                    <span className="compare-card__other-val">{row[i + 2]}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        .compare-cards { display: none; }
+
+        @media (max-width: 760px) {
+          .compare-table-wrap { display: none; }
+
+          .compare-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 40px;
+          }
+
+          .compare-card {
+            border: 1px solid var(--line);
+            border-radius: var(--r-m);
+            padding: 22px 20px;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+          }
+
+          .compare-card__label {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+          }
+
+          .compare-card__ns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14.5px;
+            color: var(--ink);
+            font-weight: 500;
+          }
+
+          .compare-card__check {
+            width: 20px;
+            height: 20px;
+            border-radius: 999px;
+            background: var(--ink);
+            color: var(--bg);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            flex-shrink: 0;
+          }
+
+          .compare-card__others {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-top: 12px;
+            border-top: 1px solid var(--line);
+          }
+
+          .compare-card__other {
+            display: grid;
+            grid-template-columns: 18px 1fr 1fr;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--ink-3);
+          }
+
+          .compare-card__x {
+            width: 16px;
+            height: 16px;
+            border-radius: 999px;
+            border: 1px solid var(--line-3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            color: var(--ink-4);
+            flex-shrink: 0;
+          }
+
+          .compare-card__other-label {
+            color: var(--ink-3);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+          }
+
+          .compare-card__other-val {
+            color: var(--ink-3);
+            text-align: right;
+          }
+        }
+      `}</style>
     </section>
   )
 }
