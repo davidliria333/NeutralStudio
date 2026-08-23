@@ -11,6 +11,9 @@ const chapters = [
 ]
 
 const portfolioImages = UXUI_SCENES.flatMap((scene) => scene.images)
+const portfolioMotion = [
+  [-18, -7, -7], [14, 8, 5], [-12, 12, -4], [18, -9, 7], [-15, 7, -5], [12, 13, 4], [-10, -11, -6],
+]
 
 const personalities = [
   { id: 'structure', name: 'Structure', image: '/generated/neutral/personality-structure.jpg', mobileImage: '/generated/neutral/personality-structure-mobile.jpg', width: 1536, line: 'The invisible rules.', detail: 'Grid, hierarchy, proportion and relationships before style enters the room.' },
@@ -42,6 +45,7 @@ function RegistrationMarks() {
 export default function Home() {
   const rootRef = useRef(null)
   const personalityRef = useRef(null)
+  const workRef = useRef(null)
   const [activeChapter, setActiveChapter] = useState('opening')
   const [personality, setPersonality] = useState(0)
   const [manualPersonality, setManualPersonality] = useState(false)
@@ -80,6 +84,20 @@ export default function Home() {
         const progress = Number.parseFloat(getComputedStyle(act).getPropertyValue('--sc-p')) || 0
         fragmentStage.dataset.scVerifyState = String(Math.round(progress * 20))
       }
+      const work = workRef.current
+      if (work) {
+        const rect = work.getBoundingClientRect()
+        const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / (rect.height + window.innerHeight)))
+        const alignment = Math.max(0, 1 - Math.abs(progress - .5) * 3.8)
+        work.querySelectorAll('[data-wow-item]').forEach((item) => {
+          const scatter = 1 - alignment
+          item.style.setProperty('--wow-x', `${Number(item.dataset.wowX || 0) * scatter}vw`)
+          item.style.setProperty('--wow-y', `${Number(item.dataset.wowY || 0) * scatter}vh`)
+          item.style.setProperty('--wow-r', `${Number(item.dataset.wowR || 0) * scatter}deg`)
+        })
+        work.style.setProperty('--wow-a', alignment.toFixed(3))
+        work.dataset.scVerifyState = String(Math.round(alignment * 10))
+      }
     }
     const schedule = () => {
       cancelAnimationFrame(frame)
@@ -109,22 +127,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="ns2-work" id="portfolio" data-sc-act="pan" data-sc-span="2.15" aria-labelledby="work-title">
-        <div className="ns2-work-stage" data-sc-stage>
-          <header className="ns2-work-overlay">
-            <p>Selected UX/UI</p>
-            <h2 id="work-title">Seven products.<br />No house style.</h2>
-          </header>
-          <div className="ns2-work-rail" data-sc-pan="0.035">
-            {portfolioImages.map((image, index) => (
-              <figure className="ns2-work-frame" key={image.src}>
-                <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading={index < 2 ? 'eager' : 'lazy'} />
-                <figcaption>{String(index + 1).padStart(2, '0')} / 07</figcaption>
-              </figure>
-            ))}
-            <aside className="ns2-work-outro"><strong>Built to fit<br />the idea.</strong></aside>
-          </div>
+      <section className="ns2-work" id="portfolio" data-sc-act="flow" aria-labelledby="work-title" ref={workRef} data-sc-verify-state="0">
+        <header className="ns2-work-head" data-sc-in>
+          <p>Selected UX/UI</p>
+          <h2 id="work-title">Seven products.<br />No house style.</h2>
+          <span>Different problems deserve different expressions.</span>
+        </header>
+        <div className="ns2-work-canvas" aria-label="Seven selected UX/UI studies brought into one visual system">
+          {portfolioImages.map((image, index) => (
+            <figure className={`ns2-work-frame ns2-work-frame--${index + 1}`} key={image.src} data-wow-item data-wow-x={portfolioMotion[index][0]} data-wow-y={portfolioMotion[index][1]} data-wow-r={portfolioMotion[index][2]}>
+              <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading={index < 2 ? 'eager' : 'lazy'} />
+              <figcaption>{String(index + 1).padStart(2, '0')}</figcaption>
+            </figure>
+          ))}
+          <img className="ns2-form ns2-form--torus" src="/generated/neutral/form-torus.png" alt="" width="900" height="935" loading="eager" data-wow-item data-wow-x="22" data-wow-y="-10" data-wow-r="14" />
+          <img className="ns2-form ns2-form--prism" src="/generated/neutral/form-prism.png" alt="" width="700" height="1050" loading="lazy" data-wow-item data-wow-x="-18" data-wow-y="14" data-wow-r="-11" />
+          <img className="ns2-form ns2-form--orbit" src="/generated/neutral/form-orbit.png" alt="" width="900" height="960" loading="lazy" data-wow-item data-wow-x="17" data-wow-y="12" data-wow-r="10" />
+          <p className="ns2-work-statement">One system.<br /><em>Different expressions.</em></p>
         </div>
+        <p className="ns2-work-release">Built to fit the idea, not the studio.</p>
       </section>
 
       <section className="ns2-fragment" id="fragmentation" data-sc-act="pin" data-sc-span="1.75" aria-labelledby="fragment-title">

@@ -2,22 +2,22 @@
 
 ## Outcome
 
-The existing React/Vite home has been rebuilt as an English, chaptered editorial scroll experience. The page uses the explicitly supplied `UXUI/` work and no VIRA, ARKUOS, Galeón or CircleHome material. No client, quote, result, award or performance claim was invented.
+The existing React/Vite home has been rebuilt as an English, living-editorial scroll experience. The portfolio now follows the hero in a natural vertical composition rather than a horizontal rail. The page uses the explicitly supplied `UXUI/` work and no VIRA, ARKUOS, Galeón or CircleHome material. No client, quote, result, award or performance claim was invented.
 
 Local URL: `http://127.0.0.1:5173/`
 
 ## Grammar and fingerprint
 
-Grammar: **Chaptered editorial**. Filmic one-shot lost because it repeats the previous Neutral build. Live surface misrepresents a studio as software. Continuous world contradicts the requested scenes. Typographic poster underuses the UX/UI work. Gallery/catalog weakens the argument. Split stage is too binary. Rhythmic cutlist cannot carry the quiet and relief beats.
+Grammar: **Living editorial**. The page keeps native vertical movement and uses motion as punctuation. Filmic one-shot lost because it repeats the previous Neutral build. Continuous world contradicts the requested scenes. Split stage is too binary. A conventional gallery/catalog would weaken the central system argument.
 
 The planned and shipped build differs from the existing Neutral row on grammar, navigation, hero, act sequence, close and signature move: **6/6 dimensions**.
 
 ## Journey and feeling curve
 
 1. Curiosity and respect: a type-only proposition with enough space to hold.
-2. Recognition and unease: five disconnected makers refuse to align.
-3. Relief: the fragments resolve into one connected system.
-4. Desire: seven supplied UX/UI studies move through four different visual worlds.
+2. Desire and surprise: seven supplied UX/UI studies and three sculptural forms converge into one precise composition.
+3. Recognition and unease: five disconnected makers refuse to align.
+4. Relief: the fragments resolve into one connected system.
 5. Identification: a quiet editorial spread names Neutral's role.
 6. Agency and confidence: Personality changes the whole composition under the visitor's hand.
 7. Security: seven pieces of work provide factual proof, then the engagement becomes legible.
@@ -36,15 +36,15 @@ This matches the intended curve. The first mobile pass felt longer than intended
 | Beat | Device |
 |---|---|
 | Respect | Flow title page |
+| Desire | Vertical editorial composition + bespoke alignment |
 | Recognition | Pin + bespoke fragmentation |
 | Relief | Full-width reveal |
-| Desire | Pan through four UX/UI compositions |
 | Identification | Flow + restrained parallax |
 | Agency | Pin + Personality range control |
 | Security | Flow + factual proof + stagger |
 | Impulse | Flow colophon + resolving fragments |
 
-Device families: flow/in, pin, reveal, pan, parallax and bespoke range/input interaction. No family repeats in adjacent acts. No scrub video was required.
+Device families: flow/in, bespoke alignment, pin, reveal, parallax and bespoke range/input interaction. No scrub video was required.
 
 ## Generated assets
 
@@ -56,6 +56,9 @@ Common prompt direction: high-end photographic editorial still life, physically 
 - `public/generated/neutral/personality-human.jpg`: hand-cut paper collage on a warm-black worktable.
 - `public/generated/neutral/personality-play.jpg`: folded paper, acetate and registration pins on cobalt.
 - `public/generated/neutral/personality-edge.jpg`: aluminium mesh, clamps, paper and an acid translucent blade in low-key light.
+- `public/generated/neutral/form-torus.png`: asymmetric smoked-glass and black-chrome ribbon sculpture.
+- `public/generated/neutral/form-prism.png`: architectural glass prism cut by an acid plane.
+- `public/generated/neutral/form-orbit.png`: intersecting orbital rings around a faceted core.
 
 The desktop web copies are JPEG quality 82, 1.2 MB total. Four 900 px responsive variants add 395 KB and are selected through `srcset`/`sizes` on smaller viewports. Source PNGs remain preserved in Codex's generated-image store, outside the project.
 
@@ -64,14 +67,14 @@ The desktop web copies are JPEG quality 82, 1.2 MB total. Four 900 px responsive
 - `npm run build`: pass.
 - `git diff --check`: pass.
 - ScrollCraft desktop, mobile and reduced-motion contact sheets: pass, no dead scroll.
-- Page length: 13.6 viewport-heights desktop, 14.0 mobile.
+- Page length: 12.7 viewport-heights desktop, 12.8 mobile.
 - Viewports checked: 390, 430, 768, 1024, 1440 and 1728 px.
 - Horizontal overflow: zero at every checked width.
 - Console and page errors: none at every checked width.
 - Semantic check: one `h1`, English document language, eight labelled sections.
 - Portfolio check: seven images from `UXUI/`.
 - Keyboard: focus ring visible; Personality range advances with arrow keys and announces its value.
-- Reduced motion: meaning remains present; the rail remains reachable through ScrollCraft's native fallback.
+- Reduced motion: meaning remains present; the editorial composition holds without the convergence transforms.
 
 ## Anti-slop status
 
