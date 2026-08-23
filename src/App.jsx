@@ -61,7 +61,7 @@ export default function App() {
     <>
       <ScrollManager />
       <RouteProgress />
-      <Header />
+      {!isHome && <Header />}
       <main>
         <Suspense fallback={<RouteProgress active />}>
           <AnimatePresence mode="wait" initial={false}>
