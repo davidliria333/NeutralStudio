@@ -5,7 +5,7 @@ const CALENDAR_URL = 'https://cal.com/neutralstudio/30min?overlayCalendar=true'
 
 const chapters = [
   ['opening', 'Position'], ['portfolio', 'Selected UX/UI'], ['fragmentation', 'The problem'],
-  ['system', 'One system'], ['philosophy', 'The principle'], ['personality', 'Personality'],
+  ['system', 'Services'], ['pricing', 'Pricing'], ['philosophy', 'The principle'], ['personality', 'Personality'],
   ['offer', 'Working together'], ['contact', 'Start a conversation'],
 ]
 
@@ -205,17 +205,35 @@ export default function Home() {
       </section>
 
       <section className="ns2-system" id="system" data-sc-act="flow" aria-labelledby="system-title">
-        <div className="ns2-system-visual" data-sc-in data-sc-reveal="right">
-          <img src="/generated/neutral/personality-structure.jpg" srcSet="/generated/neutral/personality-structure-mobile.jpg 900w, /generated/neutral/personality-structure.jpg 1536w" sizes="(max-width: 900px) 100vw, 45vw" alt="Registration sheets, rulers and calibration marks arranged on a studio table." width="1536" height="1024" loading="lazy" />
+        <header className="ns2-system-intro" data-sc-in>
+          <p>What we do</p>
+          <h2 id="system-title">One partner.<br />Five connected<br /><em>disciplines.</em></h2>
+          <span>From the first decision to the thing people finally see, use and remember.</span>
+        </header>
+        <ol className="ns2-services" data-sc-in data-sc-stagger="70">
+          <li><span>01</span><h3>Branding</h3><p>Distinct identities with the structure to stay recognisable as they grow.</p></li>
+          <li><span>02</span><h3>Web</h3><p>Editorial websites where story, interface and technology work as one.</p></li>
+          <li><span>03</span><h3>UX/UI</h3><p>Digital products shaped around real people, behaviour and business needs.</p></li>
+          <li><span>04</span><h3>Motion</h3><p>Movement that clarifies hierarchy, builds rhythm and gives the system life.</p></li>
+          <li><span>05</span><h3>Strategy</h3><p>Position, narrative and the decisions that give every expression direction.</p></li>
+        </ol>
+      </section>
+
+      <section className="ns2-pricing" id="pricing" data-sc-act="flow" aria-labelledby="pricing-title">
+        <RegistrationMarks />
+        <header className="ns2-pricing-head" data-sc-in>
+          <p>Clear scope. Clear starting point.</p>
+          <h2 id="pricing-title">Pricing,<br /><em>without the fog.</em></h2>
+          <span>Focused engagements for founders who need momentum, not a six-month discovery phase.</span>
+        </header>
+        <div className="ns2-pricing-list" data-sc-in data-sc-stagger="65">
+          <article><span>01</span><h3>Web</h3><p>Design and build for a focused studio or product website.</p><strong>€2K</strong></article>
+          <article><span>02</span><h3>Brand only</h3><p>A clear identity system with the essentials ready to use.</p><strong>€3K</strong></article>
+          <article><span>03</span><h3>UX/UI</h3><p>Product flows and interfaces shaped into a coherent experience.</p><strong>€4K</strong></article>
+          <article className="is-bundle"><span>04</span><h3>Brand + Web + Assets</h3><p>One connected launch system across identity, site and core materials.</p><strong>€5K</strong></article>
+          <article><span>05</span><h3>App development</h3><p>A production-ready application built from product logic to release.</p><strong>€10K</strong></article>
         </div>
-        <div className="ns2-system-copy" data-sc-in data-sc-stagger="55">
-          <p>Neutral enters here.</p><h2 id="system-title">One idea.<br />One system.<br />Every expression connected.</h2>
-          <ol>
-            <li><span>Identity</span><b>sets the language</b></li><li><span>Pitch</span><b>makes the case</b></li>
-            <li><span>Product</span><b>keeps the promise</b></li><li><span>Web</span><b>opens the door</b></li>
-            <li><span>Launch</span><b>moves as one</b></li>
-          </ol>
-        </div>
+        <p className="ns2-pricing-note">Prices in EUR. Final scope is agreed before the work starts.</p>
       </section>
 
       <section className="ns2-philosophy" id="philosophy" data-sc-act="flow" aria-labelledby="philosophy-title">
@@ -254,7 +272,7 @@ export default function Home() {
       <section className="ns2-close" id="contact" data-sc-act="flow" aria-labelledby="close-title">
         <div className="ns2-close-collage" aria-hidden="true">{personalities.map((item) => <img src={item.image} srcSet={`${item.mobileImage} 900w, ${item.image} ${item.width}w`} sizes="(max-width: 900px) 50vw, 25vw" alt="" key={item.id} loading="lazy" />)}</div>
         <div className="ns2-close-copy" data-sc-in><p>Colophon / Neutral Studio / Barcelona</p><h2 id="close-title">What are you building?</h2><a href={CALENDAR_URL} target="_blank" rel="noreferrer">Tell us your idea <span aria-hidden="true">↗</span></a></div>
-        <footer><span>Independent design studio</span><span>Strategy · Identity · Product · Web</span><span>© 2026</span></footer>
+        <footer><span>Independent design studio</span><span>Branding · Web · UX/UI · Motion · Strategy</span><span>© 2026</span></footer>
       </section>
     </div>
   )

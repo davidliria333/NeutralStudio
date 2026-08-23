@@ -115,15 +115,31 @@
 .piece-e { left: calc(46% - var(--sc-p) * 1%); top: calc(88% - var(--sc-p) * 17%); transform: rotate(calc(11deg - var(--sc-p) * 11deg)); }
 .ns2-fragment-result { position: absolute; z-index: 4; right: 5vw; bottom: 8vh; max-width: 24ch; color: var(--acid); font-size: clamp(1.4rem, 2.4vw, 2.5rem); line-height: 1.1; opacity: clamp(0, calc((var(--sc-p) - .65) * 4), 1); }
 
-.ns2-system { min-height: 105svh; display: grid; grid-template-columns: .9fr 1.1fr; margin-left: 4.25rem; color: var(--dark); background: var(--acid); }
-.ns2-system-visual { min-height: 100%; overflow: hidden; clip-path: inset(0); }
-.ns2-system-visual img { width: 100%; height: 100%; object-fit: cover; }
-.ns2-system-copy { align-self: center; padding: clamp(3rem, 7vw, 8rem); }
-.ns2-system-copy > p { font: 600 .72rem/1 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
-.ns2-system-copy h2 { max-width: 10ch; margin: 1.6rem 0 3.5rem; font-size: clamp(3rem, 5.6vw, 7rem); line-height: .89; letter-spacing: -.055em; }
-.ns2-system-copy ol { list-style: none; padding: 0; border-top: 1px solid; }
-.ns2-system-copy li { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid; }
-.ns2-system-copy li span { font-size: 1.1rem; font-weight: 700; }.ns2-system-copy li b { font: 500 .75rem/1.4 var(--mono); text-transform: uppercase; }
+.ns2-system { min-height: 110svh; display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(3rem, 7vw, 9rem); align-items: center; margin-left: 4.25rem; padding: 11vh 6vw; color: var(--dark); background: var(--acid); }
+.ns2-system-intro > p { font: 600 .72rem/1 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+.ns2-system-intro h2 { max-width: 9ch; margin: 2rem 0 3rem; font-size: clamp(3.8rem, 6.2vw, 7.6rem); line-height: .84; letter-spacing: -.065em; }
+.ns2-system-intro h2 em { font-family: var(--serif); font-weight: 400; }
+.ns2-system-intro > span { display: block; max-width: 30ch; font-size: clamp(1rem, 1.3vw, 1.25rem); line-height: 1.45; }
+.ns2-services { list-style: none; margin: 0; padding: 0; border-top: 1px solid; }
+.ns2-services li { display: grid; grid-template-columns: 3rem minmax(0, 1fr) minmax(13rem, .62fr); gap: 1.25rem; align-items: baseline; padding: clamp(1.3rem, 2.2vh, 2rem) 0; border-bottom: 1px solid; }
+.ns2-services li > span { font: 600 .65rem/1 var(--mono); }
+.ns2-services h3 { font-size: clamp(2.8rem, 5.4vw, 6.6rem); font-weight: 650; line-height: .78; letter-spacing: -.06em; }
+.ns2-services p { max-width: 34ch; font-size: .92rem; line-height: 1.45; }
+
+.ns2-pricing { position: relative; min-height: 115svh; padding: 12vh 6vw 10vh calc(4.25rem + 6vw); color: var(--paper); background: var(--dark); }
+.ns2-pricing-head { display: grid; grid-template-columns: .65fr 1.15fr .7fr; gap: 4vw; align-items: end; margin-bottom: clamp(4rem, 8vh, 7rem); }
+.ns2-pricing-head > p { align-self: start; color: var(--acid); font: 600 .68rem/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.ns2-pricing-head h2 { font-size: clamp(4.2rem, 7.8vw, 9.5rem); line-height: .8; letter-spacing: -.07em; }
+.ns2-pricing-head h2 em { color: var(--acid); font-family: var(--serif); font-weight: 400; }
+.ns2-pricing-head > span { max-width: 29ch; color: #a8aaa3; font-size: 1rem; line-height: 1.45; }
+.ns2-pricing-list { border-top: 1px solid #4b4d46; }
+.ns2-pricing-list article { display: grid; grid-template-columns: 3.5rem minmax(12rem, .85fr) 1.2fr auto; gap: 2vw; align-items: center; min-height: 8.5rem; padding: 1.5rem 0; border-bottom: 1px solid #4b4d46; }
+.ns2-pricing-list article > span { color: var(--acid); font: 600 .65rem/1 var(--mono); }
+.ns2-pricing-list h3 { max-width: 14ch; font-size: clamp(2rem, 4vw, 5rem); line-height: .85; letter-spacing: -.055em; }
+.ns2-pricing-list p { max-width: 38ch; color: #a8aaa3; font-size: .9rem; line-height: 1.45; }
+.ns2-pricing-list strong { color: var(--acid); font-size: clamp(3rem, 6vw, 7rem); font-weight: 650; line-height: .8; letter-spacing: -.07em; }
+.ns2-pricing-list .is-bundle h3 { font-family: var(--serif); font-weight: 400; }
+.ns2-pricing-note { max-width: 48ch; margin: 2rem 0 0 auto; color: #777970; font: 500 .65rem/1.5 var(--mono); text-transform: uppercase; }
 
 .ns2-work { min-height: 230svh; padding: 12vh 4vw 10vh calc(4.25rem + 4vw); color: #f4f3ee; background: #11120f; overflow: hidden; }
 .ns2-work-head { position: relative; z-index: 8; display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 3vw; align-items: end; }
@@ -187,7 +203,8 @@
   .ns2-progress { top: 3.7rem; }
   .ns2-title { align-items: center; padding: 5.5rem 1.25rem 3rem; }.ns2-title h1 { flex-direction: column; white-space: normal; font-size: clamp(5rem, 25vw, 12rem); line-height: .82; }.ns2-title h1 em { align-self: flex-end; padding-block: .05em; }.ns2-title-lockup p { margin-top: 2rem; margin-left: 0; }
   .ns2-fragment-copy { left: 1.25rem; top: 16vh; }.ns2-fragment-copy h2 { font-size: clamp(3.4rem, 15vw, 6.5rem); }.ns2-fragment-pieces span { font-size: .62rem; padding: .75rem; }.piece-a{left:calc(4% + var(--sc-p)*26%)}.piece-b{left:calc(52% - var(--sc-p)*22%)}.piece-c{left:calc(8% + var(--sc-p)*22%)}.piece-d{left:calc(51% - var(--sc-p)*21%)}.piece-e{left:calc(22% + var(--sc-p)*8%)}
-  .ns2-system { margin-left: 0; grid-template-columns: 1fr; }.ns2-system-visual { min-height: 40svh; }.ns2-system-copy { padding: 3rem 1.25rem; }.ns2-system-copy h2 { font-size: clamp(3rem, 13vw, 6rem); margin-bottom: 2.25rem; }
+  .ns2-system { min-height: auto; margin-left: 0; grid-template-columns: 1fr; gap: 4rem; padding: 7rem 1.25rem 6rem; }.ns2-system-intro h2 { font-size: clamp(3.6rem, 14vw, 6rem); }.ns2-services li { grid-template-columns: 2rem 1fr; gap: .7rem; }.ns2-services h3 { font-size: clamp(3rem, 14vw, 5.5rem); }.ns2-services p { grid-column: 2; max-width: 28ch; padding-bottom: .3rem; }
+  .ns2-pricing { min-height: auto; padding: 7rem 1.25rem 6rem; }.ns2-pricing-head { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 4rem; }.ns2-pricing-head h2 { font-size: clamp(4rem, 17vw, 7rem); }.ns2-pricing-head > span { max-width: 30ch; }.ns2-pricing-list article { grid-template-columns: 2rem 1fr auto; gap: .65rem; min-height: 0; padding: 1.6rem 0; }.ns2-pricing-list h3 { font-size: clamp(2.2rem, 9vw, 4rem); }.ns2-pricing-list p { grid-column: 2 / 4; max-width: 32ch; }.ns2-pricing-list strong { font-size: clamp(2.8rem, 12vw, 5rem); }.ns2-pricing-note { margin-left: 2rem; }
   .ns2-work { min-height: 230svh; padding: 7rem 1.25rem 5rem; }.ns2-work-head { grid-template-columns: 1fr; gap: 1rem; }.ns2-work-head h2 { width: 100%; max-width: none; font-size: clamp(2.9rem, 12vw, 5rem); }.ns2-work-head span { display: none; }.ns2-work-canvas { height: 170svh; margin-top: 3rem; }.ns2-work-frame { left: var(--frame-mx); top: var(--frame-my); width: var(--frame-mw); }.ns2-form--torus { left: 19%; top: 20%; width: 70vw; }.ns2-form--prism { right: -18%; top: 46%; width: 44vw; }.ns2-form--orbit { left: -18%; bottom: 14%; width: 63vw; }.ns2-work-statement { top: 48%; font-size: clamp(3.2rem, 14vw, 6rem); }.ns2-work-release { margin-top: 2rem; }
   .ns2-philosophy { grid-template-columns: 1fr; padding: 7rem 1.25rem; }.ns2-philosophy h2 { font-size: clamp(4.2rem, 18vw, 7rem); }.ns2-philosophy > img { height: 54svh; }.ns2-philosophy-side { display: none; }
   .ns2-personality-stage { padding: 5rem 1.25rem 1.5rem; gap: 1rem; }.ns2-personality-head { grid-template-columns: 1fr auto; }.ns2-personality-head p { display: none; }.ns2-personality-head span { text-align: right; max-width: 16ch; }.ns2-personality-canvas { grid-template-columns: 1fr; gap: 1rem; }.ns2-personality-frame { height: 43svh; }.ns2-personality-copy { display: grid; grid-template-columns: auto 1fr; gap: .5rem 1rem; align-items: end; }.ns2-personality-copy strong { max-width: none; margin: 0; font-size: clamp(2.4rem, 10vw, 4rem); }.ns2-personality-copy p { grid-column: 2; font-size: .82rem; }.ns2-personality-control { grid-template-columns: 1fr; gap: .7rem; }.ns2-personality-control > div { grid-column: 1; }
