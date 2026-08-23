@@ -80,6 +80,8 @@ export default function Home() {
 
   useEffect(() => {
     let frame = 0
+    let pointerX = 0
+    let pointerY = 0
     const update = () => {
       const stage = personalityRef.current
       if (stage) {
@@ -100,12 +102,26 @@ export default function Home() {
         const rect = work.getBoundingClientRect()
         const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / (rect.height + window.innerHeight)))
         const alignment = Math.max(0, 1 - Math.abs(progress - .5) * 3.8)
-        work.querySelectorAll('[data-wow-item]').forEach((item, index) => {
+        work.querySelectorAll('.ns2-work-frame[data-wow-item]').forEach((item, index) => {
           const scatter = 1 - alignment
           item.style.setProperty('--wow-x', `${Number(item.dataset.wowX || 0) * scatter}vw`)
           const drift = Math.sin(progress * 13 + index * 1.7) * 2.4 * scatter
           item.style.setProperty('--wow-y', `${Number(item.dataset.wowY || 0) * scatter + drift}vh`)
           item.style.setProperty('--wow-r', `${Number(item.dataset.wowR || 0) * scatter}deg`)
+        })
+        const phase = progress * 2 - 1
+        const forms = work.querySelectorAll('.ns2-form')
+        const formMotion = [
+          { x: phase * 13, y: Math.sin(progress * Math.PI * 1.8) * -8, r: -18 + progress * 48, s: .84 + alignment * .2, depth: 1 },
+          { x: phase * -11, y: Math.sin(progress * Math.PI * 2.2 + .8) * 7, r: 16 - progress * 42, s: .9 + alignment * .14, depth: -.65 },
+          { x: phase * 9, y: Math.sin(progress * Math.PI * 1.45 + 2.1) * 9, r: -28 + progress * 66, s: .86 + alignment * .18, depth: .45 },
+        ]
+        forms.forEach((form, index) => {
+          const motion = formMotion[index]
+          form.style.setProperty('--form-x', `${motion.x + pointerX * motion.depth}vw`)
+          form.style.setProperty('--form-y', `${motion.y + pointerY * motion.depth}vh`)
+          form.style.setProperty('--form-r', `${motion.r}deg`)
+          form.style.setProperty('--form-s', motion.s.toFixed(3))
         })
         work.style.setProperty('--wow-a', alignment.toFixed(3))
         work.dataset.scVerifyState = String(Math.round(alignment * 10))
@@ -115,13 +131,27 @@ export default function Home() {
       cancelAnimationFrame(frame)
       frame = requestAnimationFrame(update)
     }
+    const trackPointer = (event) => {
+      pointerX = (event.clientX / window.innerWidth - .5) * 2.2
+      pointerY = (event.clientY / window.innerHeight - .5) * 1.8
+      schedule()
+    }
+    const resetPointer = () => {
+      pointerX = 0
+      pointerY = 0
+      schedule()
+    }
     schedule()
     window.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', schedule)
+    window.addEventListener('pointermove', trackPointer, { passive: true })
+    document.documentElement.addEventListener('pointerleave', resetPointer)
     return () => {
       cancelAnimationFrame(frame)
       window.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', schedule)
+      window.removeEventListener('pointermove', trackPointer)
+      document.documentElement.removeEventListener('pointerleave', resetPointer)
     }
   }, [manualPersonality])
 
@@ -153,9 +183,9 @@ export default function Home() {
               <figcaption>{String(index + 1).padStart(2, '0')}</figcaption>
             </figure>
           ))}
-          <img className="ns2-form ns2-form--torus" src="/generated/neutral/form-torus.png" alt="" width="900" height="935" loading="eager" data-wow-item data-wow-x="22" data-wow-y="-10" data-wow-r="14" />
-          <img className="ns2-form ns2-form--prism" src="/generated/neutral/form-prism.png" alt="" width="700" height="1050" loading="lazy" data-wow-item data-wow-x="-18" data-wow-y="14" data-wow-r="-11" />
-          <img className="ns2-form ns2-form--orbit" src="/generated/neutral/form-orbit.png" alt="" width="900" height="960" loading="lazy" data-wow-item data-wow-x="17" data-wow-y="12" data-wow-r="10" />
+          <img className="ns2-form ns2-form--torus" src="/generated/neutral/form-torus.png" alt="" width="900" height="935" loading="eager" />
+          <img className="ns2-form ns2-form--prism" src="/generated/neutral/form-prism.png" alt="" width="700" height="1050" loading="lazy" />
+          <img className="ns2-form ns2-form--orbit" src="/generated/neutral/form-orbit.png" alt="" width="900" height="960" loading="lazy" />
           <p className="ns2-work-statement">One system.<br /><em>Different expressions.</em></p>
         </div>
         <p className="ns2-work-release">Built to fit the idea, not the studio.</p>
