@@ -5,17 +5,12 @@ import './HomeScrollcraft.css'
 const CALENDAR_URL = 'https://cal.com/neutralstudio/30min?overlayCalendar=true'
 
 const chapters = [
-  ['opening', 'Position'], ['fragmentation', 'The problem'], ['system', 'One system'],
-  ['portfolio', 'Selected UX/UI'], ['philosophy', 'The principle'], ['personality', 'Personality'],
+  ['opening', 'Position'], ['portfolio', 'Selected UX/UI'], ['fragmentation', 'The problem'],
+  ['system', 'One system'], ['philosophy', 'The principle'], ['personality', 'Personality'],
   ['offer', 'Working together'], ['contact', 'Start a conversation'],
 ]
 
-const portfolioGroups = [
-  { label: 'Play meets utility', note: 'Rewards, wallets and interfaces with enough character to earn attention.', images: [UXUI_SCENES[0].images[0]], tone: 'mint' },
-  { label: 'Everyday decisions', note: 'Food and nutrition flows made direct, legible and easy to act on.', images: [UXUI_SCENES[1].images[0], UXUI_SCENES[1].images[1]], tone: 'paper' },
-  { label: 'Money, without the fog', note: 'A calmer interface language for accounts, movement and control.', images: [UXUI_SCENES[2].images[0]], tone: 'blue' },
-  { label: 'Different products. Different voices.', note: 'Education, connected homes and health each get their own visual logic.', images: [UXUI_SCENES[3].images[0], UXUI_SCENES[3].images[1], UXUI_SCENES[4].images[0]], tone: 'signal' },
-]
+const portfolioImages = UXUI_SCENES.flatMap((scene) => scene.images)
 
 const personalities = [
   { id: 'structure', name: 'Structure', image: '/generated/neutral/personality-structure.jpg', mobileImage: '/generated/neutral/personality-structure-mobile.jpg', width: 1536, line: 'The invisible rules.', detail: 'Grid, hierarchy, proportion and relationships before style enters the room.' },
@@ -108,11 +103,28 @@ export default function Home() {
       <span className="ns2-progress" data-sc-progress aria-hidden="true" />
 
       <section className="ns2-title" id="opening" aria-labelledby="home-title" data-sc-act="flow">
-        <RegistrationMarks />
-        <div className="ns2-title-meta"><span>Independent design studio</span><span>Barcelona · Working worldwide</span></div>
-        <h1 id="home-title">Neutral doesn’t mean <em>everything should look the same.</em></h1>
-        <p>We build the system. Your company gets the personality.</p>
-        <a href={CALENDAR_URL} target="_blank" rel="noreferrer">Tell us your idea <span aria-hidden="true">↗</span></a>
+        <div className="ns2-title-lockup">
+          <h1 id="home-title"><span>Neutral</span><em>Studio</em></h1>
+          <p>Brand systems with structure, character and room to move.</p>
+        </div>
+      </section>
+
+      <section className="ns2-work" id="portfolio" data-sc-act="pan" data-sc-span="2.15" aria-labelledby="work-title">
+        <div className="ns2-work-stage" data-sc-stage>
+          <header className="ns2-work-overlay">
+            <p>Selected UX/UI</p>
+            <h2 id="work-title">Seven products.<br />No house style.</h2>
+          </header>
+          <div className="ns2-work-rail" data-sc-pan="0.035">
+            {portfolioImages.map((image, index) => (
+              <figure className="ns2-work-frame" key={image.src}>
+                <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading={index < 2 ? 'eager' : 'lazy'} />
+                <figcaption>{String(index + 1).padStart(2, '0')} / 07</figcaption>
+              </figure>
+            ))}
+            <aside className="ns2-work-outro"><strong>Built to fit<br />the idea.</strong></aside>
+          </div>
+        </div>
       </section>
 
       <section className="ns2-fragment" id="fragmentation" data-sc-act="pin" data-sc-span="1.75" aria-labelledby="fragment-title">
@@ -139,23 +151,6 @@ export default function Home() {
             <li><span>Product</span><b>keeps the promise</b></li><li><span>Web</span><b>opens the door</b></li>
             <li><span>Launch</span><b>moves as one</b></li>
           </ol>
-        </div>
-      </section>
-
-      <section className="ns2-work" id="portfolio" data-sc-act="pan" data-sc-span="3.2" aria-labelledby="work-title">
-        <div className="ns2-work-stage" data-sc-stage>
-          <div className="ns2-work-rail" data-sc-pan="0.04">
-            <header className="ns2-work-intro"><p>Selected UX/UI</p><h2 id="work-title">The system changes.<br />The decisions hold.</h2><span>Product design across different needs, tones and levels of complexity.</span></header>
-            {portfolioGroups.map((group, index) => (
-              <article className={`ns2-work-card ns2-work-card--${group.tone}`} key={group.label}>
-                <div className={`ns2-work-images ns2-work-images--${group.images.length}`}>{group.images.map((image) => (
-                  <img key={image.src} src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" />
-                ))}</div>
-                <footer><span>{String(index + 1).padStart(2, '0')} / UXUI</span><h3>{group.label}</h3><p>{group.note}</p></footer>
-              </article>
-            ))}
-            <aside className="ns2-work-outro"><strong>No house style.</strong><p>Just a better system for finding the right one.</p></aside>
-          </div>
         </div>
       </section>
 
