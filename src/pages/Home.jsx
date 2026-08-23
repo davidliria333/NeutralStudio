@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { UXUI_SCENES } from '../data/portfolio.js'
 import './HomeScrollcraft.css'
 
 const CALENDAR_URL = 'https://cal.com/neutralstudio/30min?overlayCalendar=true'
@@ -10,10 +9,22 @@ const chapters = [
   ['offer', 'Working together'], ['contact', 'Start a conversation'],
 ]
 
-const portfolioImages = UXUI_SCENES.flatMap((scene) => scene.images)
-const portfolioMotion = [
-  [-18, -7, -7], [14, 8, 5], [-12, 12, -4], [18, -9, 7], [-15, 7, -5], [12, 13, 4], [-10, -11, -6],
-]
+const selectedFrames = [1, 2, 3, 4, 6, 7, 8, 9, 11, 12, 14, 15, 17, 18, 19]
+const portfolioFrames = selectedFrames.map((number, index) => {
+  const column = index % 5
+  const row = Math.floor(index / 5)
+  return {
+    src: `/generated/neutral/uxui-frames/frame-${String(number).padStart(2, '0')}.png`,
+    alt: `Selected mobile UX/UI screen ${index + 1} of ${selectedFrames.length}.`,
+    x: 4 + column * 19,
+    y: 3 + row * 33,
+    width: index % 4 === 0 ? 16 : 14,
+    mobileX: 3 + (index % 3) * 32,
+    mobileY: 1 + Math.floor(index / 3) * 20,
+    mobileWidth: index % 4 === 0 ? 29 : 27,
+    motion: [((index * 5) % 7) - 3, ((index * 7) % 13) - 6, ((index * 5) % 9) - 4],
+  }
+})
 
 const personalities = [
   { id: 'structure', name: 'Structure', image: '/generated/neutral/personality-structure.jpg', mobileImage: '/generated/neutral/personality-structure-mobile.jpg', width: 1536, line: 'The invisible rules.', detail: 'Grid, hierarchy, proportion and relationships before style enters the room.' },
@@ -89,10 +100,11 @@ export default function Home() {
         const rect = work.getBoundingClientRect()
         const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / (rect.height + window.innerHeight)))
         const alignment = Math.max(0, 1 - Math.abs(progress - .5) * 3.8)
-        work.querySelectorAll('[data-wow-item]').forEach((item) => {
+        work.querySelectorAll('[data-wow-item]').forEach((item, index) => {
           const scatter = 1 - alignment
           item.style.setProperty('--wow-x', `${Number(item.dataset.wowX || 0) * scatter}vw`)
-          item.style.setProperty('--wow-y', `${Number(item.dataset.wowY || 0) * scatter}vh`)
+          const drift = Math.sin(progress * 13 + index * 1.7) * 2.4 * scatter
+          item.style.setProperty('--wow-y', `${Number(item.dataset.wowY || 0) * scatter + drift}vh`)
           item.style.setProperty('--wow-r', `${Number(item.dataset.wowR || 0) * scatter}deg`)
         })
         work.style.setProperty('--wow-a', alignment.toFixed(3))
@@ -134,9 +146,10 @@ export default function Home() {
           <span>Different problems deserve different expressions.</span>
         </header>
         <div className="ns2-work-canvas" aria-label="Seven selected UX/UI studies brought into one visual system">
-          {portfolioImages.map((image, index) => (
-            <figure className={`ns2-work-frame ns2-work-frame--${index + 1}`} key={image.src} data-wow-item data-wow-x={portfolioMotion[index][0]} data-wow-y={portfolioMotion[index][1]} data-wow-r={portfolioMotion[index][2]}>
-              <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading={index < 2 ? 'eager' : 'lazy'} />
+          {portfolioFrames.map((image, index) => (
+            <figure className="ns2-work-frame" key={image.src} data-wow-item data-wow-x={image.motion[0]} data-wow-y={image.motion[1]} data-wow-r={image.motion[2]}
+              style={{ '--frame-x': `${image.x}%`, '--frame-y': `${image.y}%`, '--frame-w': `${image.width}%`, '--frame-mx': `${image.mobileX}%`, '--frame-my': `${image.mobileY}%`, '--frame-mw': `${image.mobileWidth}%` }}>
+              <img src={image.src} alt={image.alt} loading={index < 4 ? 'eager' : 'lazy'} />
               <figcaption>{String(index + 1).padStart(2, '0')}</figcaption>
             </figure>
           ))}
