@@ -82,5 +82,5 @@ El acto 5 baja deliberadamente la densidad y el movimiento antes de la revelaci�
 - Gramática: filmic one-shot sin vídeo generado, sostenido por tipografía, retícula y activos reales.
 - Un solo pico.
 - Sin estadísticas inventadas, indicadores de sección ni instrucciones de scroll.
-- Sin portfolio ni contenido provisional. Los proyectos se incorporarán cuando el cliente entregue la selección definitiva.
+- Portfolio basado únicamente en material real entregado por el cliente. La primera categoría disponible es UX/UI; Web, Branding y Motion se incorporarán cuando lleguen sus activos, sin contenido provisional.
 - El motor ScrollCraft se copia sin modificaciones.

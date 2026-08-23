@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import Hero from '../sections/Hero.jsx'
+import PortfolioShowcase from '../sections/PortfolioShowcase.jsx'
 import './HomeScrollcraft.css'
 
 const disciplines = [
@@ -29,10 +30,15 @@ export default function Home() {
         <div className="ns-hero-stage" data-sc-stage data-sc-spotlight>
           <Hero />
           <div className="ns-hero-plate" aria-hidden="true" />
-          <div className="ns-hero-copy" data-sc-cue="0 0.82 0">
-            <p className="ns-kicker">Independent creative studio</p>
+          <div className="ns-hero-scan" aria-hidden="true"><span>Identity revealed</span></div>
+          <div className="ns-hero-status" aria-hidden="true">
+            <span />
+            Strategy / Brand / Product / Web
+          </div>
+          <div className="ns-hero-copy" data-sc-cue="0 0.44 0 0.54">
+            <p className="ns-kicker">NeutralStudio / Independent creative team</p>
             <h1 id="ns-hero-title">Make the idea<br />feel real.</h1>
-            <p>Strategy, brand, product and web. One team, one living system.</p>
+            <p>Strategy, brand, product and web. Built together from day one.</p>
           </div>
         </div>
       </section>
@@ -46,7 +52,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="ns-range" data-sc-act="pan" data-sc-span="4.1" data-sc-drift="#111215">
+      <section className="ns-range" data-sc-act="pan" data-sc-span="3" data-sc-drift="#111215">
         <div className="ns-range-stage" data-sc-stage>
           <div className="ns-range-rail" data-sc-pan="0.05">
             <div className="ns-range-lead">
@@ -67,6 +73,8 @@ export default function Home() {
         </div>
       </section>
 
+      <PortfolioShowcase />
+
       <section className="ns-method sc-section" data-sc-act="flow" data-sc-drift="#0c0d0f" id="process">
         <div className="sc-wrap ns-method-grid" data-sc-in data-sc-stagger="70">
           <div>
@@ -81,7 +89,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="ns-assembly" data-sc-act="pin" data-sc-span="3.2" data-sc-drift="#090a0b" aria-labelledby="assembly-title">
+      <section className="ns-assembly" data-sc-act="pin" data-sc-span="3.4" data-sc-drift="#090a0b" aria-labelledby="assembly-title">
         <div className="ns-assembly-stage" data-sc-stage>
           <div className="ns-assembly-pieces" aria-hidden="true">
             <span className="ns-piece ns-piece--strategy">Strategy</span>

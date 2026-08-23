@@ -3,7 +3,6 @@ import { useEffect, lazy, Suspense } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
-import Cursor from './components/Cursor.jsx'
 import Home from './pages/Home.jsx'
 import RouteProgress from './components/RouteProgress.jsx'
 
@@ -60,7 +59,6 @@ export default function App() {
   const isHome = location.pathname === '/'
   return (
     <>
-      <Cursor />
       <ScrollManager />
       <RouteProgress />
       <Header />

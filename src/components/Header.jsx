@@ -5,6 +5,7 @@ import Magnetic from './Magnetic.jsx'
 
 const NAV = [
   { label: 'Services', href: '#services' },
+  { label: 'Portfolio', href: '#portfolio' },
   { label: 'Process', href: '#process' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -51,11 +52,11 @@ export default function Header() {
       <div style={{
         maxWidth: 'var(--maxw)', margin: '0 auto',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        background: scrolled ? 'rgba(10,10,11,0.7)' : 'rgba(10,10,11,0.0)',
-        backdropFilter: scrolled ? 'blur(20px) saturate(160%)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(160%)' : 'none',
+        background: scrolled ? 'rgba(10,10,11,0.78)' : 'rgba(10,10,11,0.62)',
+        backdropFilter: 'blur(20px) saturate(160%)',
+        WebkitBackdropFilter: 'blur(20px) saturate(160%)',
         border: '1px solid',
-        borderColor: scrolled ? 'var(--line)' : 'transparent',
+        borderColor: scrolled ? 'var(--line-2)' : 'var(--line)',
         borderRadius: 999,
         padding: '10px 14px 10px 20px',
         transition: 'background-color .35s var(--ease), border-color .35s var(--ease), backdrop-filter .35s var(--ease)',

@@ -46,7 +46,9 @@ export default function Hero() {
         onPointerMove={trackPointer}
         onPointerLeave={() => setCursor(null)}
       >
+        <path d={d} className="vector-hero__ghost" />
         <path d={d} className="vector-hero__word" />
+        <path d={d} className="vector-hero__trace" pathLength="1" />
         <g aria-hidden="true" pointerEvents="none">
           {COMMANDS.map((command, index) => {
             if (command.t === 'Z') {
@@ -92,17 +94,44 @@ export default function Hero() {
         .vector-hero__art {
           display: block; width: 100%; height: auto; aspect-ratio: 8 / 3;
           max-width: none; flex: none; overflow: hidden; touch-action: pan-y; cursor: default;
+          transform: translate3d(calc(7vw - var(--sc-p, 0) * 7vw), 0, 0)
+            scale(calc(1.05 - var(--sc-p, 0) * 0.08));
+          transform-origin: center;
+          will-change: transform;
         }
-        .vector-hero__word { fill: #0f0e0c; }
-        .vector-hero__line { stroke: #2d9cdb; stroke-width: 2; }
-        .vector-hero__control { fill: #2d9cdb; stroke: #fff; stroke-width: 1.5; }
+        .vector-hero__ghost {
+          fill: rgba(15, 14, 12, 0.035); stroke: rgba(15, 14, 12, 0.17);
+          stroke-width: 1.5; vector-effect: non-scaling-stroke;
+        }
+        .vector-hero__word {
+          fill: #0f0e0c;
+          clip-path: inset(0 calc(100% - var(--sc-p, 0) * 100%) 0 0);
+        }
+        .vector-hero__trace {
+          fill: none; stroke: #d8ff3e; stroke-width: 5;
+          vector-effect: non-scaling-stroke; stroke-dasharray: 1;
+          stroke-dashoffset: calc(1 - var(--sc-p, 0));
+          opacity: calc(1 - var(--sc-p, 0));
+        }
+        .vector-hero__line { stroke: #0f0e0c; stroke-width: 1.5; }
+        .vector-hero__control { fill: #d8ff3e; stroke: #0f0e0c; stroke-width: 1.5; }
         .vector-hero__anchor { fill: #fff; stroke: #0f0e0c; stroke-width: 1.5; }
-        @media (max-width: 760px) { .vector-hero__art { width: 178%; } }
+        @media (max-width: 760px) {
+          .vector-hero__art {
+            width: 122%;
+            transform: translate3d(calc(3vw - var(--sc-p, 0) * 3vw), -7vh, 0)
+              scale(calc(1.03 - var(--sc-p, 0) * 0.04));
+          }
+        }
         @media (hover: none) {
           .vector-hero__line, .vector-hero__control, .vector-hero__anchor { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .vector-hero__art { transform: none; }
+          .vector-hero__word { display: none; }
+          .vector-hero__trace { display: none; }
         }
       `}</style>
     </section>
   )
 }
-

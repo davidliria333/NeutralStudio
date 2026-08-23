@@ -48,7 +48,11 @@
 
 .ns-hero-stage .vector-hero {
   min-height: 100svh;
-  background: #f1f1ed;
+  background:
+    linear-gradient(rgba(10,10,11,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,10,11,0.035) 1px, transparent 1px),
+    #f1f1ed;
+  background-size: 4rem 4rem;
 }
 
 .ns-hero-stage .vector-hero__word { fill: #0a0a0b; }
@@ -59,8 +63,9 @@
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(46rem 32rem at var(--sc-mx, 70%) var(--sc-my, 35%), rgba(216, 255, 62, 0.17), transparent 70%),
-    linear-gradient(90deg, rgba(241, 241, 237, 0.96) 0 38%, transparent 68%);
+    radial-gradient(42rem 30rem at var(--sc-mx, 72%) var(--sc-my, 38%), rgba(216, 255, 62, 0.2), transparent 70%),
+    linear-gradient(90deg, rgba(241, 241, 237, 0.74) 0 28%, transparent 58%);
+  opacity: calc(1 - var(--sc-p, 0) * 0.9);
 }
 
 .ns-hero-plate {
@@ -68,10 +73,71 @@
   z-index: 2;
   left: 0;
   bottom: 0;
-  width: min(54rem, 74vw);
-  height: 74%;
+  width: min(48rem, 62vw);
+  height: 64%;
   pointer-events: none;
-  background: linear-gradient(15deg, #f1f1ed 0 56%, rgba(241,241,237,0.96) 70%, transparent 100%);
+  background: radial-gradient(ellipse at 0 100%, #f1f1ed 0 52%, rgba(241,241,237,0.9) 67%, transparent 78%);
+  opacity: calc(1 - var(--sc-p, 0) * 1.7);
+}
+
+.ns-hero-scan {
+  position: absolute;
+  z-index: 2;
+  top: 18%;
+  bottom: 16%;
+  left: 0;
+  width: 1px;
+  pointer-events: none;
+  background: linear-gradient(transparent, rgba(10,10,11,0.42) 18%, rgba(10,10,11,0.42) 82%, transparent);
+  opacity: calc(0.8 - var(--sc-p, 0) * 0.9);
+  transform: translate3d(calc(var(--sc-p, 0) * 100vw), 0, 0);
+  will-change: transform, opacity;
+}
+
+.ns-hero-scan::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.55rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--sc-accent);
+  border: 2px solid #0a0a0b;
+  transform: translate(-50%, -50%);
+}
+
+.ns-hero-scan span {
+  position: absolute;
+  top: 0;
+  left: 0.75rem;
+  width: max-content;
+  color: #4c4c47;
+  font: 500 0.62rem/1 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ns-hero-status {
+  position: absolute;
+  z-index: 3;
+  right: var(--sc-gutter);
+  bottom: clamp(2.4rem, 7vh, 5.5rem);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #4c4c47;
+  font: 500 0.62rem/1.2 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ns-hero-status > span {
+  width: 0.55rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--sc-accent);
+  border: 1px solid #0a0a0b;
 }
 
 .ns-hero-copy {
@@ -91,6 +157,17 @@
   line-height: 0.84;
   letter-spacing: -0.065em;
   text-wrap: balance;
+}
+
+.ns-hero-copy h1::after {
+  content: '';
+  display: inline-block;
+  width: 0.16em;
+  height: 0.16em;
+  margin-left: 0.06em;
+  border-radius: 50%;
+  background: var(--sc-accent);
+  vertical-align: 0.08em;
 }
 
 .ns-hero-copy > p:last-child {
@@ -246,6 +323,7 @@
 .ns-close-link { display: inline-flex; gap: 1rem; align-items: center; padding-bottom: 0.45rem; border-bottom: 2px solid currentColor; font-size: clamp(1.25rem, 2vw, 2rem); font-weight: 600; }
 
 @media (prefers-reduced-motion: reduce) {
+  .ns-hero-scan { display: none; }
   .ns-piece { opacity: 1; }
   .ns-piece--strategy { left: 12%; top: 18%; }
   .ns-piece--brand { right: 12%; top: 18%; }
@@ -255,10 +333,13 @@
 }
 
 @media (max-width: 760px) {
-  .ns-hero-stage::after { background: linear-gradient(0deg, rgba(241,241,237,0.98) 0 44%, transparent 76%); }
-  .ns-hero-plate { width: 100%; height: 60%; background: linear-gradient(0deg, #f1f1ed 0 60%, transparent 100%); }
+  .ns-hero-stage::after { background: linear-gradient(0deg, rgba(241,241,237,0.98) 0 40%, transparent 70%); }
+  .ns-hero-plate { width: 100%; height: 57%; background: linear-gradient(0deg, #f1f1ed 0 58%, transparent 100%); }
+  .ns-hero-status { display: none; }
+  .ns-hero-scan { top: 24%; bottom: 30%; }
   .ns-hero-copy { max-width: calc(100vw - 2 * var(--sc-gutter)); }
-  .ns-hero-copy h1 { font-size: clamp(3.5rem, 17vw, 5.8rem); }
+  .ns-hero-copy h1 { font-size: clamp(3.45rem, 16vw, 5.8rem); }
+  .ns-hero-copy .ns-kicker { max-width: 28ch; line-height: 1.45; }
   .ns-hero-copy > p:last-child { max-width: 28ch; }
   .ns-tension-grid,
   .ns-method-grid { grid-template-columns: 1fr; }

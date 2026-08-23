@@ -421,7 +421,7 @@ export default function DomeGallery({
 
       const animatingOverlay = document.createElement('div')
       animatingOverlay.className = 'enlarge-closing'
-      animatingOverlay.style.cssText = `position:absolute;left:${overlayRelativeToRoot.left}px;top:${overlayRelativeToRoot.top}px;width:${overlayRelativeToRoot.width}px;height:${overlayRelativeToRoot.height}px;z-index:9999;border-radius:var(--enlarge-radius, 32px);overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:all ${enlargeTransitionMs}ms ease-out;pointer-events:none;margin:0;transform:none;`
+      animatingOverlay.style.cssText = `position:absolute;left:${overlayRelativeToRoot.left}px;top:${overlayRelativeToRoot.top}px;width:${overlayRelativeToRoot.width}px;height:${overlayRelativeToRoot.height}px;z-index:9999;border-radius:var(--enlarge-radius, 32px);overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:left ${enlargeTransitionMs}ms ease-out,top ${enlargeTransitionMs}ms ease-out,width ${enlargeTransitionMs}ms ease-out,height ${enlargeTransitionMs}ms ease-out,opacity ${enlargeTransitionMs}ms ease-out;pointer-events:none;margin:0;transform:none;`
 
       const originalImg = overlay.querySelector('img')
       if (originalImg) {
