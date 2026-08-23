@@ -6,3 +6,5 @@ dist/
 .vercel
 react-gallery/node_modules/
 react-gallery/dist/
+scroll-craft/
+scrollcraft/builds/*/lab/

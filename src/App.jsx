@@ -57,6 +57,7 @@ function Page({ children }) {
 
 export default function App() {
   const location = useLocation()
+  const isHome = location.pathname === '/'
   return (
     <>
       <Cursor />
@@ -77,7 +78,7 @@ export default function App() {
           </AnimatePresence>
         </Suspense>
       </main>
-      <Footer />
+      {!isHome && <Footer />}
     </>
   )
 }

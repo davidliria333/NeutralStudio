@@ -5,11 +5,8 @@ import Magnetic from './Magnetic.jsx'
 
 const NAV = [
   { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Why us', href: '#compare' },
   { label: 'Process', href: '#process' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Header() {
@@ -61,7 +58,7 @@ export default function Header() {
         borderColor: scrolled ? 'var(--line)' : 'transparent',
         borderRadius: 999,
         padding: '10px 14px 10px 20px',
-        transition: 'all .35s var(--ease)',
+        transition: 'background-color .35s var(--ease), border-color .35s var(--ease), backdrop-filter .35s var(--ease)',
       }}>
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--ink)' }}>
           <img src="/brand-favicon.svg" alt="" width="26" height="26" style={{ borderRadius: 6, display: 'block' }} />
@@ -76,7 +73,7 @@ export default function Header() {
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <Magnetic radius={70} strength={0.28}>
             <a href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer" data-magnet className="btn btn--primary" style={{ padding: '10px 18px', fontSize: 13 }}>
-              Book a call <span className="arrow">→</span>
+              Cuéntanos tu idea <span className="arrow">→</span>
             </a>
           </Magnetic>
           <button className="mobile-toggle" onClick={() => setOpen(o => !o)} aria-label="Menu" aria-expanded={open ? 'true' : 'false'} aria-controls="mobile-nav" style={{
