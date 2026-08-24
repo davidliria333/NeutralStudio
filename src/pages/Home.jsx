@@ -189,7 +189,7 @@ export default function Home() {
                 src={segment.poster}
                 alt=""
                 loading={index === 0 ? 'eager' : 'lazy'}
-                fetchPriority={index === 0 ? 'high' : 'auto'}
+                fetchpriority={index === 0 ? 'high' : 'auto'}
                 decoding={index === 0 ? 'sync' : 'async'}
               />
               <video
