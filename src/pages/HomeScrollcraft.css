@@ -9,6 +9,7 @@
   --sc-font-text: 'Manrope', system-ui, sans-serif;
   --sc-font-mono: 'Manrope', system-ui, sans-serif;
   --journey-p: 0;
+  --approach-p: 0;
   --portfolio-p: 0;
   color: var(--sc-ink);
   font-family: var(--sc-font-text);
@@ -283,6 +284,7 @@ body:has(.landscape-page) .landscape-page {
 .landscape-route button:focus-visible,
 .landscape-menu__cta:focus-visible,
 .landscape-hero__cta:focus-visible,
+.landscape-pricing__cta:focus-visible,
 .landscape-panel > a:focus-visible {
   outline: 2px solid #111;
   outline-offset: 3px !important;
@@ -481,56 +483,142 @@ body:has(.landscape-page) .landscape-page {
 }
 
 .landscape-copy__approach {
-  top: 12%;
-  right: clamp(5.5rem, 8vw, 9rem);
-  width: min(57rem, 61vw);
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
-.landscape-copy__approach h2 {
-  max-width: 20ch;
-  font-size: clamp(2.65rem, 3.7vw, 4.65rem);
+.landscape-approach__statement {
+  position: absolute;
+  top: clamp(7.75rem, 15vh, 10.5rem);
+  left: clamp(1.5rem, 4.5vw, 5.25rem);
+  width: min(40rem, 41vw);
+  padding: clamp(1.35rem, 2vw, 2.1rem);
+  background: rgba(255, 255, 255, .7);
 }
 
-.landscape-copy__approach > p {
-  max-width: 43rem;
-  margin: 1.05rem 0 0;
+.landscape-approach__statement h2 {
+  max-width: 16ch;
+  font-size: clamp(2.55rem, 3.25vw, 4.2rem);
+}
+
+.landscape-approach__statement > p {
+  max-width: 37rem;
+  margin: 1rem 0 0;
+}
+
+.landscape-approach__map {
+  position: absolute;
+  inset: 31vh clamp(1.5rem, 4.5vw, 5.25rem) 5.5vh;
+}
+
+.landscape-approach__map > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.landscape-approach__track,
+.landscape-approach__progress {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.landscape-approach__track {
+  stroke: rgba(19, 48, 36, .18);
+  stroke-width: 1.25;
+  stroke-dasharray: .012 .018;
+}
+
+.landscape-approach__progress {
+  stroke: rgba(17, 35, 28, .62);
+  stroke-width: 1.8;
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--approach-p));
+  will-change: stroke-dashoffset;
 }
 
 .landscape-approach__steps {
-  margin: 1.35rem 0 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   padding: 0;
-  border-top: 1px solid rgba(23, 40, 32, .22);
-  counter-reset: approach-step;
   list-style: none;
 }
 
 .landscape-approach__steps li {
+  --step-p: 0;
+  position: absolute;
   display: grid;
-  grid-template-columns: 1.4rem minmax(8.5rem, .65fr) 1.35fr;
-  gap: .7rem;
-  align-items: baseline;
-  padding: .78rem 0;
-  border-bottom: 1px solid rgba(23, 40, 32, .15);
-  counter-increment: approach-step;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: .65rem;
+  width: min(22rem, 27vw);
+  align-items: start;
+  opacity: var(--step-p);
+  transform: translate3d(0, calc((1 - var(--step-p)) * 1.5rem), 0);
+  will-change: opacity, transform;
 }
 
-.landscape-approach__steps li::before {
-  content: counter(approach-step, decimal-leading-zero);
-  color: var(--sc-ink-soft);
-  font-size: .52rem;
+.landscape-approach__steps li:nth-child(1) {
+  --step-p: clamp(0, calc((var(--approach-p) - .06) / .2), 1);
+  top: 48%;
+  left: 3%;
+}
+
+.landscape-approach__steps li:nth-child(2) {
+  --step-p: clamp(0, calc((var(--approach-p) - .27) / .2), 1);
+  top: 13%;
+  left: 40%;
+}
+
+.landscape-approach__steps li:nth-child(3) {
+  --step-p: clamp(0, calc((var(--approach-p) - .48) / .18), 1);
+  right: 0;
+  top: 51%;
+}
+
+.landscape-approach__marker {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 1px solid rgba(17, 35, 28, .2);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(12, 25, 20, .78);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .2),
+    0 8px 24px rgba(20, 45, 34, .16);
+  font-size: .53rem;
   font-weight: 800;
-  letter-spacing: .08em;
+  letter-spacing: .06em;
+  line-height: 1;
 }
 
-.landscape-approach__steps strong {
-  font-size: clamp(.92rem, 1.2vw, 1.16rem);
+.landscape-approach__card {
+  min-height: 7.75rem;
+  padding: 1rem 1.05rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .74);
+}
+
+.landscape-approach__card strong {
+  display: block;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
   font-weight: 700;
   letter-spacing: -.025em;
 }
 
-.landscape-approach__steps span {
+.landscape-approach__card > span {
+  display: block;
+  margin-top: .45rem;
   color: var(--sc-ink-soft);
-  font-size: clamp(.72rem, .86vw, .88rem);
+  font-size: clamp(.72rem, .82vw, .84rem);
   line-height: 1.45;
 }
 
@@ -680,41 +768,177 @@ body:has(.landscape-page) .landscape-page {
 }
 
 .landscape-copy__services {
-  top: 11vh;
+  top: clamp(5.5rem, 9vh, 7.5rem);
+  bottom: clamp(3rem, 6vh, 5rem);
   left: clamp(1.25rem, 5vw, 6rem);
   right: clamp(5.5rem, 9vw, 10rem);
+  overflow: visible;
+}
+
+.landscape-pricing-shell {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: min(34rem, 100%);
+  min-height: min(30rem, 100%);
+  margin: auto 0;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, .28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .88),
+    inset 0 -1px 0 rgba(37, 64, 52, .08),
+    0 2px 5px rgba(71, 91, 82, .08),
+    0 22px 48px rgba(35, 57, 47, .12),
+    0 54px 78px rgba(35, 57, 47, .05);
+}
+
+.landscape-pricing-shell > * {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+}
+
+.landscape-pricing-glass {
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .52);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, .2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .82),
+    inset 0 -1px 0 rgba(30, 61, 47, .08);
+}
+
+.landscape-pricing-glass > .glass,
+.landscape-pricing-glass > .glass > div:last-child {
+  width: 100%;
+  height: 100%;
+}
+
+.landscape-pricing__content {
+  position: relative;
+  z-index: 2;
   display: grid;
-  grid-template-columns: minmax(18rem, .78fr) 1.22fr;
-  gap: clamp(2rem, 6vw, 7rem);
-  align-items: start;
+  grid-template-columns: minmax(17rem, .8fr) minmax(30rem, 1.2fr);
+  gap: clamp(1.2rem, 2.4vw, 2.4rem);
+  width: 100%;
+  height: 100%;
+  padding: clamp(1.2rem, 2vw, 1.75rem);
+  color: var(--sc-ink);
+  background: linear-gradient(132deg, rgba(255, 255, 255, .18), rgba(255, 255, 255, .04) 56%, rgba(206, 228, 217, .12));
+}
+
+.landscape-pricing__content::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: '';
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 11% 0%, rgba(255, 255, 255, .44), transparent 34%),
+    linear-gradient(108deg, transparent 58%, rgba(255, 255, 255, .16) 73%, transparent 88%);
+}
+
+.landscape-services__intro {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(.25rem, .8vw, .7rem) clamp(.2rem, 1vw, 1rem) clamp(.2rem, .8vw, .7rem) clamp(.2rem, .5vw, .55rem);
+}
+
+.landscape-pricing__eyebrow {
+  display: inline-flex;
+  min-height: 1.75rem;
+  align-items: center;
+  border: 1px solid rgba(38, 69, 56, .13);
+  border-radius: 10px;
+  padding: .34rem .62rem;
+  color: rgba(20, 35, 28, .8);
+  background: rgba(255, 255, 255, .24);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .58);
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .landscape-services__intro h2 {
-  max-width: 12ch;
-  font-size: clamp(2.75rem, 4.3vw, 5.25rem);
+  max-width: 10ch;
+  margin-top: clamp(1rem, 2.1vh, 1.5rem);
+  font-size: clamp(2.75rem, 4.15vw, 5.15rem);
 }
 
 .landscape-services__intro > p {
-  max-width: 30rem;
-  margin: 1.25rem 0 0;
+  max-width: 28rem;
+  margin: clamp(.85rem, 1.7vh, 1.2rem) 0 0;
+  color: rgba(20, 30, 25, .82);
+}
+
+.landscape-pricing__cta {
+  display: inline-flex;
+  min-width: 11rem;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+  margin-top: auto;
+  border: 1px solid rgba(255, 255, 255, .58);
+  border-radius: 999px;
+  padding: .48rem .5rem .48rem 1.05rem;
+  color: #fff;
+  background: rgba(16, 34, 27, .84);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .17),
+    0 13px 28px rgba(28, 48, 39, .17);
+  font-size: .82rem;
+  font-weight: 750;
+  letter-spacing: -.02em;
+  text-decoration: none;
+}
+
+.landscape-pricing__cta svg {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  padding: .64rem;
+  background: rgba(255, 255, 255, .14);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
 }
 
 .landscape-services__list {
-  border-top: 1px solid rgba(23, 40, 32, .24);
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: clamp(.38rem, .7vh, .55rem);
 }
 
 .landscape-services__list > div {
-  min-height: clamp(3.45rem, 7.7vh, 5rem);
+  min-height: 0;
+  flex: 1 1 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 1.5rem;
-  border-bottom: 1px solid rgba(23, 40, 32, .18);
+  gap: clamp(.8rem, 1.5vw, 1.5rem);
+  border: 1px solid rgba(255, 255, 255, .38);
+  border-radius: 18px;
+  padding: clamp(.55rem, 1.15vh, .8rem) clamp(.75rem, 1.15vw, 1rem);
+  background: rgba(245, 248, 246, .34);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .66),
+    0 8px 22px rgba(44, 69, 57, .035);
 }
 
 .landscape-services__copy {
   min-width: 0;
-  padding: .6rem 0;
 }
 
 .landscape-services__copy > span {
@@ -725,7 +949,8 @@ body:has(.landscape-page) .landscape-page {
 
 .landscape-services__copy > p {
   max-width: 43rem;
-  margin: .24rem 0 0;
+  margin: .18rem 0 0;
+  color: rgba(20, 30, 25, .78);
   font-size: clamp(.68rem, .76vw, .78rem);
   line-height: 1.42;
 }
@@ -775,6 +1000,13 @@ body:has(.landscape-page) .landscape-page {
     transform: translateY(-3px);
   }
 
+  .landscape-pricing__cta:hover {
+    background: rgba(12, 28, 22, .94);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .2),
+      0 16px 34px rgba(28, 48, 39, .2);
+  }
+
   .landscape-panel > a:hover {
     transform: translateY(-2px);
     box-shadow:
@@ -785,6 +1017,7 @@ body:has(.landscape-page) .landscape-page {
 }
 
 .landscape-hero__metal:active,
+.landscape-pricing__cta:active,
 .landscape-panel > a:active,
 .landscape-brand:active,
 .landscape-route button:active,
@@ -795,6 +1028,7 @@ body:has(.landscape-page) .landscape-page {
 @supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
   .landscape-panel,
   .landscape-project,
+  .landscape-pricing-glass,
   .landscape-route,
   .landscape-panel > a {
     background: rgba(255, 255, 255, .94);
@@ -954,46 +1188,75 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-copy__approach {
-    top: max(4.25rem, calc(env(safe-area-inset-top, 0px) + 3.5rem));
-    right: auto;
-    bottom: max(5.65rem, calc(env(safe-area-inset-bottom, 0px) + 5rem));
-    left: max(1rem, env(safe-area-inset-left, 0px));
-    width: calc(100vw - max(2rem, env(safe-area-inset-left, 0px) + env(safe-area-inset-right, 0px)));
-    max-height: calc(100dvh - 10rem);
-    align-self: center;
+    inset: 0;
+    width: auto;
+    max-height: none;
   }
 
-  .landscape-copy__approach h2 {
+  .landscape-approach__statement {
+    top: max(4.25rem, calc(env(safe-area-inset-top, 0px) + 3.5rem));
+    right: max(1rem, env(safe-area-inset-right, 0px));
+    left: max(1rem, env(safe-area-inset-left, 0px));
+    width: auto;
+    background: rgba(255, 255, 255, .84);
+  }
+
+  .landscape-approach__statement h2 {
     max-width: 16ch;
     font-size: clamp(1.85rem, 8.6vw, 3.1rem);
   }
 
-  .landscape-copy__approach > p {
+  .landscape-approach__statement > p {
     margin-top: .8rem;
     font-size: clamp(.78rem, 3.5vw, .92rem);
     line-height: 1.48;
   }
 
-  .landscape-approach__steps {
-    margin-top: .9rem;
+  .landscape-approach__map {
+    inset: max(19.5rem, 36dvh) max(1rem, env(safe-area-inset-right, 0px)) max(5.65rem, calc(env(safe-area-inset-bottom, 0px) + 5rem)) max(1rem, env(safe-area-inset-left, 0px));
   }
 
   .landscape-approach__steps li {
-    grid-template-columns: 1.15rem minmax(0, 1fr);
-    gap: .15rem .55rem;
-    padding: .58rem 0;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: .5rem;
+    width: min(19rem, 82vw);
   }
 
-  .landscape-approach__steps li::before {
-    grid-row: 1 / span 2;
-    font-size: .45rem;
+  .landscape-approach__steps li:nth-child(1) {
+    top: 2%;
+    left: 0;
   }
 
-  .landscape-approach__steps strong {
-    font-size: clamp(.82rem, 3.6vw, .96rem);
+  .landscape-approach__steps li:nth-child(2) {
+    top: 34%;
+    right: 0;
+    left: auto;
   }
 
-  .landscape-approach__steps span {
+  .landscape-approach__steps li:nth-child(3) {
+    top: 66%;
+    right: auto;
+    left: 6%;
+  }
+
+  .landscape-approach__marker {
+    width: 2rem;
+    height: 2rem;
+    font-size: .48rem;
+  }
+
+  .landscape-approach__card {
+    min-height: 5.6rem;
+    padding: .75rem .8rem;
+    background: rgba(255, 255, 255, .86);
+  }
+
+  .landscape-approach__card strong {
+    font-size: clamp(.86rem, 3.7vw, 1rem);
+  }
+
+  .landscape-approach__card > span {
+    margin-top: .28rem;
     font-size: clamp(.7rem, 3vw, .8rem);
     line-height: 1.4;
   }
@@ -1068,14 +1331,40 @@ body:has(.landscape-page) .landscape-page {
     right: max(1rem, env(safe-area-inset-right, 0px));
     bottom: max(5.65rem, calc(env(safe-area-inset-bottom, 0px) + 5rem));
     left: max(1rem, env(safe-area-inset-left, 0px));
-    grid-template-columns: 1fr;
-    gap: .8rem;
     max-height: calc(100dvh - 10rem);
   }
 
+  .landscape-pricing-shell {
+    height: 100%;
+    min-height: 0;
+    border-radius: 24px;
+  }
+
+  .landscape-pricing-glass {
+    border-radius: 24px;
+  }
+
+  .landscape-pricing__content {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: .65rem;
+    padding: .85rem;
+  }
+
+  .landscape-services__intro {
+    padding: 0 .2rem;
+  }
+
+  .landscape-pricing__eyebrow {
+    min-height: 1.5rem;
+    padding: .28rem .5rem;
+    font-size: .5rem;
+  }
+
   .landscape-services__intro h2 {
-    max-width: 13ch;
-    font-size: clamp(2rem, 9.4vw, 3.5rem);
+    max-width: 12ch;
+    margin-top: .55rem;
+    font-size: clamp(1.8rem, 8.4vw, 2.8rem);
   }
 
   .landscape-services__intro > p {
@@ -1085,13 +1374,33 @@ body:has(.landscape-page) .landscape-page {
     line-height: 1.42;
   }
 
+  .landscape-pricing__cta {
+    min-width: 9.25rem;
+    min-height: 2.75rem;
+    margin-top: .65rem;
+    padding: .34rem .38rem .34rem .85rem;
+    font-size: .73rem;
+  }
+
+  .landscape-pricing__cta svg {
+    width: 2rem;
+    height: 2rem;
+    padding: .58rem;
+  }
+
+  .landscape-services__list {
+    gap: .34rem;
+  }
+
   .landscape-services__list > div {
-    min-height: 3.5rem;
+    min-height: 0;
     gap: .7rem;
+    border-radius: 14px;
+    padding: .45rem .65rem;
   }
 
   .landscape-services__copy {
-    padding: .42rem 0;
+    padding: 0;
   }
 
   .landscape-services__copy > span {
@@ -1138,31 +1447,62 @@ body:has(.landscape-page) .landscape-page {
     padding: .85rem;
   }
 
-  .landscape-copy__approach,
   .landscape-copy__services {
     top: 3.55rem;
     bottom: 4.65rem;
     max-height: calc(100dvh - 8.2rem);
   }
 
-  .landscape-copy__approach h2,
+  .landscape-pricing__content {
+    gap: .48rem;
+    padding: .65rem;
+  }
+
+  .landscape-services__intro h2 {
+    margin-top: .42rem;
+  }
+
+  .landscape-pricing__cta {
+    min-height: 2.45rem;
+    margin-top: .45rem;
+  }
+
+  .landscape-approach__statement {
+    top: 3.55rem;
+    right: .65rem;
+    left: .65rem;
+    padding: .8rem;
+  }
+
+  .landscape-approach__statement h2,
   .landscape-services__intro h2 {
     font-size: clamp(1.6rem, 8vw, 2rem);
   }
 
-  .landscape-copy__approach > p,
+  .landscape-approach__statement > p,
   .landscape-services__intro > p,
-  .landscape-approach__steps span,
+  .landscape-approach__card > span,
   .landscape-services__copy > p {
     display: none;
   }
 
-  .landscape-approach__steps {
-    margin-top: .65rem;
+  .landscape-approach__map {
+    inset: 11.5rem .65rem 4.65rem;
   }
 
   .landscape-approach__steps li {
-    padding: .48rem 0;
+    grid-template-columns: 1.8rem minmax(0, 1fr);
+    width: min(16rem, 78vw);
+  }
+
+  .landscape-approach__marker {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .landscape-approach__card {
+    min-height: 3.4rem;
+    padding: .65rem .75rem;
   }
 
   .landscape-copy__portfolio {
@@ -1200,7 +1540,9 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-services__list > div {
-    min-height: 2.75rem;
+    min-height: 0;
+    padding-top: .35rem;
+    padding-bottom: .35rem;
   }
 
   .landscape-services__intro > p {
@@ -1307,43 +1649,122 @@ body:has(.landscape-page) .landscape-page {
     height: 3.25rem;
   }
 
-  .landscape-copy__approach,
   .landscape-copy__services {
     top: 2.9rem;
     right: max(1rem, env(safe-area-inset-right, 0px));
     bottom: 3.75rem;
     left: max(1rem, env(safe-area-inset-left, 0px));
-    display: grid;
-    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-    gap: .6rem 1.5rem;
+    display: block;
     width: auto;
     max-height: none;
+    padding: 0;
+  }
+
+  .landscape-pricing-shell {
+    height: 100%;
+    min-height: 0;
+    border-radius: 22px;
+  }
+
+  .landscape-pricing-glass {
+    border-radius: 22px;
+  }
+
+  .landscape-pricing__content {
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    padding: .8rem;
+  }
+
+  .landscape-services__intro {
+    padding: .1rem .25rem;
+  }
+
+  .landscape-pricing__eyebrow {
+    min-height: 1.35rem;
+    padding: .2rem .42rem;
+    font-size: .46rem;
+  }
+
+  .landscape-services__intro h2 {
+    margin-top: .5rem;
+  }
+
+  .landscape-pricing__cta {
+    min-width: 8.6rem;
+    min-height: 2.45rem;
+    padding: .28rem .3rem .28rem .7rem;
+    font-size: .68rem;
+  }
+
+  .landscape-pricing__cta svg {
+    width: 1.85rem;
+    height: 1.85rem;
+    padding: .52rem;
+  }
+
+  .landscape-copy__approach {
+    inset: 0;
+    display: block;
+    width: auto;
+    max-height: none;
+    padding: 0;
+  }
+
+  .landscape-approach__statement {
+    top: 2.9rem;
+    right: auto;
+    left: max(1rem, env(safe-area-inset-left, 0px));
+    width: min(42vw, 25rem);
     padding: .9rem 1rem;
   }
 
-  .landscape-copy__approach h2,
+  .landscape-approach__statement h2,
   .landscape-services__intro h2 {
     font-size: clamp(1.65rem, 3.9vw, 2.35rem);
   }
 
-  .landscape-copy__approach > p,
+  .landscape-approach__statement > p,
   .landscape-services__intro > p {
     margin-top: .45rem;
     font-size: .68rem;
     line-height: 1.35;
   }
 
-  .landscape-approach__steps {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    margin: 0;
+  .landscape-approach__map {
+    inset: 2.9rem max(1rem, env(safe-area-inset-right, 0px)) 3.75rem 47vw;
   }
 
   .landscape-approach__steps li {
-    padding: .38rem 0;
+    grid-template-columns: 1.75rem minmax(0, 1fr);
+    width: min(23rem, 50vw);
   }
 
-  .landscape-approach__steps span {
+  .landscape-approach__steps li:nth-child(1) {
+    top: 1%;
+  }
+
+  .landscape-approach__steps li:nth-child(2) {
+    top: 34%;
+  }
+
+  .landscape-approach__steps li:nth-child(3) {
+    top: 67%;
+    left: 0;
+  }
+
+  .landscape-approach__marker {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .landscape-approach__card {
+    min-height: 3.75rem;
+    padding: .55rem .7rem;
+  }
+
+  .landscape-approach__card > span {
     font-size: .61rem;
   }
 
@@ -1387,7 +1808,9 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-services__list > div {
-    min-height: 2.55rem;
+    min-height: 0;
+    border-radius: 13px;
+    padding: .35rem .55rem;
   }
 
   .landscape-services__copy > p {
@@ -1429,8 +1852,17 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-copy__hero h1,
+  .landscape-approach__steps li,
   .liquid-card-shell,
   .landscape-project__content::after {
     transform: none;
+  }
+
+  .landscape-approach__progress {
+    stroke-dashoffset: 0;
+  }
+
+  .landscape-approach__steps li {
+    opacity: 1;
   }
 }

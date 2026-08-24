@@ -111,12 +111,14 @@ export default function Home() {
       const top = flight.getBoundingClientRect().top + window.scrollY
       const travel = WORLD_SPAN * window.innerHeight
       const progress = Math.min(1, Math.max(0, (window.scrollY - top) / Math.max(travel, 1)))
+      const approachProgress = Math.min(1, Math.max(0, (progress - 0.155) / 0.17))
       const portfolioProgress = Math.min(1, Math.max(0, (progress - 0.31) / 0.2))
       const next = landmarks.reduce((current, landmark, index) => (
         progress >= landmark.progress ? index : current
       ), 0)
 
       root.style.setProperty('--journey-p', progress.toFixed(4))
+      root.style.setProperty('--approach-p', approachProgress.toFixed(4))
       root.style.setProperty('--portfolio-p', portfolioProgress.toFixed(4))
       root.dataset.scVerifyState = `${next}:${Math.round(progress * 40)}`
 
@@ -299,27 +301,54 @@ export default function Home() {
           </section>
 
           <section
-            className="landscape-copy__approach landscape-panel"
+            className="landscape-copy__approach"
             data-sc-copy
             data-sc-window="0.16 0.34 0.22 0.28"
             aria-labelledby="approach-title"
           >
-            <h2 id="approach-title">When every piece has a different owner, the founder becomes the design system.</h2>
-            <p>We make the decisions behind identity, product and website together, so every piece belongs to the same company.</p>
-            <ol className="landscape-approach__steps">
-              <li>
-                <strong>Find the idea</strong>
-                <span>Name the problem, choose a position and decide what the work needs to communicate.</span>
-              </li>
-              <li>
-                <strong>Build the system</strong>
-                <span>Shape brand, product and web from the same set of decisions.</span>
-              </li>
-              <li>
-                <strong>Make it usable</strong>
-                <span>Leave your team with rules they can apply, extend and explain.</span>
-              </li>
-            </ol>
+            <div className="landscape-approach__statement landscape-panel">
+              <h2 id="approach-title">When every piece has a different owner, the founder becomes the design system.</h2>
+              <p>We make the decisions behind identity, product and website together, so every piece belongs to the same company.</p>
+            </div>
+
+            <div className="landscape-approach__map">
+              <svg viewBox="0 0 1000 430" preserveAspectRatio="none" aria-hidden="true">
+                <path
+                  className="landscape-approach__track"
+                  pathLength="1"
+                  d="M20 312C128 246 203 364 318 286C424 215 421 108 552 128C680 147 674 334 797 299C889 273 910 151 985 92"
+                />
+                <path
+                  className="landscape-approach__progress"
+                  pathLength="1"
+                  d="M20 312C128 246 203 364 318 286C424 215 421 108 552 128C680 147 674 334 797 299C889 273 910 151 985 92"
+                />
+              </svg>
+
+              <ol className="landscape-approach__steps">
+                <li>
+                  <span className="landscape-approach__marker" aria-hidden="true">01</span>
+                  <div className="landscape-approach__card landscape-panel">
+                    <strong>Find the idea</strong>
+                    <span>Name the problem, choose a position and decide what the work needs to communicate.</span>
+                  </div>
+                </li>
+                <li>
+                  <span className="landscape-approach__marker" aria-hidden="true">02</span>
+                  <div className="landscape-approach__card landscape-panel">
+                    <strong>Build the system</strong>
+                    <span>Shape brand, product and web from the same set of decisions.</span>
+                  </div>
+                </li>
+                <li>
+                  <span className="landscape-approach__marker" aria-hidden="true">03</span>
+                  <div className="landscape-approach__card landscape-panel">
+                    <strong>Make it usable</strong>
+                    <span>Leave your team with rules they can apply, extend and explain.</span>
+                  </div>
+                </li>
+              </ol>
+            </div>
           </section>
 
           <section
@@ -375,25 +404,54 @@ export default function Home() {
           </section>
 
           <section
-            className="landscape-copy__services landscape-panel"
+            className="landscape-copy__services"
             data-sc-copy
             data-sc-window="0.65 0.86 0.2 0.22"
             aria-labelledby="services-title"
           >
-            <div className="landscape-services__intro">
-              <h2 id="services-title">A clear scope from the start.</h2>
-              <p>Start with one project or bring brand, product and web into the same engagement. We agree the scope and final price before work begins.</p>
-            </div>
-            <div className="landscape-services__list">
-              {engagements.map(({ name, detail, price }) => (
-                <div key={name}>
-                  <div className="landscape-services__copy">
-                    <span>{name}</span>
-                    <p>{detail}</p>
+            <div className="landscape-pricing-shell">
+              <LiquidGlass
+                className="landscape-pricing-glass"
+                displacementScale={44}
+                blurAmount={0.08}
+                saturation={138}
+                aberrationIntensity={1.15}
+                elasticity={0.06}
+                cornerRadius={32}
+                padding="0"
+                overLight
+                style={{ width: '100%', height: '100%' }}
+              >
+                <div className="landscape-pricing__content">
+                  <div className="landscape-services__intro">
+                    <span className="landscape-pricing__eyebrow">Project pricing</span>
+                    <h2 id="services-title">A clear scope from the start.</h2>
+                    <p>Start with one project or bring brand, product and web into the same engagement. We agree the scope and final price before work begins.</p>
+                    <a
+                      className="landscape-pricing__cta"
+                      href={CALENDAR_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span>Book a call</span>
+                      <svg viewBox="0 0 20 20" aria-hidden="true">
+                        <path d="M5 15 15 5M7 5h8v8" />
+                      </svg>
+                    </a>
                   </div>
-                  <strong><small>From</small>{price}</strong>
+                  <div className="landscape-services__list" aria-label="Engagement pricing">
+                    {engagements.map(({ name, detail, price }) => (
+                      <div key={name}>
+                        <div className="landscape-services__copy">
+                          <span>{name}</span>
+                          <p>{detail}</p>
+                        </div>
+                        <strong><small>From</small>{price}</strong>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              ))}
+              </LiquidGlass>
             </div>
           </section>
 
