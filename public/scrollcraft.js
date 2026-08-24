@@ -424,7 +424,7 @@
       var seam = parseFloat(el.getAttribute('data-sc-seam'));
       // A seam wider than the shortest leg would have three clips dissolving at
       // once and no leg ever fully present. Cap it well under that.
-      W.seam = isNaN(seam) || seam <= 0 ? 0.12 : clamp(seam, 0.02, 0.4);
+      W.seam = isNaN(seam) || seam <= 0 ? 0.12 : clamp(seam, 0.001, 0.4);
       if (W.stage) W.stage.classList.add('sc-world');
       if (W.copyLayer) W.copyLayer.classList.add('sc-world__copy');
       if (W.spacer) W.spacer.classList.add('sc-world__spacer');

@@ -1,12 +1,26 @@
 import { useEffect, useRef, useState } from 'react'
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
 import LiquidGlass from 'liquid-glass-react'
+import { MetalFx } from 'metal-fx'
 import './HomeScrollcraft.css'
 
 const CALENDAR_URL = 'https://cal.com/neutralstudio/30min?overlayCalendar=true'
-const MASTER_VIDEO = '/generated/neutral-landscape/TensorPix - neutral-landscape-master-1440p-scrub.mp4'
-const MASTER_VIDEO_MOBILE = '/generated/neutral-landscape/TensorPix - neutral-landscape-master-scrub.mp4'
-const MASTER_POSTER = '/generated/neutral-landscape/tensorpix-poster-4k.jpg'
 const WORLD_SPAN = 8.4
+const SEGMENT_SPAN = WORLD_SPAN / 5
+
+const filmSegments = [
+  { id: '00', label: 'Arrival' },
+  { id: '01', label: 'Approach' },
+  { id: '02', label: 'Work' },
+  { id: '03', label: 'Services' },
+  { id: '04', label: 'Contact' },
+].map((segment) => ({
+  ...segment,
+  poster: `/generated/neutral-landscape/segments/desktop-${segment.id}-poster.jpg`,
+  desktop: `/generated/neutral-landscape/segments/desktop-${segment.id}.mp4`,
+  mobile: `/generated/neutral-landscape/segments/mobile-${segment.id}.mp4`,
+}))
 
 const landmarks = [
   { id: 'arrival', label: 'Home', progress: 0 },
@@ -55,8 +69,38 @@ const engagements = [
 
 export default function Home() {
   const rootRef = useRef(null)
+  const lenisRef = useRef(null)
   const activeRef = useRef(0)
   const [activeLandmark, setActiveLandmark] = useState(0)
+  const [reducedMotion, setReducedMotion] = useState(false)
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const sync = () => setReducedMotion(media.matches)
+    sync()
+    media.addEventListener('change', sync)
+    return () => media.removeEventListener('change', sync)
+  }, [])
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)')
+    if (reducedMotion.matches || !finePointer.matches) return undefined
+
+    const lenis = new Lenis({
+      autoRaf: true,
+      lerp: 0.11,
+      smoothWheel: true,
+      syncTouch: false,
+    })
+
+    lenisRef.current = lenis
+
+    return () => {
+      lenis.destroy()
+      lenisRef.current = null
+    }
+  }, [])
 
   useEffect(() => {
     const root = rootRef.current
@@ -119,34 +163,47 @@ export default function Home() {
     const flight = rootRef.current?.querySelector('[data-sc-mode="worldflight"]')
     if (!flight) return
     const top = flight.getBoundingClientRect().top + window.scrollY
-    window.scrollTo({
-      top: top + landmark.progress * WORLD_SPAN * window.innerHeight,
-      behavior: 'smooth',
-    })
+    const target = top + landmark.progress * WORLD_SPAN * window.innerHeight
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(target, { lerp: 0.1 })
+      return
+    }
+
+    window.scrollTo({ top: target, behavior: 'smooth' })
   }
 
   return (
     <main className="landscape-page" ref={rootRef} data-sc-verify-state="0:0">
-      <div className="landscape-flight" data-sc-mode="worldflight" data-sc-seam="0.02">
+      <div className="landscape-flight" data-sc-mode="worldflight" data-sc-seam="0.001">
         <div className="landscape-world" data-sc-world aria-hidden="true">
-          <div
-            className="landscape-world__segment"
-            data-sc-segment
-            data-sc-w={WORLD_SPAN}
-            data-sc-waypoint="Neutral Studio journey"
-          >
-            <img className="sc-world__poster" src={MASTER_POSTER} alt="" />
-            <video
-              data-sc-src={MASTER_VIDEO}
-              data-sc-src-mobile={MASTER_VIDEO_MOBILE}
-              width="2560"
-              height="1440"
-              playsInline
-              muted
-              preload="none"
-              aria-hidden="true"
-            />
-          </div>
+          {filmSegments.map((segment, index) => (
+            <div
+              className="landscape-world__segment"
+              data-sc-segment
+              data-sc-w={SEGMENT_SPAN}
+              data-sc-waypoint={segment.label}
+              key={segment.id}
+            >
+              <img
+                className="sc-world__poster"
+                src={segment.poster}
+                alt=""
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+                decoding={index === 0 ? 'sync' : 'async'}
+              />
+              <video
+                data-sc-src={segment.desktop}
+                data-sc-src-mobile={segment.mobile}
+                width="2560"
+                height="1440"
+                playsInline
+                muted
+                preload="none"
+                aria-hidden="true"
+              />
+            </div>
+          ))}
 
           <svg className="landscape-contours" viewBox="0 0 1600 900" preserveAspectRatio="none">
             <path d="M-70 744C220 621 352 820 568 706S900 430 1110 545s274 183 570 40" />
@@ -167,9 +224,6 @@ export default function Home() {
               <span className="landscape-brand__wordmark">Neutral</span>
               <span className="landscape-brand__studio">Studio</span>
             </button>
-            <a className="landscape-header__cta" href={CALENDAR_URL} target="_blank" rel="noreferrer">
-              Start the journey
-            </a>
           </header>
 
           <nav className="landscape-route" aria-label="Neutral Studio sections">
@@ -193,23 +247,43 @@ export default function Home() {
             data-sc-window="0 0.19 0 0.32"
             aria-labelledby="home-title"
           >
-            <h1 id="home-title" aria-label="Neutral Studio">
-              <span>Neutral</span><span>Studio</span>
-            </h1>
-            <div className="landscape-hero__lower">
-              <div className="landscape-hero__promise">
-                <strong>Start your path to a world-class brand.</strong>
-                <p>Brand, product and web shaped as one working system.</p>
-              </div>
-              <a className="landscape-hero__cta" href={CALENDAR_URL} target="_blank" rel="noreferrer">
-                <span>Start your journey</span>
-                <i aria-hidden="true">
-                  <svg viewBox="0 0 20 20" fill="none">
-                    <path d="M5 15L15 5M7 5h8v8" />
-                  </svg>
-                </i>
-              </a>
-              <p className="landscape-hero__scope">Branding · Web · UX/UI<br />Motion · Strategy</p>
+            <div className="landscape-hero__center">
+              <h1 id="home-title" aria-label="Neutral Studio">
+                <span>Neutral</span><span>Studio</span>
+              </h1>
+              <p className="landscape-hero__declaration">Start your path to a world-class brand.</p>
+              <MetalFx
+                className="landscape-hero__metal"
+                variant="button"
+                preset="chromatic"
+                theme="dark"
+                strength={1}
+                borderRadius={18}
+                paused={reducedMotion}
+                normalizeHostStyles={false}
+              >
+                <div className="landscape-hero__cta-host">
+                  <LiquidGlass
+                    className="landscape-hero__cta-glass"
+                    displacementScale={30}
+                    blurAmount={0.08}
+                    saturation={130}
+                    aberrationIntensity={1.1}
+                    elasticity={0.06}
+                    cornerRadius={18}
+                    padding="0"
+                  >
+                    <a className="landscape-hero__cta" href={CALENDAR_URL} target="_blank" rel="noreferrer">
+                      <span>Start your path</span>
+                      <i aria-hidden="true">
+                        <svg viewBox="0 0 20 20" fill="none">
+                          <path d="M5 15L15 5M7 5h8v8" />
+                        </svg>
+                      </i>
+                    </a>
+                  </LiquidGlass>
+                </div>
+              </MetalFx>
             </div>
           </section>
 

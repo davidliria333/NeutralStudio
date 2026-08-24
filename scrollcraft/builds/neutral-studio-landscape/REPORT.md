@@ -2,9 +2,9 @@
 
 ## Outcome
 
-One continuous 40.2-second TensorPix landscape film drives the complete page. The page uses dense keyframes for responsive scrubbing: a 2560 × 1440 desktop encode (93.7 MB) and the original 1920 × 1080 encode (82 MB) on mobile. The 4K TensorPix source remains untouched and outside Git; neither page-ready encode adds audio.
+One continuous 40.2-second TensorPix landscape film drives the complete page. For reliable scroll control it is delivered as five direct-cut runtime legs: 16–22 MB each on desktop and 15–18 MB each on mobile. This prevents the browser from repeatedly seeking across one large file while preserving the original sequence. The 4K TensorPix source remains untouched and outside Git; no page-ready encode adds audio.
 
-The interface now uses a sans-serif Manrope system, one direct "Start the journey" action, and real `liquid-glass-react` refraction for the portfolio placeholders. The cards form an asymmetric field and settle into place as the route reaches its portfolio peak.
+The interface now uses a sans-serif Manrope system and a distilled three-part hero: oversized white "NeutralStudio", one positioning line and one "Start your path" action. That action combines real `liquid-glass-react` refraction with a chromatic `metal-fx` WebGL ring; the duplicate header CTA and the explanatory bottom dock were removed. Portfolio placeholders retain their own liquid-glass refraction. Desktop wheel and trackpad input is eased with Lenis while touch devices and reduced-motion visitors keep native scrolling.
 
 ## Journey
 
@@ -21,13 +21,16 @@ A restrained topographic line advances with the master film and turns the portfo
 ## Verification
 
 - Production build completed successfully after the TensorPix and liquid-glass integration.
-- Both page-ready video files stay below GitHub's 100 MB per-file limit.
-- Desktop: 1280 × 720 scroll states verified at eight positions.
-- Mobile: 390 × 844 scroll states verified at eight positions.
+- Every page-ready video leg stays below GitHub's 100 MB per-file limit.
+- Desktop: all five legs verified across 36 scroll states.
+- Mobile: all five legs verified across 40 scroll states at 390 × 844.
 - Reduced motion: every copy state remains available over the TensorPix poster and the video is not fetched.
-- All sampled desktop and mobile frames settled before capture; the scrub clip advanced throughout its visible scroll life.
-- No dead scroll, frozen clip, failed video request or unpainted frame was reported in the final pass.
-- Every measured copy surface cleared 4.5:1 contrast in desktop, mobile and reduced-motion passes.
+- Desktop and mobile scroll passes painted every one of the five video legs at their intended resolutions with no failed video requests.
+- Scroll controls the film, every copy window and every route state; boundaries stay on the original direct cuts with a sub-pixel seam.
+- A 1,200 px desktop wheel gesture now resolves through 42 measured intermediate positions and still lands at exactly 1,200 px; the Approach route control lands at its expected 1,436 px target.
+- Lenis remains inactive on touch-sized mobile input and under reduced motion.
+- The hero contains exactly three direct children, mounts the MetalFx canvas at both desktop and mobile sizes, and pauses the shader under reduced motion.
+- Body copy remains on white glass surfaces; the oversized white hero uses a dark edge and shadow to stay legible as the sky moves behind it.
 - The contact sheets exposed the package's Tailwind-dependent inner sizing; a local full-surface adapter now makes the refractor occupy each complete card.
 
 ## Local preview

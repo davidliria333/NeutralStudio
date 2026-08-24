@@ -57,7 +57,7 @@ Després del pic de portfolio, el procés ha de recuperar espai, ritme lent i le
 
 ## Chosen grammar
 
-**Continuous world.** The brief is explicitly about moving through the same landscape and revealing work as landmarks inside it. One fixed, scroll-scrubbed master film keeps the route continuous without false section boundaries or generated crossfades.
+**Continuous world.** The brief is explicitly about moving through the same landscape and revealing work as landmarks inside it. The master film is split only at its original direct cuts into five lightweight scroll-scrubbed legs, keeping the route fluid without introducing generated crossfades.
 
 ## Fingerprint gate
 
