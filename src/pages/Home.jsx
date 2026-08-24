@@ -201,31 +201,40 @@ export default function Home() {
           <div className="landscape-copy__wash sc-world__scrim" />
 
           <header className="landscape-header">
-            <button
-              className="landscape-brand"
-              type="button"
-              onClick={() => goToLandmark(landmarks[0])}
-              aria-label="Neutral Studio home"
-            >
-              <span className="landscape-brand__wordmark">Neutral</span>
-              <span className="landscape-brand__studio">Studio</span>
-            </button>
-          </header>
-
-          <nav className="landscape-route" aria-label="Neutral Studio sections">
-            {landmarks.map((landmark, index) => (
+            <div className="landscape-menu">
               <button
-                key={landmark.id}
+                className="landscape-brand"
                 type="button"
-                className={activeLandmark === index ? 'is-active' : ''}
-                aria-current={activeLandmark === index ? 'step' : undefined}
-                onClick={() => goToLandmark(landmark)}
+                onClick={() => goToLandmark(landmarks[0])}
+                aria-label="Neutral Studio home"
               >
-                <span>{landmark.label}</span>
-                <i aria-hidden="true" />
+                <span className="landscape-brand__wordmark">Neutral</span>
+                <span className="landscape-brand__studio">Studio</span>
               </button>
-            ))}
-          </nav>
+
+              <nav className="landscape-route" aria-label="Neutral Studio sections">
+                {landmarks.map((landmark, index) => (
+                  <button
+                    key={landmark.id}
+                    type="button"
+                    className={activeLandmark === index ? 'is-active' : ''}
+                    aria-current={activeLandmark === index ? 'step' : undefined}
+                    onClick={() => goToLandmark(landmark)}
+                  >
+                    <span>{landmark.label}</span>
+                    <i aria-hidden="true" />
+                  </button>
+                ))}
+              </nav>
+
+              <a className="landscape-menu__cta" href={CALENDAR_URL} target="_blank" rel="noreferrer">
+                <span>Start your path</span>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M4 12L12 4M6 4h6v6" />
+                </svg>
+              </a>
+            </div>
+          </header>
 
           <section
             className="landscape-copy__hero"
