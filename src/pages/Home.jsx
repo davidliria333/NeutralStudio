@@ -3,6 +3,7 @@ import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import LiquidGlass from 'liquid-glass-react'
 import { MetalFx } from 'metal-fx'
+import SplitText from '../components/SplitText'
 import './HomeScrollcraft.css'
 
 const CALENDAR_URL = 'https://cal.com/neutralstudio/30min?overlayCalendar=true'
@@ -31,7 +32,7 @@ const projectPlaceholders = [
 const engagements = [
   {
     name: 'Web',
-    detail: 'A focused studio or product website, designed and built as one coherent story.',
+    detail: 'A studio or product website designed and built around one clear story.',
     price: '€1,990',
   },
   {
@@ -41,17 +42,17 @@ const engagements = [
   },
   {
     name: 'UX/UI',
-    detail: 'Product flows and interfaces shaped around real behaviour and business needs.',
+    detail: 'Product flows and interfaces built around how people use them and what the business needs.',
     price: '€3,990',
   },
   {
     name: 'Brand + Web + Assets',
-    detail: 'One connected launch system across identity, site and core materials.',
+    detail: 'Identity, website and the core assets needed to launch, designed together.',
     price: '€4,990',
   },
   {
     name: 'App development',
-    detail: 'A production-ready application built from product logic through release.',
+    detail: 'A production-ready app, from product logic and interface through release.',
     price: '€9,990',
   },
 ]
@@ -243,10 +244,25 @@ export default function Home() {
             aria-labelledby="home-title"
           >
             <div className="landscape-hero__center">
-              <h1 id="home-title" aria-label="Neutral Studio">
-                <span>Neutral</span><span>Studio</span>
-              </h1>
-              <p className="landscape-hero__declaration">Start your path to a world-class brand.</p>
+              <SplitText
+                id="home-title"
+                aria-label="Neutral Studio"
+                text="NeutralStudio"
+                className="landscape-hero__title"
+                delay={70}
+                duration={0.65}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="0px"
+                textAlign="center"
+                tag="h1"
+                reducedMotion={reducedMotion}
+                style={{ whiteSpace: 'nowrap' }}
+              />
+              <p className="landscape-hero__declaration">One clear direction for your brand, product and website.</p>
               <MetalFx
                 className="landscape-hero__metal"
                 variant="button"
@@ -289,11 +305,11 @@ export default function Home() {
             aria-labelledby="approach-title"
           >
             <h2 id="approach-title">When every piece has a different owner, the founder becomes the design system.</h2>
-            <p>We connect the decisions behind identity, product and website, giving the whole company one clear direction.</p>
+            <p>We make the decisions behind identity, product and website together, so every piece belongs to the same company.</p>
             <ol className="landscape-approach__steps">
               <li>
                 <strong>Find the idea</strong>
-                <span>Define the problem and the position the work must hold together.</span>
+                <span>Name the problem, choose a position and decide what the work needs to communicate.</span>
               </li>
               <li>
                 <strong>Build the system</strong>
@@ -316,7 +332,7 @@ export default function Home() {
               data-sc-window="0.31 0.65 0.13 0.13"
             >
               <h2 id="portfolio-title">Different problems deserve different expressions.</h2>
-              <p>One connected approach, never a house style. Selected case studies are being prepared for these spaces.</p>
+              <p>One connected approach, never a house style. Case studies are on the way; these spaces are placeholders for now.</p>
             </div>
             <div className="landscape-projects" aria-label="Portfolio placeholders">
               {projectPlaceholders.map((project) => (
@@ -365,8 +381,8 @@ export default function Home() {
             aria-labelledby="services-title"
           >
             <div className="landscape-services__intro">
-              <h2 id="services-title">Clear scope. A clear starting point.</h2>
-              <p>Start with one focused engagement or connect the whole system. Scope and final price are agreed before work begins.</p>
+              <h2 id="services-title">A clear scope from the start.</h2>
+              <p>Start with one project or bring brand, product and web into the same engagement. We agree the scope and final price before work begins.</p>
             </div>
             <div className="landscape-services__list">
               {engagements.map(({ name, detail, price }) => (

@@ -369,7 +369,7 @@ body:has(.landscape-page) .landscape-page {
   will-change: transform;
 }
 
-.landscape-copy__hero h1 span:last-child {
+.landscape-copy__hero h1 .split-char:nth-child(n + 8) {
   font-weight: 450;
 }
 
