@@ -31,6 +31,7 @@ changes only grammar and world will fail it.
 | Neutral Studio | Filmic one-shot, system-led | Floating system bar with one CTA | Interactive vector wordmark under a pinned editorial claim | pin > flow > pan > flow > pin > flow; 6 acts; 12.2vh | Full acid-green flow field with direct CTA | Five disconnected disciplines converge into the NeutralStudio lockup | Dark editorial grid, tactile vector construction | 5173 |
 | Neutral Studio Flagship | Chaptered editorial | Updating margin folio with chapter labels and one CTA | Type-only editorial title page | flow > pin > flow/reveal > pan > flow/parallax > custom pin > flow > flow; 8 acts; 13.6-14.0vh | Quiet colophon over resolving visual-study fragments | Personality calibration changes composition, imagery, hierarchy, type and motion together | Experimental editorial studio: paper, hard cuts, real UX/UI and photographic calibration studies | 5173 |
 | Neutral Studio Living Editorial | Living editorial | Updating margin folio with chapter labels and one CTA | Overscale animated NeutralStudio lockup with one supporting line | flow > long flow/alignment > pin > flow/reveal > flow/parallax > custom pin > flow > flow; 8 acts; 12.7-12.8vh | Quiet colophon over resolving visual-study fragments | Seven product studies and three 3D sculptures converge into one precise system, then release | Dark editorial field, real UX/UI, smoked glass, black chrome and acid translucent forms | 5173 |
+| Neutral Studio Landscape | Continuous world | Clickable route of five landscape waypoints plus one direct CTA | High-key path-and-horizon establishing frame under a clear claim | one master scrub; 5 waypoints; 8.4vh; calm arrival > approach > portfolio peak > services > direct contact | Quiet question and CTA at the end of the same path | A topographic path reveals placeholder projects as milestones inside one evolving terrain | Light mineral landscape, muted sage, editorial serif and restrained live motion | 5174 |
 
 *(empty: your first build has nothing to clear, so build whatever the interview
 points at. From the second onwards, this table is the constraint.)*
@@ -47,6 +48,7 @@ as a constraint, so writing them down is the whole point.
 - Neutral Studio claims the floating system bar, vector-wordmark hero, acid-green field close and discipline-to-wordmark assembly.
 - Neutral Studio Flagship claims the updating margin folio, type-only contradiction hero, UX/UI editorial rail, quiet colophon close and Personality calibration control. It shares the acid signal colour and ScrollCraft engine with the earlier build, but differs on all six fingerprint dimensions.
 - Neutral Studio Living Editorial claims the oversized animated lockup and the vertical project-and-sculpture convergence. It replaces the prior horizontal rail while retaining the folio, close and Personality calibration act.
+- Neutral Studio Landscape claims the continuous topographic path, the five-point route map, the integrated placeholder-project milestones and the mineral landscape worldflight. It shares only a direct CTA posture with the older builds and clears their fingerprint dimensions.
 
 ---
 

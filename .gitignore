@@ -1,7 +1,20 @@
 .DS_Store
+.env
+.env.*
+!.env.example
 node_modules/
 dist/
 *.local
+scrollcraft/builds/*/lab/
+public/generated/neutral-landscape/TensorPix - neutral-landscape-master.mp4
+public/generated/neutral-landscape/landscape-path-drift-v1.mp4
+public/generated/neutral-landscape/landscape-path-v1.png
+public/generated/neutral-landscape/mediterranean-sky-drift-v2.mp4
+public/generated/neutral-landscape/mediterranean-sky-v2.png
+public/generated/neutral-landscape/neutral-landscape-master-mobile.mp4
+public/generated/neutral-landscape/neutral-landscape-master.mp4
+public/generated/neutral-landscape/tensorpix-poster.jpg
+public/generated/neutral-landscape/veo/
 .vite/
 .vercel
 react-gallery/node_modules/

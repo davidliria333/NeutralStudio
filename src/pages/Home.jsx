@@ -1,279 +1,334 @@
 import { useEffect, useRef, useState } from 'react'
+import LiquidGlass from 'liquid-glass-react'
 import './HomeScrollcraft.css'
 
 const CALENDAR_URL = 'https://cal.com/neutralstudio/30min?overlayCalendar=true'
+const MASTER_VIDEO = '/generated/neutral-landscape/TensorPix - neutral-landscape-master-1440p-scrub.mp4'
+const MASTER_VIDEO_MOBILE = '/generated/neutral-landscape/TensorPix - neutral-landscape-master-scrub.mp4'
+const MASTER_POSTER = '/generated/neutral-landscape/tensorpix-poster-4k.jpg'
+const WORLD_SPAN = 8.4
 
-const chapters = [
-  ['opening', 'Position'], ['portfolio', 'Selected UX/UI'], ['fragmentation', 'The problem'],
-  ['system', 'Services'], ['pricing', 'Pricing'], ['philosophy', 'The principle'], ['personality', 'Personality'],
-  ['offer', 'Working together'], ['contact', 'Start a conversation'],
+const landmarks = [
+  { id: 'arrival', label: 'Home', progress: 0 },
+  { id: 'approach', label: 'Approach', progress: 0.19 },
+  { id: 'work', label: 'Work', progress: 0.39 },
+  { id: 'services', label: 'Services', progress: 0.69 },
+  { id: 'contact', label: 'Contact', progress: 0.87 },
 ]
 
-const selectedFrames = [1, 2, 3, 4, 6, 7, 8, 9, 11, 12, 14, 15, 17, 18, 19]
-const portfolioFrames = selectedFrames.map((number, index) => {
-  const column = index % 5
-  const row = Math.floor(index / 5)
-  return {
-    src: `/generated/neutral/uxui-frames/frame-${String(number).padStart(2, '0')}.png`,
-    alt: `Selected mobile UX/UI screen ${index + 1} of ${selectedFrames.length}.`,
-    x: 4 + column * 19,
-    y: 3 + row * 33,
-    width: index % 4 === 0 ? 16 : 14,
-    mobileX: 3 + (index % 3) * 32,
-    mobileY: 1 + Math.floor(index / 3) * 20,
-    mobileWidth: index % 4 === 0 ? 29 : 27,
-    motion: [((index * 5) % 7) - 3, ((index * 7) % 13) - 6, ((index * 5) % 9) - 4],
-  }
-})
-
-const personalities = [
-  { id: 'structure', name: 'Structure', image: '/generated/neutral/personality-structure.jpg', mobileImage: '/generated/neutral/personality-structure-mobile.jpg', width: 1536, line: 'The invisible rules.', detail: 'Grid, hierarchy, proportion and relationships before style enters the room.' },
-  { id: 'human', name: 'Human', image: '/generated/neutral/personality-human.jpg', mobileImage: '/generated/neutral/personality-human-mobile.jpg', width: 1537, line: 'Precision with fingerprints.', detail: 'The system loosens, keeps its logic and starts to sound like somebody real.' },
-  { id: 'play', name: 'Play', image: '/generated/neutral/personality-play.jpg', mobileImage: '/generated/neutral/personality-play-mobile.jpg', width: 1448, line: 'Rules that know when to bend.', detail: 'Scale, colour and rhythm move together without losing the underlying order.' },
-  { id: 'edge', name: 'Edge', image: '/generated/neutral/personality-edge.jpg', mobileImage: '/generated/neutral/personality-edge-mobile.jpg', width: 1536, line: 'A sharper point of view.', detail: 'The same structure becomes restrained, tense and difficult to ignore.' },
+const projectPlaceholders = [
+  { id: '01', x: '-34px', y: '20px', rotation: '-3deg' },
+  { id: '02', x: '28px', y: '-24px', rotation: '4deg' },
+  { id: '03', x: '-18px', y: '-12px', rotation: '-2deg' },
+  { id: '04', x: '38px', y: '24px', rotation: '3deg' },
+  { id: '05', x: '-26px', y: '30px', rotation: '-4deg' },
+  { id: '06', x: '42px', y: '-18px', rotation: '4deg' },
 ]
 
-function FolioNav({ active }) {
-  return (
-    <aside className="ns2-folio" aria-label="Page chapters">
-      <a className="ns2-folio-brand" href="#opening" aria-label="Neutral Studio home">
-        <img src="/brand-logo.svg" alt="Neutral" width="113" height="24" /><span>Studio</span>
-      </a>
-      <nav>{chapters.map(([id, label], index) => (
-        <a href={`#${id}`} key={id} className={active === id ? 'is-active' : ''}>
-          <span>{String(index + 1).padStart(2, '0')}</span><b>{label}</b>
-        </a>
-      ))}</nav>
-      <a className="ns2-folio-cta" href={CALENDAR_URL} target="_blank" rel="noreferrer">Tell us your idea</a>
-    </aside>
-  )
-}
-
-function RegistrationMarks() {
-  return <div className="ns2-registration" aria-hidden="true"><i /><i /><i /><i /></div>
-}
+const engagements = [
+  {
+    name: 'Web',
+    detail: 'A focused studio or product website, designed and built as one coherent story.',
+    price: '€1,990',
+  },
+  {
+    name: 'Brand only',
+    detail: 'A clear identity system with the essential rules and assets ready to use.',
+    price: '€2,990',
+  },
+  {
+    name: 'UX/UI',
+    detail: 'Product flows and interfaces shaped around real behaviour and business needs.',
+    price: '€3,990',
+  },
+  {
+    name: 'Brand + Web + Assets',
+    detail: 'One connected launch system across identity, site and core materials.',
+    price: '€4,990',
+  },
+  {
+    name: 'App development',
+    detail: 'A production-ready application built from product logic through release.',
+    price: '€9,990',
+  },
+]
 
 export default function Home() {
   const rootRef = useRef(null)
-  const personalityRef = useRef(null)
-  const workRef = useRef(null)
-  const [activeChapter, setActiveChapter] = useState('opening')
-  const [personality, setPersonality] = useState(0)
-  const [manualPersonality, setManualPersonality] = useState(false)
+  const activeRef = useRef(0)
+  const [activeLandmark, setActiveLandmark] = useState(0)
 
   useEffect(() => {
     const root = rootRef.current
-    if (!root || root.dataset.scMounted || !window.ScrollCraft) return
-    window.ScrollCraft.mount(root)
-    root.dataset.scMounted = 'true'
-  }, [])
+    if (!root) return undefined
 
-  useEffect(() => {
-    const sections = chapters.map(([id]) => document.getElementById(id)).filter(Boolean)
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-      if (visible) setActiveChapter(visible.target.id)
-    }, { rootMargin: '-34% 0px -50% 0px', threshold: [0, 0.2, 0.5] })
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
-  }, [])
+    if (!root.dataset.scMounted && window.ScrollCraft) {
+      window.__sc = window.ScrollCraft.mount(root)
+      root.dataset.scMounted = 'true'
+    }
 
-  useEffect(() => {
+    const flight = root.querySelector('[data-sc-mode="worldflight"]')
     let frame = 0
-    let pointerX = 0
-    let pointerY = 0
+
     const update = () => {
-      const stage = personalityRef.current
-      if (stage) {
-        const act = stage.closest('[data-sc-act]')
-        const progress = Number.parseFloat(getComputedStyle(act).getPropertyValue('--sc-p')) || 0
-        const next = Math.min(personalities.length - 1, Math.floor(progress * personalities.length))
-        if (!manualPersonality) setPersonality((current) => current === next ? current : next)
-        stage.dataset.scVerifyState = `${next}:${Math.round(progress * 20)}`
-      }
-      const fragmentStage = rootRef.current?.querySelector('.ns2-fragment-stage')
-      if (fragmentStage) {
-        const act = fragmentStage.closest('[data-sc-act]')
-        const progress = Number.parseFloat(getComputedStyle(act).getPropertyValue('--sc-p')) || 0
-        fragmentStage.dataset.scVerifyState = String(Math.round(progress * 20))
-      }
-      const work = workRef.current
-      if (work) {
-        const rect = work.getBoundingClientRect()
-        const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / (rect.height + window.innerHeight)))
-        const alignment = Math.max(0, 1 - Math.abs(progress - .5) * 3.8)
-        work.querySelectorAll('.ns2-work-frame[data-wow-item]').forEach((item, index) => {
-          const scatter = 1 - alignment
-          item.style.setProperty('--wow-x', `${Number(item.dataset.wowX || 0) * scatter}vw`)
-          const drift = Math.sin(progress * 13 + index * 1.7) * 2.4 * scatter
-          item.style.setProperty('--wow-y', `${Number(item.dataset.wowY || 0) * scatter + drift}vh`)
-          item.style.setProperty('--wow-r', `${Number(item.dataset.wowR || 0) * scatter}deg`)
-        })
-        const phase = progress * 2 - 1
-        const forms = work.querySelectorAll('.ns2-form')
-        const formMotion = [
-          { x: phase * 13, y: Math.sin(progress * Math.PI * 1.8) * -8, r: -18 + progress * 48, s: .84 + alignment * .2, depth: 1 },
-          { x: phase * -11, y: Math.sin(progress * Math.PI * 2.2 + .8) * 7, r: 16 - progress * 42, s: .9 + alignment * .14, depth: -.65 },
-          { x: phase * 9, y: Math.sin(progress * Math.PI * 1.45 + 2.1) * 9, r: -28 + progress * 66, s: .86 + alignment * .18, depth: .45 },
-        ]
-        forms.forEach((form, index) => {
-          const motion = formMotion[index]
-          form.style.setProperty('--form-x', `${motion.x + pointerX * motion.depth}vw`)
-          form.style.setProperty('--form-y', `${motion.y + pointerY * motion.depth}vh`)
-          form.style.setProperty('--form-r', `${motion.r}deg`)
-          form.style.setProperty('--form-s', motion.s.toFixed(3))
-        })
-        work.style.setProperty('--wow-a', alignment.toFixed(3))
-        work.dataset.scVerifyState = String(Math.round(alignment * 10))
+      frame = 0
+      if (!flight) return
+
+      const top = flight.getBoundingClientRect().top + window.scrollY
+      const travel = WORLD_SPAN * window.innerHeight
+      const progress = Math.min(1, Math.max(0, (window.scrollY - top) / Math.max(travel, 1)))
+      const portfolioProgress = Math.min(1, Math.max(0, (progress - 0.31) / 0.2))
+      const next = landmarks.reduce((current, landmark, index) => (
+        progress >= landmark.progress ? index : current
+      ), 0)
+
+      root.style.setProperty('--journey-p', progress.toFixed(4))
+      root.style.setProperty('--portfolio-p', portfolioProgress.toFixed(4))
+      root.dataset.scVerifyState = `${next}:${Math.round(progress * 40)}`
+
+      if (next !== activeRef.current) {
+        activeRef.current = next
+        setActiveLandmark(next)
       }
     }
+
     const schedule = () => {
-      cancelAnimationFrame(frame)
-      frame = requestAnimationFrame(update)
+      if (!frame) frame = window.requestAnimationFrame(update)
     }
-    const trackPointer = (event) => {
-      pointerX = (event.clientX / window.innerWidth - .5) * 2.2
-      pointerY = (event.clientY / window.innerHeight - .5) * 1.8
+
+    const relayout = () => {
+      window.dispatchEvent(new Event('resize'))
       schedule()
     }
-    const resetPointer = () => {
-      pointerX = 0
-      pointerY = 0
-      schedule()
-    }
-    schedule()
+
     window.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', schedule)
-    window.addEventListener('pointermove', trackPointer, { passive: true })
-    document.documentElement.addEventListener('pointerleave', resetPointer)
+    window.addEventListener('load', relayout)
+    document.fonts?.ready?.then(relayout)
+    update()
+
     return () => {
-      cancelAnimationFrame(frame)
+      if (frame) window.cancelAnimationFrame(frame)
       window.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', schedule)
-      window.removeEventListener('pointermove', trackPointer)
-      document.documentElement.removeEventListener('pointerleave', resetPointer)
+      window.removeEventListener('load', relayout)
     }
-  }, [manualPersonality])
+  }, [])
 
-  const currentPersonality = personalities[personality]
+  const goToLandmark = (landmark) => {
+    const flight = rootRef.current?.querySelector('[data-sc-mode="worldflight"]')
+    if (!flight) return
+    const top = flight.getBoundingClientRect().top + window.scrollY
+    window.scrollTo({
+      top: top + landmark.progress * WORLD_SPAN * window.innerHeight,
+      behavior: 'smooth',
+    })
+  }
 
   return (
-    <div className="ns2" ref={rootRef}>
-      <FolioNav active={activeChapter} />
-      <span className="ns2-progress" data-sc-progress aria-hidden="true" />
-
-      <section className="ns2-title" id="opening" aria-labelledby="home-title" data-sc-act="flow">
-        <div className="ns2-title-lockup">
-          <h1 id="home-title"><span>Neutral</span><em>Studio</em></h1>
-          <p>Brand systems built to stay clear as the company grows.</p>
-        </div>
-      </section>
-
-      <section className="ns2-work" id="portfolio" data-sc-act="flow" aria-labelledby="work-title" ref={workRef} data-sc-verify-state="0">
-        <header className="ns2-work-head" data-sc-in>
-          <p>Selected UX/UI</p>
-          <h2 id="work-title">Seven products.<br />No house style.</h2>
-          <span>Different problems deserve different expressions.</span>
-        </header>
-        <div className="ns2-work-canvas" aria-label="Seven selected UX/UI studies brought into one visual system">
-          {portfolioFrames.map((image, index) => (
-            <figure className="ns2-work-frame" key={image.src} data-wow-item data-wow-x={image.motion[0]} data-wow-y={image.motion[1]} data-wow-r={image.motion[2]}
-              style={{ '--frame-x': `${image.x}%`, '--frame-y': `${image.y}%`, '--frame-w': `${image.width}%`, '--frame-mx': `${image.mobileX}%`, '--frame-my': `${image.mobileY}%`, '--frame-mw': `${image.mobileWidth}%` }}>
-              <img src={image.src} alt={image.alt} loading={index < 4 ? 'eager' : 'lazy'} />
-              <figcaption>{String(index + 1).padStart(2, '0')}</figcaption>
-            </figure>
-          ))}
-          <img className="ns2-form ns2-form--torus" src="/generated/neutral/form-torus.png" alt="" width="900" height="935" loading="eager" />
-          <img className="ns2-form ns2-form--prism" src="/generated/neutral/form-prism.png" alt="" width="700" height="1050" loading="lazy" />
-          <img className="ns2-form ns2-form--orbit" src="/generated/neutral/form-orbit.png" alt="" width="900" height="960" loading="lazy" />
-          <p className="ns2-work-statement">One system.<br /><em>Different expressions.</em></p>
-        </div>
-        <p className="ns2-work-release">Built to fit the idea, not the studio.</p>
-      </section>
-
-      <section className="ns2-fragment" id="fragmentation" data-sc-act="pin" data-sc-span="1.75" aria-labelledby="fragment-title">
-        <div className="ns2-fragment-stage" data-sc-stage data-sc-verify-state="0">
-          <RegistrationMarks />
-          <div className="ns2-fragment-copy"><p>One company.</p><h2 id="fragment-title">Five visual languages.</h2></div>
-          <div className="ns2-fragment-pieces" aria-hidden="true">
-            <span className="piece-a">A logo designer.</span><span className="piece-b">A deck designer.</span>
-            <span className="piece-c">A web studio.</span><span className="piece-d">A product freelancer.</span>
-            <span className="piece-e">Someone for everything else.</span>
+    <main className="landscape-page" ref={rootRef} data-sc-verify-state="0:0">
+      <div className="landscape-flight" data-sc-mode="worldflight" data-sc-seam="0.02">
+        <div className="landscape-world" data-sc-world aria-hidden="true">
+          <div
+            className="landscape-world__segment"
+            data-sc-segment
+            data-sc-w={WORLD_SPAN}
+            data-sc-waypoint="Neutral Studio journey"
+          >
+            <img className="sc-world__poster" src={MASTER_POSTER} alt="" />
+            <video
+              data-sc-src={MASTER_VIDEO}
+              data-sc-src-mobile={MASTER_VIDEO_MOBILE}
+              width="2560"
+              height="1440"
+              playsInline
+              muted
+              preload="none"
+              aria-hidden="true"
+            />
           </div>
-          <p className="ns2-fragment-result">The founder becomes the design system.</p>
+
+          <svg className="landscape-contours" viewBox="0 0 1600 900" preserveAspectRatio="none">
+            <path d="M-70 744C220 621 352 820 568 706S900 430 1110 545s274 183 570 40" />
+            <path d="M-42 786C244 681 383 850 602 741s315-242 520-131 267 156 516 69" />
+          </svg>
         </div>
-      </section>
 
-      <section className="ns2-system" id="system" data-sc-act="flow" aria-labelledby="system-title">
-        <header className="ns2-system-intro" data-sc-in>
-          <p>What we do</p>
-          <h2 id="system-title">One partner.<br />Five connected<br /><em>disciplines.</em></h2>
-          <span>We bring the decisions behind the brand, product and site into one working system.</span>
-        </header>
-        <ol className="ns2-services" data-sc-in data-sc-stagger="70">
-          <li><span>01</span><h3>Branding</h3><p>Identity systems with clear rules for a growing team, product and set of channels.</p></li>
-          <li><span>02</span><h3>Web</h3><p>Websites where the story, interface and build decisions belong together.</p></li>
-          <li><span>03</span><h3>UX/UI</h3><p>Products shaped around real behaviour, business needs and the moments people get stuck.</p></li>
-          <li><span>04</span><h3>Motion</h3><p>Movement that makes hierarchy clearer and gives the system a rhythm.</p></li>
-          <li><span>05</span><h3>Strategy</h3><p>The position and decisions that keep every expression pointed in the same direction.</p></li>
-        </ol>
-      </section>
+        <div className="landscape-copy" data-sc-world-copy>
+          <div className="landscape-copy__wash sc-world__scrim" />
 
-      <section className="ns2-pricing" id="pricing" data-sc-act="flow" aria-labelledby="pricing-title">
-        <RegistrationMarks />
-        <header className="ns2-pricing-head" data-sc-in>
-          <p>Clear scope. Clear starting point.</p>
-          <h2 id="pricing-title">Pricing,<br /><em>without the fog.</em></h2>
-          <span>Focused engagements with a clear starting point, scope and price.</span>
-        </header>
-        <div className="ns2-pricing-list" data-sc-in data-sc-stagger="65">
-          <article><span>01</span><h3>Web</h3><p>Design and build for a focused studio or product website.</p><strong><small>From</small>€1,990</strong></article>
-          <article><span>02</span><h3>Brand only</h3><p>A clear identity system with the essentials ready to use.</p><strong><small>From</small>€2,990</strong></article>
-          <article><span>03</span><h3>UX/UI</h3><p>Product flows and interfaces shaped into a coherent experience.</p><strong><small>From</small>€3,990</strong></article>
-          <article className="is-bundle"><span>04</span><h3>Brand + Web + Assets</h3><p>One connected launch system across identity, site and core materials.</p><strong><small>From</small>€4,990</strong></article>
-          <article><span>05</span><h3>App development</h3><p>A production-ready application built from product logic to release.</p><strong><small>From</small>€9,990</strong></article>
+          <header className="landscape-header">
+            <button
+              className="landscape-brand"
+              type="button"
+              onClick={() => goToLandmark(landmarks[0])}
+              aria-label="Neutral Studio home"
+            >
+              <span className="landscape-brand__wordmark">Neutral</span>
+              <span className="landscape-brand__studio">Studio</span>
+            </button>
+            <a className="landscape-header__cta" href={CALENDAR_URL} target="_blank" rel="noreferrer">
+              Start the journey
+            </a>
+          </header>
+
+          <nav className="landscape-route" aria-label="Neutral Studio sections">
+            {landmarks.map((landmark, index) => (
+              <button
+                key={landmark.id}
+                type="button"
+                className={activeLandmark === index ? 'is-active' : ''}
+                aria-current={activeLandmark === index ? 'step' : undefined}
+                onClick={() => goToLandmark(landmark)}
+              >
+                <span>{landmark.label}</span>
+                <i aria-hidden="true" />
+              </button>
+            ))}
+          </nav>
+
+          <section
+            className="landscape-copy__hero"
+            data-sc-copy
+            data-sc-window="0 0.19 0 0.32"
+            aria-labelledby="home-title"
+          >
+            <h1 id="home-title" aria-label="Neutral Studio">
+              <span>Neutral</span><span>Studio</span>
+            </h1>
+            <div className="landscape-hero__lower">
+              <div className="landscape-hero__promise">
+                <strong>Start your path to a world-class brand.</strong>
+                <p>Brand, product and web shaped as one working system.</p>
+              </div>
+              <a className="landscape-hero__cta" href={CALENDAR_URL} target="_blank" rel="noreferrer">
+                <span>Start your journey</span>
+                <i aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="none">
+                    <path d="M5 15L15 5M7 5h8v8" />
+                  </svg>
+                </i>
+              </a>
+              <p className="landscape-hero__scope">Branding · Web · UX/UI<br />Motion · Strategy</p>
+            </div>
+          </section>
+
+          <section
+            className="landscape-copy__approach landscape-panel"
+            data-sc-copy
+            data-sc-window="0.16 0.34 0.22 0.28"
+            aria-labelledby="approach-title"
+          >
+            <h2 id="approach-title">When every piece has a different owner, the founder becomes the design system.</h2>
+            <p>We connect the decisions behind identity, product and website, giving the whole company one clear direction.</p>
+            <ol className="landscape-approach__steps">
+              <li>
+                <strong>Find the idea</strong>
+                <span>Define the problem and the position the work must hold together.</span>
+              </li>
+              <li>
+                <strong>Build the system</strong>
+                <span>Shape brand, product and web from the same set of decisions.</span>
+              </li>
+              <li>
+                <strong>Make it usable</strong>
+                <span>Leave your team with rules they can apply, extend and explain.</span>
+              </li>
+            </ol>
+          </section>
+
+          <section
+            className="landscape-copy__portfolio"
+            aria-labelledby="portfolio-title"
+          >
+            <div
+              className="landscape-portfolio__intro landscape-panel"
+              data-sc-copy
+              data-sc-window="0.31 0.65 0.13 0.13"
+            >
+              <h2 id="portfolio-title">Different problems deserve different expressions.</h2>
+              <p>One connected approach, never a house style. Selected case studies are being prepared for these spaces.</p>
+            </div>
+            <div className="landscape-projects" aria-label="Portfolio placeholders">
+              {projectPlaceholders.map((project) => (
+                <div
+                  className="landscape-card-cue"
+                  key={project.id}
+                  data-sc-copy
+                  data-sc-window="0.31 0.65 0.13 0.13"
+                >
+                  <div
+                    className="liquid-card-shell"
+                    style={{
+                      '--card-x': project.x,
+                      '--card-y': project.y,
+                      '--card-r': project.rotation,
+                    }}
+                  >
+                    <LiquidGlass
+                      className="landscape-project"
+                      displacementScale={36}
+                      blurAmount={0.09}
+                      saturation={135}
+                      aberrationIntensity={1.2}
+                      elasticity={0.08}
+                      cornerRadius={16}
+                      padding="0"
+                      overLight
+                      style={{ width: '100%', height: '100%' }}
+                    >
+                      <div className="landscape-project__content">
+                        <span>Selected work {project.id}</span>
+                        <strong>Project placeholder</strong>
+                        <i aria-hidden="true" />
+                      </div>
+                    </LiquidGlass>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section
+            className="landscape-copy__services landscape-panel"
+            data-sc-copy
+            data-sc-window="0.65 0.86 0.2 0.22"
+            aria-labelledby="services-title"
+          >
+            <div className="landscape-services__intro">
+              <h2 id="services-title">Clear scope. A clear starting point.</h2>
+              <p>Start with one focused engagement or connect the whole system. Scope and final price are agreed before work begins.</p>
+            </div>
+            <div className="landscape-services__list">
+              {engagements.map(({ name, detail, price }) => (
+                <div key={name}>
+                  <div className="landscape-services__copy">
+                    <span>{name}</span>
+                    <p>{detail}</p>
+                  </div>
+                  <strong><small>From</small>{price}</strong>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section
+            className="landscape-copy__contact landscape-panel"
+            data-sc-copy
+            data-sc-window="0.84 1 0.28 0"
+            aria-labelledby="contact-title"
+          >
+            <h2 id="contact-title">What are you building?</h2>
+            <p className="landscape-contact__lead">For founders at a decision point: launching, changing direction or making disconnected pieces work together.</p>
+            <a href={CALENDAR_URL} target="_blank" rel="noreferrer">
+              Tell us your idea <span aria-hidden="true">↗</span>
+            </a>
+            <p className="landscape-contact__note">Neutral Studio, Barcelona<br />Branding · Web · UX/UI · Motion · Strategy</p>
+          </section>
         </div>
-        <p className="ns2-pricing-note">Prices shown are starting prices in EUR. Final scope is agreed before work starts.</p>
-      </section>
 
-      <section className="ns2-philosophy" id="philosophy" data-sc-act="flow" aria-labelledby="philosophy-title">
-        <RegistrationMarks /><p className="ns2-philosophy-side">A quiet chapter before the page asks you to touch it.</p>
-        <div data-sc-in><h2 id="philosophy-title">Neutral is not an aesthetic.</h2><p>It is the underlying logic that keeps a company recognisable without making every expression look the same.</p></div>
-        <img data-sc-parallax="0.55" src="/generated/neutral/personality-human.jpg" srcSet="/generated/neutral/personality-human-mobile.jpg 900w, /generated/neutral/personality-human.jpg 1537w" sizes="(max-width: 900px) 100vw, 58vw" alt="A hand arranging a tactile collage of paper shapes on a dark worktable." width="1537" height="1023" loading="lazy" />
-      </section>
-
-      <section className={`ns2-personality is-${currentPersonality.id}`} id="personality" data-sc-act="pin" data-sc-span="3.4" aria-labelledby="personality-title">
-        <div className="ns2-personality-stage" data-sc-stage data-sc-verify-state="0" ref={personalityRef}>
-          <div className="ns2-personality-head"><p>Calibration tool</p><h2 id="personality-title">Personality</h2><span>Same system. Different point of view.</span></div>
-          <div className="ns2-personality-canvas">
-            <div className="ns2-personality-frame"><img src={currentPersonality.image} srcSet={`${currentPersonality.mobileImage} 900w, ${currentPersonality.image} ${currentPersonality.width}w`} sizes="(max-width: 900px) 100vw, 65vw" alt="" width={currentPersonality.width} height="1024" loading="lazy" /><div className="ns2-personality-guides" aria-hidden="true"><i /><i /><i /><i /></div></div>
-            <div className="ns2-personality-copy"><span>{currentPersonality.name}</span><strong>{currentPersonality.line}</strong><p>{currentPersonality.detail}</p></div>
-          </div>
-          <div className="ns2-personality-control">
-            <label htmlFor="personality-control">Move the personality</label>
-            <input id="personality-control" type="range" min="0" max={personalities.length - 1} step="1" value={personality}
-              onPointerDown={() => setManualPersonality(true)} onKeyDown={() => setManualPersonality(true)}
-              onChange={(event) => setPersonality(Number(event.target.value))} aria-valuetext={currentPersonality.name} />
-            <div aria-hidden="true">{personalities.map((item) => <span key={item.id}>{item.name}</span>)}</div>
-          </div>
-        </div>
-      </section>
-
-      <section className="ns2-offer" id="offer" data-sc-act="flow" aria-labelledby="offer-title">
-        <aside className="ns2-proof" aria-label="Portfolio proof"><span>Proof, not promises</span><p>Seven supplied UX/UI studies. Seven different product problems. The work above is the evidence.</p></aside>
-        <div className="ns2-offer-lead" data-sc-in><p>For founders at a decision point: launching, changing direction or making disconnected pieces work together.</p><h2 id="offer-title">One design partner.<br />The whole picture in view.</h2></div>
-        <div className="ns2-offer-grid" data-sc-in data-sc-stagger="60">
-          <article><span>01</span><h3>Find the idea</h3><p>We identify the problem worth solving and shape a position the work can hold together.</p></article>
-          <article><span>02</span><h3>Build the system</h3><p>Identity, pitch, product and web evolve from the same set of decisions.</p></article>
-          <article><span>03</span><h3>Make it usable</h3><p>You leave with a system your team can apply, extend and explain without starting over.</p></article>
-        </div>
-      </section>
-
-      <section className="ns2-close" id="contact" data-sc-act="flow" aria-labelledby="close-title">
-        <div className="ns2-close-collage" aria-hidden="true">{personalities.map((item) => <img src={item.image} srcSet={`${item.mobileImage} 900w, ${item.image} ${item.width}w`} sizes="(max-width: 900px) 50vw, 25vw" alt="" key={item.id} loading="lazy" />)}</div>
-        <div className="ns2-close-copy" data-sc-in><p>Colophon / Neutral Studio / Barcelona</p><h2 id="close-title">What are you building?</h2><a href={CALENDAR_URL} target="_blank" rel="noreferrer">Tell us your idea <span aria-hidden="true">↗</span></a></div>
-        <footer><span>Independent design studio</span><span>Branding · Web · UX/UI · Motion · Strategy</span><span>© 2026</span></footer>
-      </section>
-    </div>
+        <div data-sc-spacer aria-hidden="true" />
+      </div>
+    </main>
   )
 }
