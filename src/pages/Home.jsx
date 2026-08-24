@@ -165,7 +165,7 @@ export default function Home() {
       <section className="ns2-title" id="opening" aria-labelledby="home-title" data-sc-act="flow">
         <div className="ns2-title-lockup">
           <h1 id="home-title"><span>Neutral</span><em>Studio</em></h1>
-          <p>Brand systems with structure, character and room to move.</p>
+          <p>Brand systems built to stay clear as the company grows.</p>
         </div>
       </section>
 
@@ -208,14 +208,14 @@ export default function Home() {
         <header className="ns2-system-intro" data-sc-in>
           <p>What we do</p>
           <h2 id="system-title">One partner.<br />Five connected<br /><em>disciplines.</em></h2>
-          <span>From the first decision to the thing people finally see, use and remember.</span>
+          <span>We bring the decisions behind the brand, product and site into one working system.</span>
         </header>
         <ol className="ns2-services" data-sc-in data-sc-stagger="70">
-          <li><span>01</span><h3>Branding</h3><p>Distinct identities with the structure to stay recognisable as they grow.</p></li>
-          <li><span>02</span><h3>Web</h3><p>Editorial websites where story, interface and technology work as one.</p></li>
-          <li><span>03</span><h3>UX/UI</h3><p>Digital products shaped around real people, behaviour and business needs.</p></li>
-          <li><span>04</span><h3>Motion</h3><p>Movement that clarifies hierarchy, builds rhythm and gives the system life.</p></li>
-          <li><span>05</span><h3>Strategy</h3><p>Position, narrative and the decisions that give every expression direction.</p></li>
+          <li><span>01</span><h3>Branding</h3><p>Identity systems with clear rules for a growing team, product and set of channels.</p></li>
+          <li><span>02</span><h3>Web</h3><p>Websites where the story, interface and build decisions belong together.</p></li>
+          <li><span>03</span><h3>UX/UI</h3><p>Products shaped around real behaviour, business needs and the moments people get stuck.</p></li>
+          <li><span>04</span><h3>Motion</h3><p>Movement that makes hierarchy clearer and gives the system a rhythm.</p></li>
+          <li><span>05</span><h3>Strategy</h3><p>The position and decisions that keep every expression pointed in the same direction.</p></li>
         </ol>
       </section>
 
@@ -224,21 +224,21 @@ export default function Home() {
         <header className="ns2-pricing-head" data-sc-in>
           <p>Clear scope. Clear starting point.</p>
           <h2 id="pricing-title">Pricing,<br /><em>without the fog.</em></h2>
-          <span>Focused engagements for founders who need momentum, not a six-month discovery phase.</span>
+          <span>Focused engagements with a clear starting point, scope and price.</span>
         </header>
         <div className="ns2-pricing-list" data-sc-in data-sc-stagger="65">
-          <article><span>01</span><h3>Web</h3><p>Design and build for a focused studio or product website.</p><strong>€2K</strong></article>
-          <article><span>02</span><h3>Brand only</h3><p>A clear identity system with the essentials ready to use.</p><strong>€3K</strong></article>
-          <article><span>03</span><h3>UX/UI</h3><p>Product flows and interfaces shaped into a coherent experience.</p><strong>€4K</strong></article>
-          <article className="is-bundle"><span>04</span><h3>Brand + Web + Assets</h3><p>One connected launch system across identity, site and core materials.</p><strong>€5K</strong></article>
-          <article><span>05</span><h3>App development</h3><p>A production-ready application built from product logic to release.</p><strong>€10K</strong></article>
+          <article><span>01</span><h3>Web</h3><p>Design and build for a focused studio or product website.</p><strong><small>From</small>€1,990</strong></article>
+          <article><span>02</span><h3>Brand only</h3><p>A clear identity system with the essentials ready to use.</p><strong><small>From</small>€2,990</strong></article>
+          <article><span>03</span><h3>UX/UI</h3><p>Product flows and interfaces shaped into a coherent experience.</p><strong><small>From</small>€3,990</strong></article>
+          <article className="is-bundle"><span>04</span><h3>Brand + Web + Assets</h3><p>One connected launch system across identity, site and core materials.</p><strong><small>From</small>€4,990</strong></article>
+          <article><span>05</span><h3>App development</h3><p>A production-ready application built from product logic to release.</p><strong><small>From</small>€9,990</strong></article>
         </div>
-        <p className="ns2-pricing-note">Prices in EUR. Final scope is agreed before the work starts.</p>
+        <p className="ns2-pricing-note">Prices shown are starting prices in EUR. Final scope is agreed before work starts.</p>
       </section>
 
       <section className="ns2-philosophy" id="philosophy" data-sc-act="flow" aria-labelledby="philosophy-title">
         <RegistrationMarks /><p className="ns2-philosophy-side">A quiet chapter before the page asks you to touch it.</p>
-        <div data-sc-in><h2 id="philosophy-title">Neutral is not an aesthetic.</h2><p>It is the invisible logic that lets a company become recognisable without becoming predictable.</p></div>
+        <div data-sc-in><h2 id="philosophy-title">Neutral is not an aesthetic.</h2><p>It is the underlying logic that keeps a company recognisable without making every expression look the same.</p></div>
         <img data-sc-parallax="0.55" src="/generated/neutral/personality-human.jpg" srcSet="/generated/neutral/personality-human-mobile.jpg 900w, /generated/neutral/personality-human.jpg 1537w" sizes="(max-width: 900px) 100vw, 58vw" alt="A hand arranging a tactile collage of paper shapes on a dark worktable." width="1537" height="1023" loading="lazy" />
       </section>
 
@@ -261,11 +261,11 @@ export default function Home() {
 
       <section className="ns2-offer" id="offer" data-sc-act="flow" aria-labelledby="offer-title">
         <aside className="ns2-proof" aria-label="Portfolio proof"><span>Proof, not promises</span><p>Seven supplied UX/UI studies. Seven different product problems. The work above is the evidence.</p></aside>
-        <div className="ns2-offer-lead" data-sc-in><p>For founders building, launching or changing something that matters.</p><h2 id="offer-title">One design partner.<br />The whole picture in view.</h2></div>
+        <div className="ns2-offer-lead" data-sc-in><p>For founders at a decision point: launching, changing direction or making disconnected pieces work together.</p><h2 id="offer-title">One design partner.<br />The whole picture in view.</h2></div>
         <div className="ns2-offer-grid" data-sc-in data-sc-stagger="60">
-          <article><span>01</span><h3>Find the idea</h3><p>We frame the real problem and the position worth building around.</p></article>
+          <article><span>01</span><h3>Find the idea</h3><p>We identify the problem worth solving and shape a position the work can hold together.</p></article>
           <article><span>02</span><h3>Build the system</h3><p>Identity, pitch, product and web evolve from the same set of decisions.</p></article>
-          <article><span>03</span><h3>Make it usable</h3><p>You leave with a system your team can apply, extend and explain.</p></article>
+          <article><span>03</span><h3>Make it usable</h3><p>You leave with a system your team can apply, extend and explain without starting over.</p></article>
         </div>
       </section>
 

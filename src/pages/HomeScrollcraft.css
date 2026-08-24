@@ -137,7 +137,8 @@
 .ns2-pricing-list article > span { color: var(--acid); font: 600 .65rem/1 var(--mono); }
 .ns2-pricing-list h3 { max-width: 14ch; font-size: clamp(2rem, 4vw, 5rem); line-height: .85; letter-spacing: -.055em; }
 .ns2-pricing-list p { max-width: 38ch; color: #a8aaa3; font-size: .9rem; line-height: 1.45; }
-.ns2-pricing-list strong { color: var(--acid); font-size: clamp(3rem, 6vw, 7rem); font-weight: 650; line-height: .8; letter-spacing: -.07em; }
+.ns2-pricing-list strong { color: var(--acid); font-size: clamp(3rem, 6vw, 7rem); font-weight: 650; line-height: .8; letter-spacing: -.07em; text-align: right; }
+.ns2-pricing-list strong small { display: block; margin-bottom: .55rem; color: #a8aaa3; font: 600 .62rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
 .ns2-pricing-list .is-bundle h3 { font-family: var(--serif); font-weight: 400; }
 .ns2-pricing-note { max-width: 48ch; margin: 2rem 0 0 auto; color: #777970; font: 500 .65rem/1.5 var(--mono); text-transform: uppercase; }
 
