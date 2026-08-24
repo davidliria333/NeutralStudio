@@ -6,21 +6,10 @@ import { MetalFx } from 'metal-fx'
 import './HomeScrollcraft.css'
 
 const CALENDAR_URL = 'https://cal.com/neutralstudio/30min?overlayCalendar=true'
+const MASTER_VIDEO = '/generated/neutral-landscape/TensorPix - neutral-landscape-master-1440p-scrub.mp4'
+const MASTER_VIDEO_MOBILE = '/generated/neutral-landscape/TensorPix - neutral-landscape-master-scrub.mp4'
+const MASTER_POSTER = '/generated/neutral-landscape/tensorpix-poster-4k.jpg'
 const WORLD_SPAN = 8.4
-const SEGMENT_SPAN = WORLD_SPAN / 5
-
-const filmSegments = [
-  { id: '00', label: 'Arrival' },
-  { id: '01', label: 'Approach' },
-  { id: '02', label: 'Work' },
-  { id: '03', label: 'Services' },
-  { id: '04', label: 'Contact' },
-].map((segment) => ({
-  ...segment,
-  poster: `/generated/neutral-landscape/segments/desktop-${segment.id}-poster.jpg`,
-  desktop: `/generated/neutral-landscape/segments/desktop-${segment.id}.mp4`,
-  mobile: `/generated/neutral-landscape/segments/mobile-${segment.id}.mp4`,
-}))
 
 const landmarks = [
   { id: 'arrival', label: 'Home', progress: 0 },
@@ -174,36 +163,33 @@ export default function Home() {
 
   return (
     <main className="landscape-page" ref={rootRef} data-sc-verify-state="0:0">
-      <div className="landscape-flight" data-sc-mode="worldflight" data-sc-seam="0.001">
+      <div className="landscape-flight" data-sc-mode="worldflight" data-sc-seam="0.02">
         <div className="landscape-world" data-sc-world aria-hidden="true">
-          {filmSegments.map((segment, index) => (
-            <div
-              className="landscape-world__segment"
-              data-sc-segment
-              data-sc-w={SEGMENT_SPAN}
-              data-sc-waypoint={segment.label}
-              key={segment.id}
-            >
-              <img
-                className="sc-world__poster"
-                src={segment.poster}
-                alt=""
-                loading={index === 0 ? 'eager' : 'lazy'}
-                fetchpriority={index === 0 ? 'high' : 'auto'}
-                decoding={index === 0 ? 'sync' : 'async'}
-              />
-              <video
-                data-sc-src={segment.desktop}
-                data-sc-src-mobile={segment.mobile}
-                width="2560"
-                height="1440"
-                playsInline
-                muted
-                preload="none"
-                aria-hidden="true"
-              />
-            </div>
-          ))}
+          <div
+            className="landscape-world__segment"
+            data-sc-segment
+            data-sc-w={WORLD_SPAN}
+            data-sc-waypoint="Neutral Studio journey"
+          >
+            <img
+              className="sc-world__poster"
+              src={MASTER_POSTER}
+              alt=""
+              loading="eager"
+              fetchpriority="high"
+              decoding="sync"
+            />
+            <video
+              data-sc-src={MASTER_VIDEO}
+              data-sc-src-mobile={MASTER_VIDEO_MOBILE}
+              width="2560"
+              height="1440"
+              playsInline
+              muted
+              preload="none"
+              aria-hidden="true"
+            />
+          </div>
 
           <svg className="landscape-contours" viewBox="0 0 1600 900" preserveAspectRatio="none">
             <path d="M-70 744C220 621 352 820 568 706S900 430 1110 545s274 183 570 40" />
