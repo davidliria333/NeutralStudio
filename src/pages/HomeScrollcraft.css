@@ -1049,11 +1049,14 @@ body:has(.landscape-page) .landscape-page {
     filter: none;
   }
 
-  .landscape-hero__metal--static,
   .landscape-hero__cta-glass--static,
   .landscape-project--static {
     width: 100%;
     height: 100%;
+  }
+
+  .landscape-hero__metal--static {
+    justify-self: center;
   }
 
   .landscape-project--static {
