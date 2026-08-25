@@ -73,7 +73,16 @@ export default function Header() {
 
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <Magnetic radius={70} strength={0.28}>
-            <a href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer" data-magnet className="btn btn--primary" style={{ padding: '10px 18px', fontSize: 13 }}>
+            <a
+              href="https://cal.com/neutralstudio/30min?overlayCalendar=true"
+              target="_blank"
+              rel="noreferrer"
+              data-magnet
+              data-umami-event="calendar_opened"
+              data-umami-event-placement="service_header"
+              className="btn btn--primary"
+              style={{ padding: '10px 18px', fontSize: 13 }}
+            >
               Cuéntanos tu idea <span className="arrow">→</span>
             </a>
           </Magnetic>

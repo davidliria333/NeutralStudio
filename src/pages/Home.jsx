@@ -454,7 +454,14 @@ export default function Home() {
                 ))}
               </nav>
 
-              <a className="landscape-menu__cta" href={CALENDAR_URL} target="_blank" rel="noreferrer">
+              <a
+                className="landscape-menu__cta"
+                href={CALENDAR_URL}
+                target="_blank"
+                rel="noreferrer"
+                data-umami-event="calendar_opened"
+                data-umami-event-placement="header"
+              >
                 <span>Start your path</span>
                 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M4 12L12 4M6 4h6v6" />
@@ -479,7 +486,14 @@ export default function Home() {
                 <div className="landscape-hero__metal landscape-hero__metal--static">
                   <div className="landscape-hero__cta-host">
                     <div className="landscape-hero__cta-glass landscape-hero__cta-glass--static">
-                      <a className="landscape-hero__cta" href={CALENDAR_URL} target="_blank" rel="noreferrer">
+                      <a
+                        className="landscape-hero__cta"
+                        href={CALENDAR_URL}
+                        target="_blank"
+                        rel="noreferrer"
+                        data-umami-event="calendar_opened"
+                        data-umami-event-placement="hero_mobile"
+                      >
                         <span>Start your path</span>
                         <i aria-hidden="true">
                           <svg viewBox="0 0 20 20" fill="none">
@@ -513,7 +527,14 @@ export default function Home() {
                     cornerRadius={18}
                     padding="0"
                   >
-                    <a className="landscape-hero__cta" href={CALENDAR_URL} target="_blank" rel="noreferrer">
+                    <a
+                      className="landscape-hero__cta"
+                      href={CALENDAR_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-umami-event="calendar_opened"
+                      data-umami-event-placement="hero_desktop"
+                    >
                       <span>Start your path</span>
                       <i aria-hidden="true">
                         <svg viewBox="0 0 20 20" fill="none">
@@ -622,6 +643,8 @@ export default function Home() {
                     className={activeCategory === collection.id ? 'is-active' : ''}
                     aria-pressed={activeCategory === collection.id}
                     onClick={() => selectCategory(collection.id)}
+                    data-umami-event="portfolio_category_selected"
+                    data-umami-event-category={collection.id}
                   >
                     {collection.label}
                     <span>{String(collection.slides.length).padStart(2, '0')}</span>
@@ -700,7 +723,13 @@ export default function Home() {
           >
             <h2 id="contact-title">What are you building?</h2>
             <p className="landscape-contact__lead">For founders at a decision point: launching, changing direction or making disconnected pieces work together.</p>
-            <a href={CALENDAR_URL} target="_blank" rel="noreferrer">
+            <a
+              href={CALENDAR_URL}
+              target="_blank"
+              rel="noreferrer"
+              data-umami-event="calendar_opened"
+              data-umami-event-placement="contact"
+            >
               Tell us your idea <span aria-hidden="true">↗</span>
             </a>
             <p className="landscape-contact__note">Neutral Studio, Barcelona<br />Branding · Web · UX/UI · Motion · Strategy</p>

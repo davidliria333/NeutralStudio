@@ -75,6 +75,7 @@ export default function Footer() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, flexShrink: 0 }} className="footer-ctas">
             <a href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer"
+              data-umami-event="calendar_opened" data-umami-event-placement="footer"
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                 padding: '14px 28px', borderRadius: 'var(--r-m)',
@@ -89,6 +90,7 @@ export default function Footer() {
               Book a call <span>→</span>
             </a>
             <a href="mailto:arnaupinyolwork@gmail.com?subject=Portfolio%20request%20-%20Neutral%20Studio"
+              data-umami-event="email_clicked" data-umami-event-placement="footer_portfolio"
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                 padding: '14px 28px', borderRadius: 'var(--r-m)',
@@ -186,6 +188,8 @@ function FCol({ title, items, onSectionClick }) {
           <li key={label}>
             {ext ? (
               <a href={href} target="_blank" rel="noreferrer"
+                data-umami-event={href.startsWith('mailto:') ? 'email_clicked' : undefined}
+                data-umami-event-placement={href.startsWith('mailto:') ? 'footer_navigation' : undefined}
                 style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', textDecoration: 'none', transition: 'color .18s' }}
                 onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.88)'}
                 onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>

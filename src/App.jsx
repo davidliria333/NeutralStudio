@@ -5,6 +5,7 @@ import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
 import RouteProgress from './components/RouteProgress.jsx'
+import Analytics from './components/Analytics.jsx'
 
 const Brand = lazy(() => import('./pages/services/Brand.jsx'))
 const Systems = lazy(() => import('./pages/services/Systems.jsx'))
@@ -59,6 +60,7 @@ export default function App() {
   const isHome = location.pathname === '/'
   return (
     <>
+      <Analytics />
       <ScrollManager />
       <RouteProgress />
       {!isHome && <Header />}

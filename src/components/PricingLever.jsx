@@ -65,7 +65,15 @@ export default function PricingLever({ ctaHref, staticGlass = false }) {
               </div>
             </div>
 
-            <a className="pricing-card__cta" href={ctaHref} target="_blank" rel="noreferrer">
+            <a
+              className="pricing-card__cta"
+              href={ctaHref}
+              target="_blank"
+              rel="noreferrer"
+              data-umami-event="calendar_opened"
+              data-umami-event-placement="services"
+              data-umami-event-service={activeService.id}
+            >
               <span>Book a call</span>
               <ArrowUpRight />
             </a>
@@ -81,6 +89,8 @@ export default function PricingLever({ ctaHref, staticGlass = false }) {
                   type="button"
                   aria-pressed={isActive}
                   onClick={() => setActiveId(service.id)}
+                  data-umami-event="service_selected"
+                  data-umami-event-service={service.id}
                   key={service.id}
                 >
                   <span className="pricing-card__service-copy">
