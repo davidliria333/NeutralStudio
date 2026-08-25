@@ -7,7 +7,6 @@ import './HomeScrollcraft.css'
 
 const LiquidGlass = lazy(() => import('liquid-glass-react'))
 const MetalFx = lazy(() => import('metal-fx').then((module) => ({ default: module.MetalFx })))
-const SplitText = lazy(() => import('../components/SplitText'))
 
 const CALENDAR_URL = 'https://cal.com/neutralstudio/30min?overlayCalendar=true'
 const MASTER_VIDEO = '/generated/neutral-landscape/TensorPix - neutral-landscape-master-1440p-scrub.mp4'
@@ -378,7 +377,15 @@ export default function Home() {
                 onClick={() => goToLandmark(landmarks[0])}
                 aria-label="Neutral Studio home"
               >
-                <span className="landscape-brand__wordmark">Neutral</span>
+                <img
+                  className="landscape-brand__wordmark"
+                  src="/Logo-01.png"
+                  alt=""
+                  width="209"
+                  height="58"
+                  decoding="sync"
+                  draggable="false"
+                />
                 <span className="landscape-brand__studio">Studio</span>
               </button>
 
@@ -414,30 +421,9 @@ export default function Home() {
             inert={activeSurface === 'hero' ? undefined : ''}
           >
             <div className="landscape-hero__center">
-              {isMobile ? (
-                <h1 id="home-title" className="landscape-hero__title" aria-label="Neutral Studio">NeutralStudio</h1>
-              ) : (
-                <Suspense fallback={<h1 id="home-title" className="landscape-hero__title" aria-label="Neutral Studio">NeutralStudio</h1>}>
-                  <SplitText
-                    id="home-title"
-                    aria-label="Neutral Studio"
-                    text="NeutralStudio"
-                    className="landscape-hero__title"
-                    delay={70}
-                    duration={0.65}
-                    ease="power3.out"
-                    splitType="chars"
-                    from={{ opacity: 0, y: 40 }}
-                    to={{ opacity: 1, y: 0 }}
-                    threshold={0.1}
-                    rootMargin="0px"
-                    textAlign="center"
-                    tag="h1"
-                    reducedMotion={reducedMotion}
-                    style={{ whiteSpace: 'nowrap' }}
-                  />
-                </Suspense>
-              )}
+              <h1 id="home-title" className="landscape-hero__title" aria-label="Neutral Studio">
+                <span aria-hidden="true">Neutral</span>
+              </h1>
               <p className="landscape-hero__declaration">One clear direction for your brand, product and website.</p>
               {isMobile ? (
                 <div className="landscape-hero__metal landscape-hero__metal--static">

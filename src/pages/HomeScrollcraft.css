@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Cy';
+  src: url('/fonts/Cy-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 .landscape-page {
   --sc-canvas: #fff;
   --sc-surface: #fff;
@@ -98,58 +106,104 @@ body:has(.landscape-page) .landscape-page {
   top: 1rem;
   left: 50%;
   display: flex;
-  width: min(610.57px, calc(100vw - 2rem));
-  height: 72px;
+  width: min(704px, calc(100vw - 2rem));
+  height: 68px;
   align-items: center;
   padding: 0;
-  color: #222228;
+  color: #142019;
   transform: translateX(-50%);
   pointer-events: none;
 }
 
 .landscape-menu {
+  position: relative;
+  isolation: isolate;
   display: flex;
   width: 100%;
-  height: 72px;
-  min-height: 72px;
+  height: 68px;
+  min-height: 68px;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  border-radius: 48px;
-  padding: 0 32px;
-  background: #f7f7f5;
+  gap: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .68);
+  border-radius: 999px;
+  padding: 10px 12px 10px 20px;
+  background:
+    linear-gradient(116deg, rgba(255, 255, 255, .62), rgba(242, 248, 244, .34) 46%, rgba(223, 238, 229, .28));
   box-shadow:
-    0 4px 8px -2px rgba(0, 0, 0, .08),
-    0 2px 4px -2px rgba(0, 0, 0, .12);
+    inset 0 1px 0 rgba(255, 255, 255, .94),
+    inset 0 -1px 0 rgba(25, 47, 36, .1),
+    0 18px 50px rgba(22, 45, 34, .16),
+    0 2px 8px rgba(22, 45, 34, .08);
+  backdrop-filter: blur(28px) saturate(1.38) contrast(1.03);
+  -webkit-backdrop-filter: blur(28px) saturate(1.38) contrast(1.03);
   pointer-events: auto;
+}
+
+.landscape-menu::before {
+  position: absolute;
+  inset: 1px;
+  z-index: 0;
+  content: '';
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 15% -30%, rgba(255, 255, 255, .88), transparent 38%),
+    linear-gradient(104deg, transparent 52%, rgba(255, 255, 255, .2) 70%, transparent 88%);
+  pointer-events: none;
+}
+
+.landscape-menu::after {
+  position: absolute;
+  top: 0;
+  left: 11%;
+  z-index: 0;
+  width: 44%;
+  height: 1px;
+  content: '';
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .96), transparent);
+  pointer-events: none;
+}
+
+.landscape-menu > * {
+  position: relative;
+  z-index: 1;
 }
 
 .landscape-brand {
   display: inline-flex;
-  flex: 0 0 auto;
-  align-items: baseline;
-  gap: 6px;
-  min-width: 77px;
-  height: 40px;
+  flex: 0 0 112px;
+  min-width: 112px;
+  height: 44px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
   border: 0;
-  padding: 8px 0;
+  border-radius: 999px;
+  padding: 0 5px;
   color: inherit;
   background: transparent;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .landscape-brand__wordmark {
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: -.04em;
-  line-height: 1;
+  display: block;
+  width: auto;
+  height: 19px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
 }
 
 .landscape-brand__studio {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: -.02em;
-  opacity: .52;
+  margin-top: 1px;
+  font-size: 8px;
+  font-weight: 760;
+  line-height: 1;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  opacity: .58;
 }
 
 .landscape-panel > a {
@@ -180,19 +234,19 @@ body:has(.landscape-page) .landscape-page {
   position: static;
   z-index: auto;
   display: flex;
-  flex: 0 1 303.57px;
-  width: 303.57px;
+  flex: 1 1 auto;
+  width: auto;
   min-width: 0;
-  height: 40px;
+  height: 44px;
   align-items: center;
   justify-content: center;
-  gap: 0;
-  border: 0;
-  border-radius: 0;
-  padding: 0;
-  color: #222228;
-  background: transparent;
-  box-shadow: none;
+  gap: 2px;
+  border: 1px solid rgba(28, 51, 40, .06);
+  border-radius: 999px;
+  padding: 3px;
+  color: #142019;
+  background: rgba(255, 255, 255, .18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .46);
   transform: none;
   pointer-events: auto;
 }
@@ -201,23 +255,23 @@ body:has(.landscape-page) .landscape-page {
   display: flex;
   flex: 1 1 auto;
   min-width: 0;
-  height: 40px;
+  height: 36px;
   align-items: center;
   justify-content: center;
   gap: 5px;
   border: 0;
-  border-radius: 12px;
-  padding: 8px 10px;
+  border-radius: 999px;
+  padding: 6px 11px;
   color: inherit;
   background: transparent;
-  font-size: 14px;
-  font-weight: 550;
-  line-height: 24px;
+  font-size: 12px;
+  font-weight: 620;
+  line-height: 1;
   letter-spacing: -.01em;
   opacity: 1;
   cursor: pointer;
   white-space: nowrap;
-  transition: none;
+  transition: color 160ms var(--sc-ease-out), background-color 160ms var(--sc-ease-out), box-shadow 160ms var(--sc-ease-out), transform 160ms var(--sc-ease-out);
 }
 
 .landscape-route button:first-child {
@@ -226,8 +280,10 @@ body:has(.landscape-page) .landscape-page {
 
 .landscape-route button:hover,
 .landscape-route button.is-active {
-  background: rgba(34, 34, 40, .06);
-  box-shadow: none;
+  background: rgba(255, 255, 255, .58);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .94),
+    0 3px 10px rgba(23, 46, 35, .08);
 }
 
 .landscape-route button.is-active {
@@ -249,18 +305,22 @@ body:has(.landscape-page) .landscape-page {
 
 .landscape-menu__cta {
   display: inline-flex;
-  flex: 0 0 124px;
-  width: 124px;
-  height: 32px;
+  flex: 0 0 132px;
+  width: 132px;
+  height: 42px;
   align-items: center;
   justify-content: center;
   gap: 7px;
   border-radius: 2048px;
-  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  padding: 0 14px;
   color: #fff;
-  background: #000;
+  background: rgba(7, 13, 10, .91);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .18),
+    0 6px 18px rgba(13, 28, 21, .16);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 720;
   line-height: 1;
   letter-spacing: -.01em;
   text-decoration: none;
@@ -277,7 +337,7 @@ body:has(.landscape-page) .landscape-page {
 }
 
 .landscape-menu :is(a, button) {
-  transition: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .landscape-brand:focus-visible,
@@ -354,13 +414,15 @@ body:has(.landscape-page) .landscape-page {
 }
 
 .landscape-copy__hero h1 {
-  display: flex;
+  display: block;
   max-width: none;
-  font-size: clamp(7rem, 12.6vw, 18rem);
-  font-weight: 800;
+  margin: 0;
+  color: #fff;
+  font-family: 'Cy', 'Manrope', system-ui, sans-serif;
+  font-size: clamp(8rem, 15vw, 13.5rem);
+  font-weight: 600;
   line-height: .8;
   letter-spacing: -.04em;
-  color: #fff;
   text-align: center;
   white-space: nowrap;
   -webkit-text-stroke: clamp(.5px, .05vw, 1px) rgba(0, 0, 0, .16);
@@ -373,8 +435,16 @@ body:has(.landscape-page) .landscape-page {
   will-change: transform;
 }
 
-.landscape-copy__hero h1 .split-char:nth-child(n + 8) {
-  font-weight: 450;
+.landscape-copy__hero h1 span {
+  display: block;
+  animation: neutral-wordmark-arrival 650ms var(--sc-ease-out) both;
+}
+
+@keyframes neutral-wordmark-arrival {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.1rem, 0);
+  }
 }
 
 .landscape-hero__declaration {
@@ -397,7 +467,7 @@ body:has(.landscape-page) .landscape-page {
   background: transparent !important;
   box-shadow: 0 18px 42px rgba(17, 50, 69, .14);
   pointer-events: auto;
-  transition: transform 180ms var(--sc-ease-out);
+  transition: opacity 150ms ease-out, transform 320ms cubic-bezier(.16, 1, .3, 1) !important;
 }
 
 .landscape-hero__metal > .metal-fx-canvas {
@@ -1121,7 +1191,7 @@ body:has(.landscape-page) .landscape-page {
 
 @media (hover: hover) and (pointer: fine) {
   .landscape-hero__metal:hover {
-    transform: translateY(-3px);
+    transform: translate3d(0, -3px, 0);
   }
 
   .landscape-pricing__cta:hover {
@@ -1165,6 +1235,8 @@ body:has(.landscape-page) .landscape-page {
   .landscape-panel,
   .landscape-carousel,
   .landscape-pricing-glass,
+  .landscape-menu,
+  .landscape-brand,
   .landscape-route,
   .landscape-panel > a {
     background: rgba(255, 255, 255, .94);
@@ -1206,8 +1278,8 @@ body:has(.landscape-page) .landscape-page {
     width: auto;
     height: auto;
     padding: .55rem max(1rem, env(safe-area-inset-right, 0px)) .55rem max(1rem, env(safe-area-inset-left, 0px));
-    color: #fff;
-    text-shadow: 0 2px 18px rgba(0, 0, 0, .28);
+    color: #142019;
+    text-shadow: none;
     transform: none;
   }
 
@@ -1220,12 +1292,32 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-brand {
+    flex: 0 0 auto;
+    width: max-content;
+    min-width: 0;
+    height: 44px;
     min-height: 44px;
+    gap: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .66);
+    border-radius: 999px;
+    padding: 0 .75rem;
+    background: linear-gradient(116deg, rgba(255, 255, 255, .72), rgba(231, 241, 235, .42));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .96),
+      inset 0 -1px 0 rgba(24, 46, 35, .08),
+      0 10px 28px rgba(20, 43, 32, .14);
+    backdrop-filter: blur(22px) saturate(1.32);
+    -webkit-backdrop-filter: blur(22px) saturate(1.32);
     pointer-events: auto;
   }
 
   .landscape-brand__wordmark {
-    font-size: 1.02rem;
+    height: 17px;
+  }
+
+  .landscape-brand__studio {
+    font-size: 7px;
   }
 
   .landscape-route {
@@ -1239,15 +1331,19 @@ body:has(.landscape-page) .landscape-page {
     max-width: none;
     height: auto;
     justify-content: center;
-    padding: .25rem;
-    border: 1px solid rgba(17, 17, 17, .07);
-    border-radius: 16px;
-    color: #111;
-    background: #fff;
+    gap: 2px;
+    overflow: hidden;
+    padding: .3rem;
+    border: 1px solid rgba(255, 255, 255, .7);
+    border-radius: 18px;
+    color: #142019;
+    background: linear-gradient(116deg, rgba(255, 255, 255, .7), rgba(231, 241, 235, .42));
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, .96),
-      inset 0 -1px 0 rgba(37, 64, 52, .06),
-      0 10px 32px rgba(35, 57, 47, .1);
+      inset 0 -1px 0 rgba(37, 64, 52, .08),
+      0 14px 36px rgba(24, 49, 37, .16);
+    backdrop-filter: blur(24px) saturate(1.34);
+    -webkit-backdrop-filter: blur(24px) saturate(1.34);
     transform: translateX(-50%);
   }
 
@@ -1269,6 +1365,10 @@ body:has(.landscape-page) .landscape-page {
 
   .landscape-route button:hover,
   .landscape-route button.is-active {
+    background: rgba(255, 255, 255, .64);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .92),
+      0 4px 12px rgba(24, 49, 37, .08);
     transform: none;
   }
 
@@ -1311,9 +1411,7 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-copy__hero h1 {
-    font-size: clamp(2.9rem, 14.2vw, 4.5rem);
-    line-height: .8;
-    white-space: nowrap;
+    font-size: clamp(4rem, 22vw, 6rem);
   }
 
   .landscape-hero__declaration {
@@ -1767,10 +1865,9 @@ body:has(.landscape-page) .landscape-page {
     left: 0;
     width: auto;
     height: auto;
-    padding-top: .25rem;
-    padding-bottom: .25rem;
-    color: #fff;
-    text-shadow: 0 2px 18px rgba(0, 0, 0, .28);
+    padding: .35rem max(.75rem, env(safe-area-inset-right, 0px)) .25rem max(.75rem, env(safe-area-inset-left, 0px));
+    color: #142019;
+    text-shadow: none;
     transform: none;
   }
 
@@ -1783,7 +1880,32 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-brand {
+    flex: 0 0 auto;
+    width: max-content;
+    min-width: 0;
+    height: 40px;
+    min-height: 40px;
+    gap: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .66);
+    border-radius: 999px;
+    padding: 0 .7rem;
+    background: linear-gradient(116deg, rgba(255, 255, 255, .72), rgba(231, 241, 235, .42));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .96),
+      inset 0 -1px 0 rgba(24, 46, 35, .08),
+      0 8px 24px rgba(20, 43, 32, .14);
+    backdrop-filter: blur(22px) saturate(1.32);
+    -webkit-backdrop-filter: blur(22px) saturate(1.32);
     pointer-events: auto;
+  }
+
+  .landscape-brand__wordmark {
+    height: 16px;
+  }
+
+  .landscape-brand__studio {
+    font-size: 7px;
   }
 
   .landscape-route {
@@ -1796,15 +1918,19 @@ body:has(.landscape-page) .landscape-page {
     width: min(34rem, calc(100vw - 1rem));
     height: auto;
     justify-content: center;
-    padding: .25rem;
-    border: 1px solid rgba(17, 17, 17, .07);
-    border-radius: 16px;
-    color: #111;
-    background: #fff;
+    gap: 2px;
+    overflow: hidden;
+    padding: .3rem;
+    border: 1px solid rgba(255, 255, 255, .7);
+    border-radius: 18px;
+    color: #142019;
+    background: linear-gradient(116deg, rgba(255, 255, 255, .7), rgba(231, 241, 235, .42));
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, .96),
-      inset 0 -1px 0 rgba(37, 64, 52, .06),
-      0 10px 32px rgba(35, 57, 47, .1);
+      inset 0 -1px 0 rgba(37, 64, 52, .08),
+      0 12px 32px rgba(24, 49, 37, .16);
+    backdrop-filter: blur(24px) saturate(1.34);
+    -webkit-backdrop-filter: blur(24px) saturate(1.34);
     transform: translateX(-50%);
   }
 
@@ -1827,11 +1953,7 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-copy__hero h1 {
-    font-size: clamp(3.2rem, 9vw, 5.2rem);
-    -webkit-text-stroke: 1px rgba(0, 0, 0, .28);
-    text-shadow:
-      0 2px 12px rgba(0, 0, 0, .42),
-      0 18px 54px rgba(0, 0, 0, .34);
+    font-size: clamp(5rem, 15vw, 8rem);
   }
 
   .landscape-hero__center {
@@ -1850,7 +1972,7 @@ body:has(.landscape-page) .landscape-page {
   .landscape-copy__services {
     top: 2.9rem;
     right: max(1rem, env(safe-area-inset-right, 0px));
-    bottom: 3.75rem;
+    bottom: 4rem;
     left: max(1rem, env(safe-area-inset-left, 0px));
     display: block;
     width: auto;
@@ -2094,7 +2216,11 @@ body:has(.landscape-page) .landscape-page {
   .landscape-carousel__track,
   .landscape-carousel__controls button,
   .landscape-panel > a {
-    transition: none;
+    transition: none !important;
+  }
+
+  .landscape-copy__hero h1 span {
+    animation: none;
   }
 
   .landscape-carousel__track {

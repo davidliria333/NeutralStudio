@@ -158,10 +158,13 @@
 }
 
 .pricing-card__selected-price strong {
+  display: block;
   font-size: clamp(1.65rem, 2.4vw, 2.65rem);
   font-weight: 720;
   letter-spacing: -.035em;
-  line-height: 1;
+  line-height: 1.15;
+  padding-bottom: .08em;
+  white-space: nowrap;
 }
 
 .pricing-card__cta {
@@ -296,10 +299,13 @@
 }
 
 .pricing-card__service-price strong {
+  display: block;
   font-size: clamp(.96rem, 1.32vw, 1.3rem);
   font-weight: 720;
   letter-spacing: -.03em;
-  line-height: 1.1;
+  line-height: 1.2;
+  padding-bottom: .08em;
+  white-space: nowrap;
 }
 
 .pricing-card__service-state {
@@ -506,6 +512,39 @@
 
   .pricing-card__service-price strong {
     font-size: .88rem;
+  }
+}
+
+@media (max-width: 340px) and (orientation: portrait) {
+  .pricing-card__intro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: .45rem;
+    padding: .72rem .85rem .62rem;
+  }
+
+  .pricing-card__intro h2 {
+    font-size: clamp(1.55rem, 8vw, 1.8rem);
+  }
+
+  .pricing-card__intro > div:first-child > p {
+    margin-top: .3rem;
+    font-size: .64rem;
+    line-height: 1.32;
+  }
+
+  .pricing-card__selection,
+  .pricing-card__cta {
+    grid-column: 1;
+  }
+
+  .pricing-card__cta {
+    width: 100%;
+    min-height: 2.65rem;
+  }
+
+  .pricing-card__services button {
+    min-height: 2.8rem;
+    padding: .42rem .85rem;
   }
 }
 
