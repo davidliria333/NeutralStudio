@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import PricingLever from '../components/PricingLever'
+import { UXUI_SCENES } from '../data/portfolio.js'
 import './HomeScrollcraft.css'
 
 const LiquidGlass = lazy(() => import('liquid-glass-react'))
@@ -23,20 +24,153 @@ const landmarks = [
   { id: 'contact', label: 'Contact', progress: 0.87 },
 ]
 
-const projectPlaceholders = [
-  { id: '01', x: '-34px', y: '20px', rotation: '-3deg' },
-  { id: '02', x: '28px', y: '-24px', rotation: '4deg' },
-  { id: '03', x: '-18px', y: '-12px', rotation: '-2deg' },
-  { id: '04', x: '38px', y: '24px', rotation: '3deg' },
-  { id: '05', x: '-26px', y: '30px', rotation: '-4deg' },
-  { id: '06', x: '42px', y: '-18px', rotation: '4deg' },
+const uxuiTitles = [
+  'Rewards and wallet',
+  'Food delivery',
+  'Nutrition tracking',
+  'Digital banking',
+  'Learning platform',
+  'Smart home',
+  'Connected health',
+]
+
+const uxuiSlides = UXUI_SCENES
+  .flatMap((scene) => scene.images.map((image) => ({ ...image, sceneId: scene.id })))
+  .map((image, index) => ({
+    ...image,
+    id: `${image.sceneId}-${index + 1}`,
+    title: uxuiTitles[index],
+    background: '#eef3f0',
+  }))
+
+const portfolioCollections = [
+  {
+    id: 'branding',
+    label: 'Branding',
+    slides: [
+      {
+        id: 'circlehome-lockup',
+        title: 'CircleHome identity',
+        src: '/Portfolio%20Projects/CIRCLEHOME/Logos-01.png',
+        alt: 'CircleHome green symbol and wordmark on a white identity board.',
+        width: 4000,
+        height: 2250,
+        background: '#f4f8f5',
+      },
+      {
+        id: 'circlehome-system',
+        title: 'CircleHome brand system',
+        src: '/Portfolio%20Projects/CIRCLEHOME/Logos-05.png',
+        alt: 'CircleHome symbol, wordmark and tagline arranged vertically in green.',
+        width: 2252,
+        height: 2252,
+        background: '#f4f8f5',
+      },
+      {
+        id: 'vira-identity',
+        title: 'VIRA identity',
+        src: '/Portfolio%20Projects/VIRA/00_logo.png',
+        alt: 'VIRA white flower symbol and wordmark over a violet gradient field.',
+        width: 2292,
+        height: 2292,
+        background: '#b77af1',
+      },
+      {
+        id: 'galeon-identity',
+        title: 'Galeón identity',
+        src: '/Galeon/Treball-01.png',
+        alt: 'Galeón heritage navigation wordmark presented on a deep mineral background.',
+        width: 4500,
+        height: 5625,
+        background: '#30494e',
+      },
+      {
+        id: 'symbol-study',
+        title: 'Symbol study',
+        src: '/Logos/00_logo_Mesa%20de%20trabajo%2016%20copia%202.png',
+        alt: 'Interlocking orange, red and yellow geometric brand symbol on white.',
+        width: 719,
+        height: 300,
+        background: '#f7f6f2',
+      },
+    ],
+  },
+  {
+    id: 'web',
+    label: 'Web',
+    slides: [
+      {
+        id: 'galeon-tablet',
+        title: 'Galeón digital archive',
+        src: '/Galeon/Treball_Mesa%20de%20trabajo%201%20copia.png',
+        alt: 'Galeón digital heritage archive shown on a tablet in a dark photographic scene.',
+        width: 4500,
+        height: 5625,
+        background: '#0a0b12',
+      },
+      {
+        id: 'galeon-experience',
+        title: 'Heritage navigation',
+        src: '/Galeon/Treball_Mesa%20de%20trabajo%201%20copia%202.png',
+        alt: 'Galeón web experience combining museum imagery, navigation and editorial typography.',
+        width: 4500,
+        height: 5625,
+        background: '#30494e',
+      },
+      {
+        id: 'circlehome-launch',
+        title: 'CircleHome launch',
+        src: '/Portfolio%20Projects/CIRCLEHOME/We%20are%20live.jpg',
+        alt: 'CircleHome Spanish launch composition with two mobile interface mockups.',
+        width: 2160,
+        height: 2160,
+        background: '#f7f8f6',
+      },
+      {
+        id: 'circlehome-detail',
+        title: 'CircleHome property detail',
+        src: '/Portfolio%20Projects/CIRCLEHOME/flatten.jpg',
+        alt: 'CircleHome property detail interface shown on a phone with community portraits.',
+        width: 2134,
+        height: 1200,
+        background: '#f7f8f6',
+      },
+      {
+        id: 'circlehome-community',
+        title: 'CircleHome community',
+        src: '/Portfolio%20Projects/CIRCLEHOME/MockUp_3.png',
+        alt: 'CircleHome mobile property experience surrounded by community portraits.',
+        width: 4000,
+        height: 3200,
+        background: '#f7f8f6',
+      },
+    ],
+  },
+  {
+    id: 'ux-ui',
+    label: 'UX/UI',
+    slides: uxuiSlides,
+  },
+]
+
+const portfolioMetrics = [
+  { value: '100+', label: 'Projects shipped' },
+  { value: String(uxuiSlides.length), label: 'Interface studies selected' },
+  { value: '5', label: 'Disciplines connected' },
 ]
 
 export default function Home() {
   const rootRef = useRef(null)
   const lenisRef = useRef(null)
   const activeRef = useRef(0)
+  const surfaceRef = useRef('hero')
+  const activeCategoryRef = useRef('ux-ui')
+  const portfolioRef = useRef(0)
+  const portfolioManualRef = useRef(false)
   const [activeLandmark, setActiveLandmark] = useState(0)
+  const [activeSurface, setActiveSurface] = useState('hero')
+  const [activeCategory, setActiveCategory] = useState('ux-ui')
+  const [activeProject, setActiveProject] = useState(0)
   const [reducedMotion, setReducedMotion] = useState(false)
   const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width: 800px)').matches)
 
@@ -96,18 +230,48 @@ export default function Home() {
       const progress = Math.min(1, Math.max(0, (window.scrollY - top) / Math.max(travel, 1)))
       const approachProgress = Math.min(1, Math.max(0, (progress - 0.155) / 0.17))
       const portfolioProgress = Math.min(1, Math.max(0, (progress - 0.31) / 0.2))
+      const carouselProgress = Math.min(1, Math.max(0, (progress - 0.31) / 0.34))
+      const activeCollection = portfolioCollections.find(({ id }) => id === activeCategoryRef.current)
+      const slideCount = activeCollection?.slides.length || 1
+      const nextProject = Math.min(
+        slideCount - 1,
+        Math.floor(carouselProgress * slideCount),
+      )
       const next = landmarks.reduce((current, landmark, index) => (
         progress >= landmark.progress ? index : current
       ), 0)
+      const nextSurface = progress >= 0.84
+        ? 'contact'
+        : progress >= 0.65
+          ? 'services'
+          : progress >= 0.31
+            ? 'portfolio'
+            : progress >= 0.16
+              ? 'approach'
+              : 'hero'
 
       root.style.setProperty('--journey-p', progress.toFixed(4))
       root.style.setProperty('--approach-p', approachProgress.toFixed(4))
       root.style.setProperty('--portfolio-p', portfolioProgress.toFixed(4))
       root.dataset.scVerifyState = `${next}:${Math.round(progress * 40)}`
+      root.dataset.activeSurface = nextSurface
 
       if (next !== activeRef.current) {
         activeRef.current = next
         setActiveLandmark(next)
+      }
+
+      if (nextSurface !== surfaceRef.current) {
+        if (surfaceRef.current === 'portfolio' && nextSurface !== 'portfolio') {
+          portfolioManualRef.current = false
+        }
+        surfaceRef.current = nextSurface
+        setActiveSurface(nextSurface)
+      }
+
+      if (!portfolioManualRef.current && nextProject !== portfolioRef.current) {
+        portfolioRef.current = nextProject
+        setActiveProject(nextProject)
       }
     }
 
@@ -147,8 +311,27 @@ export default function Home() {
     window.scrollTo({ top: target, behavior: 'smooth' })
   }
 
+  const activeCollection = portfolioCollections.find(({ id }) => id === activeCategory)
+
+  const selectCategory = (categoryId) => {
+    portfolioManualRef.current = true
+    activeCategoryRef.current = categoryId
+    portfolioRef.current = 0
+    setActiveCategory(categoryId)
+    setActiveProject(0)
+  }
+
+  const stepProject = (direction) => {
+    portfolioManualRef.current = true
+    setActiveProject((current) => {
+      const next = (current + direction + activeCollection.slides.length) % activeCollection.slides.length
+      portfolioRef.current = next
+      return next
+    })
+  }
+
   return (
-    <main className="landscape-page" ref={rootRef} data-sc-verify-state="0:0">
+    <main className="landscape-page" ref={rootRef} data-sc-verify-state="0:0" data-active-surface="hero">
       <div className="landscape-flight" data-sc-mode="worldflight" data-sc-seam="0.02">
         <div className="landscape-world" data-sc-world aria-hidden="true">
           <div
@@ -228,6 +411,7 @@ export default function Home() {
             data-sc-copy
             data-sc-window="0 0.19 0 0.32"
             aria-labelledby="home-title"
+            inert={activeSurface === 'hero' ? undefined : ''}
           >
             <div className="landscape-hero__center">
               {isMobile ? (
@@ -363,64 +547,93 @@ export default function Home() {
           <section
             className="landscape-copy__portfolio"
             aria-labelledby="portfolio-title"
+            inert={activeSurface === 'portfolio' ? undefined : ''}
           >
             <div
-              className="landscape-portfolio__intro landscape-panel"
+              className="landscape-portfolio__proof landscape-panel"
               data-sc-copy
               data-sc-window="0.31 0.65 0.13 0.13"
             >
-              <h2 id="portfolio-title">Different problems deserve different expressions.</h2>
-              <p>One connected approach, never a house style. Case studies are on the way; these spaces are placeholders for now.</p>
-            </div>
-            <div className="landscape-projects" aria-label="Portfolio placeholders">
-              {projectPlaceholders.map((project) => (
-                <div
-                  className="landscape-card-cue"
-                  key={project.id}
-                  data-sc-copy
-                  data-sc-window="0.31 0.65 0.13 0.13"
-                >
-                  <div
-                    className="liquid-card-shell"
-                    style={{
-                      '--card-x': project.x,
-                      '--card-y': project.y,
-                      '--card-r': project.rotation,
-                    }}
-                  >
-                    {isMobile ? (
-                      <div className="landscape-project landscape-project--static">
-                        <div className="landscape-project__content">
-                          <span>Selected work {project.id}</span>
-                          <strong>Project placeholder</strong>
-                          <i aria-hidden="true" />
-                        </div>
-                      </div>
-                    ) : (
-                      <Suspense fallback={null}>
-                        <LiquidGlass
-                          className="landscape-project"
-                          displacementScale={36}
-                          blurAmount={0.09}
-                          saturation={135}
-                          aberrationIntensity={1.2}
-                          elasticity={0.08}
-                          cornerRadius={16}
-                          padding="0"
-                          overLight
-                          style={{ width: '100%', height: '100%' }}
-                        >
-                      <div className="landscape-project__content">
-                        <span>Selected work {project.id}</span>
-                        <strong>Project placeholder</strong>
-                        <i aria-hidden="true" />
-                      </div>
-                        </LiquidGlass>
-                      </Suspense>
-                    )}
+              <div className="landscape-portfolio__intro">
+                <h2 id="portfolio-title">Different problems deserve different expressions.</h2>
+                <p>One connected approach, never a house style. A selection of interface systems shaped around different products and audiences.</p>
+              </div>
+
+              <dl className="landscape-portfolio__metrics" aria-label="Studio metrics">
+                {portfolioMetrics.map((metric) => (
+                  <div key={metric.label}>
+                    <dd>{metric.value}</dd>
+                    <dt>{metric.label}</dt>
                   </div>
+                ))}
+              </dl>
+            </div>
+
+            <div
+              className="landscape-carousel"
+              data-sc-copy
+              data-sc-window="0.31 0.65 0.13 0.13"
+              role="region"
+              aria-roledescription="carousel"
+              aria-label={`Selected ${activeCollection.label} work`}
+              style={{ '--portfolio-slide': activeProject }}
+            >
+              <div className="landscape-carousel__categories" role="group" aria-label="Portfolio categories">
+                {portfolioCollections.map((collection) => (
+                  <button
+                    type="button"
+                    key={collection.id}
+                    className={activeCategory === collection.id ? 'is-active' : ''}
+                    aria-pressed={activeCategory === collection.id}
+                    onClick={() => selectCategory(collection.id)}
+                  >
+                    {collection.label}
+                    <span>{String(collection.slides.length).padStart(2, '0')}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="landscape-carousel__viewport">
+                <div className="landscape-carousel__track" key={activeCollection.id}>
+                  {activeCollection.slides.map((project, index) => (
+                    <figure
+                      className="landscape-carousel__slide"
+                      key={project.id}
+                      aria-hidden={index !== activeProject}
+                      style={{ '--slide-bg': project.background }}
+                    >
+                      <img
+                        src={project.src}
+                        alt={index === activeProject ? project.alt : ''}
+                        width={project.width}
+                        height={project.height}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        decoding="async"
+                      />
+                    </figure>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div className="landscape-carousel__footer">
+                <div className="landscape-carousel__caption" aria-atomic="true">
+                  <span>{String(activeProject + 1).padStart(2, '0')} / {String(activeCollection.slides.length).padStart(2, '0')}</span>
+                  <strong>{activeCollection.slides[activeProject].title}</strong>
+                </div>
+
+                <div className="landscape-carousel__controls" aria-label="Carousel controls">
+                  <button type="button" onClick={() => stepProject(-1)} aria-label="Previous project">
+                    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                      <path d="M12.5 4.5L7 10l5.5 5.5" />
+                    </svg>
+                  </button>
+                  <button type="button" onClick={() => stepProject(1)} aria-label="Next project">
+                    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                      <path d="M7.5 4.5L13 10l-5.5 5.5" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -429,6 +642,7 @@ export default function Home() {
             data-sc-copy
             data-sc-window="0.65 0.86 0.2 0.22"
             aria-labelledby="services-title"
+            inert={activeSurface === 'services' ? undefined : ''}
           >
             <PricingLever ctaHref={CALENDAR_URL} staticGlass={isMobile} />
           </section>
@@ -438,6 +652,7 @@ export default function Home() {
             data-sc-copy
             data-sc-window="0.84 1 0.28 0"
             aria-labelledby="contact-title"
+            inert={activeSurface === 'contact' ? undefined : ''}
           >
             <h2 id="contact-title">What are you building?</h2>
             <p className="landscape-contact__lead">For founders at a decision point: launching, changing direction or making disconnected pieces work together.</p>

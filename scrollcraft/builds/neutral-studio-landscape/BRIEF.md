@@ -102,3 +102,29 @@ Applied constraints:
 - Portfolio placeholders remain placeholders, now rendered as asymmetric liquid-glass milestones that settle into place with the scroll.
 - The whole page uses one sans-serif family with a deliberate weight and tracking hierarchy.
 - The copy now follows one idea and one action: start the path towards a world-class brand.
+
+## Portfolio proof addendum, 25 August 2026
+
+Verbatim user direction:
+
+"A portfoli hem d'afegir a la part dreta un carroussel i a l'esquerra metriques amb els numeros de clients"
+
+This direction supersedes the earlier placeholder-only constraint for the Portfolio act.
+
+- The left side carries documented studio proof: 100+ projects shipped, seven selected interface studies and five connected disciplines.
+- No client-count figure is introduced because the repository does not contain a verified number of clients.
+- The right side uses the seven supplied UX/UI studies as a real carousel.
+- Scroll advances the carousel through the Portfolio act; previous and next controls keep it directly operable by pointer and keyboard.
+- The Portfolio remains the single peak inside the existing continuous landscape. No new world, act or scroll span is added.
+
+## Portfolio categories addendum, 25 August 2026
+
+Verbatim user direction:
+
+"Queden tallades algunes fotos, S'han de veure senceres, per que respirin dins de la card. Hem d'afegir sliders per poder veure categories de Branding, Web, UX/UI"
+
+- Every portfolio asset must remain fully visible. Cards use contained media, a centred composition and explicit internal breathing room instead of cropping.
+- The carousel now exposes three real collections in this order: Branding, Web and UX/UI.
+- Branding and Web use existing project assets already present in the repository. UX/UI retains the seven supplied interface studies.
+- Each collection keeps its own slide count and shares the same previous and next controls.
+- Only the active scroll surface is interactive, preventing invisible adjacent acts from intercepting touch or keyboard input.

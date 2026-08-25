@@ -57,3 +57,22 @@ http://127.0.0.1:5174/
 - Removed the full-frame CSS colour filter and backdrop blur from the mobile path. Higher-opacity static surfaces preserve readability without continuously filtering the video underneath.
 - `npm run build` passed. ScrollCraft desktop, 390 × 844 mobile and reduced-motion passes found no dead scroll; the video painted and moved through all sampled mobile and desktop states. Reduced motion kept the poster and did not fetch video.
 - A throttled production-preview check at 1.6 Mbps reached DOM-ready in about 1.25 seconds and painted the first video frame after the first touch while retaining the poster as the loading fallback. This is browser emulation, not a physical-iPhone measurement.
+
+## Portfolio proof and carousel, 25 August 2026
+
+- Replaced the six placeholder cards with the seven supplied UX/UI studies in a real carousel on the right.
+- Added a compact proof column on the left using only figures already documented in the project: 100+ projects shipped, seven selected interface studies and five connected disciplines. No unsupported client-count claim was added.
+- The carousel index follows the Portfolio portion of the worldflight timeline and remains directly controllable with previous and next buttons.
+- The controls were verified with keyboard activation and visible focus at 1440 × 900 and 390 × 844. Both changed the active project while retaining focus.
+- A production build passed using a temporary output folder because the NAS copy could not atomically clear the existing `dist/generated` directory.
+- ScrollCraft desktop, 390 × 844 mobile and reduced-motion passes found no dead scroll or frozen clip. The new Portfolio block introduced no contrast failure; the harness continues to report the pre-existing hero, Approach and Services sampling findings.
+- Desktop, mobile and reduced-motion contact sheets were inspected. The proof column leads, the carousel remains the visual peak and the mobile layout reflows to proof above work without changing DOM or focus order.
+
+## Portfolio categories and full-image framing, 25 August 2026
+
+- Added three category selectors inside the Portfolio carousel: Branding (five pieces), Web (five pieces) and UX/UI (seven pieces).
+- Replaced cropped media framing with `object-fit: contain`, centred alignment and responsive inner spacing. Landscape, square and portrait assets now remain fully visible inside a stable carousel frame.
+- Removed the viewport padding that exposed a sliver of the adjacent slide. The active slide now meets both viewport edges while the breathing room stays inside the slide.
+- Added active-surface inertness to Hero, Portfolio, Services and Contact. Invisible later sections no longer intercept pointer or touch events over the Portfolio controls.
+- All 17 pieces loaded successfully in desktop and mobile automation. Every category and every next action was exercised by keyboard; mobile Branding, Web and UX/UI category switching plus slide navigation was also verified by real touch events.
+- Final geometry checks report zero unintended left or right slide gap, complete image loading and `contain` framing. Production build, `git diff --check` and local preview checks pass.
