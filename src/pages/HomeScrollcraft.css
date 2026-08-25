@@ -768,10 +768,13 @@ body:has(.landscape-page) .landscape-page {
 }
 
 .landscape-copy__services {
-  top: clamp(5.5rem, 9vh, 7.5rem);
-  bottom: clamp(3rem, 6vh, 5rem);
-  left: clamp(1.25rem, 5vw, 6rem);
-  right: clamp(5.5rem, 9vw, 10rem);
+  top: clamp(5.75rem, 10vh, 7.75rem);
+  bottom: clamp(.85rem, 2.5vh, 2rem);
+  left: clamp(1rem, 4vw, 4.5rem);
+  right: clamp(1rem, 4vw, 4.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: visible;
 }
 

@@ -1,0 +1,679 @@
+.pricing-lever {
+  --pricing-ink: #14202b;
+  --pricing-ink-soft: #4a6173;
+  --pricing-faint: #8aa6b8;
+  --pricing-brand: #f0531c;
+  --pricing-line: rgba(20, 32, 43, .07);
+  --pricing-body: 'Hanken Grotesk', system-ui, sans-serif;
+  --pricing-mono: 'Space Mono', ui-monospace, monospace;
+  width: min(1212px, 100%);
+  height: 100%;
+  max-height: 878px;
+  margin: auto;
+  color: var(--pricing-ink);
+  font-family: var(--pricing-body);
+  font-size: 16px;
+  line-height: 1.45;
+  pointer-events: auto;
+}
+
+.pricing-lever *,
+.pricing-lever *::before,
+.pricing-lever *::after {
+  box-sizing: border-box;
+}
+
+.pricing-lever button,
+.pricing-lever a {
+  font: inherit;
+}
+
+.pricing-lever__card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, .9);
+  border-radius: 30px;
+  padding: clamp(16px, 2vw, 30px);
+  background: #fff;
+  box-shadow:
+    0 14px 26px -14px rgba(40, 50, 70, .2),
+    0 78px 132px -54px rgba(40, 50, 70, .5);
+}
+
+.pricing-lever__display {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 0 0 auto;
+  min-height: 154px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  border-radius: 20px;
+  padding: clamp(18px, 2vw, 26px) clamp(20px, 2.5vw, 32px);
+  background: rgba(255, 255, 255, .14);
+  box-shadow: 0 0 0 64px #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.pricing-lever__price-block,
+.pricing-lever__hero-side {
+  position: relative;
+  z-index: 1;
+}
+
+.pricing-lever__gauge {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.pricing-lever__currency {
+  margin-top: 6px;
+  color: var(--pricing-brand);
+  font-size: clamp(40px, 4.8vw, 60px);
+  font-weight: 800;
+  line-height: .9;
+}
+
+.pricing-lever__amount {
+  color: var(--pricing-ink);
+  font-size: clamp(60px, 7.6vw, 98px);
+  font-weight: 800;
+  letter-spacing: -.04em;
+  line-height: .78;
+}
+
+.pricing-lever__per {
+  align-self: flex-end;
+  margin-bottom: 12px;
+  color: var(--pricing-ink-soft);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.pricing-lever__plan-name {
+  margin-top: 18px;
+  color: var(--pricing-ink-soft);
+  font-family: var(--pricing-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.pricing-lever__plan-name b {
+  color: var(--pricing-ink);
+  font-weight: 700;
+}
+
+.pricing-lever__plan-name > span {
+  margin-left: 6px;
+  text-decoration: line-through;
+}
+
+.pricing-lever__hero-side {
+  display: flex;
+  min-width: 268px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.pricing-lever__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 30px;
+  padding: 6px 14px;
+  color: var(--pricing-brand);
+  background: rgba(240, 83, 28, .09);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.pricing-lever__badge i {
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--pricing-brand);
+}
+
+.pricing-lever__summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+}
+
+.pricing-lever__summary > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--pricing-ink-soft);
+  font-size: 14px;
+}
+
+.pricing-lever__summary svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  color: var(--pricing-brand);
+}
+
+.pricing-lever__summary b,
+.pricing-lever__proof b {
+  color: var(--pricing-ink);
+  font-weight: 700;
+}
+
+.pricing-lever__proof {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--pricing-line);
+  border-radius: 40px;
+  padding: 5px 14px 5px 6px;
+  color: var(--pricing-ink-soft);
+  background: #fff;
+  font-size: 12.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pricing-lever__avatars {
+  display: flex;
+}
+
+.pricing-lever__avatars > span {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  margin-left: -9px;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--pricing-brand);
+  box-shadow: 0 2px 6px -2px rgba(40, 50, 70, .35);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.pricing-lever__avatars > span:first-child { margin-left: 0; }
+.pricing-lever__avatars > span:nth-child(2) { background: #0d99ff; }
+.pricing-lever__avatars > span:nth-child(3) { background: var(--pricing-ink); }
+
+.pricing-lever__lower {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding-top: clamp(10px, 1.7vw, 24px);
+  background: linear-gradient(180deg, #fff 0%, #fff 46%, #eef2f6 100%);
+}
+
+.pricing-lever__lower::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 calc(clamp(16px, 2vw, 30px) * -1) calc(clamp(16px, 2vw, 30px) * -1);
+  content: '';
+  border-radius: 0 0 30px 30px;
+  background: inherit;
+}
+
+.pricing-lever__ends {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 6px 6px clamp(8px, 1.15vw, 16px);
+}
+
+.pricing-lever__ends button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  border: 0;
+  padding: 0;
+  color: var(--pricing-faint);
+  background: transparent;
+  line-height: 1.1;
+  opacity: .5;
+  cursor: pointer;
+}
+
+.pricing-lever__ends button:last-child {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.pricing-lever__ends button.is-active {
+  color: var(--pricing-ink);
+  opacity: 1;
+}
+
+.pricing-lever__ends button span {
+  font-family: var(--pricing-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.pricing-lever__ends button b {
+  color: #b8c2cc;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.pricing-lever__ends button.is-active b { color: var(--pricing-brand); }
+
+.pricing-lever__ends button i {
+  margin-bottom: 4px;
+  border-radius: 20px;
+  padding: 2px 8px;
+  color: #fff;
+  background: var(--pricing-ink);
+  font-family: var(--pricing-mono);
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .09em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pricing-lever__track {
+  position: relative;
+  flex: 0 0 clamp(42px, 4.2vw, 60px);
+  height: clamp(42px, 4.2vw, 60px);
+  overflow: hidden;
+  border-radius: 40px;
+  background: linear-gradient(180deg, #e2e7ee, #eef2f6);
+  box-shadow:
+    inset 0 3px 8px rgba(30, 50, 80, .2),
+    inset 0 -1px 0 rgba(255, 255, 255, .85);
+  cursor: pointer;
+  touch-action: none;
+}
+
+.pricing-lever__track:focus-visible,
+.pricing-lever__ends button:focus-visible,
+.pricing-lever__cta-row a:focus-visible {
+  outline: 2px solid var(--pricing-ink);
+  outline-offset: 3px;
+}
+
+.pricing-lever__fill {
+  position: absolute;
+  z-index: 1;
+  inset: 0 auto 0 0;
+  width: var(--pricing-fill);
+  border-radius: 40px;
+  background: linear-gradient(90deg, #2b3b4c, #141d27);
+}
+
+.pricing-lever__midpoint {
+  position: absolute;
+  z-index: 2;
+  top: 22%;
+  bottom: 22%;
+  left: 50%;
+  width: 2px;
+  background: repeating-linear-gradient(transparent 0 3px, rgba(120, 140, 160, .35) 3px 7px);
+  pointer-events: none;
+}
+
+.pricing-lever__handle {
+  position: absolute;
+  z-index: 3;
+  top: 5px;
+  bottom: 5px;
+  left: var(--pricing-handle-left);
+  display: flex;
+  width: clamp(58px, 7.3vw, 88px);
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 34px;
+  color: #9aa8b6;
+  background: linear-gradient(180deg, #fff, #e7edf3);
+  box-shadow: 0 9px 18px -4px rgba(30, 50, 80, .4), inset 0 1px 0 #fff;
+  cursor: grab;
+  touch-action: none;
+}
+
+.pricing-lever__handle:active { cursor: grabbing; }
+
+.pricing-lever__handle svg {
+  width: 12px;
+  height: 12px;
+}
+
+.pricing-lever__hint {
+  flex: 0 0 auto;
+  margin: clamp(8px, 1vw, 15px) 0 4px !important;
+  color: var(--pricing-faint) !important;
+  font-family: var(--pricing-mono);
+  font-size: 10.5px !important;
+  letter-spacing: .06em !important;
+  line-height: 1.45 !important;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.pricing-lever__lower > hr {
+  flex: 0 0 auto;
+  width: calc(100% - 16px);
+  height: 1px;
+  margin: clamp(8px, 1.6vw, 26px) 8px clamp(8px, 1.35vw, 22px);
+  border: 0;
+  border-top: 1px solid var(--pricing-line);
+}
+
+.pricing-lever__features {
+  display: grid;
+  flex: 0 0 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(8px, 1.1vw, 16px) clamp(14px, 2vw, 30px);
+  margin: 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-lever__features--base { margin-bottom: clamp(10px, 1.65vw, 24px); }
+.pricing-lever__features--dev { margin-bottom: clamp(12px, 2vw, 32px); }
+
+.pricing-lever__features li {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+  color: var(--pricing-ink);
+  font-size: 15px;
+}
+
+.pricing-lever__mark {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--pricing-brand);
+  background: rgba(240, 83, 28, .12);
+}
+
+.pricing-lever__mark svg {
+  width: 13px;
+  height: 13px;
+}
+
+.pricing-lever__features--dev li {
+  color: var(--pricing-faint);
+  opacity: .5;
+}
+
+.pricing-lever.is-unlocked .pricing-lever__features--dev li {
+  color: var(--pricing-ink);
+  opacity: 1;
+}
+
+.pricing-lever.is-locked .pricing-lever__features--dev .pricing-lever__mark {
+  color: #b8c2cc;
+  background: #eef1f4;
+}
+
+.pricing-lever__unlock {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 16px;
+  margin: 0 8px clamp(10px, 1.5vw, 22px);
+}
+
+.pricing-lever__unlock > span {
+  height: 1px;
+  flex: 1;
+  background: var(--pricing-line);
+}
+
+.pricing-lever__unlock strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--pricing-line);
+  border-radius: 40px;
+  padding: 6px 16px 6px 6px;
+  color: var(--pricing-ink-soft);
+  background: #f4f6fa;
+  font-family: var(--pricing-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  line-height: 1.45;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pricing-lever__unlock strong i {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--pricing-ink-soft);
+  background: #e6eaf1;
+}
+
+.pricing-lever__unlock strong svg {
+  width: 14px;
+  height: 14px;
+}
+
+.pricing-lever.is-unlocked .pricing-lever__unlock strong {
+  border-color: rgba(240, 83, 28, .4);
+  color: var(--pricing-brand);
+  background: rgba(240, 83, 28, .09);
+}
+
+.pricing-lever.is-unlocked .pricing-lever__unlock strong i {
+  color: #fff;
+  background: var(--pricing-brand);
+}
+
+.pricing-lever__cta-row {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  margin-top: auto;
+}
+
+.pricing-lever__cta-row a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 12px 22px;
+  color: #fff;
+  background: var(--pricing-brand);
+  box-shadow: 0 12px 26px -12px var(--pricing-brand);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.pricing-lever__cta-row a svg {
+  width: 16px;
+  height: 16px;
+}
+
+.pricing-lever__cta-row > span {
+  color: var(--pricing-faint);
+  font-size: 13px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pricing-lever__features li:hover {
+    transform: translateX(4px);
+  }
+
+  .pricing-lever__features li:hover .pricing-lever__mark {
+    color: #fff !important;
+    background: var(--pricing-brand) !important;
+    transform: scale(1.12);
+  }
+
+  .pricing-lever__cta-row a:hover {
+    color: #fff;
+    background: var(--pricing-ink);
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-height: 760px) and (min-width: 761px) {
+  .pricing-lever__card { padding: 14px 20px; }
+  .pricing-lever__display { min-height: 126px; padding: 14px 24px; }
+  .pricing-lever__currency { font-size: 42px; }
+  .pricing-lever__amount { font-size: 68px; }
+  .pricing-lever__plan-name { margin-top: 11px; }
+  .pricing-lever__hero-side { gap: 7px; }
+  .pricing-lever__proof { display: none; }
+  .pricing-lever__lower { padding-top: 7px; }
+  .pricing-lever__ends { margin-bottom: 7px; }
+  .pricing-lever__track { flex-basis: 40px; height: 40px; }
+  .pricing-lever__hint { margin-top: 5px !important; }
+  .pricing-lever__lower > hr { margin: 5px 8px 7px; }
+  .pricing-lever__features { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 14px; }
+  .pricing-lever__features li { gap: 7px; font-size: 11.5px; }
+  .pricing-lever__mark { width: 18px; height: 18px; flex-basis: 18px; }
+  .pricing-lever__features--base { margin-bottom: 7px; }
+  .pricing-lever__unlock { margin-bottom: 7px; }
+  .pricing-lever__unlock strong { padding: 3px 11px 3px 3px; font-size: 9px; }
+  .pricing-lever__unlock strong i { width: 22px; height: 22px; }
+  .pricing-lever__features--dev { margin-bottom: 8px; }
+  .pricing-lever__cta-row { gap: 6px; }
+  .pricing-lever__cta-row a { padding: 9px 18px; }
+  .pricing-lever__cta-row > span { font-size: 10.5px; }
+}
+
+@media (max-width: 760px) {
+  .pricing-lever__card {
+    border-radius: 24px;
+    padding: 14px;
+  }
+
+  .pricing-lever__display {
+    min-height: 0;
+    align-items: flex-start;
+    gap: 12px;
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .pricing-lever__currency { font-size: clamp(34px, 10vw, 44px); }
+  .pricing-lever__amount { font-size: clamp(50px, 15vw, 68px); }
+  .pricing-lever__per { margin-bottom: 7px; font-size: 12px; }
+  .pricing-lever__plan-name { margin-top: 10px; font-size: 9px; }
+
+  .pricing-lever__hero-side {
+    min-width: 0;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .pricing-lever__badge { padding: 5px 9px; font-size: 10px; }
+  .pricing-lever__summary { align-items: flex-start; gap: 4px; }
+  .pricing-lever__summary > div { gap: 5px; font-size: 10.5px; }
+  .pricing-lever__summary svg { width: 12px; height: 12px; }
+  .pricing-lever__proof { display: none; }
+  .pricing-lever__lower { padding-top: 7px; }
+  .pricing-lever__ends { margin: 3px 3px 7px; }
+  .pricing-lever__ends button span { font-size: 8.5px; }
+  .pricing-lever__ends button b { font-size: 14px; }
+  .pricing-lever__ends button i { margin-bottom: 2px; font-size: 7px; }
+  .pricing-lever__track { flex-basis: 40px; height: 40px; }
+  .pricing-lever__hint { margin-top: 6px !important; font-size: 8.5px !important; }
+  .pricing-lever__lower > hr { margin: 6px 8px 7px; }
+  .pricing-lever__features { grid-template-columns: 1fr 1fr; gap: 6px 10px; margin-inline: 2px; }
+  .pricing-lever__features li { gap: 7px; font-size: 10.5px; }
+  .pricing-lever__mark { width: 18px; height: 18px; flex-basis: 18px; }
+  .pricing-lever__mark svg { width: 11px; height: 11px; }
+  .pricing-lever__features--base { margin-bottom: 7px; }
+  .pricing-lever__unlock { gap: 8px; margin: 0 2px 7px; }
+  .pricing-lever__unlock strong { gap: 6px; padding: 3px 9px 3px 3px; font-size: 7.5px; }
+  .pricing-lever__unlock strong i { width: 21px; height: 21px; }
+  .pricing-lever__features--dev { margin-bottom: 8px; }
+  .pricing-lever__cta-row { gap: 6px; }
+  .pricing-lever__cta-row a { padding: 9px 17px; font-size: 11px; }
+  .pricing-lever__cta-row a svg { width: 13px; height: 13px; }
+  .pricing-lever__cta-row > span { font-size: 9.5px; }
+}
+
+@media (max-width: 760px) and (min-height: 721px) {
+  .pricing-lever,
+  .pricing-lever__card {
+    height: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .pricing-lever__display {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-lever__hero-side {
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+
+  .pricing-lever__summary { justify-self: end; }
+}
+
+@media (max-width: 480px) and (max-height: 720px) {
+  .pricing-lever__card { padding: 10px; }
+  .pricing-lever__display { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); padding: 10px 12px; }
+  .pricing-lever__amount { font-size: 44px; }
+  .pricing-lever__currency { font-size: 30px; }
+  .pricing-lever__per { display: none; }
+  .pricing-lever__plan-name { font-size: 7px; }
+  .pricing-lever__hero-side { display: flex; width: auto; }
+  .pricing-lever__badge { font-size: 8px; }
+  .pricing-lever__summary > div { font-size: 8.5px; }
+  .pricing-lever__features { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 7px; }
+  .pricing-lever__features li { font-size: 8.5px; }
+  .pricing-lever__mark { width: 15px; height: 15px; flex-basis: 15px; }
+  .pricing-lever__hint { display: none; }
+  .pricing-lever__unlock strong { font-size: 6.5px; }
+  .pricing-lever__cta-row > span { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-lever *,
+  .pricing-lever *::before,
+  .pricing-lever *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -3,6 +3,7 @@ import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import LiquidGlass from 'liquid-glass-react'
 import { MetalFx } from 'metal-fx'
+import PricingLever from '../components/PricingLever'
 import SplitText from '../components/SplitText'
 import './HomeScrollcraft.css'
 
@@ -27,34 +28,6 @@ const projectPlaceholders = [
   { id: '04', x: '38px', y: '24px', rotation: '3deg' },
   { id: '05', x: '-26px', y: '30px', rotation: '-4deg' },
   { id: '06', x: '42px', y: '-18px', rotation: '4deg' },
-]
-
-const engagements = [
-  {
-    name: 'Web',
-    detail: 'A studio or product website designed and built around one clear story.',
-    price: '€1,990',
-  },
-  {
-    name: 'Brand only',
-    detail: 'A clear identity system with the essential rules and assets ready to use.',
-    price: '€2,990',
-  },
-  {
-    name: 'UX/UI',
-    detail: 'Product flows and interfaces built around how people use them and what the business needs.',
-    price: '€3,990',
-  },
-  {
-    name: 'Brand + Web + Assets',
-    detail: 'Identity, website and the core assets needed to launch, designed together.',
-    price: '€4,990',
-  },
-  {
-    name: 'App development',
-    detail: 'A production-ready app, from product logic and interface through release.',
-    price: '€9,990',
-  },
 ]
 
 export default function Home() {
@@ -407,52 +380,9 @@ export default function Home() {
             className="landscape-copy__services"
             data-sc-copy
             data-sc-window="0.65 0.86 0.2 0.22"
-            aria-labelledby="services-title"
+            aria-label="Pricing"
           >
-            <div className="landscape-pricing-shell">
-              <LiquidGlass
-                className="landscape-pricing-glass"
-                displacementScale={44}
-                blurAmount={0.08}
-                saturation={138}
-                aberrationIntensity={1.15}
-                elasticity={0.06}
-                cornerRadius={32}
-                padding="0"
-                overLight
-                style={{ width: '100%', height: '100%' }}
-              >
-                <div className="landscape-pricing__content">
-                  <div className="landscape-services__intro">
-                    <span className="landscape-pricing__eyebrow">Project pricing</span>
-                    <h2 id="services-title">A clear scope from the start.</h2>
-                    <p>Start with one project or bring brand, product and web into the same engagement. We agree the scope and final price before work begins.</p>
-                    <a
-                      className="landscape-pricing__cta"
-                      href={CALENDAR_URL}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <span>Book a call</span>
-                      <svg viewBox="0 0 20 20" aria-hidden="true">
-                        <path d="M5 15 15 5M7 5h8v8" />
-                      </svg>
-                    </a>
-                  </div>
-                  <div className="landscape-services__list" aria-label="Engagement pricing">
-                    {engagements.map(({ name, detail, price }) => (
-                      <div key={name}>
-                        <div className="landscape-services__copy">
-                          <span>{name}</span>
-                          <p>{detail}</p>
-                        </div>
-                        <strong><small>From</small>{price}</strong>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </LiquidGlass>
-            </div>
+            <PricingLever ctaHref={CALENDAR_URL} />
           </section>
 
           <section
