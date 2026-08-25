@@ -380,7 +380,7 @@ export default function Home() {
             className="landscape-copy__services"
             data-sc-copy
             data-sc-window="0.65 0.86 0.2 0.22"
-            aria-label="Pricing"
+            aria-labelledby="services-title"
           >
             <PricingLever ctaHref={CALENDAR_URL} />
           </section>
