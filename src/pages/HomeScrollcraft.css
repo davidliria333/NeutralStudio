@@ -858,6 +858,7 @@ body:has(.landscape-page) .landscape-page {
 }
 
 .landscape-carousel__slide {
+  --slide-pad: clamp(.9rem, 2vw, 2rem);
   position: relative;
   flex: 0 0 100%;
   width: 100%;
@@ -868,19 +869,26 @@ body:has(.landscape-page) .landscape-page {
   display: grid;
   place-items: center;
   border-radius: 14px;
-  padding: clamp(.9rem, 2vw, 2rem);
+  padding: var(--slide-pad);
   background: var(--slide-bg, #f4f7f5);
 }
 
-.landscape-carousel__slide img {
+.landscape-carousel__slide img,
+.landscape-carousel__slide video {
+  position: absolute;
+  inset: var(--slide-pad);
   display: block;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
+  width: calc(100% - (var(--slide-pad) * 2));
+  height: calc(100% - (var(--slide-pad) * 2));
+  max-width: none;
+  max-height: none;
   object-fit: contain;
   object-position: center;
   transform: none;
+}
+
+.landscape-carousel__slide video {
+  background: var(--slide-bg, #f4f7f5);
 }
 
 .landscape-carousel__footer {
@@ -1593,7 +1601,8 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-carousel__slide {
-    padding: clamp(.7rem, 3vw, 1.1rem);
+    --slide-pad: clamp(.7rem, 3vw, 1.1rem);
+    padding: var(--slide-pad);
   }
 
   .landscape-carousel__footer {

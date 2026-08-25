@@ -15,6 +15,40 @@ const MASTER_POSTER = '/generated/neutral-landscape/tensorpix-poster-4k.jpg'
 const MASTER_POSTER_MOBILE = '/generated/neutral-landscape/neutral-landscape-mobile-poster.jpg'
 const WORLD_SPAN = 8.4
 
+function PortfolioVideo({ project, active, reducedMotion }) {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return undefined
+
+    if (!active || reducedMotion) {
+      video.pause()
+      if (!active) video.currentTime = 0
+      return undefined
+    }
+
+    video.play().catch(() => {})
+    return () => video.pause()
+  }, [active, reducedMotion])
+
+  return (
+    <video
+      ref={videoRef}
+      src={project.src}
+      poster={project.poster}
+      width={project.width}
+      height={project.height}
+      preload={active ? 'auto' : 'none'}
+      aria-label={project.alt}
+      muted
+      loop
+      playsInline
+    />
+  )
+}
+const NAV_PROGRESS_NUDGE = 0.001
+
 const landmarks = [
   { id: 'arrival', label: 'Home', progress: 0 },
   { id: 'approach', label: 'Approach', progress: 0.19 },
@@ -48,49 +82,76 @@ const portfolioCollections = [
     label: 'Branding',
     slides: [
       {
-        id: 'circlehome-lockup',
-        title: 'CircleHome identity',
-        src: '/Portfolio%20Projects/CIRCLEHOME/Logos-01.png',
-        alt: 'CircleHome green symbol and wordmark on a white identity board.',
-        width: 4000,
-        height: 2250,
-        background: '#f4f8f5',
+        id: 'pocket-voice-identity',
+        title: 'Pocket Voice identity',
+        src: '/portfolio/branding/pocket-voice-identity.webp',
+        alt: 'Pocket Voice symbol and wordmark on a bright blue field.',
+        width: 2048,
+        height: 1541,
+        background: '#168fc3',
       },
       {
-        id: 'circlehome-system',
-        title: 'CircleHome brand system',
-        src: '/Portfolio%20Projects/CIRCLEHOME/Logos-05.png',
-        alt: 'CircleHome symbol, wordmark and tagline arranged vertically in green.',
-        width: 2252,
-        height: 2252,
-        background: '#f4f8f5',
+        id: 'pocket-voice-campaign',
+        title: 'Pocket Voice campaign',
+        src: '/portfolio/branding/pocket-voice-campaign.webp',
+        alt: 'Three Pocket Voice campaign posters presenting the product across mobile interfaces.',
+        width: 2048,
+        height: 1541,
+        background: '#f3f6f8',
       },
       {
         id: 'vira-identity',
         title: 'VIRA identity',
-        src: '/Portfolio%20Projects/VIRA/00_logo.png',
+        src: '/portfolio/branding/vira-identity.webp',
         alt: 'VIRA white flower symbol and wordmark over a violet gradient field.',
-        width: 2292,
-        height: 2292,
+        width: 2048,
+        height: 1541,
         background: '#b77af1',
       },
       {
-        id: 'galeon-identity',
-        title: 'Galeón identity',
-        src: '/Galeon/Treball-01.png',
-        alt: 'Galeón heritage navigation wordmark presented on a deep mineral background.',
-        width: 4500,
-        height: 5625,
-        background: '#30494e',
+        id: 'vira-wearable',
+        title: 'VIRA wearable experience',
+        src: '/portfolio/branding/vira-wearable.webp',
+        alt: 'VIRA character experience displayed on an Apple Watch over a violet composition.',
+        width: 2048,
+        height: 1541,
+        background: '#ae77ed',
       },
       {
-        id: 'symbol-study',
-        title: 'Symbol study',
-        src: '/Logos/00_logo_Mesa%20de%20trabajo%2016%20copia%202.png',
-        alt: 'Interlocking orange, red and yellow geometric brand symbol on white.',
-        width: 719,
-        height: 300,
-        background: '#f7f6f2',
+        id: 'human-archive-identity',
+        title: 'Human Archive identity',
+        src: '/portfolio/branding/human-archive-identity.webp',
+        alt: 'Human Archive symbol and wordmark on a black field.',
+        width: 2048,
+        height: 1541,
+        background: '#191a18',
+      },
+      {
+        id: 'human-archive-application',
+        title: 'Human Archive application',
+        src: '/portfolio/branding/human-archive-application.webp',
+        alt: 'Human Archive identity applied to a utility chest worn by a chef.',
+        width: 2048,
+        height: 1541,
+        background: '#1a1a18',
+      },
+      {
+        id: 'circlehome-identity',
+        title: 'CircleHome identity',
+        src: '/portfolio/branding/circlehome-identity.webp',
+        alt: 'CircleHome green symbol and wordmark on a white field.',
+        width: 2048,
+        height: 1541,
+        background: '#f7faf7',
+      },
+      {
+        id: 'circlehome-launch',
+        title: 'CircleHome launch',
+        src: '/portfolio/branding/circlehome-launch.webp',
+        alt: 'CircleHome launch composition presenting the Spanish product on two mobile screens.',
+        width: 2048,
+        height: 1541,
+        background: '#f7faf7',
       },
     ],
   },
@@ -99,49 +160,37 @@ const portfolioCollections = [
     label: 'Web',
     slides: [
       {
-        id: 'galeon-tablet',
-        title: 'Galeón digital archive',
-        src: '/Galeon/Treball_Mesa%20de%20trabajo%201%20copia.png',
-        alt: 'Galeón digital heritage archive shown on a tablet in a dark photographic scene.',
-        width: 4500,
-        height: 5625,
-        background: '#0a0b12',
+        id: 'pocket-voice-web',
+        type: 'video',
+        title: 'Pocket Voice website',
+        src: '/portfolio/web/pocket-voice.mp4',
+        poster: '/portfolio/web/pocket-voice-poster.jpg',
+        alt: 'Scroll-through of the Pocket Voice product website.',
+        width: 1920,
+        height: 872,
+        background: '#168fc3',
       },
       {
-        id: 'galeon-experience',
-        title: 'Heritage navigation',
-        src: '/Galeon/Treball_Mesa%20de%20trabajo%201%20copia%202.png',
-        alt: 'Galeón web experience combining museum imagery, navigation and editorial typography.',
-        width: 4500,
-        height: 5625,
-        background: '#30494e',
+        id: 'busy-bar-web',
+        type: 'video',
+        title: 'BUSY Bar website',
+        src: '/portfolio/web/busy-bar.mp4',
+        poster: '/portfolio/web/busy-bar-poster.jpg',
+        alt: 'Scroll-through of the BUSY Bar product website.',
+        width: 1920,
+        height: 872,
+        background: '#f2f1ef',
       },
       {
-        id: 'circlehome-launch',
-        title: 'CircleHome launch',
-        src: '/Portfolio%20Projects/CIRCLEHOME/We%20are%20live.jpg',
-        alt: 'CircleHome Spanish launch composition with two mobile interface mockups.',
-        width: 2160,
-        height: 2160,
-        background: '#f7f8f6',
-      },
-      {
-        id: 'circlehome-detail',
-        title: 'CircleHome property detail',
-        src: '/Portfolio%20Projects/CIRCLEHOME/flatten.jpg',
-        alt: 'CircleHome property detail interface shown on a phone with community portraits.',
-        width: 2134,
-        height: 1200,
-        background: '#f7f8f6',
-      },
-      {
-        id: 'circlehome-community',
-        title: 'CircleHome community',
-        src: '/Portfolio%20Projects/CIRCLEHOME/MockUp_3.png',
-        alt: 'CircleHome mobile property experience surrounded by community portraits.',
-        width: 4000,
-        height: 3200,
-        background: '#f7f8f6',
+        id: 'five-pathways-web',
+        type: 'video',
+        title: 'Five Pathways Financial',
+        src: '/portfolio/web/five-pathways.mp4',
+        poster: '/portfolio/web/five-pathways-poster.jpg',
+        alt: 'Scroll-through of the Five Pathways Financial website.',
+        width: 1920,
+        height: 872,
+        background: '#f7f0e4',
       },
     ],
   },
@@ -301,7 +350,8 @@ export default function Home() {
     const flight = rootRef.current?.querySelector('[data-sc-mode="worldflight"]')
     if (!flight) return
     const top = flight.getBoundingClientRect().top + window.scrollY
-    const target = top + landmark.progress * WORLD_SPAN * window.innerHeight
+    const targetProgress = Math.min(1, landmark.progress + (landmark.progress > 0 ? NAV_PROGRESS_NUDGE : 0))
+    const target = top + targetProgress * WORLD_SPAN * window.innerHeight
     if (lenisRef.current) {
       lenisRef.current.scrollTo(target, { lerp: 0.1 })
       return
@@ -588,14 +638,22 @@ export default function Home() {
                       aria-hidden={index !== activeProject}
                       style={{ '--slide-bg': project.background }}
                     >
-                      <img
-                        src={project.src}
-                        alt={index === activeProject ? project.alt : ''}
-                        width={project.width}
-                        height={project.height}
-                        loading={index === 0 ? 'eager' : 'lazy'}
-                        decoding="async"
-                      />
+                      {project.type === 'video' ? (
+                        <PortfolioVideo
+                          project={project}
+                          active={activeSurface === 'portfolio' && index === activeProject}
+                          reducedMotion={reducedMotion}
+                        />
+                      ) : (
+                        <img
+                          src={project.src}
+                          alt={index === activeProject ? project.alt : ''}
+                          width={project.width}
+                          height={project.height}
+                          loading={index === 0 ? 'eager' : 'lazy'}
+                          decoding="async"
+                        />
+                      )}
                     </figure>
                   ))}
                 </div>

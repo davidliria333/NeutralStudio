@@ -6,6 +6,10 @@ node_modules/
 dist/
 *.local
 scrollcraft/builds/*/lab/
+public/Portfolio Uploads/Branding/*
+!public/Portfolio Uploads/Branding/.gitkeep
+public/Portfolio Uploads/Web/*
+!public/Portfolio Uploads/Web/.gitkeep
 public/generated/neutral-landscape/TensorPix - neutral-landscape-master.mp4
 public/generated/neutral-landscape/landscape-path-drift-v1.mp4
 public/generated/neutral-landscape/landscape-path-v1.png
