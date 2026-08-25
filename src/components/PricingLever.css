@@ -3,7 +3,7 @@
   isolation: isolate;
   width: min(78rem, 100%);
   height: 100%;
-  max-height: 34rem;
+  max-height: 38rem;
   min-height: 0;
   margin: auto;
   border-radius: 24px;
@@ -93,6 +93,7 @@
 .pricing-card__intro {
   display: flex;
   min-width: 0;
+  min-height: 0;
   flex-direction: column;
   padding: clamp(1.35rem, 2.6vw, 2.4rem);
 }
@@ -206,6 +207,7 @@
 .pricing-card__services {
   display: grid;
   min-width: 0;
+  min-height: 0;
   grid-template-rows: repeat(5, minmax(0, 1fr));
   border-left: 1px solid rgba(31, 63, 47, .14);
   background: rgba(245, 249, 246, .16);
