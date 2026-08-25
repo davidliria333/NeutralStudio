@@ -588,31 +588,46 @@
       if (isMobile() && V.el.getAttribute('data-sc-src-mobile')) src = V.el.getAttribute('data-sc-src-mobile');
       if (!src) return;
       V.loading = true;
+      // Native range loading lets a phone paint the opening frame without
+      // waiting for the entire scrub master to become an in-memory Blob. The
+      // opt-in is mobile-only so desktop keeps its fully buffered path.
+      var nativeLoad = isMobile() && V.el.hasAttribute('data-sc-native-mobile');
+
+      function attach(source) {
+        // Listeners and preload BEFORE src. Assigning src starts the load, so
+        // attaching afterwards and then calling load() restarts it and aborts
+        // the first request (visible as ERR_ABORTED on the blob URL).
+        V.el.addEventListener('loadedmetadata', function () {
+          V.ready = true;
+          // Force one seek even when the target is already 0. The reveal is
+          // gated on a 'seeked' event, and the raf loop only seeks when the
+          // time actually needs to change, so a clip sitting at the very top
+          // of its act would never seek, never fire 'seeked', and never
+          // replace its poster until the reader scrolled it off zero.
+          try { V.el.currentTime = Math.max(V.target * (V.el.duration || 1), 0.001); } catch (e) {}
+          read();
+        });
+        // Reveal only once a real frame has painted. iOS keeps a seeked-but-
+        // never-played muted video blank, so hiding the poster on metadata
+        // alone flashes an empty stage.
+        V.el.addEventListener('seeked', function () {
+          V.painted = true;
+          V.host.classList.add('sc-has-clip');
+          V.el.classList.add('sc-has-clip');
+        }, { once: true });
+        V.el.addEventListener('error', function () { V.loading = false; }, { once: true });
+        V.el.preload = 'auto';
+        V.el.src = source;
+      }
+
+      if (nativeLoad) {
+        attach(src);
+        return;
+      }
+
       fetch(src).then(function (r) { if (!r.ok) throw new Error(r.status); return r.blob(); })
         .then(function (blob) {
-          // Listeners and preload BEFORE src. Assigning src starts the load, so
-          // attaching afterwards and then calling load() restarts it and aborts
-          // the first request (visible as ERR_ABORTED on the blob URL).
-          V.el.addEventListener('loadedmetadata', function () {
-            V.ready = true;
-            // Force one seek even when the target is already 0. The reveal is
-            // gated on a 'seeked' event, and the raf loop only seeks when the
-            // time actually needs to change, so a clip sitting at the very top
-            // of its act would never seek, never fire 'seeked', and never
-            // replace its poster until the reader scrolled it off zero.
-            try { V.el.currentTime = Math.max(V.target * (V.el.duration || 1), 0.001); } catch (e) {}
-            read();
-          });
-          // Reveal only once a real frame has painted. iOS keeps a seeked-but-
-          // never-played muted video blank, so hiding the poster on metadata
-          // alone flashes an empty stage.
-          V.el.addEventListener('seeked', function () {
-            V.painted = true;
-            V.host.classList.add('sc-has-clip');
-            V.el.classList.add('sc-has-clip');
-          }, { once: true });
-          V.el.preload = 'auto';
-          V.el.src = URL.createObjectURL(blob);
+          attach(URL.createObjectURL(blob));
         })
         .catch(function () { V.loading = false; });
     }
@@ -932,7 +947,7 @@
       // Deadband. A phone decoder cannot service a seek every frame, so asking
       // for one costs more than it shows; 20ms of clip is under a frame of
       // footage anyway.
-      var eps = isMobile() ? 0.02 : 0.008;
+      var eps = isMobile() ? 0.04 : 0.008;
       for (var i = 0; i < playheads.length; i++) {
         var V = playheads[i];
         if (!V.ready) continue;

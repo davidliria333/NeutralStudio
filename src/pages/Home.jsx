@@ -1,16 +1,18 @@
-import { useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
-import LiquidGlass from 'liquid-glass-react'
-import { MetalFx } from 'metal-fx'
 import PricingLever from '../components/PricingLever'
-import SplitText from '../components/SplitText'
 import './HomeScrollcraft.css'
+
+const LiquidGlass = lazy(() => import('liquid-glass-react'))
+const MetalFx = lazy(() => import('metal-fx').then((module) => ({ default: module.MetalFx })))
+const SplitText = lazy(() => import('../components/SplitText'))
 
 const CALENDAR_URL = 'https://cal.com/neutralstudio/30min?overlayCalendar=true'
 const MASTER_VIDEO = '/generated/neutral-landscape/TensorPix - neutral-landscape-master-1440p-scrub.mp4'
-const MASTER_VIDEO_MOBILE = '/generated/neutral-landscape/TensorPix - neutral-landscape-master-scrub.mp4'
+const MASTER_VIDEO_MOBILE = '/generated/neutral-landscape/neutral-landscape-mobile-scrub.mp4'
 const MASTER_POSTER = '/generated/neutral-landscape/tensorpix-poster-4k.jpg'
+const MASTER_POSTER_MOBILE = '/generated/neutral-landscape/neutral-landscape-mobile-poster.jpg'
 const WORLD_SPAN = 8.4
 
 const landmarks = [
@@ -36,6 +38,14 @@ export default function Home() {
   const activeRef = useRef(0)
   const [activeLandmark, setActiveLandmark] = useState(0)
   const [reducedMotion, setReducedMotion] = useState(false)
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width: 800px)').matches)
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 800px)')
+    const sync = () => setIsMobile(media.matches)
+    media.addEventListener('change', sync)
+    return () => media.removeEventListener('change', sync)
+  }, [])
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -149,15 +159,16 @@ export default function Home() {
           >
             <img
               className="sc-world__poster"
-              src={MASTER_POSTER}
+              src={isMobile ? MASTER_POSTER_MOBILE : MASTER_POSTER}
               alt=""
               loading="eager"
               fetchpriority="high"
-              decoding="sync"
+              decoding="async"
             />
             <video
               data-sc-src={MASTER_VIDEO}
               data-sc-src-mobile={MASTER_VIDEO_MOBILE}
+              data-sc-native-mobile
               width="2560"
               height="1440"
               playsInline
@@ -219,37 +230,60 @@ export default function Home() {
             aria-labelledby="home-title"
           >
             <div className="landscape-hero__center">
-              <SplitText
-                id="home-title"
-                aria-label="Neutral Studio"
-                text="NeutralStudio"
-                className="landscape-hero__title"
-                delay={70}
-                duration={0.65}
-                ease="power3.out"
-                splitType="chars"
-                from={{ opacity: 0, y: 40 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-                rootMargin="0px"
-                textAlign="center"
-                tag="h1"
-                reducedMotion={reducedMotion}
-                style={{ whiteSpace: 'nowrap' }}
-              />
+              {isMobile ? (
+                <h1 id="home-title" className="landscape-hero__title" aria-label="Neutral Studio">NeutralStudio</h1>
+              ) : (
+                <Suspense fallback={<h1 id="home-title" className="landscape-hero__title" aria-label="Neutral Studio">NeutralStudio</h1>}>
+                  <SplitText
+                    id="home-title"
+                    aria-label="Neutral Studio"
+                    text="NeutralStudio"
+                    className="landscape-hero__title"
+                    delay={70}
+                    duration={0.65}
+                    ease="power3.out"
+                    splitType="chars"
+                    from={{ opacity: 0, y: 40 }}
+                    to={{ opacity: 1, y: 0 }}
+                    threshold={0.1}
+                    rootMargin="0px"
+                    textAlign="center"
+                    tag="h1"
+                    reducedMotion={reducedMotion}
+                    style={{ whiteSpace: 'nowrap' }}
+                  />
+                </Suspense>
+              )}
               <p className="landscape-hero__declaration">One clear direction for your brand, product and website.</p>
-              <MetalFx
-                className="landscape-hero__metal"
-                variant="button"
-                preset="chromatic"
-                theme="dark"
-                strength={1}
-                borderRadius={18}
-                paused={reducedMotion}
-                normalizeHostStyles={false}
-              >
-                <div className="landscape-hero__cta-host">
-                  <LiquidGlass
+              {isMobile ? (
+                <div className="landscape-hero__metal landscape-hero__metal--static">
+                  <div className="landscape-hero__cta-host">
+                    <div className="landscape-hero__cta-glass landscape-hero__cta-glass--static">
+                      <a className="landscape-hero__cta" href={CALENDAR_URL} target="_blank" rel="noreferrer">
+                        <span>Start your path</span>
+                        <i aria-hidden="true">
+                          <svg viewBox="0 0 20 20" fill="none">
+                            <path d="M5 15L15 5M7 5h8v8" />
+                          </svg>
+                        </i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Suspense fallback={null}>
+                  <MetalFx
+                    className="landscape-hero__metal"
+                    variant="button"
+                    preset="chromatic"
+                    theme="dark"
+                    strength={1}
+                    borderRadius={18}
+                    paused={reducedMotion}
+                    normalizeHostStyles={false}
+                  >
+                  <div className="landscape-hero__cta-host">
+                    <LiquidGlass
                     className="landscape-hero__cta-glass"
                     displacementScale={30}
                     blurAmount={0.08}
@@ -267,9 +301,11 @@ export default function Home() {
                         </svg>
                       </i>
                     </a>
-                  </LiquidGlass>
-                </div>
-              </MetalFx>
+                    </LiquidGlass>
+                  </div>
+                  </MetalFx>
+                </Suspense>
+              )}
             </div>
           </section>
 
@@ -352,24 +388,36 @@ export default function Home() {
                       '--card-r': project.rotation,
                     }}
                   >
-                    <LiquidGlass
-                      className="landscape-project"
-                      displacementScale={36}
-                      blurAmount={0.09}
-                      saturation={135}
-                      aberrationIntensity={1.2}
-                      elasticity={0.08}
-                      cornerRadius={16}
-                      padding="0"
-                      overLight
-                      style={{ width: '100%', height: '100%' }}
-                    >
+                    {isMobile ? (
+                      <div className="landscape-project landscape-project--static">
+                        <div className="landscape-project__content">
+                          <span>Selected work {project.id}</span>
+                          <strong>Project placeholder</strong>
+                          <i aria-hidden="true" />
+                        </div>
+                      </div>
+                    ) : (
+                      <Suspense fallback={null}>
+                        <LiquidGlass
+                          className="landscape-project"
+                          displacementScale={36}
+                          blurAmount={0.09}
+                          saturation={135}
+                          aberrationIntensity={1.2}
+                          elasticity={0.08}
+                          cornerRadius={16}
+                          padding="0"
+                          overLight
+                          style={{ width: '100%', height: '100%' }}
+                        >
                       <div className="landscape-project__content">
                         <span>Selected work {project.id}</span>
                         <strong>Project placeholder</strong>
                         <i aria-hidden="true" />
                       </div>
-                    </LiquidGlass>
+                        </LiquidGlass>
+                      </Suspense>
+                    )}
                   </div>
                 </div>
               ))}
@@ -382,7 +430,7 @@ export default function Home() {
             data-sc-window="0.65 0.86 0.2 0.22"
             aria-labelledby="services-title"
           >
-            <PricingLever ctaHref={CALENDAR_URL} />
+            <PricingLever ctaHref={CALENDAR_URL} staticGlass={isMobile} />
           </section>
 
           <section

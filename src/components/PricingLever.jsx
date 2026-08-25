@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import LiquidGlass from 'liquid-glass-react'
+import { lazy, Suspense, useState } from 'react'
 import './PricingLever.css'
+
+const LiquidGlass = lazy(() => import('liquid-glass-react'))
 
 const SERVICES = [
   {
@@ -43,25 +44,12 @@ function ArrowUpRight() {
   )
 }
 
-export default function PricingLever({ ctaHref }) {
+export default function PricingLever({ ctaHref, staticGlass = false }) {
   const [activeId, setActiveId] = useState('brand-web')
   const activeService = SERVICES.find((service) => service.id === activeId) ?? SERVICES[0]
 
-  return (
-    <div className="pricing-glass-shell">
-      <LiquidGlass
-        className="pricing-glass"
-        displacementScale={46}
-        blurAmount={0.1}
-        saturation={132}
-        aberrationIntensity={1.1}
-        elasticity={0.06}
-        cornerRadius={24}
-        padding="0"
-        overLight
-        style={{ width: '100%', height: '100%' }}
-      >
-        <article className="pricing-card" aria-labelledby="services-title">
+  const card = (
+    <article className="pricing-card" aria-labelledby="services-title">
           <div className="pricing-card__intro">
             <div>
               <h2 id="services-title">One studio. Five ways to start.</h2>
@@ -110,8 +98,31 @@ export default function PricingLever({ ctaHref }) {
               )
             })}
           </div>
-        </article>
-      </LiquidGlass>
+    </article>
+  )
+
+  return (
+    <div className="pricing-glass-shell">
+      {staticGlass ? (
+        <div className="pricing-glass pricing-glass--static">{card}</div>
+      ) : (
+        <Suspense fallback={<div className="pricing-glass pricing-glass--static">{card}</div>}>
+          <LiquidGlass
+            className="pricing-glass"
+            displacementScale={46}
+            blurAmount={0.1}
+            saturation={132}
+            aberrationIntensity={1.1}
+            elasticity={0.06}
+            cornerRadius={24}
+            padding="0"
+            overLight
+            style={{ width: '100%', height: '100%' }}
+          >
+            {card}
+          </LiquidGlass>
+        </Suspense>
+      )}
     </div>
   )
 }

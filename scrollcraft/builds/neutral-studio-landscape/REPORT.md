@@ -4,7 +4,7 @@
 
 One continuous 40.2-second TensorPix landscape film drives the complete page. It is delivered as dedicated desktop and mobile scrub encodes and mounted as one ScrollCraft worldflight segment, preserving the source's direct cuts without adding runtime dissolves. The 4K TensorPix source remains untouched and outside Git; no page-ready encode adds audio.
 
-The interface now uses a sans-serif Manrope system and a distilled three-part hero: oversized white "NeutralStudio", one positioning line and one "Start your path" action. That action combines real `liquid-glass-react` refraction with a chromatic `metal-fx` WebGL ring; the duplicate header CTA and the explanatory bottom dock were removed. Portfolio placeholders retain their own liquid-glass refraction. Desktop wheel and trackpad input is eased with Lenis while touch devices and reduced-motion visitors keep native scrolling.
+The interface now uses a sans-serif Manrope system and a distilled three-part hero: oversized white "NeutralStudio", one positioning line and one "Start your path" action. On desktop, that action combines real `liquid-glass-react` refraction with a chromatic `metal-fx` WebGL ring; the duplicate header CTA and the explanatory bottom dock were removed. Desktop portfolio placeholders retain their own liquid-glass refraction, while mobile uses visually matched static surfaces to protect scroll performance. Desktop wheel and trackpad input is eased with Lenis while touch devices and reduced-motion visitors keep native scrolling.
 
 ## Journey
 
@@ -29,7 +29,7 @@ A restrained topographic line advances with the master film and turns the portfo
 - Scroll controls the film, every copy window and every route state; boundaries stay on the original direct cuts with a sub-pixel seam.
 - A 1,200 px desktop wheel gesture now resolves through 42 measured intermediate positions and still lands at exactly 1,200 px; the Approach route control lands at its expected 1,436 px target.
 - Lenis remains inactive on touch-sized mobile input and under reduced motion.
-- The hero contains exactly three direct children, mounts the MetalFx canvas at both desktop and mobile sizes, and pauses the shader under reduced motion.
+- The hero contains exactly three direct children. Desktop mounts the MetalFx canvas; mobile uses the static equivalent, and reduced motion pauses the shader.
 - Body copy remains on white glass surfaces; the oversized white hero uses a dark edge and shadow to stay legible as the sky moves behind it.
 - The contact sheets exposed the package's Tailwind-dependent inner sizing; a local full-surface adapter now makes the refractor occupy each complete card.
 
@@ -47,3 +47,13 @@ A restrained topographic line advances with the master film and turns the portfo
 ## Local preview
 
 http://127.0.0.1:5174/
+
+## Mobile performance repair, 25 August 2026
+
+- Replaced the 82,021,105-byte 1920 × 1080 mobile source with a 19,315,532-byte 720 × 1280 portrait H.264 scrub encode derived from the enhanced TensorPix master. It uses 20 fps, no B-frames and a 0.3-second keyframe interval so the phone decodes only the visible crop and can settle short seeks quickly.
+- Added a 48,232-byte portrait poster and responsive preload. Mobile no longer downloads the 1,255,479-byte 4K desktop poster.
+- Mobile video uses native HTTP range loading instead of waiting for a full in-memory Blob. The verified response is `206`, the real frame paints, the 40.2-second playhead reaches the end and no page errors or browser long tasks were observed in the automated mobile pass.
+- Mobile renders static composited glass surfaces and a plain hero heading. GSAP SplitText, MetalFx and LiquidGlass are dynamically deferred and were not requested in the 390 × 844 mobile run. Desktop retains the full animated/refraction treatment.
+- Removed the full-frame CSS colour filter and backdrop blur from the mobile path. Higher-opacity static surfaces preserve readability without continuously filtering the video underneath.
+- `npm run build` passed. ScrollCraft desktop, 390 × 844 mobile and reduced-motion passes found no dead scroll; the video painted and moved through all sampled mobile and desktop states. Reduced motion kept the poster and did not fetch video.
+- A throttled production-preview check at 1.6 Mbps reached DOM-ready in about 1.25 seconds and painted the first video frame after the first touch while retaining the poster as the loading fallback. This is browser emulation, not a physical-iPhone measurement.
