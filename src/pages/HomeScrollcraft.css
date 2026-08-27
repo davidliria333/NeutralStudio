@@ -452,7 +452,6 @@ body:has(.landscape-page) .landscape-page {
 }
 
 .landscape-hero__declaration {
-  display: block;
   max-width: 31ch;
   margin: 0;
   color: #fff !important;
@@ -464,11 +463,6 @@ body:has(.landscape-page) .landscape-page {
   text-shadow:
     0 2px 10px rgba(0, 0, 0, .42),
     0 12px 36px rgba(0, 0, 0, .32);
-}
-
-.landscape-hero__title .landscape-hero__declaration {
-  margin-top: clamp(.85rem, 1.6vh, 1.35rem);
-  white-space: normal;
 }
 
 .landscape-contact__links {

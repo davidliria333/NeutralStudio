@@ -487,10 +487,10 @@ export default function Home() {
             inert={activeSurface === 'hero' ? undefined : ''}
           >
             <div className="landscape-hero__center">
-              <h1 id="home-title" className="landscape-hero__title">
+              <h1 id="home-title" className="landscape-hero__title" aria-label="Neutral Studio">
                 <span aria-hidden="true">Neutral</span>
-                <span className="landscape-hero__declaration">One clear direction for your brand, product and website.</span>
               </h1>
+              <p className="landscape-hero__declaration">One clear direction for your brand, product and website.</p>
               {isMobile !== false ? (
                 <div className="landscape-hero__metal landscape-hero__metal--static">
                   <div className="landscape-hero__cta-host">
