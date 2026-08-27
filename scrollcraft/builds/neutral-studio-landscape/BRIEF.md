@@ -66,7 +66,7 @@ The build clears the registry against all existing Neutral Studio builds: differ
 ## Feeling curve
 
 1. **Clarity and confidence.** The open landscape gives the value proposition one quiet, readable ground.
-2. **Curiosity.** The topographic line starts to lead the visitor into the route while the studio approach appears.
+2. **Coherence.** Four decisions converge into one direction while the studio approach appears.
 3. **Impact and discovery.** The landscape opens into the portfolio placeholders, held longer than any other waypoint.
 4. **Calm.** The route becomes quieter while the method reduces to four useful disciplines.
 5. **Easy decision.** The path resolves at the contact prompt and stays there.
@@ -80,7 +80,7 @@ The visitor sees the open landscape widen and a field of project markers emerge 
 | Beat | Master-film waypoint | Why |
 |---|---|---|
 | Value proposition | Arrival | Establishing landscape gives the headline room and starts the route quietly. |
-| Approach | Approach | The route line begins to reveal without changing worlds. |
+| Approach | Approach | Position, identity, product and website converge into one direction without changing worlds. |
 | Portfolio | Selected work | Longest waypoint, where placeholder projects become physical markers in the landscape. |
 | Process | Method | The terrain stays quiet while the process becomes concise and readable. |
 | Contact | Contact | The route resolves in one place with one action. |
@@ -111,7 +111,7 @@ Verbatim user direction:
 
 This direction supersedes the earlier placeholder-only constraint for the Portfolio act.
 
-- The left side carries documented studio proof: 100+ projects shipped, seven selected interface studies and five connected disciplines.
+- The left side carries documented studio proof: 100+ projects shipped, work with Y Combinator-backed startups and $100M+ collectively raised by teams the studio has supported.
 - No client-count figure is introduced because the repository does not contain a verified number of clients.
 - The right side uses the seven supplied UX/UI studies as a real carousel.
 - Scroll advances the carousel through the Portfolio act; previous and next controls keep it directly operable by pointer and keyboard.

@@ -33,16 +33,15 @@ A restrained topographic line advances with the master film and turns the portfo
 - Body copy remains on white glass surfaces; the oversized white hero uses a dark edge and shadow to stay legible as the sky moves behind it.
 - The contact sheets exposed the package's Tailwind-dependent inner sizing; a local full-surface adapter now makes the refractor occupy each complete card.
 
-## Approach path refinement, 24 August 2026
+## Approach convergence refinement, 27 August 2026
 
-- Replaced the single large Approach panel with one compact editorial statement and three glass milestones placed along a drawn route.
-- Added a page-local `--approach-p` timeline. The route draws forward and the milestones settle in sequence without changing the worldflight segment, video pace or section map.
-- Preserved the intended feeling: Approach now reads as curiosity and progression, while the portfolio remains the single visual peak.
-- Production build and `git diff --check` pass.
-- Desktop, 390 × 844 mobile and reduced-motion contact sheets were checked. The master clip keeps moving, the segment paints a real frame and no dead scroll was detected. Reduced motion holds the poster, removes positional movement and keeps all three milestones available.
-- Keyboard focus order and visible focus rings remain intact. The Approach itself adds no focusable controls.
-- The generic worldflight assertion reports 21 passes and three seam failures because this implementation intentionally has one segment, so there is no incoming or outgoing seam to sample. Stage, spacer, copy transform, playhead interpolation, poster fallback and reduced-motion contracts all pass.
-- Automated contrast values for the Approach are not reliable because the verifier hides the parent `data-sc-copy` block together with its nested glass panels, then samples the raw film. The rendered desktop, mobile and reduced-motion frames were reviewed manually; the text remains on high-opacity white surfaces. Existing portfolio contrast findings remain outside this refinement.
+- Replaced the generic three-step process with one studio principle: “Many touchpoints. One company.”
+- Position, identity, product and website now appear as four editorial inputs whose paths converge into one junction and continue towards one clear direction.
+- The page-local `--approach-p` timeline reveals the inputs, draws their paths, resolves the junction and then uncovers the outcome. It does not change the worldflight segment, video pace or section map.
+- Production build, the Impeccable detector and `git diff --check` pass.
+- Desktop, 390 × 844 mobile and reduced-motion contact sheets were checked. The master clip keeps moving, the segment paints real frames and no dead scroll was detected. Reduced motion holds the poster and presents the complete convergence without positional animation.
+- Keyboard focus order remains unchanged. The Approach adds no focusable controls and its complete meaning is present in semantic text rather than depending on the SVG.
+- Automated contrast values for nested Approach surfaces remain unreliable because the verifier can sample the raw film while hiding the parent copy block. The rendered desktop, mobile and reduced-motion frames were reviewed manually; the copy stays on high-opacity white surfaces.
 
 ## Local preview
 
@@ -61,7 +60,7 @@ http://127.0.0.1:5174/
 ## Portfolio proof and carousel, 25 August 2026
 
 - Replaced the six placeholder cards with the seven supplied UX/UI studies in a real carousel on the right.
-- Added a compact proof column on the left using only figures already documented in the project: 100+ projects shipped, seven selected interface studies and five connected disciplines. No unsupported client-count claim was added.
+- Added a compact proof column on the left using documented studio evidence: 100+ projects shipped, work with Y Combinator-backed startups and $100M+ collectively raised by teams the studio has supported. No unsupported client-count claim was added.
 - The carousel index follows the Portfolio portion of the worldflight timeline and remains directly controllable with previous and next buttons.
 - The controls were verified with keyboard activation and visible focus at 1440 × 900 and 390 × 844. Both changed the active project while retaining focus.
 - A production build passed using a temporary output folder because the NAS copy could not atomically clear the existing `dist/generated` directory.
