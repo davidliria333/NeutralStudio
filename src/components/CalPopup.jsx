@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-
 export const CALENDAR_URL = 'https://cal.com/neutralstudio/30min?overlayCalendar=true'
 
 const CAL_LINK = 'neutralstudio/30min'
@@ -10,8 +8,8 @@ const MODAL_CONFIG = {
   useSlotsViewOnSmallScreen: 'true',
 }
 
-let embedStarted = false
 let embedReady = false
+let embedPromise
 
 function installCalLoader() {
   if (window.Cal) return window.Cal
@@ -58,31 +56,51 @@ function installCalLoader() {
 }
 
 function startCalEmbed() {
-  if (embedStarted || typeof window === 'undefined') return
-  embedStarted = true
+  if (typeof window === 'undefined') return Promise.resolve(false)
+  if (embedPromise) return embedPromise
 
-  const cal = installCalLoader()
-  cal('init', CAL_NAMESPACE, { origin: 'https://cal.com' })
-  cal.ns[CAL_NAMESPACE]('ui', {
-    theme: 'light',
-    styles: { branding: { brandColor: '#15251d' } },
-    hideEventTypeDetails: false,
-    layout: 'month_view',
+  embedPromise = new Promise((resolve) => {
+    if (embedReady) {
+      resolve(true)
+      return
+    }
+
+    const cal = installCalLoader()
+    cal('init', CAL_NAMESPACE, { origin: 'https://cal.com' })
+    cal.ns[CAL_NAMESPACE]('ui', {
+      theme: 'light',
+      styles: { branding: { brandColor: '#15251d' } },
+      hideEventTypeDetails: false,
+      layout: 'month_view',
+    })
+
+    const script = document.querySelector(`script[src="${EMBED_SCRIPT_URL}"]`)
+    if (!script) {
+      resolve(false)
+      return
+    }
+
+    script.addEventListener('load', () => {
+      embedReady = true
+      resolve(true)
+    }, { once: true })
+    script.addEventListener('error', () => resolve(false), { once: true })
   })
 
-  const script = document.querySelector(`script[src="${EMBED_SCRIPT_URL}"]`)
-  if (!script) return
-  script.addEventListener('load', () => { embedReady = true }, { once: true })
+  return embedPromise
 }
 
-export function openCalPopup(event) {
-  const modifiedClick = event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
+export async function openCalPopup(event) {
+  const modifiedClick = (event.button != null && event.button !== 0) || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
   if (modifiedClick) return
 
-  startCalEmbed()
-  if (!embedReady) return
-
   event.preventDefault()
+  const ready = await startCalEmbed()
+  if (!ready || !window.Cal?.ns?.[CAL_NAMESPACE]) {
+    window.location.assign(CALENDAR_URL)
+    return
+  }
+
   window.Cal.ns[CAL_NAMESPACE]('modal', {
     calLink: CAL_LINK,
     config: MODAL_CONFIG,
@@ -95,9 +113,5 @@ export const CAL_POPUP_PROPS = {
 }
 
 export default function CalPopup() {
-  useEffect(() => {
-    startCalEmbed()
-  }, [])
-
   return null
 }

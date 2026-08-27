@@ -9,35 +9,35 @@ const SERVICES = [
   {
     id: 'web',
     name: 'Web',
-    detail: 'A studio or product website designed and built around one clear story.',
+    detail: 'A responsive studio or product website designed and built around one clear story, useful search intent and a maintainable component system.',
     price: '€1,990',
     path: '/services/web',
   },
   {
     id: 'brand',
     name: 'Brand only',
-    detail: 'A clear identity system with the essential rules and assets ready to use.',
+    detail: 'A clear identity system with positioning translated into the essential visual rules, launch applications and production assets your team can use.',
     price: '€2,990',
     path: '/services/brand',
   },
   {
     id: 'ux-ui',
     name: 'UX/UI',
-    detail: 'Product flows and interfaces shaped around real use and business needs.',
+    detail: 'Product flows, responsive interfaces and edge states shaped around real user tasks, business priorities and engineering constraints.',
     price: '€3,990',
     path: '/services/ux-ui',
   },
   {
     id: 'brand-web',
     name: 'Brand + Web + Assets',
-    detail: 'Identity, website and the core launch assets, designed as one connected system.',
+    detail: 'Identity, website and core launch assets designed as one connected system, so the market promise and digital experience reinforce each other.',
     price: '€4,990',
     path: '/services/brand',
   },
   {
     id: 'app',
     name: 'App development',
-    detail: 'A production-ready app, from product logic and interface through release.',
+    detail: 'A production-ready application from release definition and product logic through interface design, implementation, quality assurance and handoff.',
     price: '€9,990',
     path: '/services/app-development',
   },
@@ -60,7 +60,7 @@ export default function PricingLever({ ctaHref, staticGlass = false }) {
           <div className="pricing-card__intro">
             <div>
               <h2 id="services-title">One studio. Five ways to start.</h2>
-              <p>Choose the part that needs clarity now. Scope and final price are agreed before the work begins.</p>
+              <p>Choose the part that needs clarity now. Every starting point connects strategy with execution, while scope, responsibilities, timing and final price are agreed before the work begins.</p>
             </div>
 
             <div className="pricing-card__selection" aria-live="polite" aria-atomic="true" key={activeService.id}>

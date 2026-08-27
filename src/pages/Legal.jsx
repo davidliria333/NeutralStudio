@@ -12,7 +12,7 @@ export default function Legal() {
       <div className="container info-page__body">
         <section className="info-page__section">
           <h2>Website operator</h2>
-          <p>This website is operated by Neutral Studio, an independent design practice based in Barcelona and led by Arnau Piñol. Contact: <a href="mailto:arnaupinyolwork@gmail.com">arnaupinyolwork@gmail.com</a>.</p>
+          <p>This website is operated by Neutral Studio, an independent remote design practice led by Arnau Piñol. Contact: <a href="mailto:arnaupinyolwork@gmail.com">arnaupinyolwork@gmail.com</a>.</p>
           <p>Requests for additional statutory identification connected to a formal engagement can be made through the same contact address.</p>
         </section>
 

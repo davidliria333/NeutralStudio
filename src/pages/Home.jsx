@@ -17,6 +17,12 @@ const MASTER_POSTER = '/generated/neutral-landscape/neutral-landscape-desktop-po
 const MASTER_POSTER_MOBILE = '/generated/neutral-landscape/neutral-landscape-mobile-poster.jpg'
 const WORLD_SPAN = 8.4
 
+function getResponsivePortfolioSrcSet(src) {
+  if (!src?.startsWith('/portfolio/branding/')) return undefined
+  const filename = src.split('/').pop().replace(/\.webp$/, '')
+  return `/portfolio/branding/responsive/${filename}-560.webp 560w, /portfolio/branding/responsive/${filename}-800.webp 800w, ${src} 2048w`
+}
+
 function PortfolioVideo({ project, active, reducedMotion }) {
   const videoRef = useRef(null)
 
@@ -429,7 +435,7 @@ export default function Home() {
   }
 
   return (
-    <main className="landscape-page" ref={rootRef} data-sc-verify-state="0:0" data-active-surface="hero">
+    <div className="landscape-page" ref={rootRef} data-sc-verify-state="0:0" data-active-surface="hero">
       <div className="landscape-flight" data-sc-mode="worldflight" data-sc-seam="0.02">
         <div className="landscape-world sc-world" data-sc-world aria-hidden="true">
           <div
@@ -537,7 +543,7 @@ export default function Home() {
               <h1 id="home-title" className="landscape-hero__title" aria-label="Neutral Studio">
                 <span aria-hidden="true">Neutral</span>
               </h1>
-              <p className="landscape-hero__declaration">One clear direction for your brand, product and website.</p>
+              <p className="landscape-hero__declaration">One clear direction for your brand, product and website—from the promise people first understand to the clear experience they use every day.</p>
               {isMobile !== false ? (
                 <div className="landscape-hero__metal landscape-hero__metal--static">
                   <div className="landscape-hero__cta-host">
@@ -619,7 +625,7 @@ export default function Home() {
           >
             <div className="landscape-approach__statement landscape-panel">
               <h2 id="approach-title">Many touchpoints. One company.</h2>
-              <p>We connect the decisions behind your brand, product and website, so every interaction strengthens the same idea.</p>
+              <p>Neutral Studio connects positioning, identity, product behavior and website narrative before those decisions drift apart. The result is one promise people can recognize from their first impression through to daily product use, with practical rules your team can continue applying. <span className="landscape-approach__supplement">That shared direction gives founders, designers and engineers one test for every new touchpoint: does it clarify the same idea, or create another version of the company?</span></p>
             </div>
 
             <div className="landscape-approach__instrument">
@@ -637,7 +643,7 @@ export default function Home() {
                 <li className="landscape-approach__translation landscape-approach__translation--identity">
                   <span className="landscape-approach__translation-copy">
                     <strong>Identity</strong>
-                    <small>How it becomes recognisable</small>
+                    <small>How it becomes recognizable</small>
                   </span>
                   <span className="landscape-approach__study landscape-approach__study--identity" aria-hidden="true">
                     {'Neutral'.split('').map((letter, index) => <i key={`${letter}-${index}`}>{letter}</i>)}
@@ -693,7 +699,7 @@ export default function Home() {
             >
               <div className="landscape-portfolio__intro">
                 <h2 id="portfolio-title">Different problems deserve different expressions.</h2>
-                <p>One connected approach, never a house style. A selection of interface systems shaped around different products and audiences.</p>
+                <p>One connected approach, never a house style. This selection shows identity, interface and launch systems shaped around different products and audiences. Each expression changes with its context while hierarchy, repeatability and implementation remain visible design criteria.</p>
               </div>
 
               <dl className="landscape-portfolio__metrics" aria-label="Studio metrics">
@@ -753,6 +759,8 @@ export default function Home() {
                       ) : (
                         <img
                           src={Math.abs(index - activeProject) <= 1 ? project.src : undefined}
+                          srcSet={Math.abs(index - activeProject) <= 1 ? getResponsivePortfolioSrcSet(project.src) : undefined}
+                          sizes="(max-width: 800px) 93vw, 48vw"
                           alt={index === activeProject ? project.alt : ''}
                           width={project.width}
                           height={project.height}
@@ -808,7 +816,7 @@ export default function Home() {
             inert={activeSurface === 'contact' ? undefined : ''}
           >
             <h2 id="contact-title">What are you building?</h2>
-            <p className="landscape-contact__lead">For founders at a decision point: launching, changing direction or making disconnected pieces work together.</p>
+            <p className="landscape-contact__lead">For founders at a decision point: launching a new company, changing direction, preparing a product release or making disconnected brand, web and interface pieces work together. Bring the current constraint and the evidence you already have; the first task is defining what the project genuinely needs to prove or ship.</p>
             <a
               href={CALENDAR_URL}
               {...CAL_POPUP_PROPS}
@@ -819,9 +827,11 @@ export default function Home() {
             >
               Tell us your idea <span aria-hidden="true">↗</span>
             </a>
-            <p className="landscape-contact__note">Neutral Studio, Barcelona<br />Branding · Web · UX/UI · Motion · Strategy</p>
+            <p className="landscape-contact__note">Neutral Studio · Remote worldwide<br />Branding · Web · UX/UI · Motion · Strategy</p>
             <nav className="landscape-contact__links" aria-label="Studio links">
+              <Link to="/services">Services overview</Link>
               {SERVICE_LINKS.map(({ path, label }) => <Link key={path} to={path}>{label}</Link>)}
+              <Link to="/work">Selected work</Link>
               <Link to="/about">About</Link>
               <Link to="/privacy">Privacy</Link>
               <Link to="/legal">Legal</Link>
@@ -831,6 +841,6 @@ export default function Home() {
 
         <div className="sc-world__spacer" data-sc-spacer aria-hidden="true" style={{ height: `${WORLD_SPAN * 100}vh` }} />
       </div>
-    </main>
+    </div>
   )
 }

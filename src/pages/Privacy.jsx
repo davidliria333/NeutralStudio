@@ -12,13 +12,13 @@ export default function Privacy() {
       <div className="container info-page__body">
         <section className="info-page__section">
           <h2>Who is responsible</h2>
-          <p>Neutral Studio, an independent design practice based in Barcelona, is responsible for the website at neutraldesign.es. Privacy and data requests can be sent to <a href="mailto:arnaupinyolwork@gmail.com">arnaupinyolwork@gmail.com</a>.</p>
+          <p>Neutral Studio, an independent remote design practice, is responsible for the website at neutralstudio.co. Privacy and data requests can be sent to <a href="mailto:arnaupinyolwork@gmail.com">arnaupinyolwork@gmail.com</a>.</p>
         </section>
 
         <section className="info-page__section">
           <h2>Website analytics</h2>
-          <p>The site uses Umami Cloud to measure aggregate visits and interactions such as opening the booking link, selecting a service, changing a portfolio category or using an email link. The analytics script is configured to respect the browser Do Not Track preference.</p>
-          <p>Neutral Studio uses this information to understand whether the website works and which content helps visitors. It is not used for advertising profiles, and Neutral Studio does not sell website analytics data.</p>
+          <p>The site uses Vercel Web Analytics to measure aggregate page views, referring websites, countries and device categories. Vercel Web Analytics does not use third-party cookies or store personal identifiers, and query parameters are removed before an analytics page view is sent.</p>
+          <p>Neutral Studio uses this anonymous, aggregate information to understand whether the website works and which content helps visitors. It is not used for advertising profiles, and Neutral Studio does not sell website analytics data.</p>
         </section>
 
         <section className="info-page__section">
@@ -29,7 +29,7 @@ export default function Privacy() {
 
         <section className="info-page__section">
           <h2>External services</h2>
-          <p>Booking links open Cal.com in a separate service. Email links open the visitor’s chosen mail application. LinkedIn links open LinkedIn. Those providers process information under their own terms and privacy policies; Neutral Studio does not control their independent processing.</p>
+          <p>Cal.com is loaded only after a visitor selects a booking link, and may open as an embedded booking interface or as a separate page. Cal.com may then process connection and device data or set security cookies under its own terms and privacy policy. Email links open the visitor’s chosen mail application, and LinkedIn links open LinkedIn. Neutral Studio does not control those providers’ independent processing.</p>
         </section>
 
         <section className="info-page__section">

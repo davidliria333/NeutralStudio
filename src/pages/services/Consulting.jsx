@@ -8,6 +8,21 @@ export default function Consulting() {
       accent="actually read."
       intro="Investor and sales decks built around story spine, slide architecture, and exec polish, so the room stays focused on the company, not the slides."
       currentPath="/services/pitch-deck"
+      decisionGuide={{
+        title: 'What a credible pitch deck needs before slide design.',
+        paragraphs: [
+          'A pitch deck works when the audience can follow one argument and understand what evidence supports it. Before designing slides, we identify whether the deck is for investment, sales, partnership or an internal decision, because each audience evaluates risk differently. We then separate the essential narrative from supporting detail that belongs in an appendix or follow-up conversation.',
+          'Source quality is part of the design brief. Market numbers need traceable references, product claims need an honest level of certainty and financial or traction data needs a consistent definition. Visual hierarchy can make evidence easier to understand, but it cannot repair unsupported claims. Resolving those gaps early produces a shorter, more defensible presentation and reduces late-stage rewriting.',
+          'The final format and delivery context shape the system too. A founder presenting live needs different pacing from a deck sent without narration, and a sales team needs editable patterns that can be updated without breaking hierarchy. We define those uses before layout begins, then build master slides and guidance around the content the team is most likely to change.',
+          'That preparation keeps later updates consistent without turning every new slide into another redesign exercise.',
+        ],
+        points: [
+          'The audience, decision, meeting context and time available to present.',
+          'The central argument and the evidence available for each important claim.',
+          'Which numbers, diagrams and product visuals require source verification.',
+          'The editable format, presenter needs and reusable slide patterns for future updates.',
+        ],
+      }}
       overview={[
         'A strong deck is a decision-making document, not a compressed website. We work from the audience, meeting context and evidence available, then decide what the room needs to understand, believe and remember. That produces a narrative before visual polish begins.',
         'The design system supports the story instead of competing with it. Hierarchy, pacing, diagrams and data visuals are developed as reusable patterns, so the team can update important numbers and create follow-up versions without rebuilding every slide.',

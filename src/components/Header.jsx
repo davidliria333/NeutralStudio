@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import FluidGlassMenu from './FluidGlassMenu.jsx'
-import Magnetic from './Magnetic.jsx'
 import { CALENDAR_URL, CAL_POPUP_PROPS } from './CalPopup.jsx'
 
 const NAV = [
-  { label: 'Services', href: '/#services' },
-  { label: 'Work', href: '/#work' },
+  { label: 'Services', href: '/services' },
+  { label: 'Work', href: '/work' },
   { label: 'Approach', href: '/#approach' },
   { label: 'About', href: '/about' },
 ]
@@ -23,97 +21,67 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => setOpen(false), [location.pathname, location.hash])
+
   useEffect(() => {
-    setOpen(false)
-  }, [location.pathname, location.hash])
+    document.body.classList.toggle('has-open-menu', open)
+    return () => document.body.classList.remove('has-open-menu')
+  }, [open])
+
+  const isCurrent = (href) => href.startsWith('/#')
+    ? false
+    : location.pathname === href || (href !== '/' && location.pathname.startsWith(`${href}/`))
 
   return (
-    <header style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 80,
-      padding: scrolled ? '14px var(--gut)' : '20px var(--gut)',
-      transition: 'padding .35s var(--ease)',
-    }}>
-      <div style={{
-        maxWidth: 'var(--maxw)', margin: '0 auto',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        background: scrolled ? 'rgba(10,10,11,0.78)' : 'rgba(10,10,11,0.62)',
-        backdropFilter: 'blur(20px) saturate(160%)',
-        WebkitBackdropFilter: 'blur(20px) saturate(160%)',
-        border: '1px solid',
-        borderColor: scrolled ? 'var(--line-2)' : 'var(--line)',
-        borderRadius: 999,
-        padding: '10px 14px 10px 20px',
-        transition: 'background-color .35s var(--ease), border-color .35s var(--ease), backdrop-filter .35s var(--ease)',
-      }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--ink)' }}>
-          <img src="/brand-favicon.svg" alt="" width="26" height="26" style={{ borderRadius: 6, display: 'block' }} />
-          <img src="/Logo-01.png" alt="Neutral Studio" width="72" height="20" style={{ display: 'block', width: 72, height: 20, objectFit: 'contain', filter: 'invert(1)' }} className="brand-word" />
-          <span style={{ fontSize: 11, color: 'var(--ink-3)', fontFamily: 'var(--mono)', marginLeft: 2, letterSpacing: '0.04em' }}>STUDIO</span>
+    <header className={`subpage-header${scrolled ? ' is-scrolled' : ''}`}>
+      <div className="subpage-header__bar">
+        <Link className="subpage-header__brand" to="/" aria-label="Neutral Studio home">
+          <img src="/Logo-01.png" alt="Neutral" width="209" height="58" />
+          <span>Studio</span>
         </Link>
 
-        <nav className="desktop-nav" style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-          <FluidGlassMenu items={NAV} />
+        <nav className="subpage-header__nav" aria-label="Primary navigation">
+          {NAV.map((item) => (
+            <Link className={isCurrent(item.href) ? 'is-current' : ''} aria-current={isCurrent(item.href) ? 'page' : undefined} to={item.href} key={item.href}>
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
-        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <Magnetic radius={70} strength={0.28}>
-            <a
-              href={CALENDAR_URL}
-              {...CAL_POPUP_PROPS}
-              target="_blank"
-              rel="noreferrer"
-              data-magnet
-              data-umami-event="calendar_opened"
-              data-umami-event-placement="service_header"
-              className="btn btn--primary"
-              style={{ padding: '10px 18px', fontSize: 13 }}
-            >
-              Tell us your idea <span className="arrow">→</span>
-            </a>
-          </Magnetic>
-          <button className="mobile-toggle" onClick={() => setOpen(o => !o)} aria-label="Menu" aria-expanded={open ? 'true' : 'false'} aria-controls="mobile-nav" style={{
-            display: 'none', background: 'transparent', border: '1px solid var(--line-2)', color: 'var(--ink)',
-            width: 38, height: 38, borderRadius: 999,
-          }}>
-            {open ? (
-              <span style={{ fontSize: 18, lineHeight: 1 }}>×</span>
-            ) : (
-              <>
-                <span style={{ display: 'block', width: 14, height: 1, background: 'var(--ink)', margin: '0 auto 4px' }} />
-                <span style={{ display: 'block', width: 14, height: 1, background: 'var(--ink)', margin: '0 auto' }} />
-              </>
-            )}
+        <div className="subpage-header__actions">
+          <a
+            className="subpage-header__cta"
+            href={CALENDAR_URL}
+            {...CAL_POPUP_PROPS}
+            target="_blank"
+            rel="noreferrer"
+            data-umami-event="calendar_opened"
+            data-umami-event-placement="service_header"
+          >
+            Tell us your idea <span aria-hidden="true">↗</span>
+          </a>
+          <button
+            className="subpage-header__toggle"
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+          >
+            <span />
+            <span />
           </button>
         </div>
       </div>
 
-      {open && (
-        <div id="mobile-nav" style={{
-          position: 'fixed', inset: 0, top: 70, background: 'rgba(10,10,11,0.96)',
-          backdropFilter: 'blur(20px)', padding: 'var(--gut)', zIndex: 79,
-        }} onClick={() => setOpen(false)}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 24 }}>
-            {NAV.map(n => (
-              <a key={n.href} href={n.href} style={{
-                fontSize: 28, fontWeight: 500, padding: '14px 0', borderBottom: '1px solid var(--line)',
-                letterSpacing: '-0.02em',
-                background: 'transparent', color: 'var(--ink)', textAlign: 'left', borderTop: 'none', borderLeft: 'none', borderRight: 'none',
-              }}>{n.label}</a>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <style>{`
-        @media (max-width: 880px) {
-          .desktop-nav { display: none !important; }
-          .mobile-toggle { display: flex !important; align-items: center; justify-content: center; flex-direction: column; }
-        }
-        @media (max-width: 480px) {
-          .brand-word { display: none !important; }
-          header .btn--primary { padding: 8px 14px !important; font-size: 12px !important; }
-        }
-      `}</style>
+      <nav id="mobile-nav" className={`subpage-mobile-nav${open ? ' is-open' : ''}`} aria-label="Mobile navigation" inert={open ? undefined : ''}>
+        {NAV.map((item) => (
+          <Link className={isCurrent(item.href) ? 'is-current' : ''} to={item.href} key={item.href}>
+            <span>{item.label}</span><span aria-hidden="true">↗</span>
+          </Link>
+        ))}
+        <Link to="/contact"><span>Contact</span><span aria-hidden="true">↗</span></Link>
+      </nav>
     </header>
   )
 }

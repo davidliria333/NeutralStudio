@@ -8,8 +8,23 @@ export default function Brand() {
       accent="investors and users believe."
       intro="Identity that scales with the company: logo, type, color, and patterns documented as a system you can hand to engineering, marketing, or your next hire."
       currentPath="/services/brand"
+      startingPrice={2990}
+      decisionGuide={{
+        title: 'What a useful brand identity brief must resolve.',
+        paragraphs: [
+          'A startup brand identity project should begin with the business change behind the request. A new company needs recognition and a credible first impression; a growing company may need consistency across product, sales and hiring; a repositioning may need to change what the market expects. Naming that change prevents the process from becoming a subjective search for a style everyone happens to like.',
+          'The brief also needs real operating constraints: the channels used most often, who will create future assets, which existing recognition should be retained and what must be ready for launch. Those answers determine whether the priority is a flexible visual toolkit, a compact identity with strong templates, or a broader brand system with verbal direction and governance.',
+          'A clear brief also makes pricing and feedback more useful. It identifies the applications included in the first release, the number of decision-makers and the criteria that a direction must satisfy. Reviews can then focus on recognition, relevance, usability and differentiation instead of collecting disconnected reactions to color or taste.',
+        ],
+        points: [
+          'The audience and category the identity must be understood within.',
+          'The product, website, deck and campaign contexts that need testing.',
+          'The people and tools that will maintain the system after handoff.',
+          'The launch date, approval path and non-negotiable technical constraints.',
+        ],
+      }}
       overview={[
-        'Brand identity is useful when it helps people recognise the company and helps the team make consistent decisions. We start with positioning, audience and practical constraints before choosing a visual direction. The goal is not a collection of polished files; it is a system that can survive the next landing page, product release and investor conversation.',
+        'Brand identity is useful when it helps people recognize the company and helps the team make consistent decisions. We start with positioning, audience and practical constraints before choosing a visual direction. The goal is not a collection of polished files; it is a system that can survive the next landing page, product release and investor conversation.',
         'The engagement connects verbal direction, identity and application. Early concepts are tested where the brand will actually live, from product screens and websites to decks and launch assets. That keeps the work grounded and makes the final handoff easier to use without constant design supervision.',
       ]}
       painPoints={[
@@ -43,8 +58,8 @@ export default function Brand() {
       }}
       questions={[
         { question: 'Do we need a complete rebrand?', answer: 'Not always. If the existing identity has recognition or useful elements, the project can strengthen the system around it rather than replace everything.' },
-        { question: 'Can you work with an existing logo?', answer: 'Yes. We can improve typography, colour, layout, image direction and templates while preserving a logo that still serves the company.' },
-        { question: 'What do we receive?', answer: 'The exact handoff follows the agreed scope and can include logo files, typography and colour rules, graphic elements, templates and a concise guideline document.' },
+        { question: 'Can you work with an existing logo?', answer: 'Yes. We can improve typography, color, layout, image direction and templates while preserving a logo that still serves the company.' },
+        { question: 'What do we receive?', answer: 'The exact handoff follows the agreed scope and can include logo files, typography and color rules, graphic elements, templates and a concise guideline document.' },
         { question: 'Can the identity continue into product and web?', answer: 'Yes. Brand, product and website can be planned as one connected engagement or sequenced in phases with shared decisions and files.' },
       ]}
     />

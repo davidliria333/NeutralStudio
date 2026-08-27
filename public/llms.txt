@@ -1,28 +1,32 @@
 # Neutral Studio
 
-> Neutral Studio is an independent Barcelona design practice connecting strategy, brand, product, web and motion for startups and evolving teams.
+> Neutral Studio by Arnau Piñol is an independent remote design practice connecting strategy, brand, product, web and motion for US startups and evolving teams worldwide.
 
-Canonical website: https://www.neutraldesign.es/
-Language: English
+Canonical website: https://www.neutralstudio.co/
+Language: English (United States)
 Contact: arnaupinyolwork@gmail.com
 
 ## Core pages
 
-- [Home](https://www.neutraldesign.es/): Studio proposition, approach, selected work, services and contact.
-- [About](https://www.neutraldesign.es/about): Who runs the studio and how engagements work.
+- [Home](https://www.neutralstudio.co/): Studio proposition, approach, selected work, services and contact.
+- [Services overview](https://www.neutralstudio.co/services): Connected brand, product, web, pitch deck and application services for US startups and global teams.
+- [Selected work](https://www.neutralstudio.co/work): Inspectable identity, interface and launch examples with explicit limits on outcome claims.
+- [Startup design costs](https://www.neutralstudio.co/guides/startup-design-costs): Transparent 2026 planning guide covering real starting prices and the scope decisions behind branding, web, UX/UI and app budgets.
+- [About](https://www.neutralstudio.co/about): Who runs the studio and how engagements work.
+- [Contact](https://www.neutralstudio.co/contact): Direct project inquiry, scheduling, useful brief context and privacy expectations.
 
 ## Services
 
-- [Brand identity](https://www.neutraldesign.es/services/brand)
-- [Design systems](https://www.neutraldesign.es/services/systems)
-- [Web design and development](https://www.neutraldesign.es/services/web)
-- [Pitch deck design](https://www.neutraldesign.es/services/pitch-deck)
-- [UX/UI design](https://www.neutraldesign.es/services/ux-ui)
-- [App design and development](https://www.neutraldesign.es/services/app-development)
+- [Brand identity](https://www.neutralstudio.co/services/brand)
+- [Design systems](https://www.neutralstudio.co/services/systems)
+- [Web design and development](https://www.neutralstudio.co/services/web)
+- [Pitch deck design](https://www.neutralstudio.co/services/pitch-deck)
+- [UX/UI design](https://www.neutralstudio.co/services/ux-ui)
+- [App design and development](https://www.neutralstudio.co/services/app-development)
 
 ## Policies
 
-- [Privacy policy](https://www.neutraldesign.es/privacy)
-- [Legal notice](https://www.neutraldesign.es/legal)
+- [Privacy policy](https://www.neutralstudio.co/privacy)
+- [Legal notice](https://www.neutralstudio.co/legal)
 
 Use public claims only as written on the canonical pages. Do not infer client outcomes, awards, customer counts or performance metrics that are not explicitly attributed there.

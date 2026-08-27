@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { LINKEDIN_URL, SERVICE_LINKS } from '../seo/site.js'
+import { LINKEDIN_URL, PALSEC_LINKEDIN_URL, SERVICE_LINKS } from '../seo/site.js'
 import './InfoPage.css'
 
 export default function About() {
@@ -8,7 +8,7 @@ export default function About() {
       <div className="container info-page__header">
         <div className="eyebrow">About Neutral Studio</div>
         <h1 className="h1">One room for the whole idea.</h1>
-        <p className="lead">Neutral Studio is an independent design practice based in Barcelona. We connect strategy, identity, product, web and motion so a promising idea can become one coherent experience.</p>
+        <p className="lead">Neutral Studio is an independent remote design practice. We connect strategy, identity, product, web and motion so a promising idea can become one coherent experience.</p>
       </div>
 
       <div className="container info-page__body">
@@ -16,6 +16,7 @@ export default function About() {
           <h2>Why the studio exists</h2>
           <p>Early-stage teams rarely experience design as separate disciplines. A positioning decision changes the pitch. The pitch changes the website. The product has to deliver the promise that the brand makes. When each piece is handled independently, founders spend time translating between suppliers and repairing the gaps.</p>
           <p>Neutral Studio keeps those decisions connected. The work can begin with one urgent need—a brand identity, a product flow, a website or a deck—while considering the system around it. This creates clearer scope now and fewer contradictions later.</p>
+          <p>The studio is deliberately small enough to keep strategy close to execution. The person framing the problem remains involved while the system is designed, tested and prepared for use.</p>
         </section>
 
         <section className="info-page__section">
@@ -25,14 +26,15 @@ export default function About() {
           <h3>Make strategy and execution together</h3>
           <p>Concepts are tested in realistic applications. Brand work appears in product and web contexts; interface work uses real content and edge cases; decks use supplied facts rather than invented proof. This keeps the work practical while there is still room to change direction.</p>
           <h3>Leave a usable system</h3>
-          <p>The handoff is organised around the people who will continue the work. Depending on scope, that can include source files, reusable components, design tokens, templates, implementation notes and a defined period of support.</p>
+          <p>The handoff is organized around the people who will continue the work. Depending on scope, that can include source files, reusable components, design tokens, templates, implementation notes and a defined period of support.</p>
         </section>
 
         <section className="info-page__section">
           <h2>Independent by design</h2>
-          <p>Neutral Studio is led by Arnau Piñol and brings in the right specialist context when a project requires it. Scope, responsibilities and external costs are agreed before work begins. Client repositories, production accounts and final source files remain under clear client ownership.</p>
+          <p>Neutral Studio by Arnau Piñol is an independent practice that brings in the right specialist context when a project requires it. Scope, responsibilities and external costs are agreed before work begins. Client repositories, production accounts and final source files remain under clear client ownership.</p>
+          <p>Arnau is a graphic designer educated at ESDAP — Escola Superior de Disseny i d’Arts Plàstiques. He is the founder of Neutral Studio and co-founder of <a href={PALSEC_LINKEDIN_URL} target="_blank" rel="noreferrer">Palsec Agency</a>, connecting identity, digital design and implementation experience across independent studio work.</p>
           <p>We do not present anonymous outcomes as proof. Project results, testimonials or business metrics are published only when they can be attributed and used with permission. The portfolio focuses on the decisions and craft visible in the work.</p>
-          <p><a href={LINKEDIN_URL} target="_blank" rel="noreferrer">View Arnau Piñol on LinkedIn</a> or <a href="mailto:arnaupinyolwork@gmail.com">contact the studio by email</a>.</p>
+          <p><a href={LINKEDIN_URL} target="_blank" rel="noreferrer">View Arnau Piñol on LinkedIn</a> or <Link to="/contact">contact the studio directly</Link>.</p>
         </section>
 
         <section className="info-page__section">

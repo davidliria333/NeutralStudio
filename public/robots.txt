@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.neutraldesign.es/sitemap.xml
+Sitemap: https://www.neutralstudio.co/sitemap.xml

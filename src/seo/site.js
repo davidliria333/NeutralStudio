@@ -1,8 +1,11 @@
-export const SITE_URL = 'https://www.neutraldesign.es'
+export const SITE_URL = 'https://www.neutralstudio.co'
 export const SITE_NAME = 'Neutral Studio'
 export const CONTACT_EMAIL = 'arnaupinyolwork@gmail.com'
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/arnau-pi%C3%B1ol-olabegoya-722329158/'
+export const PALSEC_LINKEDIN_URL = 'https://www.linkedin.com/company/palsec-agency/'
 export const OG_IMAGE = `${SITE_URL}/generated/neutral-landscape/neutral-landscape-desktop-poster.jpg`
+export const OG_IMAGE_WIDTH = '1920'
+export const OG_IMAGE_HEIGHT = '1080'
 
 export const ROUTE_META = {
   '/': {
@@ -11,16 +14,22 @@ export const ROUTE_META = {
     label: 'Home',
     type: 'home',
   },
+  '/services': {
+    title: 'Design Services for US Startups | Neutral Studio',
+    description: 'Explore connected brand, product, web, pitch deck and app development services for startups in the United States and worldwide.',
+    label: 'Services',
+    type: 'services-hub',
+  },
   '/services/brand': {
     title: 'Startup Brand Identity Design | Neutral Studio',
-    description: 'Build a coherent startup identity across logo, typography, colour, launch assets and practical brand guidelines your whole team can use.',
+    description: 'Build a coherent startup identity across logo, typography, color, launch assets and practical brand guidelines your whole team can use.',
     label: 'Brand identity',
     type: 'service',
     serviceType: 'Brand identity design',
     price: 2990,
   },
   '/services/systems': {
-    title: 'Design Systems & Brand Guidelines | Neutral Studio',
+    title: 'Design Systems for Startups | Neutral Studio',
     description: 'Align brand, product and marketing with reusable design tokens, interface components and clear guidelines for teams and partners.',
     label: 'Design systems',
     type: 'service',
@@ -42,7 +51,7 @@ export const ROUTE_META = {
     serviceType: 'Pitch deck design',
   },
   '/services/ux-ui': {
-    title: 'UX/UI Design for Digital Products | Neutral Studio',
+    title: 'UX/UI Design for US Startups | Neutral Studio',
     description: 'Shape product flows, interfaces and prototypes around real user needs, business priorities and a design system ready for development.',
     label: 'UX/UI design',
     type: 'service',
@@ -50,7 +59,7 @@ export const ROUTE_META = {
     price: 3990,
   },
   '/services/app-development': {
-    title: 'App Design & Development | Neutral Studio',
+    title: 'App Design & Development for Startups | Neutral Studio',
     description: 'Take a digital product from scope and interaction design to a production-ready app with one connected design and development process.',
     label: 'App development',
     type: 'service',
@@ -59,9 +68,29 @@ export const ROUTE_META = {
   },
   '/about': {
     title: 'About the Independent Design Studio | Neutral Studio',
-    description: 'Meet Neutral Studio, an independent Barcelona design practice connecting strategy, identity, digital products, websites and motion.',
+    description: 'Meet Neutral Studio, an independent remote design practice connecting strategy, identity, digital products, websites and motion.',
     label: 'About',
     type: 'about',
+  },
+  '/work': {
+    title: 'Selected Brand, Product & Web Design Work | Neutral Studio',
+    description: 'Inspect selected Neutral Studio identity, interface and launch work, with clear notes on the design decisions connecting each system.',
+    label: 'Selected work',
+    type: 'work',
+  },
+  '/guides/startup-design-costs': {
+    title: 'Startup Design Costs: 2026 Pricing Guide | Neutral Studio',
+    description: 'Compare real starting prices for startup branding, websites, UX/UI and app development, plus the scope decisions that change the final cost.',
+    label: 'Startup design costs',
+    type: 'article',
+    datePublished: '2026-08-27',
+    dateModified: '2026-08-27',
+  },
+  '/contact': {
+    title: 'Contact the Startup Design Studio | Neutral Studio',
+    description: 'Contact Neutral Studio about brand, product, web, pitch deck or app work for a US startup or international product team.',
+    label: 'Contact',
+    type: 'contact',
   },
   '/privacy': {
     title: 'Privacy Policy | Neutral Studio',
@@ -100,6 +129,7 @@ export function getRouteMeta(pathname) {
     type: 'not-found',
     path,
     canonical: `${SITE_URL}${path}`,
+    noCanonical: true,
     noindex: true,
   }
 }
@@ -108,22 +138,40 @@ const organization = {
   '@type': 'Organization',
   '@id': `${SITE_URL}/#organization`,
   name: SITE_NAME,
+  alternateName: 'Neutral Studio by Arnau Piñol',
   url: `${SITE_URL}/`,
   logo: `${SITE_URL}/brand-favicon.svg`,
   email: CONTACT_EMAIL,
   description: 'Independent design studio connecting strategy, brand, product, web and motion.',
-  foundingLocation: {
-    '@type': 'Place',
-    name: 'Barcelona, Spain',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: CONTACT_EMAIL,
+    url: `${SITE_URL}/contact`,
+    availableLanguage: 'English',
+    areaServed: [
+      { '@type': 'Country', name: 'United States' },
+      'Worldwide',
+    ],
   },
   founder: {
     '@type': 'Person',
     '@id': `${SITE_URL}/about#arnau-pinol`,
     name: 'Arnau Piñol',
+    jobTitle: 'Designer and founder of Neutral Studio',
     url: `${SITE_URL}/about`,
     sameAs: [LINKEDIN_URL],
+    knowsAbout: ['Brand identity design', 'UX and UI design', 'Web design', 'Digital product design'],
+    alumniOf: {
+      '@type': 'EducationalOrganization',
+      name: 'ESDAP - Escola Superior de Disseny i d’Arts Plàstiques',
+    },
+    affiliation: {
+      '@type': 'Organization',
+      name: 'Palsec Agency',
+      sameAs: PALSEC_LINKEDIN_URL,
+    },
   },
-  sameAs: [LINKEDIN_URL],
 }
 
 export function getSchemas(pathname) {
@@ -137,7 +185,7 @@ export function getSchemas(pathname) {
       name: SITE_NAME,
       url: `${SITE_URL}/`,
       publisher: { '@id': `${SITE_URL}/#organization` },
-      inLanguage: 'en',
+      inLanguage: 'en-US',
     })
   }
 
@@ -150,7 +198,10 @@ export function getSchemas(pathname) {
       description: meta.description,
       url: meta.canonical,
       provider: organization,
-      areaServed: 'Worldwide',
+      areaServed: [
+        { '@type': 'Country', name: 'United States' },
+        'Worldwide',
+      ],
     }
     if (meta.price) {
       service.offers = {
@@ -165,9 +216,32 @@ export function getSchemas(pathname) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
-        { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE_URL}/#services` },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE_URL}/services` },
         { '@type': 'ListItem', position: 3, name: meta.label, item: meta.canonical },
       ],
+    })
+  }
+
+  if (meta.type === 'services-hub') {
+    graph.push({
+      '@type': 'CollectionPage',
+      '@id': `${meta.canonical}#page`,
+      name: meta.title,
+      description: meta.description,
+      url: meta.canonical,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: 'Design services for startups',
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: SERVICE_LINKS.map(({ path, label, description }, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: label,
+          description,
+          url: `${SITE_URL}${path}`,
+        })),
+      },
+      inLanguage: 'en-US',
     })
   }
 
@@ -180,7 +254,59 @@ export function getSchemas(pathname) {
       url: meta.canonical,
       about: organization,
       mainEntity: organization.founder,
-      inLanguage: 'en',
+      inLanguage: 'en-US',
+    })
+  }
+
+  if (meta.type === 'work') {
+    graph.push({
+      '@type': 'CollectionPage',
+      '@id': `${meta.canonical}#page`,
+      name: meta.title,
+      description: meta.description,
+      url: meta.canonical,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: ['Brand identity design', 'UX and UI design', 'Web design'],
+      inLanguage: 'en-US',
+    })
+  }
+
+  if (meta.type === 'article') {
+    graph.push({
+      '@type': 'Article',
+      '@id': `${meta.canonical}#article`,
+      headline: meta.title.replace(` | ${SITE_NAME}`, ''),
+      description: meta.description,
+      url: meta.canonical,
+      mainEntityOfPage: meta.canonical,
+      datePublished: meta.datePublished,
+      dateModified: meta.dateModified,
+      author: organization.founder,
+      publisher: organization,
+      image: OG_IMAGE,
+      inLanguage: 'en-US',
+      about: ['Startup design costs', 'Brand identity design', 'Web design', 'UX and UI design', 'App development'],
+    }, {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE_URL}/services` },
+        { '@type': 'ListItem', position: 3, name: meta.label, item: meta.canonical },
+      ],
+    })
+  }
+
+  if (meta.type === 'contact') {
+    graph.push({
+      '@type': 'ContactPage',
+      '@id': `${meta.canonical}#page`,
+      name: meta.title,
+      description: meta.description,
+      url: meta.canonical,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: organization,
+      mainEntity: organization.contactPoint,
+      inLanguage: 'en-US',
     })
   }
 
@@ -192,7 +318,7 @@ export function getSchemas(pathname) {
       description: meta.description,
       url: meta.canonical,
       isPartOf: { '@id': `${SITE_URL}/#website` },
-      inLanguage: 'en',
+      inLanguage: 'en-US',
     })
   }
 

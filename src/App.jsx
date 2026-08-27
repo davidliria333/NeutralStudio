@@ -1,6 +1,5 @@
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
@@ -8,6 +7,10 @@ import RouteProgress from './components/RouteProgress.jsx'
 import Analytics from './components/Analytics.jsx'
 import Seo from './components/Seo.jsx'
 import About from './pages/About.jsx'
+import Work from './pages/Work.jsx'
+import Services from './pages/Services.jsx'
+import StartupDesignCosts from './pages/StartupDesignCosts.jsx'
+import Contact from './pages/Contact.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Legal from './pages/Legal.jsx'
 import NotFound from './pages/NotFound.jsx'
@@ -51,20 +54,19 @@ function ScrollManager() {
   return null
 }
 
-const PAGE_TRANSITION = {
-  initial: { opacity: 0, y: 12 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -8 },
-  transition: { duration: 0.36, ease: [0.22, 1, 0.36, 1] },
-}
-
 function Page({ children }) {
-  return <motion.div {...PAGE_TRANSITION}>{children}</motion.div>
+  return <div className="page-transition">{children}</div>
 }
 
 export default function App() {
   const location = useLocation()
   const isHome = location.pathname === '/'
+
+  useEffect(() => {
+    document.body.classList.toggle('has-subpage', !isHome)
+    return () => document.body.classList.remove('has-subpage')
+  }, [isHome])
+
   return (
     <>
       <Analytics />
@@ -73,24 +75,26 @@ export default function App() {
       <ScrollManager />
       <RouteProgress />
       {!isHome && <Header />}
-      <div id="page-content">
-        <AnimatePresence mode="wait" initial={false}>
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Page><Home /></Page>} />
-            <Route path="/services/brand" element={<Page><Brand /></Page>} />
-            <Route path="/services/systems" element={<Page><Systems /></Page>} />
-            <Route path="/services/web" element={<Page><Web /></Page>} />
-            <Route path="/services/pitch-deck" element={<Page><Consulting /></Page>} />
-            <Route path="/services/consulting" element={<Navigate to="/services/pitch-deck" replace />} />
-            <Route path="/services/ux-ui" element={<Page><UXUI /></Page>} />
-            <Route path="/services/app-development" element={<Page><AppDevelopment /></Page>} />
-            <Route path="/about" element={<Page><About /></Page>} />
-            <Route path="/privacy" element={<Page><Privacy /></Page>} />
-            <Route path="/legal" element={<Page><Legal /></Page>} />
-            <Route path="*" element={<Page><NotFound /></Page>} />
-          </Routes>
-        </AnimatePresence>
-      </div>
+      <main id="page-content">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Page><Home /></Page>} />
+          <Route path="/services" element={<Page><Services /></Page>} />
+          <Route path="/services/brand" element={<Page><Brand /></Page>} />
+          <Route path="/services/systems" element={<Page><Systems /></Page>} />
+          <Route path="/services/web" element={<Page><Web /></Page>} />
+          <Route path="/services/pitch-deck" element={<Page><Consulting /></Page>} />
+          <Route path="/services/consulting" element={<Navigate to="/services/pitch-deck" replace />} />
+          <Route path="/services/ux-ui" element={<Page><UXUI /></Page>} />
+          <Route path="/services/app-development" element={<Page><AppDevelopment /></Page>} />
+          <Route path="/guides/startup-design-costs" element={<Page><StartupDesignCosts /></Page>} />
+          <Route path="/about" element={<Page><About /></Page>} />
+          <Route path="/work" element={<Page><Work /></Page>} />
+          <Route path="/contact" element={<Page><Contact /></Page>} />
+          <Route path="/privacy" element={<Page><Privacy /></Page>} />
+          <Route path="/legal" element={<Page><Legal /></Page>} />
+          <Route path="*" element={<Page><NotFound /></Page>} />
+        </Routes>
+      </main>
       {!isHome && <Footer />}
     </>
   )

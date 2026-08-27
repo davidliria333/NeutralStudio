@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createServer } from 'vite'
-import { getRouteMeta, getSchemas, INDEXABLE_ROUTES, OG_IMAGE, SITE_NAME } from '../src/seo/site.js'
+import { getRouteMeta, getSchemas, INDEXABLE_ROUTES, OG_IMAGE, OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH, SITE_NAME } from '../src/seo/site.js'
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const templatePath = resolve(projectRoot, 'dist/index.html')
@@ -44,13 +44,17 @@ function applyHead(html, route) {
 
   let output = html
     .replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml(meta.title)}</title>`)
-    .replace(/<link rel="canonical" href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${escapeHtml(meta.canonical)}" />`)
+  output = meta.noCanonical
+    ? output.replace(/\s*<link rel="canonical" href="[^"]*"\s*\/?>/i, '')
+    : output.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${escapeHtml(meta.canonical)}" />`)
   output = replaceMeta(output, 'name="description"', meta.description)
   output = replaceMeta(output, 'name="robots"', robots)
   output = replaceMeta(output, 'property="og:title"', meta.title)
   output = replaceMeta(output, 'property="og:description"', meta.description)
   output = replaceMeta(output, 'property="og:url"', meta.canonical)
   output = replaceMeta(output, 'property="og:image"', OG_IMAGE)
+  output = replaceMeta(output, 'property="og:image:width"', OG_IMAGE_WIDTH)
+  output = replaceMeta(output, 'property="og:image:height"', OG_IMAGE_HEIGHT)
   output = replaceMeta(output, 'name="twitter:title"', meta.title)
   output = replaceMeta(output, 'name="twitter:description"', meta.description)
   output = replaceMeta(output, 'name="twitter:image"', OG_IMAGE)

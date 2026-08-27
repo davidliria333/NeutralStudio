@@ -11,6 +11,7 @@ const publicAssets = [
   'robots.txt',
   'sitemap.xml',
   'llms.txt',
+  'googlef76b8f6c36dcddf2.html',
   'fonts/Cy-SemiBold.woff2',
   'generated/neutral-landscape/neutral-landscape-desktop-seek.mp4',
   'generated/neutral-landscape/neutral-landscape-mobile-seek.mp4',
