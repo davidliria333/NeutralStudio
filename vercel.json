@@ -1,5 +1,41 @@
 {
-  "rewrites": [
-    { "source": "/((?!assets/|.*\\..*).*)", "destination": "/" }
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/services/consulting",
+      "destination": "/services/pitch-deck",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; connect-src 'self' https://cloud.umami.is https://app.cal.com https://cal.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://app.cal.com https://cal.com; img-src 'self' data: blob:; media-src 'self' blob:; object-src 'none'; script-src 'self' https://cloud.umami.is https://app.cal.com; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/generated/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/portfolio/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    }
   ]
 }

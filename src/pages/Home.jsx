@@ -1,17 +1,19 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import PricingLever from '../components/PricingLever'
+import { CALENDAR_URL, CAL_POPUP_PROPS } from '../components/CalPopup.jsx'
 import { UXUI_SCENES } from '../data/portfolio.js'
+import { SERVICE_LINKS } from '../seo/site.js'
 import './HomeScrollcraft.css'
 
 const LiquidGlass = lazy(() => import('liquid-glass-react'))
 const MetalFx = lazy(() => import('metal-fx').then((module) => ({ default: module.MetalFx })))
 
-const CALENDAR_URL = 'https://cal.com/neutralstudio/30min?overlayCalendar=true'
-const MASTER_VIDEO = '/generated/neutral-landscape/TensorPix - neutral-landscape-master-1440p-scrub.mp4'
-const MASTER_VIDEO_MOBILE = '/generated/neutral-landscape/neutral-landscape-mobile-scrub.mp4'
-const MASTER_POSTER = '/generated/neutral-landscape/tensorpix-poster-4k.jpg'
+const MASTER_VIDEO = '/generated/neutral-landscape/neutral-landscape-desktop-seek.mp4'
+const MASTER_VIDEO_MOBILE = '/generated/neutral-landscape/neutral-landscape-mobile-seek.mp4'
+const MASTER_POSTER = '/generated/neutral-landscape/neutral-landscape-desktop-poster.webp'
 const MASTER_POSTER_MOBILE = '/generated/neutral-landscape/neutral-landscape-mobile-poster.jpg'
 const WORLD_SPAN = 8.4
 
@@ -50,7 +52,7 @@ function PortfolioVideo({ project, active, reducedMotion }) {
 const NAV_PROGRESS_NUDGE = 0.001
 
 const landmarks = [
-  { id: 'arrival', label: 'Home', progress: 0 },
+  { id: 'home', label: 'Home', progress: 0 },
   { id: 'approach', label: 'Approach', progress: 0.19 },
   { id: 'work', label: 'Work', progress: 0.39 },
   { id: 'services', label: 'Services', progress: 0.69 },
@@ -202,9 +204,9 @@ const portfolioCollections = [
 ]
 
 const portfolioMetrics = [
-  { value: '100+', label: 'Projects shipped' },
-  { value: String(uxuiSlides.length), label: 'Interface studies selected' },
-  { value: '5', label: 'Disciplines connected' },
+  { value: 'Revenue ↑', label: 'Built for commercial impact' },
+  { value: 'Live', label: 'Tracking from visit to conversion' },
+  { value: '360°', label: 'Brand, product and growth connected' },
 ]
 
 export default function Home() {
@@ -212,15 +214,15 @@ export default function Home() {
   const lenisRef = useRef(null)
   const activeRef = useRef(0)
   const surfaceRef = useRef('hero')
-  const activeCategoryRef = useRef('ux-ui')
+  const activeCategoryRef = useRef('branding')
   const portfolioRef = useRef(0)
   const portfolioManualRef = useRef(false)
   const [activeLandmark, setActiveLandmark] = useState(0)
   const [activeSurface, setActiveSurface] = useState('hero')
-  const [activeCategory, setActiveCategory] = useState('ux-ui')
+  const [activeCategory, setActiveCategory] = useState('branding')
   const [activeProject, setActiveProject] = useState(0)
   const [reducedMotion, setReducedMotion] = useState(false)
-  const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width: 800px)').matches)
+  const [isMobile, setIsMobile] = useState(null)
 
   useEffect(() => {
     const media = window.matchMedia('(max-width: 800px)')
@@ -382,24 +384,29 @@ export default function Home() {
   return (
     <main className="landscape-page" ref={rootRef} data-sc-verify-state="0:0" data-active-surface="hero">
       <div className="landscape-flight" data-sc-mode="worldflight" data-sc-seam="0.02">
-        <div className="landscape-world" data-sc-world aria-hidden="true">
+        <div className="landscape-world sc-world" data-sc-world aria-hidden="true">
           <div
-            className="landscape-world__segment"
+            className="landscape-world__segment sc-world__seg"
             data-sc-segment
             data-sc-w={WORLD_SPAN}
             data-sc-waypoint="Neutral Studio journey"
+            style={{ opacity: 1 }}
           >
-            <img
-              className="sc-world__poster"
-              src={isMobile ? MASTER_POSTER_MOBILE : MASTER_POSTER}
-              alt=""
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            />
+            <picture className="sc-world__poster-frame">
+              <source media="(max-width: 800px)" srcSet={MASTER_POSTER_MOBILE} />
+              <img
+                className="sc-world__poster"
+                src={MASTER_POSTER}
+                alt=""
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </picture>
             <video
               data-sc-src={MASTER_VIDEO}
               data-sc-src-mobile={MASTER_VIDEO_MOBILE}
+              data-sc-native
               data-sc-native-mobile
               width="2560"
               height="1440"
@@ -416,7 +423,7 @@ export default function Home() {
           </svg>
         </div>
 
-        <div className="landscape-copy" data-sc-world-copy>
+        <div className="landscape-copy sc-world__copy" data-sc-world-copy>
           <div className="landscape-copy__wash sc-world__scrim" />
 
           <header className="landscape-header">
@@ -457,6 +464,7 @@ export default function Home() {
               <a
                 className="landscape-menu__cta"
                 href={CALENDAR_URL}
+                {...CAL_POPUP_PROPS}
                 target="_blank"
                 rel="noreferrer"
                 data-umami-event="calendar_opened"
@@ -471,6 +479,7 @@ export default function Home() {
           </header>
 
           <section
+            id="home"
             className="landscape-copy__hero"
             data-sc-copy
             data-sc-window="0 0.19 0 0.32"
@@ -478,17 +487,18 @@ export default function Home() {
             inert={activeSurface === 'hero' ? undefined : ''}
           >
             <div className="landscape-hero__center">
-              <h1 id="home-title" className="landscape-hero__title" aria-label="Neutral Studio">
+              <h1 id="home-title" className="landscape-hero__title">
                 <span aria-hidden="true">Neutral</span>
+                <span className="landscape-hero__declaration">One clear direction for your brand, product and website.</span>
               </h1>
-              <p className="landscape-hero__declaration">One clear direction for your brand, product and website.</p>
-              {isMobile ? (
+              {isMobile !== false ? (
                 <div className="landscape-hero__metal landscape-hero__metal--static">
                   <div className="landscape-hero__cta-host">
                     <div className="landscape-hero__cta-glass landscape-hero__cta-glass--static">
                       <a
                         className="landscape-hero__cta"
                         href={CALENDAR_URL}
+                        {...CAL_POPUP_PROPS}
                         target="_blank"
                         rel="noreferrer"
                         data-umami-event="calendar_opened"
@@ -530,6 +540,7 @@ export default function Home() {
                     <a
                       className="landscape-hero__cta"
                       href={CALENDAR_URL}
+                      {...CAL_POPUP_PROPS}
                       target="_blank"
                       rel="noreferrer"
                       data-umami-event="calendar_opened"
@@ -551,6 +562,7 @@ export default function Home() {
           </section>
 
           <section
+            id="approach"
             className="landscape-copy__approach"
             data-sc-copy
             data-sc-window="0.16 0.34 0.22 0.28"
@@ -602,6 +614,7 @@ export default function Home() {
           </section>
 
           <section
+            id="work"
             className="landscape-copy__portfolio"
             aria-labelledby="portfolio-title"
             inert={activeSurface === 'portfolio' ? undefined : ''}
@@ -669,11 +682,12 @@ export default function Home() {
                         />
                       ) : (
                         <img
-                          src={project.src}
+                          src={Math.abs(index - activeProject) <= 1 ? project.src : undefined}
                           alt={index === activeProject ? project.alt : ''}
                           width={project.width}
                           height={project.height}
-                          loading={index === 0 ? 'eager' : 'lazy'}
+                          loading={index === activeProject ? 'eager' : 'lazy'}
+                          fetchpriority={index === activeProject ? 'high' : 'low'}
                           decoding="async"
                         />
                       )}
@@ -705,16 +719,18 @@ export default function Home() {
           </section>
 
           <section
+            id="services"
             className="landscape-copy__services"
             data-sc-copy
             data-sc-window="0.65 0.86 0.2 0.22"
             aria-labelledby="services-title"
             inert={activeSurface === 'services' ? undefined : ''}
           >
-            <PricingLever ctaHref={CALENDAR_URL} staticGlass={isMobile} />
+            <PricingLever ctaHref={CALENDAR_URL} staticGlass={isMobile !== false} />
           </section>
 
           <section
+            id="contact"
             className="landscape-copy__contact landscape-panel"
             data-sc-copy
             data-sc-window="0.84 1 0.28 0"
@@ -725,6 +741,7 @@ export default function Home() {
             <p className="landscape-contact__lead">For founders at a decision point: launching, changing direction or making disconnected pieces work together.</p>
             <a
               href={CALENDAR_URL}
+              {...CAL_POPUP_PROPS}
               target="_blank"
               rel="noreferrer"
               data-umami-event="calendar_opened"
@@ -733,10 +750,16 @@ export default function Home() {
               Tell us your idea <span aria-hidden="true">↗</span>
             </a>
             <p className="landscape-contact__note">Neutral Studio, Barcelona<br />Branding · Web · UX/UI · Motion · Strategy</p>
+            <nav className="landscape-contact__links" aria-label="Studio links">
+              {SERVICE_LINKS.map(({ path, label }) => <Link key={path} to={path}>{label}</Link>)}
+              <Link to="/about">About</Link>
+              <Link to="/privacy">Privacy</Link>
+              <Link to="/legal">Legal</Link>
+            </nav>
           </section>
         </div>
 
-        <div data-sc-spacer aria-hidden="true" />
+        <div className="sc-world__spacer" data-sc-spacer aria-hidden="true" style={{ height: `${WORLD_SPAN * 100}vh` }} />
       </div>
     </main>
   )

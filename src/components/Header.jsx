@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import FluidGlassMenu from './FluidGlassMenu.jsx'
 import Magnetic from './Magnetic.jsx'
+import { CALENDAR_URL, CAL_POPUP_PROPS } from './CalPopup.jsx'
 
 const NAV = [
-  { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Process', href: '#process' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Work', href: '/#work' },
+  { label: 'Approach', href: '/#approach' },
+  { label: 'About', href: '/about' },
 ]
 
 export default function Header() {
-  const navigate = useNavigate()
   const location = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -26,22 +26,6 @@ export default function Header() {
   useEffect(() => {
     setOpen(false)
   }, [location.pathname, location.hash])
-
-  const onNavClick = (href) => {
-    if (location.pathname === '/') {
-      if (window.location.hash !== href) {
-        window.history.replaceState(null, '', href)
-      }
-      const target = document.querySelector(href)
-      if (target) {
-        const headerOffset = 112
-        const top = target.getBoundingClientRect().top + window.scrollY - headerOffset
-        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
-      }
-      return
-    }
-    navigate({ pathname: '/', hash: href })
-  }
 
   return (
     <header style={{
@@ -63,18 +47,19 @@ export default function Header() {
       }}>
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--ink)' }}>
           <img src="/brand-favicon.svg" alt="" width="26" height="26" style={{ borderRadius: 6, display: 'block' }} />
-          <img src="/brand-logo.svg" alt="Neutral" height="20" style={{ display: 'block', filter: 'invert(1)' }} className="brand-word" />
+          <img src="/Logo-01.png" alt="Neutral Studio" width="72" height="20" style={{ display: 'block', width: 72, height: 20, objectFit: 'contain', filter: 'invert(1)' }} className="brand-word" />
           <span style={{ fontSize: 11, color: 'var(--ink-3)', fontFamily: 'var(--mono)', marginLeft: 2, letterSpacing: '0.04em' }}>STUDIO</span>
         </Link>
 
         <nav className="desktop-nav" style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-          <FluidGlassMenu items={NAV} onNavClick={onNavClick} />
+          <FluidGlassMenu items={NAV} />
         </nav>
 
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <Magnetic radius={70} strength={0.28}>
             <a
-              href="https://cal.com/neutralstudio/30min?overlayCalendar=true"
+              href={CALENDAR_URL}
+              {...CAL_POPUP_PROPS}
               target="_blank"
               rel="noreferrer"
               data-magnet
@@ -83,7 +68,7 @@ export default function Header() {
               className="btn btn--primary"
               style={{ padding: '10px 18px', fontSize: 13 }}
             >
-              Cuéntanos tu idea <span className="arrow">→</span>
+              Tell us your idea <span className="arrow">→</span>
             </a>
           </Magnetic>
           <button className="mobile-toggle" onClick={() => setOpen(o => !o)} aria-label="Menu" aria-expanded={open ? 'true' : 'false'} aria-controls="mobile-nav" style={{
@@ -109,11 +94,11 @@ export default function Header() {
         }} onClick={() => setOpen(false)}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 24 }}>
             {NAV.map(n => (
-              <button key={n.href} type="button" onClick={() => onNavClick(n.href)} style={{
+              <a key={n.href} href={n.href} style={{
                 fontSize: 28, fontWeight: 500, padding: '14px 0', borderBottom: '1px solid var(--line)',
                 letterSpacing: '-0.02em',
                 background: 'transparent', color: 'var(--ink)', textAlign: 'left', borderTop: 'none', borderLeft: 'none', borderRight: 'none',
-              }}>{n.label}</button>
+              }}>{n.label}</a>
             ))}
           </div>
         </div>

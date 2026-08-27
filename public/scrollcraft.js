@@ -588,10 +588,10 @@
       if (isMobile() && V.el.getAttribute('data-sc-src-mobile')) src = V.el.getAttribute('data-sc-src-mobile');
       if (!src) return;
       V.loading = true;
-      // Native range loading lets a phone paint the opening frame without
-      // waiting for the entire scrub master to become an in-memory Blob. The
-      // opt-in is mobile-only so desktop keeps its fully buffered path.
-      var nativeLoad = isMobile() && V.el.hasAttribute('data-sc-native-mobile');
+      // Native range loading lets the browser request only the media ranges it
+      // needs instead of downloading the entire scrub master into a Blob.
+      var nativeLoad = V.el.hasAttribute('data-sc-native') ||
+                       (isMobile() && V.el.hasAttribute('data-sc-native-mobile'));
 
       function attach(source) {
         // Listeners and preload BEFORE src. Assigning src starts the load, so
@@ -616,7 +616,7 @@
           V.el.classList.add('sc-has-clip');
         }, { once: true });
         V.el.addEventListener('error', function () { V.loading = false; }, { once: true });
-        V.el.preload = 'auto';
+        V.el.preload = nativeLoad ? 'metadata' : 'auto';
         V.el.src = source;
       }
 

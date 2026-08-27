@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SectionHead } from './Services.jsx'
 import Magnetic from '../components/Magnetic.jsx'
+import { CALENDAR_URL, CAL_POPUP_PROPS } from '../components/CalPopup.jsx'
 
 /* ===== TOOLING ===== */
 // Monochrome icons (Simple Icons / Lucide paths) — colored via currentColor.
@@ -397,7 +398,7 @@ export function SmashCTA() {
         </p>
         <div style={{ display: 'inline-flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
           <Magnetic radius={100} strength={0.36}>
-            <a className="btn btn--primary" data-magnet href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer">
+            <a className="btn btn--primary" data-magnet href={CALENDAR_URL} {...CAL_POPUP_PROPS} target="_blank" rel="noreferrer">
               Pick a slot <span className="arrow">→</span>
             </a>
           </Magnetic>

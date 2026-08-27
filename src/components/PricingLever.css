@@ -168,6 +168,19 @@
   white-space: nowrap;
 }
 
+.pricing-card__service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  margin-top: .35rem;
+  color: #294638;
+  font-size: clamp(.62rem, .7vw, .72rem);
+  font-weight: 760;
+  text-decoration: underline;
+  text-decoration-color: rgba(41, 70, 56, .3);
+  text-underline-offset: .18em;
+}
+
 .pricing-card__cta {
   display: inline-flex;
   width: min(13rem, 100%);

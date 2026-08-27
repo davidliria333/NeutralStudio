@@ -1,4 +1,6 @@
 import { lazy, Suspense, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { CAL_POPUP_PROPS } from './CalPopup.jsx'
 import './PricingLever.css'
 
 const LiquidGlass = lazy(() => import('liquid-glass-react'))
@@ -9,30 +11,35 @@ const SERVICES = [
     name: 'Web',
     detail: 'A studio or product website designed and built around one clear story.',
     price: '€1,990',
+    path: '/services/web',
   },
   {
     id: 'brand',
     name: 'Brand only',
     detail: 'A clear identity system with the essential rules and assets ready to use.',
     price: '€2,990',
+    path: '/services/brand',
   },
   {
     id: 'ux-ui',
     name: 'UX/UI',
     detail: 'Product flows and interfaces shaped around real use and business needs.',
     price: '€3,990',
+    path: '/services/ux-ui',
   },
   {
     id: 'brand-web',
     name: 'Brand + Web + Assets',
     detail: 'Identity, website and the core launch assets, designed as one connected system.',
     price: '€4,990',
+    path: '/services/brand',
   },
   {
     id: 'app',
     name: 'App development',
     detail: 'A production-ready app, from product logic and interface through release.',
     price: '€9,990',
+    path: '/services/app-development',
   },
 ]
 
@@ -63,11 +70,13 @@ export default function PricingLever({ ctaHref, staticGlass = false }) {
                 <span>From</span>
                 <strong>{activeService.price}</strong>
               </div>
+              <Link className="pricing-card__service-link" to={activeService.path}>Explore {activeService.name.toLowerCase()} <span aria-hidden="true">↗</span></Link>
             </div>
 
             <a
               className="pricing-card__cta"
               href={ctaHref}
+              {...CAL_POPUP_PROPS}
               target="_blank"
               rel="noreferrer"
               data-umami-event="calendar_opened"

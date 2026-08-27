@@ -29,8 +29,8 @@ body:has(.landscape-page) {
 }
 
 body:has(.landscape-page) #root,
-body:has(.landscape-page) #root > main,
-body:has(.landscape-page) #root > main > div,
+body:has(.landscape-page) #root > #page-content,
+body:has(.landscape-page) #root > #page-content > div,
 body:has(.landscape-page) .landscape-page {
   display: contents;
 }
@@ -69,6 +69,10 @@ body:has(.landscape-page) .landscape-page {
   object-position: 50% 50%;
   filter: saturate(.86) contrast(.92) brightness(1.035);
   transform: scale(1.025);
+}
+
+.sc-world__poster-frame {
+  display: contents;
 }
 
 .landscape-contours {
@@ -448,6 +452,7 @@ body:has(.landscape-page) .landscape-page {
 }
 
 .landscape-hero__declaration {
+  display: block;
   max-width: 31ch;
   margin: 0;
   color: #fff !important;
@@ -459,6 +464,30 @@ body:has(.landscape-page) .landscape-page {
   text-shadow:
     0 2px 10px rgba(0, 0, 0, .42),
     0 12px 36px rgba(0, 0, 0, .32);
+}
+
+.landscape-hero__title .landscape-hero__declaration {
+  margin-top: clamp(.85rem, 1.6vh, 1.35rem);
+  white-space: normal;
+}
+
+.landscape-contact__links {
+  display: flex;
+  max-width: min(42rem, 90vw);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .35rem .85rem;
+  margin-top: .8rem;
+  pointer-events: auto;
+}
+
+.landscape-contact__links a {
+  color: rgba(17, 17, 17, .72);
+  font-size: clamp(.57rem, .72vw, .72rem);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(17, 17, 17, .25);
+  text-underline-offset: .2em;
 }
 
 .landscape-hero__metal {
@@ -736,7 +765,7 @@ body:has(.landscape-page) .landscape-page {
 
 .landscape-portfolio__metrics > div {
   display: grid;
-  grid-template-columns: minmax(5.5rem, .62fr) 1fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   gap: clamp(.75rem, 1.35vw, 1.4rem);
   align-items: baseline;
   border-top: 1px solid rgba(22, 43, 34, .16);
@@ -753,10 +782,11 @@ body:has(.landscape-page) .landscape-page {
 }
 
 .landscape-portfolio__metrics dd {
-  font-size: clamp(2.15rem, 3.25vw, 4rem);
+  font-size: clamp(2.15rem, 2.7vw, 3.3rem);
   font-weight: 720;
   line-height: .88;
   letter-spacing: -.04em;
+  white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
 
@@ -858,7 +888,6 @@ body:has(.landscape-page) .landscape-page {
 }
 
 .landscape-carousel__slide {
-  --slide-pad: clamp(.9rem, 2vw, 2rem);
   position: relative;
   flex: 0 0 100%;
   width: 100%;
@@ -868,18 +897,16 @@ body:has(.landscape-page) .landscape-page {
   overflow: hidden;
   display: grid;
   place-items: center;
-  border-radius: 14px;
-  padding: var(--slide-pad);
   background: var(--slide-bg, #f4f7f5);
 }
 
 .landscape-carousel__slide img,
 .landscape-carousel__slide video {
   position: absolute;
-  inset: var(--slide-pad);
+  inset: 0;
   display: block;
-  width: calc(100% - (var(--slide-pad) * 2));
-  height: calc(100% - (var(--slide-pad) * 2));
+  width: 100%;
+  height: 100%;
   max-width: none;
   max-height: none;
   object-fit: contain;
@@ -1601,8 +1628,7 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-carousel__slide {
-    --slide-pad: clamp(.7rem, 3vw, 1.1rem);
-    padding: var(--slide-pad);
+    padding: 0;
   }
 
   .landscape-carousel__footer {
@@ -1836,7 +1862,7 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-carousel__slide {
-    padding: .5rem;
+    padding: 0;
   }
 
   .landscape-carousel__controls button {
@@ -2173,7 +2199,7 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-carousel__slide {
-    padding: .45rem;
+    padding: 0;
   }
 
   .landscape-carousel__controls button {

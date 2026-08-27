@@ -1,14 +1,21 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './styles/scrollcraft.css'
 import './styles/global.css'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root')
+const app = (
   <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
+
+if (root.dataset.prerenderPath === window.location.pathname) {
+  hydrateRoot(root, app)
+} else {
+  createRoot(root).render(app)
+}

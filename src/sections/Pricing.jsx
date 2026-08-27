@@ -1,4 +1,5 @@
 import { SectionHead } from './Services.jsx'
+import { CALENDAR_URL, CAL_POPUP_PROPS } from '../components/CalPopup.jsx'
 
 const PLANS = [
   {
@@ -177,7 +178,7 @@ export default function Pricing() {
               className="btn btn--ghost" style={{ whiteSpace: 'nowrap' }}>
               Send a note <span className="arrow">→</span>
             </a>
-            <a href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer"
+            <a href={CALENDAR_URL} {...CAL_POPUP_PROPS} target="_blank" rel="noreferrer"
               className="btn btn--ghost" style={{ whiteSpace: 'nowrap' }}>
               Book a call
             </a>
