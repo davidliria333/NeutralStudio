@@ -602,188 +602,187 @@ body:has(.landscape-page) .landscape-page {
   margin: 1rem 0 0;
 }
 
-.landscape-approach__convergence {
+.landscape-approach__instrument {
   position: absolute;
   inset: 39vh clamp(1.5rem, 4.5vw, 5.25rem) 5.5vh;
-}
-
-.landscape-approach__convergence > svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.landscape-approach__tracks path,
-.landscape-approach__flow {
-  fill: none;
-  vector-effect: non-scaling-stroke;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.landscape-approach__tracks path {
-  stroke: rgba(19, 48, 36, .18);
-  stroke-width: 1.25;
-  stroke-dasharray: .01 .017;
-}
-
-.landscape-approach__flow {
-  --flow-p: 0;
-  stroke: rgba(17, 35, 28, .62);
-  stroke-width: 1.8;
-  stroke-dasharray: 1;
-  stroke-dashoffset: calc(1 - var(--flow-p));
-  will-change: stroke-dashoffset;
-}
-
-.landscape-approach__flow--1 {
-  --flow-p: clamp(0, calc((var(--approach-p) - .05) / .42), 1);
-}
-
-.landscape-approach__flow--2 {
-  --flow-p: clamp(0, calc((var(--approach-p) - .1) / .42), 1);
-}
-
-.landscape-approach__flow--3 {
-  --flow-p: clamp(0, calc((var(--approach-p) - .15) / .42), 1);
-}
-
-.landscape-approach__flow--4 {
-  --flow-p: clamp(0, calc((var(--approach-p) - .2) / .42), 1);
-}
-
-.landscape-approach__flow--runway {
-  --flow-p: clamp(0, calc((var(--approach-p) - .42) / .34), 1);
-  stroke-width: 2.2;
-}
-
-.landscape-approach__signals {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
   display: grid;
-  width: 25%;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: minmax(17rem, 40%) minmax(3rem, 9%) minmax(0, 51%);
+  align-items: stretch;
+}
+
+.landscape-approach__decisions {
+  display: grid;
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  min-width: 0;
   margin: 0;
-  padding: 0 clamp(.75rem, 1.2vw, 1.2rem);
+  padding: 0 clamp(1rem, 1.5vw, 1.5rem);
   list-style: none;
   border-radius: 16px;
-  background: rgba(255, 255, 255, .7);
+  background: rgba(255, 255, 255, .82);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .85),
+    inset 0 1px 0 rgba(255, 255, 255, .92),
     0 24px 56px rgba(25, 47, 37, .12);
   backdrop-filter: blur(18px) saturate(1.06);
   -webkit-backdrop-filter: blur(18px) saturate(1.06);
 }
 
-.landscape-approach__signals li {
-  --signal-p: 0;
+.landscape-approach__decisions li {
+  --decision-p: 0;
+  position: relative;
   display: flex;
   min-width: 0;
-  flex-direction: column;
-  justify-content: center;
-  border-bottom: 1px solid rgba(22, 43, 34, .14);
-  opacity: var(--signal-p);
-  transform: translate3d(calc((1 - var(--signal-p)) * -1rem), 0, 0);
+  align-items: center;
+  border-bottom: 1px solid rgba(22, 43, 34, .16);
+  opacity: var(--decision-p);
+  transform: translate3d(calc((1 - var(--decision-p)) * -1rem), 0, 0);
   will-change: opacity, transform;
 }
 
-.landscape-approach__signals li:last-child {
+.landscape-approach__decisions li:last-child {
   border-bottom: 0;
 }
 
-.landscape-approach__signals li:nth-child(1) {
-  --signal-p: clamp(0, calc((var(--approach-p) - .02) / .18), 1);
+.landscape-approach__decisions li:nth-child(1) {
+  --decision-p: clamp(0, calc((var(--approach-p) - .02) / .16), 1);
 }
 
-.landscape-approach__signals li:nth-child(2) {
-  --signal-p: clamp(0, calc((var(--approach-p) - .08) / .18), 1);
+.landscape-approach__decisions li:nth-child(2) {
+  --decision-p: clamp(0, calc((var(--approach-p) - .07) / .16), 1);
 }
 
-.landscape-approach__signals li:nth-child(3) {
-  --signal-p: clamp(0, calc((var(--approach-p) - .14) / .18), 1);
+.landscape-approach__decisions li:nth-child(3) {
+  --decision-p: clamp(0, calc((var(--approach-p) - .12) / .16), 1);
 }
 
-.landscape-approach__signals li:nth-child(4) {
-  --signal-p: clamp(0, calc((var(--approach-p) - .2) / .18), 1);
+.landscape-approach__decisions li:nth-child(4) {
+  --decision-p: clamp(0, calc((var(--approach-p) - .17) / .16), 1);
 }
 
-.landscape-approach__signals strong {
+.landscape-approach__decisions li > span {
   display: block;
-  font-size: clamp(1rem, 1.35vw, 1.35rem);
-  font-weight: 700;
+  min-width: 0;
+}
+
+.landscape-approach__decisions strong,
+.landscape-approach__decisions small {
+  display: block;
+}
+
+.landscape-approach__decisions strong {
+  font-size: clamp(1.05rem, 1.4vw, 1.45rem);
+  font-weight: 720;
   letter-spacing: -.03em;
 }
 
-.landscape-approach__signals span {
-  display: block;
-  margin-top: .28rem;
+.landscape-approach__decisions small {
+  margin-top: .3rem;
   color: var(--sc-ink-soft);
-  font-size: clamp(.65rem, .76vw, .78rem);
-  line-height: 1.35;
+  font-size: clamp(.76rem, .85vw, .88rem);
+  line-height: 1.4;
 }
 
-.landscape-approach__junction {
-  --junction-p: clamp(0, calc((var(--approach-p) - .38) / .18), 1);
+.landscape-approach__decisions i {
   position: absolute;
-  top: 48.85%;
-  left: 54%;
-  display: grid;
-  width: clamp(2.7rem, 3.2vw, 3.6rem);
-  aspect-ratio: 1;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, .72);
-  border-radius: 50%;
-  background: rgba(12, 25, 20, .88);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .22),
-    0 12px 34px rgba(20, 45, 34, .22);
-  opacity: var(--junction-p);
-  transform: translate(-50%, -50%) scale(calc(.76 + var(--junction-p) * .24));
+  top: 50%;
+  left: 100%;
+  width: 25%;
+  height: 1px;
+  background: rgba(17, 35, 28, .62);
+  transform: scaleX(var(--decision-p));
+  transform-origin: left center;
 }
 
-.landscape-approach__junction i {
-  width: 22%;
+.landscape-approach__spine {
+  --spine-p: clamp(0, calc((var(--approach-p) - .24) / .2), 1);
+  --runway-p: clamp(0, calc((var(--approach-p) - .38) / .18), 1);
+  position: relative;
+  z-index: 2;
+}
+
+.landscape-approach__spine::before {
+  position: absolute;
+  top: 12.5%;
+  bottom: 12.5%;
+  left: 50%;
+  width: 1px;
+  background: rgba(17, 35, 28, .62);
+  content: '';
+  transform: scaleY(var(--spine-p));
+  transform-origin: center;
+}
+
+.landscape-approach__spine::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 1px;
+  background: rgba(17, 35, 28, .78);
+  content: '';
+  transform: scaleX(var(--runway-p));
+  transform-origin: left center;
+}
+
+.landscape-approach__spine i {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: clamp(1rem, 1.35vw, 1.35rem);
   aspect-ratio: 1;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 0 0 5px rgba(255, 255, 255, .12);
+  box-shadow: 0 0 0 5px rgba(12, 25, 20, .88);
+  opacity: var(--spine-p);
+  transform: translate(-50%, -50%) scale(calc(.7 + var(--spine-p) * .3));
 }
 
-.landscape-approach__result {
-  --result-p: clamp(0, calc((var(--approach-p) - .5) / .22), 1);
-  position: absolute;
-  top: 16%;
-  right: 0;
-  width: min(27rem, 27vw);
-  padding: clamp(1.2rem, 1.7vw, 1.8rem);
-  background: rgba(255, 255, 255, .78);
-  clip-path: inset(0 calc((1 - var(--result-p)) * 100%) 0 0 round 16px);
-  opacity: var(--result-p);
-  transform: translate3d(calc((1 - var(--result-p)) * 1.25rem), 0, 0);
+.landscape-approach__outcome {
+  --outcome-p: clamp(0, calc((var(--approach-p) - .44) / .2), 1);
+  display: flex;
+  position: relative;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(1.25rem, 2.4vw, 2.5rem);
+  border-radius: 16px;
+  color: #fff;
+  background: rgba(12, 25, 20, .9);
+  box-shadow: 0 24px 56px rgba(20, 45, 34, .18);
+  clip-path: inset(0 calc((1 - var(--outcome-p)) * 100%) 0 0 round 16px);
+  opacity: var(--outcome-p);
+  transform: translate3d(calc((1 - var(--outcome-p)) * 1.25rem), 0, 0);
   will-change: clip-path, opacity, transform;
 }
 
-.landscape-approach__result > span {
+.landscape-approach__one {
   display: block;
-  color: rgba(20, 37, 29, .68);
-  font-size: clamp(.62rem, .72vw, .75rem);
-  font-weight: 800;
-  letter-spacing: .06em;
-  text-transform: uppercase;
+  font-size: clamp(5rem, 11vw, 10.5rem);
+  font-weight: 760;
+  letter-spacing: -.04em;
+  line-height: .74;
 }
 
-.landscape-approach__result strong {
+.landscape-approach__outcome > div {
+  position: relative;
+  z-index: 1;
+}
+
+.landscape-approach__outcome strong {
   display: block;
-  max-width: 18ch;
-  margin-top: .7rem;
-  font-size: clamp(1.35rem, 2.05vw, 2.45rem);
+  font-size: clamp(1.35rem, 2.2vw, 2.6rem);
   font-weight: 650;
   letter-spacing: -.035em;
-  line-height: 1.02;
+  line-height: 1.08;
+}
+
+.landscape-approach__outcome p {
+  max-width: 34ch;
+  margin: .75rem 0 0;
+  color: rgba(255, 255, 255, .78);
+  font-size: clamp(.78rem, .92vw, .95rem);
+  line-height: 1.48;
 }
 
 .landscape-copy__portfolio {
@@ -1594,44 +1593,50 @@ body:has(.landscape-page) .landscape-page {
     line-height: 1.48;
   }
 
-  .landscape-approach__convergence {
+  .landscape-approach__instrument {
     inset: max(19rem, 35dvh) max(1rem, env(safe-area-inset-right, 0px)) max(5.65rem, calc(env(safe-area-inset-bottom, 0px) + 5rem)) max(1rem, env(safe-area-inset-left, 0px));
+    grid-template-columns: 44% 8% 48%;
   }
 
-  .landscape-approach__signals {
-    width: 46%;
+  .landscape-approach__decisions {
     padding: 0 .7rem;
     background: rgba(255, 255, 255, .86);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
 
-  .landscape-approach__signals strong {
-    font-size: clamp(.82rem, 3.8vw, 1rem);
+  .landscape-approach__decisions strong {
+    font-size: clamp(.9rem, 4vw, 1.05rem);
   }
 
-  .landscape-approach__signals span {
-    font-size: clamp(.58rem, 2.55vw, .7rem);
+  .landscape-approach__decisions small {
+    font-size: clamp(.8rem, 3.1vw, .84rem);
   }
 
-  .landscape-approach__junction {
-    left: 55%;
-    width: 2.55rem;
+  .landscape-approach__decisions i {
+    width: 18.2%;
   }
 
-  .landscape-approach__result {
-    top: 24%;
-    width: 43%;
+  .landscape-approach__spine i {
+    width: .9rem;
+    box-shadow: 0 0 0 4px rgba(12, 25, 20, .88);
+  }
+
+  .landscape-approach__outcome {
     padding: 1rem;
   }
 
-  .landscape-approach__result > span {
-    font-size: .54rem;
+  .landscape-approach__one {
+    font-size: clamp(3.8rem, 18vw, 5.6rem);
   }
 
-  .landscape-approach__result strong {
-    margin-top: .5rem;
-    font-size: clamp(1.05rem, 5.1vw, 1.45rem);
+  .landscape-approach__outcome strong {
+    font-size: clamp(1.05rem, 5vw, 1.45rem);
+  }
+
+  .landscape-approach__outcome p {
+    margin-top: .55rem;
+    font-size: clamp(.8rem, 3.1vw, .84rem);
   }
 
   .landscape-copy__portfolio {
@@ -1888,34 +1893,50 @@ body:has(.landscape-page) .landscape-page {
     font-size: clamp(1.6rem, 8vw, 2rem);
   }
 
-  .landscape-approach__statement > p,
   .landscape-services__intro > p,
-  .landscape-approach__signals span,
   .landscape-services__copy > p {
     display: none;
   }
 
-  .landscape-approach__convergence {
-    inset: 11.5rem .65rem 4.65rem;
+  .landscape-approach__statement > p {
+    margin-top: .4rem;
+    font-size: .8rem;
+    line-height: 1.38;
   }
 
-  .landscape-approach__signals {
-    width: 44%;
+  .landscape-approach__instrument {
+    inset: 12.4rem .65rem 4.65rem;
+    grid-template-columns: 44% 8% 48%;
+  }
+
+  .landscape-approach__decisions {
     padding: 0 .55rem;
   }
 
-  .landscape-approach__signals strong {
-    font-size: .78rem;
+  .landscape-approach__decisions strong {
+    font-size: .8rem;
   }
 
-  .landscape-approach__result {
-    top: 23%;
-    width: 43%;
+  .landscape-approach__decisions small {
+    margin-top: .18rem;
+    font-size: .8rem;
+    line-height: 1.28;
+  }
+
+  .landscape-approach__outcome {
     padding: .75rem;
   }
 
-  .landscape-approach__result strong {
-    font-size: 1rem;
+  .landscape-approach__one {
+    font-size: 3.2rem;
+  }
+
+  .landscape-approach__outcome strong {
+    font-size: .98rem;
+  }
+
+  .landscape-approach__outcome p {
+    font-size: .82rem;
   }
 
   .landscape-copy__portfolio {
@@ -2181,46 +2202,50 @@ body:has(.landscape-page) .landscape-page {
   .landscape-approach__statement > p,
   .landscape-services__intro > p {
     margin-top: .45rem;
-    font-size: .68rem;
+    font-size: .8rem;
     line-height: 1.35;
   }
 
-  .landscape-approach__convergence {
+  .landscape-approach__instrument {
     inset: 2.9rem max(1rem, env(safe-area-inset-right, 0px)) 3.75rem 47vw;
+    grid-template-columns: 40% 8% 52%;
   }
 
-  .landscape-approach__signals {
-    width: 39%;
+  .landscape-approach__decisions {
     padding: 0 .55rem;
     border-radius: 14px;
   }
 
-  .landscape-approach__signals strong {
-    font-size: .72rem;
+  .landscape-approach__decisions strong {
+    font-size: .8rem;
   }
 
-  .landscape-approach__signals span {
-    display: none;
+  .landscape-approach__decisions small {
+    margin-top: .14rem;
+    font-size: .8rem;
+    line-height: 1.22;
   }
 
-  .landscape-approach__junction {
-    left: 55%;
-    width: 2.1rem;
+  .landscape-approach__decisions i {
+    width: 20%;
   }
 
-  .landscape-approach__result {
-    top: 21%;
-    width: 39%;
+  .landscape-approach__outcome {
     padding: .7rem;
   }
 
-  .landscape-approach__result > span {
-    font-size: .45rem;
+  .landscape-approach__one {
+    font-size: clamp(3.1rem, 9vw, 4.8rem);
   }
 
-  .landscape-approach__result strong {
+  .landscape-approach__outcome strong {
+    font-size: clamp(.86rem, 2.2vw, 1.05rem);
+  }
+
+  .landscape-approach__outcome p {
     margin-top: .35rem;
-    font-size: .82rem;
+    font-size: .8rem;
+    line-height: 1.3;
   }
 
   .landscape-copy__portfolio {
@@ -2363,24 +2388,26 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-copy__hero h1,
-  .landscape-approach__signals li {
+  .landscape-approach__decisions li {
     transform: none;
   }
 
-  .landscape-approach__flow {
-    stroke-dashoffset: 0;
-  }
-
-  .landscape-approach__signals li {
+  .landscape-approach__decisions li {
     opacity: 1;
   }
 
-  .landscape-approach__junction {
+  .landscape-approach__decisions i,
+  .landscape-approach__spine::before,
+  .landscape-approach__spine::after {
+    transform: scale(1);
+  }
+
+  .landscape-approach__spine i {
     opacity: 1;
     transform: translate(-50%, -50%);
   }
 
-  .landscape-approach__result {
+  .landscape-approach__outcome {
     clip-path: none;
     opacity: 1;
     transform: none;

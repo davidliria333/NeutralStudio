@@ -52,11 +52,11 @@ function PortfolioVideo({ project, active, reducedMotion }) {
 const NAV_PROGRESS_NUDGE = 0.001
 
 const landmarks = [
-  { id: 'home', label: 'Home', progress: 0 },
-  { id: 'approach', label: 'Approach', progress: 0.19 },
-  { id: 'work', label: 'Work', progress: 0.39 },
-  { id: 'services', label: 'Services', progress: 0.69 },
-  { id: 'contact', label: 'Contact', progress: 0.87 },
+  { id: 'home', label: 'Home', progress: 0, activation: 0 },
+  { id: 'approach', label: 'Approach', progress: 0.275, activation: 0.16 },
+  { id: 'work', label: 'Work', progress: 0.39, activation: 0.31 },
+  { id: 'services', label: 'Services', progress: 0.69, activation: 0.65 },
+  { id: 'contact', label: 'Contact', progress: 0.87, activation: 0.84 },
 ]
 
 const uxuiTitles = [
@@ -335,7 +335,7 @@ export default function Home() {
         Math.floor(carouselProgress * slideCount),
       )
       const next = landmarks.reduce((current, landmark, index) => (
-        progress >= landmark.progress ? index : current
+        progress >= landmark.activation ? index : current
       ), 0)
       const nextSurface = progress >= 0.84
         ? 'contact'
@@ -614,54 +614,42 @@ export default function Home() {
             data-sc-copy
             data-sc-window="0.16 0.34 0.22 0.28"
             aria-labelledby="approach-title"
+            aria-hidden={activeSurface === 'approach' ? undefined : true}
+            inert={activeSurface === 'approach' ? undefined : ''}
           >
             <div className="landscape-approach__statement landscape-panel">
               <h2 id="approach-title">Many touchpoints. One company.</h2>
               <p>We connect the decisions behind your brand, product and website, so every interaction strengthens the same idea.</p>
             </div>
 
-            <div className="landscape-approach__convergence">
-              <svg viewBox="0 0 1000 430" preserveAspectRatio="none" aria-hidden="true">
-                <g className="landscape-approach__tracks">
-                  <path pathLength="1" d="M250 54C392 54 402 210 540 210" />
-                  <path pathLength="1" d="M250 158C402 158 424 210 540 210" />
-                  <path pathLength="1" d="M250 262C402 262 424 210 540 210" />
-                  <path pathLength="1" d="M250 366C392 366 402 210 540 210" />
-                  <path pathLength="1" d="M540 210C696 210 760 140 972 140" />
-                </g>
-                <g className="landscape-approach__flows">
-                  <path className="landscape-approach__flow landscape-approach__flow--1" pathLength="1" d="M250 54C392 54 402 210 540 210" />
-                  <path className="landscape-approach__flow landscape-approach__flow--2" pathLength="1" d="M250 158C402 158 424 210 540 210" />
-                  <path className="landscape-approach__flow landscape-approach__flow--3" pathLength="1" d="M250 262C402 262 424 210 540 210" />
-                  <path className="landscape-approach__flow landscape-approach__flow--4" pathLength="1" d="M250 366C392 366 402 210 540 210" />
-                  <path className="landscape-approach__flow landscape-approach__flow--runway" pathLength="1" d="M540 210C696 210 760 140 972 140" />
-                </g>
-              </svg>
+            <div className="landscape-approach__instrument">
+              <ol className="landscape-approach__decisions" aria-label="Connected design decisions">
+                <li>
+                  <span><strong>Position</strong><small>What the company stands for</small></span>
+                  <i aria-hidden="true" />
+                </li>
+                <li>
+                  <span><strong>Identity</strong><small>How it becomes recognisable</small></span>
+                  <i aria-hidden="true" />
+                </li>
+                <li>
+                  <span><strong>Product</strong><small>How the promise works</small></span>
+                  <i aria-hidden="true" />
+                </li>
+                <li>
+                  <span><strong>Website</strong><small>How people understand and act</small></span>
+                  <i aria-hidden="true" />
+                </li>
+              </ol>
 
-              <ul className="landscape-approach__signals" aria-label="Connected design decisions">
-                <li>
-                  <strong>Position</strong>
-                  <span>What the company stands for</span>
-                </li>
-                <li>
-                  <strong>Identity</strong>
-                  <span>How it becomes recognisable</span>
-                </li>
-                <li>
-                  <strong>Product</strong>
-                  <span>How the promise works</span>
-                </li>
-                <li>
-                  <strong>Website</strong>
-                  <span>How people understand and act</span>
-                </li>
-              </ul>
+              <div className="landscape-approach__spine" aria-hidden="true"><i /></div>
 
-              <div className="landscape-approach__junction" aria-hidden="true"><i /></div>
-
-              <div className="landscape-approach__result landscape-panel">
-                <span>One clear direction</span>
-                <strong>The same promise, from first impression to daily use.</strong>
+              <div className="landscape-approach__outcome">
+                <span className="landscape-approach__one" aria-hidden="true">ONE</span>
+                <div>
+                  <strong>One clear direction.</strong>
+                  <p>The same promise, from first impression to daily use.</p>
+                </div>
               </div>
             </div>
           </section>

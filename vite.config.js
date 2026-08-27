@@ -36,12 +36,12 @@ function copyPublishedAssets() {
   }
 }
 
-export default defineConfig({
-  publicDir: false,
+export default defineConfig(({ command }) => ({
+  publicDir: command === 'serve' ? 'public' : false,
   plugins: [react(), copyPublishedAssets()],
   server: { port: 5173 },
   build: {
     outDir: 'dist',
     chunkSizeWarningLimit: 1500,
   },
-})
+}))
