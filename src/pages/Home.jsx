@@ -623,24 +623,50 @@ export default function Home() {
             </div>
 
             <div className="landscape-approach__instrument">
-              <ol className="landscape-approach__decisions" aria-label="Connected design decisions">
-                <li>
-                  <span><strong>Position</strong><small>What the company stands for</small></span>
-                  <i aria-hidden="true" />
+              <div className="landscape-approach__field">
+                <ol className="landscape-approach__translations" aria-label="Four connected design translations">
+                <li className="landscape-approach__translation landscape-approach__translation--position">
+                  <span className="landscape-approach__translation-copy">
+                    <strong>Position</strong>
+                    <small>What the company stands for</small>
+                  </span>
+                  <span className="landscape-approach__study landscape-approach__study--position" aria-hidden="true">
+                    <i /><i /><i />
+                  </span>
                 </li>
-                <li>
-                  <span><strong>Identity</strong><small>How it becomes recognisable</small></span>
-                  <i aria-hidden="true" />
+                <li className="landscape-approach__translation landscape-approach__translation--identity">
+                  <span className="landscape-approach__translation-copy">
+                    <strong>Identity</strong>
+                    <small>How it becomes recognisable</small>
+                  </span>
+                  <span className="landscape-approach__study landscape-approach__study--identity" aria-hidden="true">
+                    {'Neutral'.split('').map((letter, index) => <i key={`${letter}-${index}`}>{letter}</i>)}
+                  </span>
                 </li>
-                <li>
-                  <span><strong>Product</strong><small>How the promise works</small></span>
-                  <i aria-hidden="true" />
+                <li className="landscape-approach__translation landscape-approach__translation--product">
+                  <span className="landscape-approach__translation-copy">
+                    <strong>Product</strong>
+                    <small>How the promise works</small>
+                  </span>
+                  <span className="landscape-approach__study landscape-approach__study--product" aria-hidden="true">
+                    <i><b /></i><span />
+                  </span>
                 </li>
-                <li>
-                  <span><strong>Website</strong><small>How people understand and act</small></span>
-                  <i aria-hidden="true" />
+                <li className="landscape-approach__translation landscape-approach__translation--website">
+                  <span className="landscape-approach__translation-copy">
+                    <strong>Website</strong>
+                    <small>How people understand and act</small>
+                  </span>
+                  <span className="landscape-approach__study landscape-approach__study--website" aria-hidden="true">
+                    <span>Start your path</span>
+                    <i>
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M6 4h6v6" /></svg>
+                    </i>
+                  </span>
                 </li>
-              </ol>
+                </ol>
+                <span className="landscape-approach__translation-node" aria-hidden="true" />
+              </div>
 
               <div className="landscape-approach__spine" aria-hidden="true"><i /></div>
 
