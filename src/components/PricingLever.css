@@ -661,6 +661,65 @@
   }
 }
 
+/* Browser chrome and zoom can create short desktop viewports without changing width. */
+@media (min-width: 768px) and (max-height: 820px) {
+  .pricing-card__intro {
+    padding: clamp(.85rem, 1.5vw, 1.15rem);
+  }
+
+  .pricing-card__intro h2 {
+    max-width: 12ch;
+    font-size: clamp(2rem, 3.15vw, 3rem);
+  }
+
+  .pricing-card__intro > div:first-child > p {
+    margin-top: .42rem;
+    font-size: clamp(.66rem, .72vw, .76rem);
+    line-height: 1.38;
+  }
+
+  .pricing-card__selection {
+    padding-top: .5rem;
+  }
+
+  .pricing-card__selection > p {
+    display: none;
+  }
+
+  .pricing-card__selection h3 {
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+  }
+
+  .pricing-card__selected-price {
+    margin-top: .3rem;
+  }
+
+  .pricing-card__selected-price strong {
+    font-size: clamp(1.45rem, 2vw, 1.85rem);
+  }
+
+  .pricing-card__cta {
+    min-height: 2.55rem;
+    margin-top: .55rem;
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+  }
+
+  .pricing-card__cta svg {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  .pricing-card__services button {
+    padding-top: .38rem;
+    padding-bottom: .38rem;
+  }
+
+  .pricing-card__service-copy > small {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pricing-card__selection {
     animation: none;

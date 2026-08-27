@@ -90,6 +90,7 @@ body.has-subpage {
   --line-3: rgba(24, 48, 36, .25);
   background: #dfe9e3;
   color: var(--ink);
+  isolation: isolate;
 }
 
 body.has-subpage::before,
@@ -109,8 +110,8 @@ body.has-subpage::before {
 body.has-subpage::after {
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(235, 243, 238, .7), rgba(224, 235, 228, .9) 42%, rgba(218, 230, 223, .97)),
-    radial-gradient(circle at 70% 10%, rgba(255, 255, 255, .45), transparent 42%);
+    linear-gradient(180deg, rgba(225, 235, 229, .16), rgba(218, 230, 223, .3) 48%, rgba(211, 225, 216, .62)),
+    radial-gradient(circle at 70% 10%, rgba(255, 255, 255, .12), transparent 42%);
 }
 
 body.has-subpage #page-content {
@@ -702,7 +703,7 @@ a.card:hover, button.card:hover { border-color: var(--line-3); }
   }
 
   body.has-subpage::after {
-    background: linear-gradient(180deg, rgba(235, 243, 238, .74), rgba(222, 233, 226, .95) 36%, rgba(216, 228, 221, .985));
+    background: linear-gradient(180deg, rgba(229, 239, 233, .24), rgba(220, 232, 225, .54) 42%, rgba(213, 227, 218, .8));
   }
 }
 
@@ -719,7 +720,7 @@ a.card:hover, button.card:hover { border-color: var(--line-3); }
   border: 1px solid rgba(255, 255, 255, .58);
   border-radius: clamp(22px, 3vw, 34px);
   padding: clamp(1.4rem, 4vw, 3.4rem) !important;
-  background: rgba(247, 250, 248, .7);
+  background: linear-gradient(128deg, rgba(247, 250, 248, .82), rgba(240, 247, 243, .66));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .88), 0 28px 80px rgba(35, 58, 47, .12);
   backdrop-filter: blur(24px) saturate(1.08);
   -webkit-backdrop-filter: blur(24px) saturate(1.08);
