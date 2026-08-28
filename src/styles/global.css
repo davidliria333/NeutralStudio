@@ -434,6 +434,23 @@ body.has-open-menu {
     transition: opacity 180ms ease, transform 240ms var(--ease), visibility 0s linear 240ms;
   }
 
+  .subpage-header::before {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    content: '';
+    opacity: 0;
+    background: rgba(17, 35, 26, .18);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    pointer-events: none;
+    transition: opacity 180ms ease;
+  }
+
+  body.has-open-menu .subpage-header::before {
+    opacity: 1;
+  }
+
   .subpage-mobile-nav.is-open {
     opacity: 1;
     pointer-events: auto;
@@ -481,8 +498,20 @@ body.has-open-menu {
 
   .subpage-footer__links {
     grid-template-columns: 1fr 1fr;
-    gap: 2rem 1rem;
+    gap: 1.25rem 1rem;
     padding: 1.5rem;
+  }
+
+  .subpage-footer__column ul {
+    gap: 0;
+  }
+
+  .subpage-footer__column a,
+  .subpage-footer__bottom a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    padding-block: .35rem;
   }
 
   .subpage-footer__identity {
@@ -773,6 +802,10 @@ body.has-subpage .subpage-final-cta .serif {
     padding: 1.25rem !important;
   }
 
+  .info-page__header {
+    width: calc(100% - 2rem);
+  }
+
   .subpage-hero .h1 {
     max-width: 100%;
     font-size: clamp(2.35rem, 11vw, 3.25rem) !important;
@@ -803,6 +836,12 @@ body.has-subpage .subpage-final-cta .serif {
 
   .srv-grid {
     grid-template-columns: 1fr !important;
+  }
+
+  .services-hub__card > a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
   }
 }
 @media (max-width: 480px) {

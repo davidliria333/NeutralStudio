@@ -583,12 +583,29 @@
 
   .pricing-card__cta {
     width: 100%;
-    min-height: 2.65rem;
+    min-height: 2.75rem;
   }
 
   .pricing-card__services button {
     min-height: 2.8rem;
     padding: .42rem .85rem;
+  }
+}
+
+@media (max-width: 480px) and (max-height: 700px) and (orientation: portrait) {
+  .pricing-card__intro > div:first-child > p {
+    display: none;
+  }
+
+  .pricing-card__service-link {
+    min-height: 44px;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  .pricing-card__cta,
+  .pricing-card__services button {
+    min-height: 44px;
   }
 }
 
