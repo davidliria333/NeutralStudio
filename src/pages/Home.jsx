@@ -23,38 +23,6 @@ function getResponsivePortfolioSrcSet(src) {
   return `/portfolio/branding/responsive/${filename}-560.webp 560w, /portfolio/branding/responsive/${filename}-800.webp 800w, ${src} 2048w`
 }
 
-function PortfolioVideo({ project, active, reducedMotion }) {
-  const videoRef = useRef(null)
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return undefined
-
-    if (!active || reducedMotion) {
-      video.pause()
-      if (!active) video.currentTime = 0
-      return undefined
-    }
-
-    video.play().catch(() => {})
-    return () => video.pause()
-  }, [active, reducedMotion])
-
-  return (
-    <video
-      ref={videoRef}
-      src={project.src}
-      poster={project.poster}
-      width={project.width}
-      height={project.height}
-      preload={active ? 'auto' : 'none'}
-      aria-label={project.alt}
-      muted
-      loop
-      playsInline
-    />
-  )
-}
 const NAV_PROGRESS_NUDGE = 0.001
 
 const landmarks = [
@@ -267,13 +235,9 @@ export default function Home() {
   const lenisRef = useRef(null)
   const activeRef = useRef(0)
   const surfaceRef = useRef('hero')
-  const activeCategoryRef = useRef('branding')
-  const portfolioRef = useRef(0)
-  const portfolioManualRef = useRef(false)
   const [activeLandmark, setActiveLandmark] = useState(0)
   const [activeSurface, setActiveSurface] = useState('hero')
   const [activeCategory, setActiveCategory] = useState('branding')
-  const [activeProject, setActiveProject] = useState(0)
   const [reducedMotion, setReducedMotion] = useState(false)
   const [isMobile, setIsMobile] = useState(null)
 
@@ -333,13 +297,6 @@ export default function Home() {
       const progress = Math.min(1, Math.max(0, (window.scrollY - top) / Math.max(travel, 1)))
       const approachProgress = Math.min(1, Math.max(0, (progress - 0.155) / 0.17))
       const portfolioProgress = Math.min(1, Math.max(0, (progress - 0.31) / 0.2))
-      const carouselProgress = Math.min(1, Math.max(0, (progress - 0.31) / 0.34))
-      const activeCollection = portfolioCollections.find(({ id }) => id === activeCategoryRef.current)
-      const slideCount = activeCollection?.slides.length || 1
-      const nextProject = Math.min(
-        slideCount - 1,
-        Math.floor(carouselProgress * slideCount),
-      )
       const next = landmarks.reduce((current, landmark, index) => (
         progress >= landmark.activation ? index : current
       ), 0)
@@ -365,16 +322,8 @@ export default function Home() {
       }
 
       if (nextSurface !== surfaceRef.current) {
-        if (surfaceRef.current === 'portfolio' && nextSurface !== 'portfolio') {
-          portfolioManualRef.current = false
-        }
         surfaceRef.current = nextSurface
         setActiveSurface(nextSurface)
-      }
-
-      if (!portfolioManualRef.current && nextProject !== portfolioRef.current) {
-        portfolioRef.current = nextProject
-        setActiveProject(nextProject)
       }
     }
 
@@ -418,20 +367,7 @@ export default function Home() {
   const activeCollection = portfolioCollections.find(({ id }) => id === activeCategory)
 
   const selectCategory = (categoryId) => {
-    portfolioManualRef.current = true
-    activeCategoryRef.current = categoryId
-    portfolioRef.current = 0
     setActiveCategory(categoryId)
-    setActiveProject(0)
-  }
-
-  const stepProject = (direction) => {
-    portfolioManualRef.current = true
-    setActiveProject((current) => {
-      const next = (current + direction + activeCollection.slides.length) % activeCollection.slides.length
-      portfolioRef.current = next
-      return next
-    })
   }
 
   return (
@@ -716,13 +652,12 @@ export default function Home() {
             </div>
 
             <div
-              className="landscape-carousel"
+              className="landscape-portfolio__gallery"
               data-sc-copy
               data-sc-window="0.31 0.65 0.13 0.13"
               role="region"
-              aria-roledescription="carousel"
               aria-label={`Selected ${activeCollection.label} work`}
-              style={{ '--portfolio-slide': activeProject }}
+              data-category={activeCollection.id}
             >
               <div className="landscape-carousel__categories" role="group" aria-label="Portfolio categories">
                 {portfolioCollections.map((collection) => (
@@ -741,56 +676,37 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="landscape-carousel__viewport">
-                <div className="landscape-carousel__track" key={activeCollection.id}>
+              <div
+                className="landscape-portfolio__grid-scroll"
+                tabIndex="0"
+                aria-label={`${activeCollection.label} project grid`}
+              >
+                <div className="landscape-portfolio__grid" key={activeCollection.id}>
                   {activeCollection.slides.map((project, index) => (
                     <figure
-                      className="landscape-carousel__slide"
+                      className="landscape-portfolio__project"
                       key={project.id}
-                      aria-hidden={index !== activeProject}
                       style={{ '--slide-bg': project.background }}
                     >
-                      {project.type === 'video' ? (
-                        <PortfolioVideo
-                          project={project}
-                          active={activeSurface === 'portfolio' && index === activeProject}
-                          reducedMotion={reducedMotion}
-                        />
-                      ) : (
+                      <div className="landscape-portfolio__media">
                         <img
-                          src={Math.abs(index - activeProject) <= 1 ? project.src : undefined}
-                          srcSet={Math.abs(index - activeProject) <= 1 ? getResponsivePortfolioSrcSet(project.src) : undefined}
-                          sizes="(max-width: 800px) 93vw, 48vw"
-                          alt={index === activeProject ? project.alt : ''}
+                          src={project.poster || project.src}
+                          srcSet={project.poster ? undefined : getResponsivePortfolioSrcSet(project.src)}
+                          sizes="(max-width: 800px) 44vw, (max-width: 1500px) 24vw, 20vw"
+                          alt={project.alt}
                           width={project.width}
                           height={project.height}
-                          loading={index === activeProject ? 'eager' : 'lazy'}
-                          fetchpriority={index === activeProject ? 'high' : 'low'}
+                          loading={index < 4 ? 'eager' : 'lazy'}
+                          fetchpriority={index === 0 ? 'high' : 'low'}
                           decoding="async"
                         />
-                      )}
+                      </div>
+                      <figcaption>
+                        <span>{String(index + 1).padStart(2, '0')}</span>
+                        <strong>{project.title}</strong>
+                      </figcaption>
                     </figure>
                   ))}
-                </div>
-              </div>
-
-              <div className="landscape-carousel__footer">
-                <div className="landscape-carousel__caption" aria-atomic="true">
-                  <span>{String(activeProject + 1).padStart(2, '0')} / {String(activeCollection.slides.length).padStart(2, '0')}</span>
-                  <strong>{activeCollection.slides[activeProject].title}</strong>
-                </div>
-
-                <div className="landscape-carousel__controls" aria-label="Carousel controls">
-                  <button type="button" onClick={() => stepProject(-1)} aria-label="Previous project">
-                    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                      <path d="M12.5 4.5L7 10l5.5 5.5" />
-                    </svg>
-                  </button>
-                  <button type="button" onClick={() => stepProject(1)} aria-label="Next project">
-                    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                      <path d="M7.5 4.5L13 10l-5.5 5.5" />
-                    </svg>
-                  </button>
                 </div>
               </div>
             </div>

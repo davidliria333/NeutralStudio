@@ -351,6 +351,7 @@ body:has(.landscape-page) .landscape-page {
 .landscape-pricing__cta:focus-visible,
 .landscape-carousel__categories button:focus-visible,
 .landscape-carousel__controls button:focus-visible,
+.landscape-portfolio__grid-scroll:focus-visible,
 .landscape-panel > a:focus-visible {
   outline: 2px solid #111;
   outline-offset: 3px !important;
@@ -1083,6 +1084,28 @@ body:has(.landscape-page) .landscape-page {
   pointer-events: auto;
 }
 
+.landscape-portfolio__gallery {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(242, 246, 243, .82);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .9),
+    0 30px 70px rgba(25, 47, 37, .16);
+  backdrop-filter: blur(22px) saturate(1.08);
+  -webkit-backdrop-filter: blur(22px) saturate(1.08);
+  pointer-events: none;
+}
+
+.landscape-page[data-active-surface='portfolio'] .landscape-portfolio__gallery {
+  pointer-events: auto;
+}
+
 .landscape-carousel__categories {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1124,6 +1147,95 @@ body:has(.landscape-page) .landscape-page {
 .landscape-carousel__categories button.is-active {
   color: #fff;
   background: rgba(14, 27, 21, .92);
+}
+
+.landscape-portfolio__grid-scroll {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: rgba(14, 27, 21, .45) transparent;
+  scrollbar-width: thin;
+}
+
+.landscape-portfolio__grid-scroll::-webkit-scrollbar {
+  width: 7px;
+}
+
+.landscape-portfolio__grid-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.landscape-portfolio__grid-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: rgba(14, 27, 21, .38);
+  background-clip: padding-box;
+}
+
+.landscape-portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(13.5rem, 100%), 1fr));
+  gap: clamp(.75rem, 1vw, 1.15rem);
+  align-content: start;
+  padding: clamp(.75rem, 1.25vw, 1.25rem);
+  animation: portfolio-grid-in 420ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@keyframes portfolio-grid-in {
+  from {
+    opacity: .25;
+    transform: translate3d(0, .65rem, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.landscape-portfolio__project {
+  min-width: 0;
+  margin: 0;
+}
+
+.landscape-portfolio__media {
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--slide-bg, #f4f7f5);
+}
+
+.landscape-portfolio__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+.landscape-portfolio__project figcaption {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: .55rem;
+  align-items: baseline;
+  padding: .55rem .1rem .1rem;
+}
+
+.landscape-portfolio__project figcaption span {
+  color: rgba(20, 37, 29, .5);
+  font-size: .52rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  font-variant-numeric: tabular-nums;
+}
+
+.landscape-portfolio__project figcaption strong {
+  overflow: hidden;
+  font-size: clamp(.68rem, .75vw, .82rem);
+  font-weight: 720;
+  line-height: 1.2;
+  letter-spacing: -.018em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .landscape-carousel__viewport {
@@ -3002,6 +3114,77 @@ body:has(.landscape-page) .landscape-page {
   }
 }
 
+/* The work index preserves each board's native ratio instead of forcing every
+   project through a single cinematic crop. */
+@media (min-width: 1200px) {
+  .landscape-portfolio__grid-scroll {
+    display: grid;
+  }
+
+  .landscape-portfolio__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-self: center;
+  }
+
+  .landscape-portfolio__gallery[data-category='web'] .landscape-portfolio__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .landscape-portfolio__gallery[data-category='web'] .landscape-portfolio__project:first-child {
+    grid-row: span 2;
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1199px) {
+  .landscape-portfolio__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .landscape-portfolio__intro p {
+    display: none;
+  }
+
+  .landscape-portfolio__gallery {
+    border-radius: 16px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .landscape-portfolio__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .55rem;
+    padding: .55rem;
+  }
+
+  .landscape-portfolio__gallery[data-category='web'] .landscape-portfolio__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .landscape-portfolio__gallery[data-category='web'] .landscape-portfolio__project:first-child {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .landscape-portfolio__project figcaption {
+    gap: .4rem;
+    padding: .42rem .05rem .05rem;
+  }
+
+  .landscape-portfolio__project figcaption strong {
+    font-size: clamp(.62rem, 2.7vw, .72rem);
+  }
+}
+
+@media (max-width: 950px) and (max-height: 560px) and (orientation: landscape) {
+  .landscape-portfolio__grid,
+  .landscape-portfolio__gallery[data-category='web'] .landscape-portfolio__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .landscape-hero__metal > .metal-fx-canvas {
     animation: none;
@@ -3014,6 +3197,7 @@ body:has(.landscape-page) .landscape-page {
   .landscape-carousel__categories button,
   .landscape-carousel__track,
   .landscape-carousel__controls button,
+  .landscape-portfolio__grid,
   .landscape-panel > a {
     transition: none !important;
   }
@@ -3023,6 +3207,10 @@ body:has(.landscape-page) .landscape-page {
   }
 
   .landscape-carousel__track {
+    animation: none;
+  }
+
+  .landscape-portfolio__grid {
     animation: none;
   }
 
