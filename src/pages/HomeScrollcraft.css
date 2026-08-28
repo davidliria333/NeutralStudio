@@ -834,13 +834,12 @@ body:has(.landscape-page) .landscape-page {
 
 .landscape-approach__study--website > i {
   display: grid;
-  width: 2.1rem;
+  width: 1.2rem;
   aspect-ratio: 1;
   flex: 0 0 auto;
   place-items: center;
-  border-radius: 10px;
-  color: #111;
-  background: #fff;
+  color: #fff;
+  background: transparent;
 }
 
 .landscape-approach__study--website svg {
@@ -2890,7 +2889,7 @@ body:has(.landscape-page) .landscape-page {
 }
 
 /* Wide, short desktop windows need a horizontal composition, not stacked fixed layers. */
-@media (min-width: 951px) and (max-height: 860px) {
+@media (min-width: 951px) and (max-height: 1120px) {
   .landscape-approach__statement {
     top: max(6.75rem, calc(env(safe-area-inset-top, 0px) + 6rem));
     left: clamp(2rem, 3.2vw, 3.75rem);
