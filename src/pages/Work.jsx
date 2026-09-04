@@ -23,16 +23,6 @@ const projects = [
     detail: 'On a watch, hierarchy and recognition have to survive a very small surface. The visual language therefore depends on clear silhouettes, controlled color contrast and a character that can communicate state without adding interface density. The same elements also give launch material a distinctive point of view.',
   },
   {
-    id: 'human-archive',
-    title: 'Human Archive',
-    discipline: 'Identity and editorial application',
-    image: '/portfolio/branding/human-archive-application.webp',
-    imageSmall: '/portfolio/branding/responsive/human-archive-application-800.webp',
-    alt: 'Human Archive identity applied to an editorial digital composition.',
-    summary: 'Human Archive explores how an identity can organize memory, culture and collected material without becoming visually nostalgic. The selection pairs a restrained mark with an editorial application built around content and sequence.',
-    detail: 'Archive-oriented products need a strong framework but should not compete with the material they contain. The visible system uses typography, spacing and modular composition to provide structure while leaving room for different kinds of imagery and narrative. That balance is relevant to cultural platforms, knowledge products and content-rich digital services.',
-  },
-  {
     id: 'circlehome',
     title: 'Circlehome',
     discipline: 'Identity and launch system',
