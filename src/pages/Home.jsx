@@ -4,7 +4,6 @@ import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import PricingLever from '../components/PricingLever'
 import { CALENDAR_URL, CAL_POPUP_PROPS } from '../components/CalPopup.jsx'
-import { UXUI_SCENES } from '../data/portfolio.js'
 import { SERVICE_LINKS } from '../seo/site.js'
 import './HomeScrollcraft.css'
 
@@ -17,12 +16,6 @@ const MASTER_POSTER = '/generated/neutral-landscape/neutral-landscape-desktop-po
 const MASTER_POSTER_MOBILE = '/generated/neutral-landscape/neutral-landscape-mobile-poster.jpg'
 const WORLD_SPAN = 8.4
 
-function getResponsivePortfolioSrcSet(src) {
-  if (!src?.startsWith('/portfolio/branding/')) return undefined
-  const filename = src.split('/').pop().replace(/\.webp$/, '')
-  return `/portfolio/branding/responsive/${filename}-560.webp 560w, /portfolio/branding/responsive/${filename}-800.webp 800w, ${src} 2048w`
-}
-
 const NAV_PROGRESS_NUDGE = 0.001
 
 const landmarks = [
@@ -33,129 +26,42 @@ const landmarks = [
   { id: 'contact', label: 'Contact', progress: 0.87, activation: 0.84 },
 ]
 
-const uxuiTitles = [
-  'Rewards and wallet',
-  'Food delivery',
-  'Nutrition tracking',
-  'Digital banking',
-  'Learning platform',
-  'Smart home',
-  'Connected health',
-]
-
-const uxuiSlides = UXUI_SCENES
-  .flatMap((scene) => scene.images.map((image) => ({ ...image, sceneId: scene.id })))
-  .map((image, index) => ({
-    ...image,
-    id: `${image.sceneId}-${index + 1}`,
-    title: uxuiTitles[index],
-    background: '#eef3f0',
-  }))
-
-const portfolioCollections = [
+const privatePortfolioPreviews = [
   {
-    id: 'branding',
-    label: 'Branding',
-    slides: [
-      {
-        id: 'pocket-voice-identity',
-        title: 'Pocket Voice identity',
-        src: '/portfolio/branding/pocket-voice-identity.webp',
-        alt: 'Pocket Voice symbol and wordmark on a bright blue field.',
-        width: 2048,
-        height: 1541,
-        background: '#168fc3',
-      },
-      {
-        id: 'pocket-voice-campaign',
-        title: 'Pocket Voice campaign',
-        src: '/portfolio/branding/pocket-voice-campaign.webp',
-        alt: 'Three Pocket Voice campaign posters presenting the product across mobile interfaces.',
-        width: 2048,
-        height: 1541,
-        background: '#f3f6f8',
-      },
-      {
-        id: 'vira-identity',
-        title: 'VIRA identity',
-        src: '/portfolio/branding/vira-identity.webp',
-        alt: 'VIRA white flower symbol and wordmark over a violet gradient field.',
-        width: 2048,
-        height: 1541,
-        background: '#b77af1',
-      },
-      {
-        id: 'vira-wearable',
-        title: 'VIRA wearable experience',
-        src: '/portfolio/branding/vira-wearable.webp',
-        alt: 'VIRA character experience displayed on an Apple Watch over a violet composition.',
-        width: 2048,
-        height: 1541,
-        background: '#ae77ed',
-      },
-      {
-        id: 'circlehome-identity',
-        title: 'CircleHome identity',
-        src: '/portfolio/branding/circlehome-identity.webp',
-        alt: 'CircleHome green symbol and wordmark on a white field.',
-        width: 2048,
-        height: 1541,
-        background: '#f7faf7',
-      },
-      {
-        id: 'circlehome-launch',
-        title: 'CircleHome launch',
-        src: '/portfolio/branding/circlehome-launch.webp',
-        alt: 'CircleHome launch composition presenting the Spanish product on two mobile screens.',
-        width: 2048,
-        height: 1541,
-        background: '#f7faf7',
-      },
-    ],
+    id: 'identity-system',
+    label: 'Identity system',
+    src: '/generated/private-portfolio/identity-system.webp',
+    background: '#178ab8',
   },
   {
-    id: 'web',
-    label: 'Web',
-    slides: [
-      {
-        id: 'pocket-voice-web',
-        type: 'video',
-        title: 'Pocket Voice website',
-        src: '/portfolio/web/pocket-voice.mp4',
-        poster: '/portfolio/web/pocket-voice-poster.jpg',
-        alt: 'Scroll-through of the Pocket Voice product website.',
-        width: 1920,
-        height: 872,
-        background: '#168fc3',
-      },
-      {
-        id: 'busy-bar-web',
-        type: 'video',
-        title: 'BUSY Bar website',
-        src: '/portfolio/web/busy-bar.mp4',
-        poster: '/portfolio/web/busy-bar-poster.jpg',
-        alt: 'Scroll-through of the BUSY Bar product website.',
-        width: 1920,
-        height: 872,
-        background: '#f2f1ef',
-      },
-      {
-        id: 'five-pathways-web',
-        type: 'video',
-        title: 'Five Pathways Financial',
-        src: '/portfolio/web/five-pathways.mp4',
-        poster: '/portfolio/web/five-pathways-poster.jpg',
-        alt: 'Scroll-through of the Five Pathways Financial website.',
-        width: 1920,
-        height: 872,
-        background: '#f7f0e4',
-      },
-    ],
+    id: 'campaign-system',
+    label: 'Campaign system',
+    src: '/generated/private-portfolio/campaign-system.webp',
+    background: '#cad9df',
   },
   {
-    id: 'ux-ui',
-    label: 'UX/UI',
-    slides: uxuiSlides,
+    id: 'product-interface',
+    label: 'Product interface',
+    src: '/generated/private-portfolio/product-interface.webp',
+    background: '#9160b4',
+  },
+  {
+    id: 'launch-system',
+    label: 'Launch system',
+    src: '/generated/private-portfolio/launch-system.webp',
+    background: '#b9d5c1',
+  },
+  {
+    id: 'product-website',
+    label: 'Product website',
+    src: '/generated/private-portfolio/product-website.webp',
+    background: '#a89a86',
+  },
+  {
+    id: 'financial-platform',
+    label: 'Digital platform',
+    src: '/generated/private-portfolio/digital-platform.webp',
+    background: '#c8b99f',
   },
 ]
 
@@ -164,6 +70,119 @@ const portfolioMetrics = [
   { text: 'YC', label: 'Startups backed by Y Combinator' },
   { value: 100, prefix: '$', suffix: 'M+', label: 'Raised by teams we\'ve supported' },
 ]
+
+function PrivatePortfolioArchive({ active, reducedMotion }) {
+  const [activePreview, setActivePreview] = useState(0)
+  const [userPaused, setUserPaused] = useState(false)
+  const [pageVisible, setPageVisible] = useState(true)
+
+  useEffect(() => {
+    const syncVisibility = () => setPageVisible(!document.hidden)
+    syncVisibility()
+    document.addEventListener('visibilitychange', syncVisibility)
+    return () => document.removeEventListener('visibilitychange', syncVisibility)
+  }, [])
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setActivePreview(0)
+      return undefined
+    }
+
+    if (!active || userPaused || !pageVisible) return undefined
+
+    const interval = window.setInterval(() => {
+      setActivePreview((current) => (current + 1) % privatePortfolioPreviews.length)
+    }, 4200)
+
+    return () => window.clearInterval(interval)
+  }, [active, pageVisible, reducedMotion, userPaused])
+
+  const preview = privatePortfolioPreviews[activePreview]
+
+  return (
+    <div
+      className="landscape-private-archive"
+      role="region"
+      aria-label="Private portfolio preview"
+    >
+      <div className="landscape-private-archive__topbar">
+        <span className="landscape-private-archive__status">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <rect x="3.25" y="7" width="9.5" height="6.75" rx="1.75" />
+            <path d="M5.4 7V5.35a2.6 2.6 0 0 1 5.2 0V7" />
+          </svg>
+          Private portfolio
+        </span>
+        <span className="landscape-private-archive__type" aria-hidden="true">{preview.label}</span>
+        {!reducedMotion && (
+          <button
+            className="landscape-private-archive__pause"
+            type="button"
+            aria-label={userPaused ? 'Resume private portfolio preview' : 'Pause private portfolio preview'}
+            aria-pressed={userPaused}
+            onClick={() => setUserPaused((paused) => !paused)}
+          >
+            {userPaused ? (
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="m5.3 3.8 6 4.2-6 4.2V3.8Z" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M5.5 4v8M10.5 4v8" />
+              </svg>
+            )}
+          </button>
+        )}
+      </div>
+
+      <div className="landscape-private-archive__stage">
+        <div className="landscape-private-archive__slides" aria-hidden="true">
+          {privatePortfolioPreviews.map((item, index) => (
+            <div
+              className={`landscape-private-archive__slide${activePreview === index ? ' is-active' : ''}`}
+              key={item.id}
+              style={{ '--archive-bg': item.background }}
+            >
+              <img src={item.src} alt="" width="1440" height="960" decoding="async" />
+            </div>
+          ))}
+        </div>
+        <div className="landscape-private-archive__veil" aria-hidden="true" />
+        <div className="landscape-private-archive__message">
+          <strong>A portfolio chosen for your brief.</strong>
+          <p>Project imagery is intentionally obscured.</p>
+        </div>
+        <div className="landscape-private-archive__progress" aria-hidden="true">
+          <span>{String(activePreview + 1).padStart(2, '0')}</span>
+          <div>
+            {privatePortfolioPreviews.map((item, index) => (
+              <i className={activePreview === index ? 'is-active' : ''} key={item.id} />
+            ))}
+          </div>
+          <span>{String(privatePortfolioPreviews.length).padStart(2, '0')}</span>
+        </div>
+      </div>
+
+      <div className="landscape-private-archive__request">
+        <p>Selected work is shared privately, in a short walkthrough.</p>
+        <a
+          href={CALENDAR_URL}
+          {...CAL_POPUP_PROPS}
+          target="_blank"
+          rel="noreferrer"
+          data-umami-event="calendar_opened"
+          data-umami-event-placement="portfolio_private"
+        >
+          Book a portfolio call
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 12L12 4M6 4h6v6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  )
+}
 
 function AnimatedMetric({ value = 0, text = '', prefix = '', suffix = '', label, active, reducedMotion, delay }) {
   const [displayValue, setDisplayValue] = useState(reducedMotion || text ? value : 0)
@@ -219,7 +238,6 @@ export default function Home() {
   const surfaceRef = useRef('hero')
   const [activeLandmark, setActiveLandmark] = useState(0)
   const [activeSurface, setActiveSurface] = useState('hero')
-  const [activeCategory, setActiveCategory] = useState('branding')
   const [reducedMotion, setReducedMotion] = useState(false)
   const [isMobile, setIsMobile] = useState(null)
 
@@ -344,12 +362,6 @@ export default function Home() {
     }
 
     window.scrollTo({ top: target, behavior: 'smooth' })
-  }
-
-  const activeCollection = portfolioCollections.find(({ id }) => id === activeCategory)
-
-  const selectCategory = (categoryId) => {
-    setActiveCategory(categoryId)
   }
 
   return (
@@ -617,7 +629,7 @@ export default function Home() {
             >
               <div className="landscape-portfolio__intro">
                 <h2 id="portfolio-title">Different problems deserve different expressions.</h2>
-                <p>One connected approach, never a house style. This selection shows identity, interface and launch systems shaped around different products and audiences. Each expression changes with its context while hierarchy, repeatability and implementation remain visible design criteria.</p>
+                <p>The full work is shared privately, in context. Book a call and we’ll bring the identity, product and web projects most relevant to what you’re building.</p>
               </div>
 
               <dl className="landscape-portfolio__metrics" aria-label="Studio metrics">
@@ -637,60 +649,11 @@ export default function Home() {
               className="landscape-portfolio__gallery"
               data-sc-copy
               data-sc-window="0.31 0.65 0.13 0.13"
-              role="region"
-              aria-label={`Selected ${activeCollection.label} work`}
-              data-category={activeCollection.id}
             >
-              <div className="landscape-carousel__categories" role="group" aria-label="Portfolio categories">
-                {portfolioCollections.map((collection) => (
-                  <button
-                    type="button"
-                    key={collection.id}
-                    className={activeCategory === collection.id ? 'is-active' : ''}
-                    aria-pressed={activeCategory === collection.id}
-                    onClick={() => selectCategory(collection.id)}
-                    data-umami-event="portfolio_category_selected"
-                    data-umami-event-category={collection.id}
-                  >
-                    {collection.label}
-                    <span>{String(collection.slides.length).padStart(2, '0')}</span>
-                  </button>
-                ))}
-              </div>
-
-              <div
-                className="landscape-portfolio__grid-scroll"
-                tabIndex="0"
-                aria-label={`${activeCollection.label} project grid`}
-              >
-                <div className="landscape-portfolio__grid" key={activeCollection.id}>
-                  {activeCollection.slides.map((project, index) => (
-                    <figure
-                      className="landscape-portfolio__project"
-                      key={project.id}
-                      style={{ '--slide-bg': project.background }}
-                    >
-                      <div className="landscape-portfolio__media">
-                        <img
-                          src={project.poster || project.src}
-                          srcSet={project.poster ? undefined : getResponsivePortfolioSrcSet(project.src)}
-                          sizes="(max-width: 800px) 44vw, (max-width: 1500px) 24vw, 20vw"
-                          alt={project.alt}
-                          width={project.width}
-                          height={project.height}
-                          loading={index < 4 ? 'eager' : 'lazy'}
-                          fetchpriority={index === 0 ? 'high' : 'low'}
-                          decoding="async"
-                        />
-                      </div>
-                      <figcaption>
-                        <span>{String(index + 1).padStart(2, '0')}</span>
-                        <strong>{project.title}</strong>
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
-              </div>
+              <PrivatePortfolioArchive
+                active={activeSurface === 'portfolio'}
+                reducedMotion={reducedMotion}
+              />
             </div>
           </section>
 
@@ -729,7 +692,14 @@ export default function Home() {
             <nav className="landscape-contact__links" aria-label="Studio links">
               <Link to="/services">Services overview</Link>
               {SERVICE_LINKS.map(({ path, label }) => <Link key={path} to={path}>{label}</Link>)}
-              <Link to="/work">Selected work</Link>
+              <a
+                href={CALENDAR_URL}
+                {...CAL_POPUP_PROPS}
+                target="_blank"
+                rel="noreferrer"
+                data-umami-event="calendar_opened"
+                data-umami-event-placement="contact_private_portfolio"
+              >Private portfolio</a>
               <Link to="/about">About</Link>
               <Link to="/privacy">Privacy</Link>
               <Link to="/legal">Legal</Link>

@@ -1090,7 +1090,7 @@ body:has(.landscape-page) .landscape-page {
   display: grid;
   min-width: 0;
   min-height: 0;
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   overflow: hidden;
   border-radius: 16px;
   background: rgba(242, 246, 243, .82);
@@ -1104,6 +1104,278 @@ body:has(.landscape-page) .landscape-page {
 
 .landscape-page[data-active-surface='portfolio'] .landscape-portfolio__gallery {
   pointer-events: auto;
+}
+
+.landscape-private-archive {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  overflow: hidden;
+  color: #fff;
+  background: #102019;
+}
+
+.landscape-private-archive__topbar {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: .7rem;
+  align-items: center;
+  min-height: 3.8rem;
+  padding: .65rem .75rem .65rem 1rem;
+  border-bottom: 1px solid rgba(20, 37, 29, .12);
+  color: #18271f;
+  background: rgba(249, 251, 249, .96);
+}
+
+.landscape-private-archive__status,
+.landscape-private-archive__type {
+  min-width: 0;
+  font-size: clamp(.62rem, .72vw, .75rem);
+  font-weight: 760;
+  line-height: 1;
+}
+
+.landscape-private-archive__status {
+  display: inline-flex;
+  align-items: center;
+  gap: .48rem;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+.landscape-private-archive__status svg {
+  width: .95rem;
+  height: .95rem;
+  flex: 0 0 auto;
+  stroke: currentColor;
+  stroke-width: 1.35;
+}
+
+.landscape-private-archive__type {
+  overflow: hidden;
+  color: rgba(24, 39, 31, .58);
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.landscape-private-archive__pause {
+  display: grid;
+  width: 2.45rem;
+  height: 2.45rem;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  color: #17261e;
+  background: rgba(18, 35, 27, .08);
+  cursor: pointer;
+  transition: transform 140ms var(--sc-ease-out), background-color 180ms ease;
+}
+
+.landscape-private-archive__pause svg {
+  width: .95rem;
+  height: .95rem;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.landscape-private-archive__pause:focus-visible,
+.landscape-private-archive__request a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.landscape-private-archive__pause:focus-visible {
+  outline-color: #173326;
+}
+
+.landscape-private-archive__stage {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  align-items: center;
+  overflow: hidden;
+  background: #13241c;
+}
+
+.landscape-private-archive__slides,
+.landscape-private-archive__slide,
+.landscape-private-archive__slide img,
+.landscape-private-archive__veil {
+  position: absolute;
+  inset: 0;
+}
+
+.landscape-private-archive__slide {
+  overflow: hidden;
+  opacity: 0;
+  background: var(--archive-bg, #1d3127);
+  transform: translate3d(1.2%, 0, 0) scale(1.07);
+  transition:
+    opacity 420ms cubic-bezier(.77, 0, .175, 1),
+    transform 560ms cubic-bezier(.77, 0, .175, 1);
+}
+
+.landscape-private-archive__slide.is-active {
+  z-index: 1;
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1.035);
+}
+
+.landscape-private-archive__slide img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  filter: saturate(.72) contrast(.9) brightness(.74);
+}
+
+.landscape-private-archive__veil {
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(8, 20, 14, .08) 0%, rgba(8, 20, 14, .24) 48%, rgba(8, 20, 14, .62) 100%),
+    linear-gradient(90deg, rgba(8, 20, 14, .24), transparent 38%, rgba(8, 20, 14, .16));
+  pointer-events: none;
+}
+
+.landscape-private-archive__message {
+  position: relative;
+  z-index: 3;
+  align-self: center;
+  max-width: 44rem;
+  padding: clamp(2rem, 4vw, 4.75rem);
+  text-shadow: 0 2px 24px rgba(4, 12, 8, .26);
+}
+
+.landscape-private-archive__message strong {
+  display: block;
+  max-width: 12ch;
+  font-size: clamp(2.5rem, 4.4vw, 5rem);
+  font-weight: 620;
+  line-height: .94;
+  letter-spacing: -.038em;
+  text-wrap: balance;
+}
+
+.landscape-private-archive__message p {
+  max-width: 31ch;
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, .8);
+  font-size: clamp(.74rem, .86vw, .9rem);
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.landscape-private-archive__progress {
+  position: absolute;
+  z-index: 3;
+  right: clamp(1rem, 1.5vw, 1.5rem);
+  bottom: clamp(.9rem, 1.4vw, 1.35rem);
+  left: clamp(1rem, 1.5vw, 1.5rem);
+  display: grid;
+  grid-template-columns: auto minmax(3rem, 10rem) auto;
+  gap: .65rem;
+  align-items: center;
+  justify-content: end;
+  color: rgba(255, 255, 255, .74);
+  font-size: .55rem;
+  font-weight: 760;
+  letter-spacing: .08em;
+  font-variant-numeric: tabular-nums;
+}
+
+.landscape-private-archive__progress > div {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(.75rem, 1fr));
+  gap: .24rem;
+}
+
+.landscape-private-archive__progress i {
+  display: block;
+  height: 1px;
+  background: rgba(255, 255, 255, .3);
+  transition: background-color 180ms ease, transform 180ms var(--sc-ease-out);
+}
+
+.landscape-private-archive__progress i.is-active {
+  background: rgba(255, 255, 255, .96);
+  transform: scaleY(2);
+}
+
+.landscape-private-archive__request {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 5rem;
+  padding: .75rem .75rem .75rem 1rem;
+  border-top: 1px solid rgba(20, 37, 29, .12);
+  color: #18271f;
+  background: rgba(249, 251, 249, .96);
+}
+
+.landscape-private-archive__request p {
+  max-width: 34ch;
+  margin: 0;
+  color: rgba(24, 39, 31, .68);
+  font-size: clamp(.68rem, .76vw, .79rem);
+  font-weight: 620;
+  line-height: 1.35;
+}
+
+.landscape-private-archive__request a {
+  display: inline-flex;
+  min-height: 3.25rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: .85rem;
+  border-radius: 12px;
+  padding: .82rem 1rem;
+  color: #fff;
+  background: #13251c;
+  font-size: clamp(.7rem, .78vw, .82rem);
+  font-weight: 740;
+  line-height: 1;
+  letter-spacing: -.01em;
+  text-decoration: none;
+  transition: transform 140ms var(--sc-ease-out), background-color 180ms ease;
+}
+
+.landscape-private-archive__request a svg {
+  width: 1rem;
+  height: 1rem;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.landscape-private-archive__pause:active,
+.landscape-private-archive__request a:active {
+  transform: scale(.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .landscape-private-archive__pause:hover {
+    background: rgba(18, 35, 27, .14);
+  }
+
+  .landscape-private-archive__request a:hover {
+    background: #1d382a;
+  }
 }
 
 .landscape-carousel__categories {
@@ -3153,6 +3425,64 @@ body:has(.landscape-page) .landscape-page {
     -webkit-backdrop-filter: none;
   }
 
+  .landscape-private-archive__topbar {
+    min-height: 3.15rem;
+    gap: .5rem;
+    padding: .45rem .5rem .45rem .75rem;
+  }
+
+  .landscape-private-archive__status,
+  .landscape-private-archive__type {
+    font-size: clamp(.58rem, 2.55vw, .68rem);
+  }
+
+  .landscape-private-archive__type {
+    max-width: 11ch;
+  }
+
+  .landscape-private-archive__pause {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .landscape-private-archive__message {
+    padding: 1.2rem 1rem 2.8rem;
+  }
+
+  .landscape-private-archive__message strong {
+    max-width: 13ch;
+    font-size: clamp(1.9rem, 8vw, 3rem);
+    line-height: .96;
+  }
+
+  .landscape-private-archive__message p {
+    margin-top: .65rem;
+    font-size: clamp(.68rem, 2.8vw, .76rem);
+  }
+
+  .landscape-private-archive__progress {
+    right: .85rem;
+    bottom: .7rem;
+    left: .85rem;
+    grid-template-columns: auto minmax(2.5rem, 7.5rem) auto;
+    gap: .5rem;
+  }
+
+  .landscape-private-archive__request {
+    min-height: 4.25rem;
+    padding: .5rem;
+  }
+
+  .landscape-private-archive__request p {
+    display: none;
+  }
+
+  .landscape-private-archive__request a {
+    width: 100%;
+    min-height: 3.15rem;
+    font-size: .73rem;
+  }
+
   .landscape-portfolio__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: .55rem;
@@ -3178,10 +3508,77 @@ body:has(.landscape-page) .landscape-page {
   }
 }
 
+@media (max-width: 480px) and (max-height: 700px) and (orientation: portrait) {
+  .landscape-private-archive__topbar {
+    min-height: 2.8rem;
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+  }
+
+  .landscape-private-archive__pause {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+
+  .landscape-private-archive__message {
+    padding: .85rem .9rem 2.2rem;
+  }
+
+  .landscape-private-archive__message strong {
+    font-size: clamp(1.55rem, 7.2vw, 2rem);
+  }
+
+  .landscape-private-archive__message p {
+    display: none;
+  }
+
+  .landscape-private-archive__progress {
+    bottom: .48rem;
+  }
+
+  .landscape-private-archive__request {
+    min-height: 3.5rem;
+    padding: .35rem;
+  }
+
+  .landscape-private-archive__request a {
+    min-height: 2.85rem;
+  }
+}
+
 @media (max-width: 950px) and (max-height: 560px) and (orientation: landscape) {
   .landscape-portfolio__grid,
   .landscape-portfolio__gallery[data-category='web'] .landscape-portfolio__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .landscape-private-archive__topbar {
+    min-height: 2.9rem;
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+  }
+
+  .landscape-private-archive__message {
+    padding: 1rem 1.25rem 2.4rem;
+  }
+
+  .landscape-private-archive__message strong {
+    font-size: clamp(1.7rem, 4vw, 2.65rem);
+  }
+
+  .landscape-private-archive__message p,
+  .landscape-private-archive__request p {
+    display: none;
+  }
+
+  .landscape-private-archive__request {
+    min-height: 3.65rem;
+    padding: .4rem;
+  }
+
+  .landscape-private-archive__request a {
+    width: 100%;
+    min-height: 2.85rem;
   }
 }
 
@@ -3198,6 +3595,9 @@ body:has(.landscape-page) .landscape-page {
   .landscape-carousel__track,
   .landscape-carousel__controls button,
   .landscape-portfolio__grid,
+  .landscape-private-archive__slide,
+  .landscape-private-archive__progress i,
+  .landscape-private-archive__request a,
   .landscape-panel > a {
     transition: none !important;
   }
@@ -3212,6 +3612,14 @@ body:has(.landscape-page) .landscape-page {
 
   .landscape-portfolio__grid {
     animation: none;
+  }
+
+  .landscape-private-archive__slide {
+    transform: none;
+  }
+
+  .landscape-private-archive__slide:not(.is-active) {
+    display: none;
   }
 
   .landscape-copy__hero h1,
