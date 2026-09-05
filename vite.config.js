@@ -18,6 +18,7 @@ const publicAssets = [
   'generated/neutral-landscape/neutral-landscape-desktop-poster.jpg',
   'generated/neutral-landscape/neutral-landscape-desktop-poster.webp',
   'generated/neutral-landscape/neutral-landscape-mobile-poster.jpg',
+  'generated/private-portfolio',
   'portfolio/branding',
   'portfolio/web',
 ]
