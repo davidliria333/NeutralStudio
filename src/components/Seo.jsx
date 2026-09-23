@@ -29,7 +29,7 @@ export default function Seo() {
     setMeta('meta[property="og:image"]', { property: 'og:image', content: OG_IMAGE })
     setMeta('meta[property="og:image:width"]', { property: 'og:image:width', content: OG_IMAGE_WIDTH })
     setMeta('meta[property="og:image:height"]', { property: 'og:image:height', content: OG_IMAGE_HEIGHT })
-    setMeta('meta[property="og:image:alt"]', { property: 'og:image:alt', content: `${SITE_NAME} Mediterranean landscape` })
+    setMeta('meta[property="og:image:alt"]', { property: 'og:image:alt', content: `${SITE_NAME} May landing with blue halo` })
     setMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: SITE_NAME })
     setMeta('meta[name="twitter:card"]', { name: 'twitter:card', content: 'summary_large_image' })
     setMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: meta.title })

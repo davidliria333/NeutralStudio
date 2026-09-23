@@ -73,6 +73,15 @@ html, body {
 }
 body { min-height: 100svh; }
 
+@media (max-width: 760px) {
+  .hero-spec > span:nth-child(2),
+  .hero-spec > span:nth-child(4) { display: none !important; }
+}
+
+@media (max-width: 900px) {
+  .footer-grid > div:first-child { grid-column: span 2; }
+}
+
 body.has-subpage {
   --bg: #dfe9e3;
   --bg-1: rgba(247, 250, 248, .84);

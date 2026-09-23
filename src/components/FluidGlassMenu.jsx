@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-export default function FluidGlassMenu({ items }) {
+export default function FluidGlassMenu({ items, onNavClick }) {
   const templateColumns = useMemo(() => `repeat(${items.length}, max-content)`, [items.length])
 
   return (
@@ -56,9 +56,10 @@ export default function FluidGlassMenu({ items }) {
         }}
       >
         {items.map(item => (
-          <a
+          <button
             key={item.href}
-            href={item.href}
+            type="button"
+            onClick={() => onNavClick(item.href)}
             style={{
               border: 'none',
               background: 'transparent',
@@ -83,7 +84,7 @@ export default function FluidGlassMenu({ items }) {
             }}
           >
             {item.label}
-          </a>
+          </button>
         ))}
       </div>
     </div>

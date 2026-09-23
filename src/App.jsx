@@ -2,6 +2,8 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Header from './components/Header.jsx'
 import HomeHeader from './components/HomeHeader.jsx'
+import HomeFooter from './components/HomeFooter.jsx'
+import Cursor from './components/Cursor.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
 import RouteProgress from './components/RouteProgress.jsx'
@@ -74,6 +76,7 @@ export default function App() {
       <Seo />
       <ScrollManager />
       <RouteProgress />
+      {isHome && <Cursor />}
       {isHome ? <HomeHeader /> : <Header />}
       <main id="page-content">
         <Routes location={location} key={location.pathname}>
@@ -94,7 +97,7 @@ export default function App() {
           <Route path="*" element={<Page><NotFound /></Page>} />
         </Routes>
       </main>
-      {!isHome && <Footer />}
+      {isHome ? <HomeFooter /> : <Footer />}
     </>
   )
 }

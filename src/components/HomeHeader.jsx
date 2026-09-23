@@ -5,8 +5,10 @@ import Magnetic from './Magnetic.jsx'
 
 const NAV = [
   { label: 'Services', href: '#services' },
+  { label: 'Why us', href: '#compare' },
   { label: 'Process', href: '#process' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'FAQ', href: '#faq' },
 ]
 
 export default function HomeHeader() {
@@ -51,14 +53,14 @@ export default function HomeHeader() {
       <div style={{
         maxWidth: 'var(--maxw)', margin: '0 auto',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        background: scrolled ? 'rgba(10,10,11,0.86)' : 'rgba(10,10,11,0.82)',
-        backdropFilter: 'blur(20px) saturate(160%)',
-        WebkitBackdropFilter: 'blur(20px) saturate(160%)',
+        background: scrolled ? 'rgba(10,10,11,0.7)' : 'rgba(10,10,11,0.0)',
+        backdropFilter: scrolled ? 'blur(20px) saturate(160%)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(160%)' : 'none',
         border: '1px solid',
-        borderColor: 'var(--line)',
+        borderColor: scrolled ? 'var(--line)' : 'transparent',
         borderRadius: 999,
         padding: '10px 14px 10px 20px',
-        transition: 'background-color .35s var(--ease), border-color .35s var(--ease), backdrop-filter .35s var(--ease)',
+        transition: 'all .35s var(--ease)',
       }}>
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--ink)' }}>
           <img src="/brand-favicon.svg" alt="" width="26" height="26" style={{ borderRadius: 6, display: 'block' }} />
@@ -73,7 +75,7 @@ export default function HomeHeader() {
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <Magnetic radius={70} strength={0.28}>
             <a href="https://cal.com/neutralstudio/30min?overlayCalendar=true" target="_blank" rel="noreferrer" data-magnet className="btn btn--primary" style={{ padding: '10px 18px', fontSize: 13 }}>
-              Cuéntanos tu idea <span className="arrow">→</span>
+              Book a call <span className="arrow">→</span>
             </a>
           </Magnetic>
           <button className="mobile-toggle" onClick={() => setOpen(o => !o)} aria-label="Menu" aria-expanded={open ? 'true' : 'false'} aria-controls="mobile-nav" style={{
