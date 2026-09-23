@@ -4,8 +4,7 @@ import { CALENDAR_URL, CAL_POPUP_PROPS } from './CalPopup.jsx'
 
 const NAV = [
   { label: 'Services', href: '/services' },
-  { label: 'Work', href: '/work' },
-  { label: 'Approach', href: '/#approach' },
+  { label: 'Approach', href: '/#process' },
   { label: 'About', href: '/about' },
 ]
 

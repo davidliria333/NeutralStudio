@@ -33,7 +33,7 @@ export default function About() {
           <h2>Independent by design</h2>
           <p>Neutral Studio by Arnau Piñol is an independent practice that brings in the right specialist context when a project requires it. Scope, responsibilities and external costs are agreed before work begins. Client repositories, production accounts and final source files remain under clear client ownership.</p>
           <p>Arnau is a graphic designer educated at ESDAP — Escola Superior de Disseny i d’Arts Plàstiques. He is the founder of Neutral Studio and co-founder of <a href={PALSEC_LINKEDIN_URL} target="_blank" rel="noreferrer">Palsec Agency</a>, connecting identity, digital design and implementation experience across independent studio work.</p>
-          <p>We do not present anonymous outcomes as proof. Project results, testimonials or business metrics are published only when they can be attributed and used with permission. The portfolio focuses on the decisions and craft visible in the work.</p>
+          <p>We do not present anonymous outcomes as proof. Project results, testimonials or business metrics are published only when they can be attributed and used with permission.</p>
           <p><a href={LINKEDIN_URL} target="_blank" rel="noreferrer">View Arnau Piñol on LinkedIn</a> or <Link to="/contact">contact the studio directly</Link>.</p>
         </section>
 

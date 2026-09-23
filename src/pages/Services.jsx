@@ -43,7 +43,7 @@ export default function Services() {
         <p className="lead">Neutral Studio connects brand identity, product design, websites, pitch decks and application development. Start with the decision that matters now, while keeping the promise, interface and launch system moving in one direction.</p>
         <div className="services-hub__actions">
           <a className="btn btn--primary" href={CALENDAR_URL} {...CAL_POPUP_PROPS} target="_blank" rel="noreferrer">Discuss your project <span className="arrow">→</span></a>
-          <Link className="btn btn--ghost" to="/work">Inspect selected work</Link>
+          <Link className="btn btn--ghost" to="/about">How we work</Link>
         </div>
       </div>
 
@@ -104,7 +104,7 @@ export default function Services() {
           <div>
             <p>Neutral Studio is led by Arnau Piñol and works remotely with startups and product teams. Strategy stays close to execution: the person helping frame the problem remains involved while the identity, interface, website or release is shaped and prepared for use.</p>
             <p>Client repositories, production accounts and final source files remain under clear client ownership. When a project requires specialist context, responsibilities and external costs are made visible instead of being presented as an invisible agency layer. The studio does not publish anonymous business metrics, testimonials or client outcomes as proof.</p>
-            <p><Link to="/about">Read how Neutral Studio works</Link> or <Link to="/work">inspect the decisions visible in selected work</Link>.</p>
+            <p><Link to="/about">Read how Neutral Studio works</Link> or <Link to="/contact">contact the studio directly</Link>.</p>
           </div>
         </section>
 

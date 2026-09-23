@@ -8,9 +8,8 @@ Contact: arnaupinyolwork@gmail.com
 
 ## Core pages
 
-- [Home](https://www.neutralstudio.co/): Studio proposition, approach, selected work, services and contact.
+- [Home](https://www.neutralstudio.co/): Studio proposition, approach, services and contact.
 - [Services overview](https://www.neutralstudio.co/services): Connected brand, product, web, pitch deck and application services for US startups and global teams.
-- [Selected work](https://www.neutralstudio.co/work): Inspectable identity, interface and launch examples with explicit limits on outcome claims.
 - [Startup design costs](https://www.neutralstudio.co/guides/startup-design-costs): Transparent 2026 planning guide covering real starting prices and the scope decisions behind branding, web, UX/UI and app budgets.
 - [About](https://www.neutralstudio.co/about): Who runs the studio and how engagements work.
 - [Contact](https://www.neutralstudio.co/contact): Direct project inquiry, scheduling, useful brief context and privacy expectations.

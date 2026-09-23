@@ -1,13 +1,13 @@
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Header from './components/Header.jsx'
+import HomeHeader from './components/HomeHeader.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
 import RouteProgress from './components/RouteProgress.jsx'
 import Analytics from './components/Analytics.jsx'
 import Seo from './components/Seo.jsx'
 import About from './pages/About.jsx'
-import Work from './pages/Work.jsx'
 import Services from './pages/Services.jsx'
 import StartupDesignCosts from './pages/StartupDesignCosts.jsx'
 import Contact from './pages/Contact.jsx'
@@ -54,8 +54,8 @@ function ScrollManager() {
   return null
 }
 
-function Page({ children }) {
-  return <div className="page-transition">{children}</div>
+function Page({ children, home = false }) {
+  return <div className={`page-transition${home ? ' page-transition--home' : ''}`}>{children}</div>
 }
 
 export default function App() {
@@ -74,10 +74,10 @@ export default function App() {
       <Seo />
       <ScrollManager />
       <RouteProgress />
-      {!isHome && <Header />}
+      {isHome ? <HomeHeader /> : <Header />}
       <main id="page-content">
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Page><Home /></Page>} />
+          <Route path="/" element={<Page home><Home /></Page>} />
           <Route path="/services" element={<Page><Services /></Page>} />
           <Route path="/services/brand" element={<Page><Brand /></Page>} />
           <Route path="/services/systems" element={<Page><Systems /></Page>} />
@@ -88,7 +88,6 @@ export default function App() {
           <Route path="/services/app-development" element={<Page><AppDevelopment /></Page>} />
           <Route path="/guides/startup-design-costs" element={<Page><StartupDesignCosts /></Page>} />
           <Route path="/about" element={<Page><About /></Page>} />
-          <Route path="/work" element={<Page><Work /></Page>} />
           <Route path="/contact" element={<Page><Contact /></Page>} />
           <Route path="/privacy" element={<Page><Privacy /></Page>} />
           <Route path="/legal" element={<Page><Legal /></Page>} />

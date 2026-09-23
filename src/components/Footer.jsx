@@ -12,7 +12,6 @@ const SERVICES = [
 
 const STUDIO = [
   ['Services', '/services'],
-  ['Selected work', '/work'],
   ['About', '/about'],
   ['Startup design costs', '/guides/startup-design-costs'],
   ['Contact', '/contact'],
@@ -45,8 +44,8 @@ export default function Footer() {
             <a href={CALENDAR_URL} {...CAL_POPUP_PROPS} target="_blank" rel="noreferrer" data-umami-event="calendar_opened" data-umami-event-placement="footer">
               Book a call <span aria-hidden="true">↗</span>
             </a>
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Portfolio%20request%20-%20Neutral%20Studio" data-umami-event="email_clicked" data-umami-event-placement="footer_portfolio">
-              Request portfolio
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Project%20inquiry%20-%20Neutral%20Studio" data-umami-event="email_clicked" data-umami-event-placement="footer_email">
+              Email the studio
             </a>
           </div>
         </div>

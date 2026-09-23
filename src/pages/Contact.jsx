@@ -76,7 +76,7 @@ export default function Contact() {
           <p>Email messages are used to respond to the inquiry and manage any resulting professional relationship. The booking service loads only after deliberate interaction. Read the <Link to="/privacy">privacy policy</Link> for analytics, booking and data-request details.</p>
           <div className="contact-page__actions">
             <a className="btn btn--primary" href={emailHref} data-umami-event="email_clicked" data-umami-event-placement="contact_page_final">Start by email <span className="arrow">→</span></a>
-            <Link className="btn btn--ghost" to="/work">Inspect selected work</Link>
+            <Link className="btn btn--ghost" to="/services">Explore services</Link>
           </div>
         </section>
       </div>

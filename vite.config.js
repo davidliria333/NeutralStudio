@@ -5,6 +5,8 @@ import { dirname, resolve } from 'node:path'
 
 const publicAssets = [
   'Logo-01.png',
+  'brand-logo.svg',
+  'neutral-studio-social.png',
   'brand-favicon.svg',
   'neutral-cursor.svg',
   'scrollcraft.js',
@@ -13,14 +15,8 @@ const publicAssets = [
   'llms.txt',
   'googlef76b8f6c36dcddf2.html',
   'fonts/Cy-SemiBold.woff2',
-  'generated/neutral-landscape/neutral-landscape-desktop-seek.mp4',
-  'generated/neutral-landscape/neutral-landscape-mobile-seek.mp4',
-  'generated/neutral-landscape/neutral-landscape-desktop-poster.jpg',
   'generated/neutral-landscape/neutral-landscape-desktop-poster.webp',
   'generated/neutral-landscape/neutral-landscape-mobile-poster.jpg',
-  'generated/private-portfolio',
-  'portfolio/branding',
-  'portfolio/web',
 ]
 
 function copyPublishedAssets() {

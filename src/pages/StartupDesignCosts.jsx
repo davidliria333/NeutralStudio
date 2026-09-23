@@ -112,7 +112,7 @@ export default function StartupDesignCosts() {
           <p>Share what is changing, what already exists, the deadline or dependency that is real, and the decision the work must support. Neutral Studio can then identify whether a focused service is enough, where uncertainty needs to be reduced and what a responsible scope should include.</p>
           <div className="design-cost-guide__actions">
             <a className="btn btn--primary" href={CALENDAR_URL} {...CAL_POPUP_PROPS} target="_blank" rel="noreferrer">Discuss your project <span className="arrow">→</span></a>
-            <Link className="btn btn--ghost" to="/work">Inspect selected work</Link>
+            <Link className="btn btn--ghost" to="/services">Explore services</Link>
           </div>
         </section>
       </div>

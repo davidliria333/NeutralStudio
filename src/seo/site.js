@@ -3,9 +3,9 @@ export const SITE_NAME = 'Neutral Studio'
 export const CONTACT_EMAIL = 'arnaupinyolwork@gmail.com'
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/arnau-pi%C3%B1ol-olabegoya-722329158/'
 export const PALSEC_LINKEDIN_URL = 'https://www.linkedin.com/company/palsec-agency/'
-export const OG_IMAGE = `${SITE_URL}/generated/neutral-landscape/neutral-landscape-desktop-poster.jpg`
-export const OG_IMAGE_WIDTH = '1920'
-export const OG_IMAGE_HEIGHT = '1080'
+export const OG_IMAGE = `${SITE_URL}/neutral-studio-social.png`
+export const OG_IMAGE_WIDTH = '1200'
+export const OG_IMAGE_HEIGHT = '630'
 
 export const ROUTE_META = {
   '/': {
@@ -72,12 +72,6 @@ export const ROUTE_META = {
     label: 'About',
     type: 'about',
   },
-  '/work': {
-    title: 'Selected Brand, Product & Web Design Work | Neutral Studio',
-    description: 'Inspect selected Neutral Studio identity, interface and launch work, with clear notes on the design decisions connecting each system.',
-    label: 'Selected work',
-    type: 'work',
-  },
   '/guides/startup-design-costs': {
     title: 'Startup Design Costs: 2026 Pricing Guide | Neutral Studio',
     description: 'Compare real starting prices for startup branding, websites, UX/UI and app development, plus the scope decisions that change the final cost.',
@@ -124,7 +118,7 @@ export function getRouteMeta(pathname) {
   if (meta) return { ...meta, path, canonical: `${SITE_URL}${path === '/' ? '/' : path}` }
   return {
     title: 'Page not found | Neutral Studio',
-    description: 'The requested page could not be found. Return to Neutral Studio to explore our design services and selected work.',
+    description: 'The requested page could not be found. Return to Neutral Studio to explore our design services and approach.',
     label: 'Page not found',
     type: 'not-found',
     path,
