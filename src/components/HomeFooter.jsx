@@ -88,7 +88,7 @@ export default function HomeFooter() {
             >
               Book a call <span>→</span>
             </a>
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Project%20inquiry%20-%20Neutral%20Studio"
+            <a href="mailto:arnaupinyolwork@gmail.com?subject=Portfolio%20request%20-%20Neutral%20Studio"
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                 padding: '14px 28px', borderRadius: 'var(--r-m)',
@@ -101,7 +101,7 @@ export default function HomeFooter() {
               onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; e.currentTarget.style.color = 'rgba(255,255,255,0.8)' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.55)' }}
             >
-              Email us
+              Ask for portfolio
             </a>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function HomeFooter() {
           .footer-grid { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 620px) {
-          .footer-ctas { flex-direction: row !important; flex-wrap: wrap; }
+          .footer-ctas { flex-direction: row !important; flex-wrap: wrap; flex-shrink: 1 !important; width: 100%; min-width: 0; }
           .footer-ctas a { flex: 1; }
           .footer-bottom { flex-direction: column; gap: 10px; align-items: flex-start !important; }
         }
