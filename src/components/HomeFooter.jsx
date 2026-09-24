@@ -127,7 +127,7 @@ export default function HomeFooter() {
           </div>
 
           <FCol title="Product" items={[
-            ['Services', '#services'], ['Why us', '#compare'],
+            ['Services', '#services'], ['Portfolio', '#portfolio'], ['Why us', '#compare'],
             ['ROI', '#roi'], ['Process', '#process'], ['Pricing', '#pricing'],
           ]} onSectionClick={onSectionClick} />
           <FCol title="Studio" items={[

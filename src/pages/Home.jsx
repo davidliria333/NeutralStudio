@@ -1,5 +1,6 @@
 import Hero from '../sections/Hero.jsx'
 import Services from '../sections/Services.jsx'
+import Portfolio from '../sections/Portfolio.jsx'
 import Compare from '../sections/Compare.jsx'
 import Testimonials from '../sections/Testimonials.jsx'
 import ROI from '../sections/ROI.jsx'
@@ -12,6 +13,7 @@ export default function Home() {
     <>
       <Hero />
       <Services />
+      <Portfolio />
       <Compare />
       <Testimonials />
       <ROI />

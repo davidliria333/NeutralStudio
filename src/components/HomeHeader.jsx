@@ -5,6 +5,7 @@ import Magnetic from './Magnetic.jsx'
 
 const NAV = [
   { label: 'Services', href: '#services' },
+  { label: 'Portfolio', href: '#portfolio' },
   { label: 'Why us', href: '#compare' },
   { label: 'Process', href: '#process' },
   { label: 'Pricing', href: '#pricing' },
