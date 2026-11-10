@@ -44,7 +44,7 @@ export default function Portfolio() {
             <p>
               We keep client work off the open web. Send a short note and we will reply with the closest-fit references for your category, stage, and deadline.
             </p>
-            <a className="btn btn--primary" href="mailto:arnaupinyolwork@gmail.com?subject=Curated%20portfolio%20request%20-%20Neutral%20Studio">
+            <a className="btn btn--primary" href="mailto:arnau@neutralstudio.co?subject=Curated%20portfolio%20request%20-%20Neutral%20Studio">
               Request private proof <span className="arrow">→</span>
             </a>
           </div>
@@ -81,7 +81,7 @@ const SPRING_TILT = { stiffness: 280, damping: 28, mass: 0.6 }
 
 function ProofTile({ item, index }) {
   const ref = useRef(null)
-  const href = `mailto:arnaupinyolwork@gmail.com?subject=${encodeURIComponent(`Private portfolio request: ${item.type}`)}`
+  const href = `mailto:arnau@neutralstudio.co?subject=${encodeURIComponent(`Private portfolio request: ${item.type}`)}`
 
   const rotX = useMotionValue(0)
   const rotY = useMotionValue(0)

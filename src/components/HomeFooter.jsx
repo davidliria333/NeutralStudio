@@ -88,7 +88,7 @@ export default function HomeFooter() {
             >
               Book a call <span>→</span>
             </a>
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Portfolio%20request%20-%20Neutral%20Studio"
+            <a href="mailto:arnau@neutralstudio.co?subject=Portfolio%20request%20-%20Neutral%20Studio"
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                 padding: '14px 28px', borderRadius: 'var(--r-m)',
@@ -135,7 +135,7 @@ export default function HomeFooter() {
           ]} onSectionClick={onSectionClick} />
           <FCol title="Contact" items={[
             ['Book a call', 'https://cal.com/neutralstudio/30min?overlayCalendar=true', true],
-            ['arnaupinyolwork@gmail.com', 'mailto:arnaupinyolwork@gmail.com', true],
+            ['arnau@neutralstudio.co', 'mailto:arnau@neutralstudio.co', true],
           ]} onSectionClick={onSectionClick} />
         </div>
 

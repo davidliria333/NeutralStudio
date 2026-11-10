@@ -12,7 +12,7 @@ export default function Privacy() {
       <div className="container info-page__body">
         <section className="info-page__section">
           <h2>Who is responsible</h2>
-          <p>Neutral Studio, an independent remote design practice, is responsible for the website at neutralstudio.co. Privacy and data requests can be sent to <a href="mailto:arnaupinyolwork@gmail.com">arnaupinyolwork@gmail.com</a>.</p>
+          <p>Neutral Studio, an independent remote design practice, is responsible for the website at neutralstudio.co. Privacy and data requests can be sent to <a href="mailto:arnau@neutralstudio.co">arnau@neutralstudio.co</a>.</p>
         </section>
 
         <section className="info-page__section">
@@ -35,7 +35,7 @@ export default function Privacy() {
         <section className="info-page__section">
           <h2>Your choices and rights</h2>
           <p>Depending on applicable law, you may ask for access, correction, deletion, restriction or portability of personal information, or object to a use based on legitimate interests. You can also enable Do Not Track in your browser before visiting the site.</p>
-          <p>Send requests to <a href="mailto:arnaupinyolwork@gmail.com?subject=Privacy%20request%20-%20Neutral%20Studio">arnaupinyolwork@gmail.com</a>. A request may require reasonable identity verification before information is disclosed or changed.</p>
+          <p>Send requests to <a href="mailto:arnau@neutralstudio.co?subject=Privacy%20request%20-%20Neutral%20Studio">arnau@neutralstudio.co</a>. A request may require reasonable identity verification before information is disclosed or changed.</p>
         </section>
       </div>
     </article>

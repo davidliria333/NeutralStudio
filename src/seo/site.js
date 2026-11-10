@@ -1,6 +1,6 @@
 export const SITE_URL = 'https://www.neutralstudio.co'
 export const SITE_NAME = 'Neutral Studio'
-export const CONTACT_EMAIL = 'arnaupinyolwork@gmail.com'
+export const CONTACT_EMAIL = 'arnau@neutralstudio.co'
 export const PALSEC_LINKEDIN_URL = 'https://www.linkedin.com/company/palsec-agency/'
 export const OG_IMAGE = `${SITE_URL}/neutral-studio-social.png`
 export const OG_IMAGE_WIDTH = '1200'

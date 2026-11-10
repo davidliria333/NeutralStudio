@@ -8,7 +8,7 @@ const PLANS = [
     sub: 'A full identity system built to scale, without web design or pitch deck.',
     features: ['Logo system & brand marks', 'Typography & color palette', 'Core identity assets & templates', 'Brand guidelines (lightweight)'],
     cta: 'Email to book',
-    href: 'mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20%243%2C000%20identity%20package',
+    href: 'mailto:arnau@neutralstudio.co?subject=Neutral%20Studio%20-%20%243%2C000%20identity%20package',
     badge: 'Identity only',
     featured: false,
   },
@@ -18,7 +18,7 @@ const PLANS = [
     sub: 'Identity + pitch deck + web design, built to ship together, fast.',
     features: ['Complete visual identity', 'Investor-ready pitch deck', 'Marketing website design & key layouts', 'Organized handoff + export specs'],
     cta: 'Email to book',
-    href: 'mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20%245%2C500%20full%20package',
+    href: 'mailto:arnau@neutralstudio.co?subject=Neutral%20Studio%20-%20%245%2C500%20full%20package',
     badge: 'Most popular',
     featured: true,
   },
@@ -56,7 +56,7 @@ export default function Pricing() {
               Limited slots this month for sprint engagements.
             </span>
           </span>
-          <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%201-week%20launch%20sprint"
+          <a href="mailto:arnau@neutralstudio.co?subject=Neutral%20Studio%20-%201-week%20launch%20sprint"
              style={{
                fontSize: 13, fontWeight: 500, color: 'var(--ink)',
                display: 'inline-flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap',
@@ -174,7 +174,7 @@ export default function Pricing() {
           </div>
 
           <div style={{ position: 'relative', display: 'flex', gap: 12, flexShrink: 0, flexWrap: 'wrap' }} className="price-custom-ctas">
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Custom%20project"
+            <a href="mailto:arnau@neutralstudio.co?subject=Neutral%20Studio%20-%20Custom%20project"
               className="btn btn--ghost" style={{ whiteSpace: 'nowrap' }}>
               Send a note <span className="arrow">→</span>
             </a>
