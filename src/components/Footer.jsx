@@ -61,7 +61,6 @@ export default function Footer() {
             <h3>Contact</h3>
             <ul>
               <li><a href="mailto:arnaupinyolwork@gmail.com" data-umami-event="email_clicked" data-umami-event-placement="footer_navigation">Email</a></li>
-              <li><a href="https://www.linkedin.com/in/arnau-pi%C3%B1ol-olabegoya-722329158/" target="_blank" rel="noreferrer">LinkedIn</a></li>
             </ul>
           </div>
         </div>

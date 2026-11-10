@@ -213,7 +213,7 @@ export function Partnership() {
             position: 'relative', borderRadius: 'var(--r-l)', overflow: 'hidden',
             border: '1px solid var(--line)', background: 'var(--bg-1)', aspectRatio: '4/5',
           }}>
-            <img src="/partnership.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', mixBlendMode: 'luminosity', opacity: 0.85 }} />
+            <img src="/founder-collaboration.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', mixBlendMode: 'luminosity', opacity: 0.85 }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 60%, var(--bg) 100%)' }} />
           </div>
         </div>

@@ -136,7 +136,6 @@ export default function HomeFooter() {
           <FCol title="Contact" items={[
             ['Book a call', 'https://cal.com/neutralstudio/30min?overlayCalendar=true', true],
             ['arnaupinyolwork@gmail.com', 'mailto:arnaupinyolwork@gmail.com', true],
-            ['LinkedIn', 'https://www.linkedin.com/in/arnau-pi%C3%B1ol-olabegoya-722329158/', true],
           ]} onSectionClick={onSectionClick} />
         </div>
 
