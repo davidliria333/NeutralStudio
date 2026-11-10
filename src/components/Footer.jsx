@@ -44,7 +44,7 @@ export default function Footer() {
             <a href={CALENDAR_URL} {...CAL_POPUP_PROPS} target="_blank" rel="noreferrer" data-umami-event="calendar_opened" data-umami-event-placement="footer">
               Book a call <span aria-hidden="true">↗</span>
             </a>
-            <a href="mailto:arnaupinyolwork@gmail.com?subject=Project%20inquiry%20-%20Neutral%20Studio" data-umami-event="email_clicked" data-umami-event-placement="footer_email">
+            <a href="mailto:arnau@neutralstudio.co?subject=Project%20inquiry%20-%20Neutral%20Studio" data-umami-event="email_clicked" data-umami-event-placement="footer_email">
               Email the studio
             </a>
           </div>
@@ -60,8 +60,7 @@ export default function Footer() {
           <div className="subpage-footer__column">
             <h3>Contact</h3>
             <ul>
-              <li><a href="mailto:arnaupinyolwork@gmail.com" data-umami-event="email_clicked" data-umami-event-placement="footer_navigation">Email</a></li>
-              <li><a href="https://www.linkedin.com/in/arnau-pi%C3%B1ol-olabegoya-722329158/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              <li><a href="mailto:arnau@neutralstudio.co" data-umami-event="email_clicked" data-umami-event-placement="footer_navigation">Email</a></li>
             </ul>
           </div>
         </div>

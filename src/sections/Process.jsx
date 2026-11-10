@@ -77,7 +77,7 @@ export default function Process() {
         </div>
 
         <div style={{ marginTop: 56, textAlign: 'center' }}>
-          <a className="btn btn--primary" href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Project%20inquiry">
+          <a className="btn btn--primary" href="mailto:arnau@neutralstudio.co?subject=Neutral%20Studio%20-%20Project%20inquiry">
             Start your timeline <span className="arrow">→</span>
           </a>
         </div>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { LINKEDIN_URL, PALSEC_LINKEDIN_URL, SERVICE_LINKS } from '../seo/site.js'
+import { PALSEC_LINKEDIN_URL, SERVICE_LINKS } from '../seo/site.js'
 import './InfoPage.css'
 
 export default function About() {
@@ -34,7 +34,7 @@ export default function About() {
           <p>Neutral Studio by Arnau Piñol is an independent practice that brings in the right specialist context when a project requires it. Scope, responsibilities and external costs are agreed before work begins. Client repositories, production accounts and final source files remain under clear client ownership.</p>
           <p>Arnau is a graphic designer educated at ESDAP — Escola Superior de Disseny i d’Arts Plàstiques. He is the founder of Neutral Studio and co-founder of <a href={PALSEC_LINKEDIN_URL} target="_blank" rel="noreferrer">Palsec Agency</a>, connecting identity, digital design and implementation experience across independent studio work.</p>
           <p>We do not present anonymous outcomes as proof. Project results, testimonials or business metrics are published only when they can be attributed and used with permission.</p>
-          <p><a href={LINKEDIN_URL} target="_blank" rel="noreferrer">View Arnau Piñol on LinkedIn</a> or <Link to="/contact">contact the studio directly</Link>.</p>
+          <p><Link to="/contact">Contact the studio directly</Link>.</p>
         </section>
 
         <section className="info-page__section">

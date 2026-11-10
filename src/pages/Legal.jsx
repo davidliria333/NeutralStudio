@@ -12,7 +12,7 @@ export default function Legal() {
       <div className="container info-page__body">
         <section className="info-page__section">
           <h2>Website operator</h2>
-          <p>This website is operated by Neutral Studio, an independent remote design practice led by Arnau Piñol. Contact: <a href="mailto:arnaupinyolwork@gmail.com">arnaupinyolwork@gmail.com</a>.</p>
+          <p>This website is operated by Neutral Studio, an independent remote design practice led by Arnau Piñol. Contact: <a href="mailto:arnau@neutralstudio.co">arnau@neutralstudio.co</a>.</p>
           <p>Requests for additional statutory identification connected to a formal engagement can be made through the same contact address.</p>
         </section>
 
@@ -36,7 +36,7 @@ export default function Legal() {
 
         <section className="info-page__section">
           <h2>Changes and contact</h2>
-          <p>This notice may change when the website, services or legal requirements change. Material updates will be reflected by the revision date where appropriate. Questions about the website or use of its content can be sent to <a href="mailto:arnaupinyolwork@gmail.com?subject=Legal%20question%20-%20Neutral%20Studio">arnaupinyolwork@gmail.com</a>.</p>
+          <p>This notice may change when the website, services or legal requirements change. Material updates will be reflected by the revision date where appropriate. Questions about the website or use of its content can be sent to <a href="mailto:arnau@neutralstudio.co?subject=Legal%20question%20-%20Neutral%20Studio">arnau@neutralstudio.co</a>.</p>
         </section>
       </div>
     </article>

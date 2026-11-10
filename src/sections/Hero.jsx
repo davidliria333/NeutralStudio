@@ -136,7 +136,7 @@ export default function Hero() {
             </a>
           </Magnetic>
           <Magnetic radius={70} strength={0.22}>
-            <a className="btn btn--ghost" data-magnet href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Question"
+            <a className="btn btn--ghost" data-magnet href="mailto:arnau@neutralstudio.co?subject=Neutral%20Studio%20-%20Question"
               style={{ background: 'rgba(10,10,11,0.5)', backdropFilter: 'blur(8px)' }}>
               Email us
             </a>

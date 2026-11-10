@@ -1,7 +1,6 @@
 export const SITE_URL = 'https://www.neutralstudio.co'
 export const SITE_NAME = 'Neutral Studio'
-export const CONTACT_EMAIL = 'arnaupinyolwork@gmail.com'
-export const LINKEDIN_URL = 'https://www.linkedin.com/in/arnau-pi%C3%B1ol-olabegoya-722329158/'
+export const CONTACT_EMAIL = 'arnau@neutralstudio.co'
 export const PALSEC_LINKEDIN_URL = 'https://www.linkedin.com/company/palsec-agency/'
 export const OG_IMAGE = `${SITE_URL}/neutral-studio-social.png`
 export const OG_IMAGE_WIDTH = '1200'
@@ -154,7 +153,6 @@ const organization = {
     name: 'Arnau Piñol',
     jobTitle: 'Designer and founder of Neutral Studio',
     url: `${SITE_URL}/about`,
-    sameAs: [LINKEDIN_URL],
     knowsAbout: ['Brand identity design', 'UX and UI design', 'Web design', 'Digital product design'],
     alumniOf: {
       '@type': 'EducationalOrganization',
