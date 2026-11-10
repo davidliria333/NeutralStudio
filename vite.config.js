@@ -10,6 +10,7 @@ const publicAssets = [
   'brand-favicon.svg',
   'neutral-cursor.svg',
   'partnership.png',
+  'founder-collaboration.png',
   'assets/avatars',
   'robots.txt',
   'sitemap.xml',
