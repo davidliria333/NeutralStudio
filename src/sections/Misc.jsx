@@ -205,7 +205,7 @@ export function Partnership() {
                 </li>
               ))}
             </ul>
-            <a className="btn btn--ghost" href="mailto:arnau@neutralstudio.co?subject=Neutral%20Studio%20-%20Intro">
+            <a className="btn btn--ghost" href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Intro">
               Email to start <span className="arrow">→</span>
             </a>
           </div>
@@ -403,7 +403,7 @@ export function SmashCTA() {
             </a>
           </Magnetic>
           <Magnetic radius={70} strength={0.22}>
-            <a className="btn btn--ghost" data-magnet href="mailto:arnau@neutralstudio.co?subject=Neutral%20Studio%20-%20Project%20inquiry">
+            <a className="btn btn--ghost" data-magnet href="mailto:arnaupinyolwork@gmail.com?subject=Neutral%20Studio%20-%20Project%20inquiry">
               Email to start
             </a>
           </Magnetic>
